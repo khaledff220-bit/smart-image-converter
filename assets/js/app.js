@@ -81,3 +81,28 @@ function improveQuality() {
     };
     reader.readAsDataURL(file);
 }
+
+
+async function mergePDFFiles() {
+    const fileInput = document.getElementById('pdfUpload');
+    if (fileInput.files.length < 2) {
+        alert('الرجاء اختيار ملفين PDF على الأقل للدمج');
+        return;
+    }
+
+    const mergedPdf = await PDFLib.PDFDocument.create();
+    
+    for (const file of fileInput.files) {
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await PDFLib.PDFDocument.load(arrayBuffer);
+        const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+        copiedPages.forEach((page) => mergedPdf.addPage(page));
+    }
+
+    const pdfBytes = await mergedPdf.save();
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'merged_document.pdf';
+    link.click();
+}
