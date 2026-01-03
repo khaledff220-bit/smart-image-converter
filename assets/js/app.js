@@ -1,7 +1,4 @@
-// كود بسيط للتفاعل مع الموقع
-console.log('موقع محول الصور الذكي يعمل!');
-
-// دالة حماية الصورة (تجريبية)
+// دالة حماية الصورة باستخدام مكتبة CryptoJS
 function protectImage() {
     const password = document.getElementById('password').value;
     const fileInput = document.getElementById('imageUpload');
@@ -15,16 +12,72 @@ function protectImage() {
         alert('الرجاء إدخال كلمة المرور');
         return;
     }
-    
-    alert('جاري حماية الصورة... (هذه نسخة تجريبية)');
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const rawData = e.target.result;
+        // تشفير البيانات باستخدام AES
+        const encrypted = CryptoJS.AES.encrypt(rawData, password).toString();
+        
+        // إنشاء ملف نصي يحتوي على البيانات المشفرة
+        const blob = new Blob([encrypted], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'protected_image.enc';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        
+        alert('تمت حماية الصورة بنجاح! تم تحميل ملف مشفر (.enc). لا يمكن فتحه إلا بكلمة المرور عبر الموقع.');
+    };
+
+    reader.readAsDataURL(file);
 }
 
-// إضافة تأثيرات عند التمرير
-window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.style.background = 'rgba(255, 255, 255, 0.95)';
-    } else {
-        nav.style.background = 'white';
+// دالة تحسين الجودة (محاكاة تحسين باستخدام Canvas)
+function improveQuality() {
+    const fileInput = document.getElementById('qualityUpload');
+    
+    if (!fileInput.files[0]) {
+        alert('الرجاء اختيار صورة أولاً');
+        return;
     }
-});
+
+    alert('جاري تحسين جودة الصورة... يرجى الانتظار');
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // زيادة الأبعاد قليلاً لمحاكاة التحسين
+            canvas.width = img.width * 1.2;
+            canvas.height = img.height * 1.2;
+            
+            // رسم الصورة مع تفعيل تنعيم الصور
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            // تحميل الصورة المحسنة
+            const enhancedUrl = canvas.toDataURL('image/jpeg', 0.9);
+            const a = document.createElement('a');
+            a.href = enhancedUrl;
+            a.download = 'enhanced_image.jpg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            alert('تم تحسين الجودة وتحميل الصورة بنجاح!');
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
