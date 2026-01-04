@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فك تشفير الصور - محول الصور الذكي</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <h1><a href="index.html">🔄 مُحوِّل الصور الذكي</a></h1>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="password-protect.html">🔒 حماية الصور</a></li>
+                <li><a href="decrypt.html" class="active">🔑 فك التشفير</a></li>
+                <li><a href="about.html">من نحن</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h2>🔑 فك تشفير الصورة المحمية</h2>
+            <p>أدخل الملف الذي يحتوي على الرموز وكلمة المرور لاستعادة صورتك الأصلية</p>
+
+            <div class="upload-area">
+                <h3>ارفع الملف المشفر هنا</h3>
+                <input type="file" id="imageUpload">
+                <div class="password-section">
+                    <input type="password" id="password" placeholder="أدخل كلمة المرور">
+                    <button class="btn" onclick="decryptImage()">استعادة الصورة الأصلية</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

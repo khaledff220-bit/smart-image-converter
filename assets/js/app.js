@@ -106,3 +106,38 @@ async function mergePDFFiles() {
     link.download = 'merged_document.pdf';
     link.click();
 }
+
+
+async function decryptImage() {
+    const fileInput = document.getElementById('imageUpload');
+    const password = document.getElementById('password').value;
+    
+    if (fileInput.files.length === 0 || !password) {
+        alert('الرجاء اختيار الملف المشفر وإدخال كلمة المرور');
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        try {
+            // فك التشفير باستخدام CryptoJS
+            const encryptedData = e.target.result;
+            const decrypted = CryptoJS.AES.decrypt(encryptedData, password);
+            const originalBase64 = decrypted.toString(CryptoJS.enc.Utf8);
+
+            if (!originalBase64) throw new Error();
+
+            // إظهار الصورة على الصفحة أو تحميلها
+            const link = document.createElement('a');
+            link.href = originalBase64;
+            link.download = "original_image.png";
+            link.click();
+            alert('تم فك التشفير بنجاح!');
+        } catch (error) {
+            alert('كلمة المرور خاطئة أو الملف غير صالح!');
+        }
+    };
+    reader.readAsText(file);
+}
