@@ -5,40 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فك تشفير الصور - محول الصور الذكي</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="fade-in">
     <nav>
         <div class="nav-container">
-            <h1><a href="index.html">🔄 مُحوِّل الصور الذكي</a></h1>
-            <ul>
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🔄</span>
+                <h1>مُحوِّل الصور الذكي</h1>
+            </a>
+            <ul class="nav-menu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="password-protect.html">🔒 حماية الصور</a></li>
                 <li><a href="decrypt.html" class="active">🔑 فك التشفير</a></li>
-                <li><a href="about.html">من نحن</a></li>
+                <li><a href="image-quality.html">🖼️ تحسين الجودة</a></li>
+                <li><a href="merge-pdf.html">📄 دمج PDF</a></li>
+                <li><a href="compress-pdf.html">⚙️ ضغط PDF</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <section class="hero">
-            <h2>🔑 فك تشفير الصورة المحمية</h2>
-            <p>أدخل الملف الذي يحتوي على الرموز وكلمة المرور لاستعادة صورتك الأصلية</p>
+        <header class="main-header">
+            <h2 class="header-title">استعادة صورك الأصلية</h2>
+            <p class="header-subtitle">أدخل الملف المشفر وكلمة المرور الصحيحة لاسترجاع صورتك فوراً.</p>
+        </header>
 
-            <div class="upload-area">
-                <h3>ارفع الملف المشفر هنا</h3>
-                <input type="file" id="imageUpload">
-                <div class="password-section">
-                    <input type="password" id="password" placeholder="أدخل كلمة المرور">
-                    <button class="btn" onclick="decryptImage()">استعادة الصورة الأصلية</button>
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
+            <div class="service-card slide-up">
+                <div class="service-icon">🔑</div>
+                <h3>فك التشفير الآمن</h3>
+                
+                <div class="upload-section">
+                    <div class="upload-icon">🔓</div>
+                    <input type="file" id="imageUpload" class="file-input" accept=".enc">
+                    <label for="imageUpload" class="file-label">اختر الملف المشفر (.enc)</label>
                 </div>
+
+                <div class="option-card" style="margin-top: 20px;">
+                    <label>كلمة المرور:</label>
+                    <input type="password" id="password" placeholder="أدخل كلمة المرور لفك التشفير" 
+                           style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--card-border); margin-top: 10px;">
+                </div>
+
+                <button class="btn" onclick="decryptImage()" style="width: 100%; margin-top: 20px;">فك التشفير واستعادة الصورة</button>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>© 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
-        </div>
+    <footer class="site-footer">
+        <div class="footer-bottom"><p>&copy; 2026 محول الصور الذكي.</p></div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>

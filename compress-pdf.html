@@ -6,43 +6,50 @@
     <title>ضغط ملفات PDF - محول الصور الذكي</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="fade-in">
     <nav>
         <div class="nav-container">
-            <h1><a href="index.html">🔄 مُحوِّل الصور الذكي</a></h1>
-            <ul>
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🔄</span>
+                <h1>مُحوِّل الصور الذكي</h1>
+            </a>
+            <ul class="nav-menu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="password-protect.html">🔒 حماية الصور</a></li>
                 <li><a href="decrypt.html">🔑 فك التشفير</a></li>
+                <li><a href="image-quality.html">🖼️ تحسين الجودة</a></li>
                 <li><a href="merge-pdf.html">📄 دمج PDF</a></li>
                 <li><a href="compress-pdf.html" class="active">⚙️ ضغط PDF</a></li>
-                <li><a href="about.html">من نحن</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <section class="hero">
-            <h2>⚙️ ضغط ملفات PDF</h2>
-            <p>قلل حجم ملفاتك بسرعة وأمان مباشرة في متصفحك</p>
+        <header class="main-header">
+            <h2 class="header-title">تقليل حجم PDF</h2>
+            <p class="header-subtitle">وفر مساحة التخزين عبر ضغط ملفات PDF مع الحفاظ على وضوح المحتوى.</p>
+        </header>
 
-            <div class="upload-area">
-                <h3>ارفع ملف PDF هنا</h3>
-                <input type="file" id="pdfInput" accept="application/pdf">
-                <button class="btn" onclick="compressPDF()">ابدأ ضغط الملف</button>
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
+            <div class="service-card slide-up">
+                <div class="service-icon">📉</div>
+                <h3>ضاغط الملفات الذكي</h3>
+                
+                <div class="upload-section">
+                    <div class="upload-icon">🗜️</div>
+                    <input type="file" id="pdfInput" class="file-input" accept="application/pdf">
+                    <label for="pdfInput" class="file-label">اختر ملف PDF للضغط</label>
+                </div>
+
+                <div id="status" style="margin: 15px 0; color: var(--secondary-color);"></div>
+
+                <button class="btn" onclick="compressPDF()" style="width: 100%;">بدء الضغط والتحميل</button>
             </div>
-            <div id="status" style="margin-top: 15px; color: #3498db;"></div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>© 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
-            <nav class="footer-links">
-                <a href="about.html">من نحن</a> | 
-                <a href="privacy.html">سياسة الخصوصية</a>
-            </nav>
-        </div>
+    <footer class="site-footer">
+        <div class="footer-bottom"><p>&copy; 2026 محول الصور الذكي.</p></div>
     </footer>
 
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>

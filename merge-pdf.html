@@ -6,38 +6,50 @@
     <title>دمج ملفات PDF - محول الصور الذكي</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="fade-in">
     <nav>
         <div class="nav-container">
-            <h1><a href="index.html">مُحوِّل الصور الذكي</a></h1>
-            <ul>
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🔄</span>
+                <h1>مُحوِّل الصور الذكي</h1>
+            </a>
+            <ul class="nav-menu">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="password-protect.html">🔒 حماية الصور</a></li>
+                <li><a href="decrypt.html">🔑 فك التشفير</a></li>
                 <li><a href="image-quality.html">🖼️ تحسين الجودة</a></li>
-		<li><a href="decrypt.html">🔑 فك التشفير</a></li>
-                <li><a href="merge-pdf.html">📄 دمج PDF</a></li>
+                <li><a href="merge-pdf.html" class="active">📄 دمج PDF</a></li>
                 <li><a href="compress-pdf.html">⚙️ ضغط PDF</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <section class="hero">
-            <h2>📄 دمج ملفات PDF</h2>
-            <p>اختر عدة ملفات PDF لدمجها في ملف واحد بسهولة</p>
+        <header class="main-header">
+            <h2 class="header-title">دمج مستندات PDF</h2>
+            <p class="header-subtitle">اختر عدة ملفات PDF لدمجها معاً في ملف واحد مرتب بضغطة زر.</p>
+        </header>
 
-            <div class="upload-area">
-                <h3>ارفع ملفات PDF هنا</h3>
-                <input type="file" id="pdfUpload" accept="application/pdf" multiple>
-                <button class="btn" onclick="mergePDFFiles()">دمج الملفات</button>
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
+            <div class="service-card slide-up">
+                <div class="service-icon">📚</div>
+                <h3>تجميع الملفات</h3>
+                
+                <div class="upload-section">
+                    <div class="upload-icon">📄+📄</div>
+                    <input type="file" id="pdfUpload" class="file-input" accept="application/pdf" multiple>
+                    <label for="pdfUpload" class="file-label">اختر ملفات PDF المتعددة</label>
+                </div>
+
+                <button class="btn" onclick="mergePDFFiles()" style="width: 100%; margin-top: 20px;">دمج وتحميل الملف الموحد</button>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+    <footer class="site-footer">
+        <div class="footer-bottom"><p>&copy; 2026 محول الصور الذكي.</p></div>
     </footer>
-    
+
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/advanced-effects.js"></script>
