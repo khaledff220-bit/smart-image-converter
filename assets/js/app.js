@@ -1,5 +1,5 @@
 // ==========================================
-// 1. وظيفة مساعدة موحدة للتحميل (لضمان عملها في كل المتصفحات)
+// 1. وظيفة مساعدة موحدة للتحميل
 // ==========================================
 function downloadFile(data, name, type) {
     const blob = new Blob([data], { type: type });
@@ -7,10 +7,10 @@ function downloadFile(data, name, type) {
     const link = document.createElement('a');
     link.href = url;
     link.download = name;
-    document.body.appendChild(link); // إضافة الرابط للصفحة مؤقتاً
+    document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link); // حذفه بعد الضغط
-    URL.revokeObjectURL(url); // تنظيف الذاكرة
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 100);
 }
 
 // ==========================================
@@ -29,7 +29,6 @@ function protectImage() {
     reader.onload = function(e) {
         const encrypted = CryptoJS.AES.encrypt(e.target.result, password).toString();
         downloadFile([encrypted], 'protected_image.enc', 'text/plain');
-        alert('تم التشفير والتحميل بنجاح!');
     };
     reader.readAsDataURL(fileInput.files[0]);
 }
@@ -56,16 +55,18 @@ async function decryptImage() {
             const link = document.createElement('a');
             link.href = originalBase64;
             link.download = "restored_image.png";
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
         } catch (error) {
-            alert('فشل فك التشفير: كلمة المرور خاطئة أو الملف تالف');
+            alert('فشل فك التشفير: كلمة المرور خاطئة');
         }
     };
     reader.readAsText(fileInput.files[0]);
 }
 
 // ==========================================
-// 4. دالة تحسين جودة الصور (التي كانت مفقودة)
+// 4. دالة تحسين جودة الصور (الإصدار المصحح)
 // ==========================================
 function improveQuality() {
     const fileInput = document.getElementById('qualityUpload');
@@ -76,7 +77,7 @@ function improveQuality() {
         return;
     }
 
-    if(status) status.innerText = "⏳ جاري المعالجة... يرجى الانتظار";
+    if(status) status.innerText = "⏳ جاري التحسين... يرجى الانتظار";
 
     const reader = new FileReader();
     reader.onload = function(e) {
@@ -85,22 +86,27 @@ function improveQuality() {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
 
-            // زيادة الأبعاد لتحسين الكثافة النقطية
+            // مضاعفة الأبعاد لتحسين الكثافة
             canvas.width = img.width * 2;
             canvas.height = img.height * 2;
 
-            // تطبيق الفلاتر البرمجية للوضوح
+            // تطبيق فلاتر المعالجة بصيغة متوافقة
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = 'high';
-            ctx.filter = 'contrast(1.05) brightness(1.03) saturate(1.05)';
+            ctx.filter = 'contrast(1.08) brightness(1.02) saturate(1.05)';
             
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            // التحميل بصيغة عالية الجودة
-            canvas.toBlob(function(blob) {
-                downloadFile([blob], 'enhanced_image.jpg', 'image/jpeg');
-                if(status) status.innerText = "✅ اكتمل التحسين والتحميل!";
-            }, 'image/jpeg', 0.95);
+            // التحميل بصيغة DataURL لضمان العرض الصحيح على الموبايل
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = 'enhanced_' + fileInput.files[0].name;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            if(status) status.innerText = "✅ اكتمل التحسين والتحميل!";
         };
         img.src = e.target.result;
     };
@@ -127,7 +133,7 @@ async function mergePDFFiles() {
         const pdfBytes = await mergedPdf.save();
         downloadFile(pdfBytes, 'merged_document.pdf', 'application/pdf');
     } catch (e) {
-        alert('حدث خطأ أثناء دمج الملفات');
+        alert('حدث خطأ أثناء الدمج');
     }
 }
 
@@ -143,12 +149,11 @@ async function compressPDF() {
         return;
     }
 
-    if(status) status.innerText = "⏳ جاري الضغط... قد يستغرق وقتاً";
+    if(status) status.innerText = "⏳ جاري الضغط...";
 
     try {
         const arrayBuffer = await fileInput.files[0].arrayBuffer();
         const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-
         const pdfBytes = await pdfDoc.save({
             useObjectStreams: true,
             addDefaultPage: false,
@@ -158,6 +163,6 @@ async function compressPDF() {
         downloadFile(pdfBytes, 'compressed_document.pdf', 'application/pdf');
         if(status) status.innerText = "✅ تم الضغط بنجاح!";
     } catch (error) {
-        if(status) status.innerText = "❌ فشل الضغط: الملف قد يكون محمياً";
+        if(status) status.innerText = "❌ فشل الضغط";
     }
 }
