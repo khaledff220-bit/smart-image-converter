@@ -141,3 +141,41 @@ async function decryptImage() {
     };
     reader.readAsText(file);
 }
+
+
+
+
+async function compressPDF() {
+    const fileInput = document.getElementById('pdfInput');
+    const status = document.getElementById('status');
+    
+    if (fileInput.files.length === 0) {
+        alert('الرجاء اختيار ملف PDF أولاً');
+        return;
+    }
+
+    status.innerText = "جاري معالجة وضغط الملف... يرجى الانتظار";
+    
+    try {
+        const file = fileInput.files[0];
+        const arrayBuffer = await file.arrayBuffer();
+        
+        // تحميل ملف PDF
+        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+        
+        // حفظ الملف مع خيار الحفظ المضغوط (Linearization/Optimization)
+        const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
+
+        // تحميل الملف الناتج
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = "compressed_document.pdf";
+        link.click();
+        
+        status.innerText = "تم ضغط الملف وتحميله بنجاح!";
+    } catch (error) {
+        console.error(error);
+        status.innerText = "حدث خطأ أثناء محاولة ضغط الملف.";
+    }
+}

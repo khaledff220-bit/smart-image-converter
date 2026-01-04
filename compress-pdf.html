@@ -9,13 +9,14 @@
 <body>
     <nav>
         <div class="nav-container">
-            <h1><a href="index.html">مُحوِّل الصور الذكي</a></h1>
+            <h1><a href="index.html">🔄 مُحوِّل الصور الذكي</a></h1>
             <ul>
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="password-protect.html">🔒 حماية الصور</a></li>
-                <li><a href="image-quality.html">🖼️ تحسين الجودة</a></li>
+                <li><a href="decrypt.html">🔑 فك التشفير</a></li>
                 <li><a href="merge-pdf.html">📄 دمج PDF</a></li>
-                <li><a href="compress-pdf.html">⚙️ ضغط PDF</a></li>
+                <li><a href="compress-pdf.html" class="active">⚙️ ضغط PDF</a></li>
+                <li><a href="about.html">من نحن</a></li>
             </ul>
         </div>
     </nav>
@@ -23,19 +24,28 @@
     <main>
         <section class="hero">
             <h2>⚙️ ضغط ملفات PDF</h2>
-            <p>قلل حجم ملفات PDF الخاصة بك مع الحفاظ على جودة المحتوى</p>
-            
+            <p>قلل حجم ملفاتك بسرعة وأمان مباشرة في متصفحك</p>
+
             <div class="upload-area">
-                <h3>ارفع ملف PDF لضغطه</h3>
-                <input type="file" id="pdfCompress" accept="application/pdf">
-                <button class="btn" onclick="alert('هذه الميزة تتطلب معالجة برمجية متقدمة. يرجى مراجعة التقرير المرفق.')">ضغط الملف</button>
+                <h3>ارفع ملف PDF هنا</h3>
+                <input type="file" id="pdfInput" accept="application/pdf">
+                <button class="btn" onclick="compressPDF()">ابدأ ضغط الملف</button>
             </div>
+            <div id="status" style="margin-top: 15px; color: #3498db;"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+        <div class="footer-content">
+            <p>© 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+            <nav class="footer-links">
+                <a href="about.html">من نحن</a> | 
+                <a href="privacy.html">سياسة الخصوصية</a>
+            </nav>
+        </div>
     </footer>
+
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 </html>
