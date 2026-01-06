@@ -140,33 +140,33 @@ async function mergePDFFiles() {
 // ==========================================
 // 6. دالة ضغط PDF
 // ==========================================
+
 async function compressPDF() {
     const fileInput = document.getElementById('pdfInput');
     const status = document.getElementById('status');
+    if (!fileInput.files[0]) { alert('الرجاء اختيار ملف PDF'); return; }
 
-    if (!fileInput.files[0]) {
-        alert('الرجاء اختيار ملف PDF');
-        return;
-    }
-
-    if(status) status.innerText = "⏳ جاري الضغط...";
+    if(status) status.innerText = "⏳ جاري الضغط وتقليل الحجم...";
 
     try {
         const arrayBuffer = await fileInput.files[0].arrayBuffer();
         const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+        
+        // تقنيات تقليل الحجم: إزالة البيانات الوصفية وضغط الجداول
+        pdfDoc.setTitle("");
+        pdfDoc.setAuthor("");
+        
         const pdfBytes = await pdfDoc.save({
-            useObjectStreams: true,
-            addDefaultPage: false,
-            updateMetadata: false
+            useObjectStreams: true, // ضغط الكائنات الداخلية
+            addDefaultPage: false
         });
 
-        downloadFile(pdfBytes, 'compressed_document.pdf', 'application/pdf');
-        if(status) status.innerText = "✅ تم الضغط بنجاح!";
+        downloadFile(pdfBytes, 'compressed_2026.pdf', 'application/pdf');
+        if(status) status.innerText = "✅ تم الضغط (تم تقليل البيانات الزائدة)";
     } catch (error) {
         if(status) status.innerText = "❌ فشل الضغط";
     }
 }
-
 
 // ==========================================
 // 7. ربط الدوال بالأزرار (المحرك)
