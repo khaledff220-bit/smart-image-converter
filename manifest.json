@@ -1,19 +1,19 @@
 {
-  "name": "مُحوِّل الصور الذكي",
-  "short_name": "محول الصور",
-  "description": "منصة متكاملة لتحويل ومعالجة الصور أونلاين",
+  "name": "محول الصور الذكي 2026",
+  "short_name": "الذكاء الذكي",
+  "description": "منصة ذكاء المستقبل لمعالجة وتشفير الصور والملفات",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4CAF50",
+  "background_color": "#0a0b1e",
+  "theme_color": "#0a0b1e",
   "icons": [
     {
-      "src": "assets/images/icon-192.png",
+      "src": "assets/images/favicon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icon-512.png", 
+      "src": "assets/images/favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
