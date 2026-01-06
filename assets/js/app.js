@@ -186,3 +186,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnDecrypt = document.getElementById('btnDecrypt');
     if (btnDecrypt) btnDecrypt.addEventListener('click', (e) => { e.preventDefault(); decryptImage(); });
 });
+
+
+
+
+
+//================إظهار الصورة==========
+
+
+// وظيفة إظهار المعاينة فور الاختيار
+const qualityInput = document.getElementById('qualityUpload');
+const previewImg = document.getElementById('imagePreview');
+const previewContainer = document.getElementById('previewContainer');
+
+if (qualityInput) {
+    qualityInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                previewContainer.style.display = 'block'; // إظهار حاوية المعاينة
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+}
