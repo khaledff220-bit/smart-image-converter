@@ -212,3 +212,30 @@ if (qualityInput) {
         }
     });
 }
+
+
+
+
+
+// وظيفة إظهار المعاينة في قسم حماية الصور
+const protectInput = document.getElementById('imageUpload');
+const protectPreviewImg = document.getElementById('protectImagePreview');
+const protectPreviewContainer = document.getElementById('protectPreviewContainer');
+
+if (protectInput) {
+    protectInput.addEventListener('change', function() {
+        const file = this.files[0];
+        // نتأكد أن الملف المختار هو صورة (لأن قسم الحماية قد يستقبل ملفات مشفرة لاحقاً)
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                protectPreviewImg.src = e.target.result;
+                protectPreviewContainer.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            // إذا لم يكن صورة (مثلاً ملف .enc)، نخفي المعاينة
+            if(protectPreviewContainer) protectPreviewContainer.style.display = 'none';
+        }
+    });
+}
