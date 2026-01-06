@@ -166,3 +166,23 @@ async function compressPDF() {
         if(status) status.innerText = "❌ فشل الضغط";
     }
 }
+
+
+// ==========================================
+// 7. ربط الدوال بالأزرار (المحرك)
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // زر حماية الصور
+    const protectBtn = document.querySelector('a[href="password-protect.html"] + .btn, .btn-protect'); 
+    // ملاحظة: يفضل إضافة id="btnProtect" للزر في ملف HTML واستخدامه هنا
+    const btnProtect = document.getElementById('btnProtect');
+    if (btnProtect) btnProtect.addEventListener('click', (e) => { e.preventDefault(); protectImage(); });
+
+    // زر تحسين الجودة
+    const btnImprove = document.getElementById('btnImprove');
+    if (btnImprove) btnImprove.addEventListener('click', (e) => { e.preventDefault(); improveQuality(); });
+
+    // زر فك التشفير
+    const btnDecrypt = document.getElementById('btnDecrypt');
+    if (btnDecrypt) btnDecrypt.addEventListener('click', (e) => { e.preventDefault(); decryptImage(); });
+});
