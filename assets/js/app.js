@@ -239,3 +239,24 @@ if (protectInput) {
         }
     });
 }
+
+
+
+
+// وظيفة إظهار معلومات الملف في قسم فك التشفير
+const decryptInput = document.getElementById('imageUpload'); // تأكد من الـ ID في صفحة decrypt
+const fileInfoContainer = document.getElementById('fileInfoContainer');
+const fileNameDisplay = document.getElementById('fileName');
+const fileSizeDisplay = document.getElementById('fileSize');
+
+if (decryptInput && fileNameDisplay) {
+    decryptInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            fileNameDisplay.innerText = file.name;
+            // تحويل الحجم إلى كيلوبايت
+            fileSizeDisplay.innerText = (file.size / 1024).toFixed(2) + " KB";
+            fileInfoContainer.style.display = 'block';
+        }
+    });
+}
