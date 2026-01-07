@@ -302,3 +302,55 @@ if (pdfInput && pdfFileList) {
         });
     }
 }
+
+
+
+
+
+
+
+
+
+// 1. مراقبة اختيار الملف لإظهار الحجم الأصلي
+const compressInput = document.getElementById('pdfInput');
+const compressInfoContainer = document.getElementById('compressInfoContainer');
+const originalSizeDisplay = document.getElementById('originalSize');
+
+if (compressInput) {
+    compressInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            originalSizeDisplay.innerText = (file.size / 1024).toFixed(2) + " KB";
+            compressInfoContainer.style.display = 'block';
+            document.getElementById('afterCompress').style.display = 'none'; // إخفاء نتيجة الضغط القديمة
+        }
+    });
+}
+
+// 2. تحديث دالة الضغط لعرض النتيجة (تعديل بسيط على دالتك السابقة)
+async function compressPDF() {
+    const fileInput = document.getElementById('pdfInput');
+    const status = document.getElementById('status');
+    const compressedSizeDisplay = document.getElementById('compressedSize');
+    const afterCompressDiv = document.getElementById('afterCompress');
+
+    if (!fileInput.files[0]) { alert('الرجاء اختيار ملف PDF'); return; }
+    if(status) status.innerText = "⏳ جاري الضغط...";
+
+    try {
+        const arrayBuffer = await fileInput.files[0].arrayBuffer();
+        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+        
+        const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
+
+        // حساب الحجم الجديد وعرضه
+        const newSize = (pdfBytes.length / 1024).toFixed(2) + " KB";
+        if(compressedSizeDisplay) compressedSizeDisplay.innerText = newSize;
+        if(afterCompressDiv) afterCompressDiv.style.display = 'block';
+
+        downloadFile(pdfBytes, 'compressed_2026.pdf', 'application/pdf');
+        if(status) status.innerText = "✅ اكتمل الضغط!";
+    } catch (error) {
+        if(status) status.innerText = "❌ فشل الضغط";
+    }
+}
