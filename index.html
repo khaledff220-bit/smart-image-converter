@@ -4,163 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0b1e">
-    <title>مُحوِّل الصور الذكي - منصة معالجة الملفات الاحترافية</title>
-    <link rel="canonical" href="https://smart-image-converter.vercel.app/index.html" />
+    <title id="page-title">مُحوِّل الصور الذكي - منصة معالجة الملفات الاحترافية</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="manifest" href="manifest.json">
-<meta property="og:image" content="https://smart-image-converter.vercel.app/assets/images/favicon.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-PNHBTPESQT');
-</script>
-    <meta name="google-site-verification" content="1YBP2sbUMH1uIADFn88vYgs-UHOOlEoYkxtp9tixugE" />
+    <style>
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+    </style>
 </head>
 <body class="fade-in">
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <span class="logo-icon">🔄</span>
-                <h1>مُحوِّل الصور الذكي</h1>
+                <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
             </a>
-
-		<div id="lang-switcher" style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
-    <button onclick="toggleLang()" style="padding: 5px 10px; border-radius: 5px; cursor: pointer;">EN / عربي</button>
-</div>
-
-<script>
-const translations = {
-    ar: {
-        title: "محول الصور الذكي 2026",
-        encrypt: "تشفير الصور",
-        merge: "دمج PDF",
-        boost: "تحسين الجودة"
-    },
-    en: {
-        title: "Smart Image Converter 2026",
-        encrypt: "Image Encryption",
-        merge: "Merge PDF",
-        boost: "Quality Booster"
-    }
-};
-
-let currentLang = navigator.language.startsWith('ar') ? 'ar' : 'en';
-
-function applyLang(lang) {
-    document.title = translations[lang].title;
-    document.querySelector('h1').textContent = translations[lang].title;
-    // هنا تضيف باقي العناصر التي تريد ترجمتها باستخدام id الخاص بها
-    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-}
-
-function toggleLang() {
-    currentLang = (currentLang === 'ar') ? 'en' : 'ar';
-    applyLang(currentLang);
-}
-
-// تشغيل اللغة عند فتح الموقع تلقائياً
-applyLang(currentLang);
-
-function applyLang(lang) {
-    // ترجمة العنوان الرئيسي
-    document.getElementById('site-title').textContent = translations[lang].title;
-    
-    // تغيير اتجاه الصفحة (يمين لليسار أو يسار لليمين)
-    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-    
-    // يمكنك إضافة ترجمة الأزرار هنا بنفس الطريقة
-}
-
-</script>
-
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">الرئيسية</a></li>
-                <li><a href="password-protect.html">🔒 حماية الصور</a></li>
-                <li><a href="decrypt.html">🔑 فك التشفير</a></li>
-                <li><a href="image-quality.html">🖼️ تحسين الجودة</a></li>
-                <li><a href="merge-pdf.html">📄 دمج PDF</a></li>
-                <li><a href="compress-pdf.html">⚙️ ضغط PDF</a></li>
-            </ul>
+            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
         </div>
     </nav>
 
     <main>
         <header class="main-header">
-            <h2 class="header-title">حوّل ملفاتك بذكاء المستقبل</h2>
-            <p class="header-subtitle">منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026</p>
+            <h2 id="txt-hero-title" class="header-title">حوّل ملفاتك بذكاء المستقبل</h2>
+            <p id="txt-hero-desc" class="header-subtitle">منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026</p>
         </header>
 
         <section class="services-grid">
             <div class="service-card slide-up">
                 <div class="service-icon">🔒</div>
-                <h3>حماية الصور</h3>
-                <p>قم بتشفير صورك بكلمة مرور قوية لا يمكن كسرها باستخدام تقنية AES.</p>
-                <a href="password-protect.html" class="btn">ابدأ التشفير</a>
+                <h3 id="txt-s1-t">حماية الصور</h3>
+                <p id="txt-s1-d">قم بتشفير صورك بكلمة مرور قوية لا يمكن كسرها باستخدام تقنية AES.</p>
+                <a href="password-protect.html" id="txt-s1-b" class="btn">ابدأ التشفير</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">🔑</div>
-                <h3>فك التشفير</h3>
-                <p>استرجع صورك الأصلية من ملفاتك المشفرة بسرعة وأمان تام.</p>
-                <a href="decrypt.html" class="btn btn-secondary">فك التشفير الآن</a>
+                <h3 id="txt-s2-t">فك التشفير</h3>
+                <p id="txt-s2-d">استرجع صورك الأصلية من ملفاتك المشفرة بسرعة وأمان تام.</p>
+                <a href="decrypt.html" id="txt-s2-b" class="btn btn-secondary">فك التشفير الآن</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">🖼️</div>
-                <h3>تحسين الجودة</h3>
-                <p>ضاعف دقة الصور الضبابية واجعلها أكثر ووضوحاً بضغطة زر.</p>
-                <a href="image-quality.html" class="btn">حسن جودة صورتك</a>
+                <h3 id="txt-s3-t">تحسين الجودة</h3>
+                <p id="txt-s3-d">ضاعف دقة الصور الضبابية واجعلها أكثر ووضوحاً بضغطة زر.</p>
+                <a href="image-quality.html" id="txt-s3-b" class="btn">حسن جودة صورتك</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">📄</div>
-                <h3>دمج PDF</h3>
-                <p>اجمع عدة ملفات PDF في مستند واحد مرتب ومنسق.</p>
-                <a href="merge-pdf.html" class="btn">دمج الملفات</a>
+                <h3 id="txt-s4-t">دمج PDF</h3>
+                <p id="txt-s4-d">اجمع عدة ملفات PDF في مستند واحد مرتب ومنسق.</p>
+                <a href="merge-pdf.html" id="txt-s4-b" class="btn">دمج الملفات</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">⚙️</div>
-                <h3>ضغط PDF</h3>
-                <p>قلل حجم مستنداتك دون التأثير على جودة النصوص والرسومات.</p>
-                <a href="compress-pdf.html" class="btn">ضغط الملفات</a>
+                <h3 id="txt-s5-t">ضغط PDF</h3>
+                <p id="txt-s5-d">قلل حجم مستنداتك دون التأثير على جودة النصوص والرسومات.</p>
+                <a href="compress-pdf.html" id="txt-s5-b" class="btn">ضغط الملفات</a>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>عن المحول الذكي</h4>
-                <p>أداة آمنة تعمل بالكامل في متصفحك، خصوصيتك هي أولويتنا.</p>
-            </div>
-            <div class="footer-section">
-                <h4>روابط سريعة</h4>
-                <ul class="footer-links">
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="privacy.html">سياسة الخصوصية</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
-        </div>
-    </footer>
+    <script>
+        const translations = {
+            ar: {
+                logo: "مُحوِّل الصور الذكي",
+                heroT: "حوّل ملفاتك بذكاء المستقبل",
+                heroD: "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026",
+                s1t: "حماية الصور", s1d: "تشفير AES قوي لصورك.", s1b: "ابدأ التشفير",
+                s2t: "فك التشفير", s2d: "استرجع صورك بأمان.", s2b: "فك التشفير الآن",
+                s3t: "تحسين الجودة", s3d: "توضيح الصور الضبابية.", s3b: "حسن صورتك",
+                s4t: "دمج PDF", s4d: "جمع ملفات PDF متعددة.", s4b: "دمج الملفات",
+                s5t: "ضغط PDF", s5d: "تقليل حجم المستندات.", s5b: "ضغط الملفات",
+                btn: "English", dir: "rtl"
+            },
+            en: {
+                logo: "Smart Image Converter",
+                heroT: "Transform Files with Future Intel",
+                heroD: "Local & secure file processing with 2026 technology",
+                s1t: "Image Protection", s1d: "Strong AES encryption for photos.", s1b: "Start Encrypting",
+                s2t: "Decryption", s2d: "Restore your original photos.", s2b: "Decrypt Now",
+                s3t: "Quality Boost", s3d: "Clarify blurry images easily.", s3b: "Enhance Quality",
+                s4t: "Merge PDF", s4d: "Combine multiple PDF files.", s4b: "Merge Now",
+                s5t: "Compress PDF", s5d: "Reduce PDF size locally.", s5b: "Compress Now",
+                btn: "عربي", dir: "ltr"
+            }
+        };
 
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/advanced-effects.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-  }
-</script>
+        let currentLang = 'ar';
+
+        function changeLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            const langData = translations[currentLang];
+            
+            document.getElementById('txt-logo').innerText = langData.logo;
+            document.getElementById('txt-hero-title').innerText = langData.heroT;
+            document.getElementById('txt-hero-desc').innerText = langData.heroD;
+            document.getElementById('txt-s1-t').innerText = langData.s1t; document.getElementById('txt-s1-d').innerText = langData.s1d; document.getElementById('txt-s1-b').innerText = langData.s1b;
+            document.getElementById('txt-s2-t').innerText = langData.s2t; document.getElementById('txt-s2-d').innerText = langData.s2d; document.getElementById('txt-s2-b').innerText = langData.s2b;
+            document.getElementById('txt-s3-t').innerText = langData.s3t; document.getElementById('txt-s3-d').innerText = langData.s3d; document.getElementById('txt-s3-b').innerText = langData.s3b;
+            document.getElementById('txt-s4-t').innerText = langData.s4t; document.getElementById('txt-s4-d').innerText = langData.s4d; document.getElementById('txt-s4-b').innerText = langData.s4b;
+            document.getElementById('txt-s5-t').innerText = langData.s5t; document.getElementById('txt-s5-d').innerText = langData.s5d; document.getElementById('txt-s5-b').innerText = langData.s5b;
+            document.getElementById('lang-btn').innerText = langData.btn;
+            document.documentElement.dir = langData.dir;
+        }
+
+        window.onload = function() {
+            if (navigator.language.startsWith('en')) {
+                currentLang = 'ar';
+                changeLanguage();
+            }
+        };
+    </script>
 </body>
 </html>
