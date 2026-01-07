@@ -56,6 +56,13 @@
                     <label for="pdfUpload" class="file-label">اختر ملفات PDF المتعددة</label>
                 </div>
 
+		<div id="pdfListContainer" style="margin-top: 20px; display: none; text-align: right;">
+		        <p style="color: #00f2ff; font-size: 0.9em; margin-bottom: 10px;">الملفات التي سيتم دمجها:</p>
+       			 <ul id="pdfFileList" style="list-style: none; padding: 0; background: rgba(255,255,255,0.05); border-radius: 10px; border: 1px solid var(--card-border);">
+           	
+			 </ul>
+   		 </div>
+
                 <button class="btn" onclick="mergePDFFiles()" style="width: 100%; margin-top: 20px;">دمج وتحميل الملف الموحد</button>
             </div>
         </section>

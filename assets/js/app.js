@@ -260,3 +260,45 @@ if (decryptInput && fileNameDisplay) {
         }
     });
 }
+
+
+
+
+
+
+
+// وظيفة إظهار قائمة الملفات في قسم الدمج
+const pdfInput = document.getElementById('pdfUpload');
+const pdfListContainer = document.getElementById('pdfListContainer');
+const pdfFileList = document.getElementById('pdfFileList');
+const btnMerge = document.getElementById('btnMerge');
+
+if (pdfInput && pdfFileList) {
+    pdfInput.addEventListener('change', function() {
+        pdfFileList.innerHTML = ''; // مسح القائمة القديمة
+        const files = Array.from(this.files);
+
+        if (files.length > 0) {
+            files.forEach((file, index) => {
+                const li = document.createElement('li');
+                li.style.cssText = "padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); color: white; display: flex; justify-content: space-between; font-size: 0.85em;";
+                li.innerHTML = `
+                    <span>${index + 1}. ${file.name}</span>
+                    <span style="color: #888;">(${(file.size / 1024).toFixed(1)} KB)</span>
+                `;
+                pdfFileList.appendChild(li);
+            });
+            pdfListContainer.style.display = 'block';
+        } else {
+            pdfListContainer.style.display = 'none';
+        }
+    });
+
+    // ربط زر الدمج بالدالة (تأكد من وجود دالة mergePDFFiles لديك)
+    if (btnMerge) {
+        btnMerge.addEventListener('click', (e) => {
+            e.preventDefault();
+            mergePDFFiles();
+        });
+    }
+}
