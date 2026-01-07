@@ -31,6 +31,56 @@
                 <span class="logo-icon">🔄</span>
                 <h1>مُحوِّل الصور الذكي</h1>
             </a>
+
+		<div id="lang-switcher" style="position: fixed; top: 10px; left: 10px; z-index: 1000;">
+    <button onclick="toggleLang()" style="padding: 5px 10px; border-radius: 5px; cursor: pointer;">EN / عربي</button>
+</div>
+
+<script>
+const translations = {
+    ar: {
+        title: "محول الصور الذكي 2026",
+        encrypt: "تشفير الصور",
+        merge: "دمج PDF",
+        boost: "تحسين الجودة"
+    },
+    en: {
+        title: "Smart Image Converter 2026",
+        encrypt: "Image Encryption",
+        merge: "Merge PDF",
+        boost: "Quality Booster"
+    }
+};
+
+let currentLang = navigator.language.startsWith('ar') ? 'ar' : 'en';
+
+function applyLang(lang) {
+    document.title = translations[lang].title;
+    document.querySelector('h1').textContent = translations[lang].title;
+    // هنا تضيف باقي العناصر التي تريد ترجمتها باستخدام id الخاص بها
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+}
+
+function toggleLang() {
+    currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+    applyLang(currentLang);
+}
+
+// تشغيل اللغة عند فتح الموقع تلقائياً
+applyLang(currentLang);
+
+function applyLang(lang) {
+    // ترجمة العنوان الرئيسي
+    document.getElementById('site-title').textContent = translations[lang].title;
+    
+    // تغيير اتجاه الصفحة (يمين لليسار أو يسار لليمين)
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    
+    // يمكنك إضافة ترجمة الأزرار هنا بنفس الطريقة
+}
+
+</script>
+
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">الرئيسية</a></li>
                 <li><a href="password-protect.html">🔒 حماية الصور</a></li>
