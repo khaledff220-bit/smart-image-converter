@@ -3,77 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دمج ملفات PDF - محول الصور الذكي</title>
+    <title id="page-title">دمج ملفات PDF - محول الصور الذكي</title>
     <link rel="canonical" href="https://smart-image-converter.vercel.app/merge-pdf.html" />
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
-<meta property="og:image" content="https://smart-image-converter.vercel.app/assets/images/favicon.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <style>
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; flex-wrap: wrap; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; }
+        .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
+        .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
+        .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; vertical-align: middle; }
+    </style>
 
-  gtag('config', 'G-PNHBTPESQT');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PNHBTPESQT');
+    </script>
 </head>
 <body class="fade-in">
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-icon">🔄</span>
-                <h1>مُحوِّل الصور الذكي</h1>
+                <img src="assets/images/favicon.png" alt="Logo">
+                <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
             </a>
             <ul class="nav-menu">
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="password-protect.html">🔒 حماية الصور</a></li>
-                <li><a href="decrypt.html">🔑 فك التشفير</a></li>
-                <li><a href="image-quality.html">🖼️ تحسين الجودة</a></li>
-                <li><a href="merge-pdf.html" class="active">📄 دمج PDF</a></li>
-                <li><a href="compress-pdf.html">⚙️ ضغط PDF</a></li>
+                <li><a href="index.html" id="m1">الرئيسية</a></li>
+                <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
+                <li><a href="decrypt.html" id="m3">🔑 فك تشفير</a></li>
+                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
+                <li><a href="merge-pdf.html" class="active" id="m5">📄 دمج</a></li>
+                <li><a href="compress-pdf.html" id="m6">⚙️ ضغط</a></li>
             </ul>
+            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
         </div>
     </nav>
 
     <main>
         <header class="main-header">
-            <h2 class="header-title">دمج مستندات PDF</h2>
-            <p class="header-subtitle">اختر عدة ملفات PDF لدمجها معاً في ملف واحد مرتب بضغطة زر.</p>
+            <h2 class="header-title" id="txt-hero-title">دمج ملفات PDF بسهولة</h2>
+            <p class="header-subtitle" id="txt-hero-desc">اجمع عدة ملفات PDF في مستند واحد مرتب واحترافي بضغطة زر.</p>
         </header>
 
         <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
             <div class="service-card slide-up">
-                <div class="service-icon">📚</div>
-                <h3>تجميع الملفات</h3>
-                
+                <div class="service-icon">📄</div>
+                <h3 id="txt-card-title">منظم المستندات الذكي</h3>
+
                 <div class="upload-section">
-                    <div class="upload-icon">📄+📄</div>
-                    <input type="file" id="pdfUpload" class="file-input" accept="application/pdf" multiple>
-                    <label for="pdfUpload" class="file-label">اختر ملفات PDF المتعددة</label>
+                    <div class="upload-icon">➕</div>
+                    <input type="file" id="pdfInput" class="file-input" accept="application/pdf" multiple>
+                    <label for="pdfInput" class="file-label" id="txt-label">اختر ملفات PDF لدمجها</label>
+
+                    <div id="fileListContainer" style="margin-top: 20px; display: none; text-align: right;">
+                        <p id="txt-list-title" style="color: #00f2ff; margin-bottom: 10px;">الملفات المختارة:</p>
+                        <ul id="fileList" style="list-style: none; padding: 0; color: white; font-size: 0.85em;"></ul>
+                    </div>
                 </div>
 
-		<div id="pdfListContainer" style="margin-top: 20px; display: none; text-align: right;">
-		        <p style="color: #00f2ff; font-size: 0.9em; margin-bottom: 10px;">الملفات التي سيتم دمجها:</p>
-       			 <ul id="pdfFileList" style="list-style: none; padding: 0; background: rgba(255,255,255,0.05); border-radius: 10px; border: 1px solid var(--card-border);">
-           	
-			 </ul>
-   		 </div>
-
-                <button class="btn" onclick="mergePDFFiles()" style="width: 100%; margin-top: 20px;">دمج وتحميل الملف الموحد</button>
+                <div id="status" style="margin: 15px 0; color: var(--secondary-color);"></div>
+                <button id="btnMerge" class="btn" onclick="mergePDFs()" style="width: 100%;">ابدأ دمج الملفات الآن</button>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-bottom"><p>&copy; 2026 محول الصور الذكي.</p></div>
+        <div class="footer-bottom"><p id="txt-footer">&copy; 2026 محول الصور الذكي.</p></div>
     </footer>
 
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/advanced-effects.js"></script>
+    <script src="assets/js/lang.js"></script>
 </body>
 </html>
