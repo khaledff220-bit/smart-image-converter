@@ -33,6 +33,13 @@ const translations = {
         optHigh: "عالي (AES-256)",
         optStandard: "قياسي (AES-128)",
         btnEncrypt: "تشفير وتحميل الملف",
+        // image-quality.html
+        heroT_quality: "زيادة وضوح الصور",
+        heroD_quality: "استخدم تقنيات المعالجة الرقمية لتحويل الصور الضبابية إلى صور أكثر حدة ووضوحاً.",
+        cardT_quality: "محسن الدقة الذكي",
+        label_quality: "ارفع الصورة لتحسينها",
+        preview: "تم اختيار الصورة:",
+        btnImprove: "حسن جودة صورتك",
         // Footer
         footer: "© 2026 محول الصور الذكي."
     },
@@ -70,6 +77,13 @@ const translations = {
         optHigh: "High (AES-256)",
         optStandard: "Standard (AES-128)",
         btnEncrypt: "Encrypt & Download File",
+        // image-quality.html
+        heroT_quality: "Upscale Image Quality",
+        heroD_quality: "Use digital processing techniques to transform blurry images into sharper, clearer ones.",
+        cardT_quality: "AI Quality Enhancer",
+        label_quality: "Upload image to enhance",
+        preview: "Image selected:",
+        btnImprove: "Enhance Your Photo",
         // Footer
         footer: "© 2026 Smart Image Converter."
     }
@@ -86,17 +100,14 @@ function applyTranslations() {
     const langData = translations[currentLang];
     const path = window.location.pathname;
     
-    // العناصر الثابتة
     updateText('txt-logo', langData.logo);
     updateText('lang-btn', langData.btn);
     updateText('txt-footer', langData.footer);
 
-    // القائمة العلوية
     for(let i=1; i<=6; i++) {
         updateText('m' + i, langData['m' + i]);
     }
 
-    // منطق الصفحات
     if (path.includes('compress-pdf.html')) {
         updateText('txt-hero-title', langData.heroT_compress);
         updateText('txt-hero-desc', langData.heroD_compress);
@@ -125,6 +136,14 @@ function applyTranslations() {
         updateText('opt-high', langData.optHigh);
         updateText('opt-standard', langData.optStandard);
         updateText('btnEncrypt', langData.btnEncrypt);
+    }
+    else if (path.includes('image-quality.html')) {
+        updateText('txt-hero-title', langData.heroT_quality);
+        updateText('txt-hero-desc', langData.heroD_quality);
+        updateText('txt-card-title', langData.cardT_quality);
+        updateText('txt-label', langData.label_quality);
+        updateText('txt-preview', langData.preview);
+        updateText('btnImprove', langData.btnImprove);
     }
     else {
         updateText('txt-hero-title', langData.heroT_index);
