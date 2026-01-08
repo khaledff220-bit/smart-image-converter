@@ -14,6 +14,8 @@
         .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
         .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
+        /* تنسيق الشعار الجديد */
+        .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; vertical-align: middle; }
     </style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
@@ -28,7 +30,7 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-icon">🔄</span>
+                <img src="assets/images/favicon.png" alt="Logo">
                 <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
             </a>
 
@@ -82,7 +84,7 @@
     </main>
 
     <footer class="site-footer">
-        <div class="footer-bottom"><p>&copy; 2026 محول الصور الذكي.</p></div>
+        <div class="footer-bottom"><p id="txt-footer">&copy; 2026 محول الصور الذكي.</p></div>
     </footer>
 
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
