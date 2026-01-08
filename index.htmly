@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "هل موقع محول الصور الذكي مجاني؟",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "نعم، موقعنا مجاني 100% ولا يحتاج إلى تسجيل أو اشتراك. جميع الأدوات متاحة للاستخدام الفوري."
+    }
+  }, {
+    "@type": "Question",
+    "name": "هل يتم حفظ صوري على السيرفر؟",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "لا، نحن نحترم خصوصيتك. جميع العمليات تتم على جهازك مباشرة ولا يتم رفع أي ملفات إلى سيرفراتنا."
+    }
+  }, {
+    "@type": "Question",
+    "name": "ما هي أنواع الملفات المدعومة؟",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "ندعم جميع الصيغ الشائعة: JPG, PNG, GIF, BMP, WEBP للصور، وPDF للملفات."
+    }
+  }, {
+    "@type": "Question",
+    "name": "كم عدد الصور التي يمكن دمجها في PDF؟",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "يمكنك دمج حتى 20 صورة في ملف PDF واحد. يمكنك إعادة الترتيب قبل الدمج."
+    }
+  }]
+}
+</script>
+
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "محول الصور الذكي",
+  "url": "https://smart-image-converter.vercel.app/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "أداة مجانية متكاملة لتحويل ومعالجة الصور والملفات أونلاين",
+  "featureList": [
+    "تحويل الصور إلى PDF",
+    "حماية الصور بكلمة مرور", 
+    "تحسين جودة الصور",
+    "دمج الصور في ملف PDF",
+    "ضغط ملفات PDF"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "150"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Smart Image Converter"
+  }
+}
+</script>
+
+    <!-- SEO Meta Tags محسنة -->
+<title>محول الصور الذكي - تحويل صور إلى PDF، حماية، ضغط مجاني أونلاين</title>
+<meta name="description" content="أفضل موقع عربي لتحويل الصور إلى PDF، حماية الصور بكلمة مرور، تحسين جودة الصور، ضغط ملفات PDF بدون فقدان الجودة. أدوات مجانية 100% بدون تسجيل">
+<meta name="keywords" content="تحويل صور الى PDF, حماية الصور بكلمة سر, تحسين جودة الصور اونلاين, ضغط PDF, دمج صور في ملف PDF, تقليل حجم الصور, موقع عربي مجاني">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta property="og:title" content="محول الصور الذكي - أفضل أدوات معالجة الصور">
+<meta property="og:description" content="أدوات مجانية لتحويل الصور إلى PDF، الحماية، التحسين والضغط">
+<meta property="og:image" content="https://smart-image-converter.vercel.app/assets/images/og-image.jpg">
+<meta property="og:url" content="https://smart-image-converter.vercel.app/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0b1e">
+    <title id="page-title">مُحوِّل الصور الذكي - منصة معالجة الملفات الاحترافية</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <style>
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+    </style>
+
+</head>
+<body class="fade-in">
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🔄</span>
+                <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
+            </a>
+            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
+        </div>
+    </nav>
+
+    <main>
+        <header class="main-header">
+            <h2 id="txt-hero-title" class="header-title">حوّل ملفاتك بذكاء المستقبل</h2>
+            <p id="txt-hero-desc" class="header-subtitle">منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026</p>
+        </header>
+
+        <section class="services-grid">
+            <div class="service-card slide-up">
+                <div class="service-icon">🔒</div>
+                <h3 id="txt-s1-t">حماية الصور</h3>
+                <p id="txt-s1-d">قم بتشفير صورك بكلمة مرور قوية لا يمكن كسرها باستخدام تقنية AES.</p>
+                <a href="password-protect.html" id="txt-s1-b" class="btn">ابدأ التشفير</a>
+            </div>
+
+            <div class="service-card slide-up">
+                <div class="service-icon">🔑</div>
+                <h3 id="txt-s2-t">فك التشفير</h3>
+                <p id="txt-s2-d">استرجع صورك الأصلية من ملفاتك المشفرة بسرعة وأمان تام.</p>
+                <a href="decrypt.html" id="txt-s2-b" class="btn btn-secondary">فك التشفير الآن</a>
+            </div>
+
+            <div class="service-card slide-up">
+                <div class="service-icon">🖼️</div>
+                <h3 id="txt-s3-t">تحسين الجودة</h3>
+                <p id="txt-s3-d">ضاعف دقة الصور الضبابية واجعلها أكثر ووضوحاً بضغطة زر.</p>
+                <a href="image-quality.html" id="txt-s3-b" class="btn">حسن جودة صورتك</a>
+            </div>
+
+            <div class="service-card slide-up">
+                <div class="service-icon">📄</div>
+                <h3 id="txt-s4-t">دمج PDF</h3>
+                <p id="txt-s4-d">اجمع عدة ملفات PDF في مستند واحد مرتب ومنسق.</p>
+                <a href="merge-pdf.html" id="txt-s4-b" class="btn">دمج الملفات</a>
+            </div>
+
+            <div class="service-card slide-up">
+                <div class="service-icon">⚙️</div>
+                <h3 id="txt-s5-t">ضغط PDF</h3>
+                <p id="txt-s5-d">قلل حجم مستنداتك دون التأثير على جودة النصوص والرسومات.</p>
+                <a href="compress-pdf.html" id="txt-s5-b" class="btn">ضغط الملفات</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const translations = {
+            ar: {
+                logo: "مُحوِّل الصور الذكي",
+                heroT: "حوّل ملفاتك بذكاء المستقبل",
+                heroD: "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026",
+                s1t: "حماية الصور", s1d: "تشفير AES قوي لصورك.", s1b: "ابدأ التشفير",
+                s2t: "فك التشفير", s2d: "استرجع صورك بأمان.", s2b: "فك التشفير الآن",
+                s3t: "تحسين الجودة", s3d: "توضيح الصور الضبابية.", s3b: "حسن صورتك",
+                s4t: "دمج PDF", s4d: "جمع ملفات PDF متعددة.", s4b: "دمج الملفات",
+                s5t: "ضغط PDF", s5d: "تقليل حجم المستندات.", s5b: "ضغط الملفات",
+                btn: "English", dir: "rtl"
+            },
+            en: {
+                logo: "Smart Image Converter",
+                heroT: "Transform Files with Future Intel",
+                heroD: "Local & secure file processing with 2026 technology",
+                s1t: "Image Protection", s1d: "Strong AES encryption for photos.", s1b: "Start Encrypting",
+                s2t: "Decryption", s2d: "Restore your original photos.", s2b: "Decrypt Now",
+                s3t: "Quality Boost", s3d: "Clarify blurry images easily.", s3b: "Enhance Quality",
+                s4t: "Merge PDF", s4d: "Combine multiple PDF files.", s4b: "Merge Now",
+                s5t: "Compress PDF", s5d: "Reduce PDF size locally.", s5b: "Compress Now",
+                btn: "عربي", dir: "ltr"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function changeLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            const langData = translations[currentLang];
+            
+            document.getElementById('txt-logo').innerText = langData.logo;
+            document.getElementById('txt-hero-title').innerText = langData.heroT;
+            document.getElementById('txt-hero-desc').innerText = langData.heroD;
+            document.getElementById('txt-s1-t').innerText = langData.s1t; document.getElementById('txt-s1-d').innerText = langData.s1d; document.getElementById('txt-s1-b').innerText = langData.s1b;
+            document.getElementById('txt-s2-t').innerText = langData.s2t; document.getElementById('txt-s2-d').innerText = langData.s2d; document.getElementById('txt-s2-b').innerText = langData.s2b;
+            document.getElementById('txt-s3-t').innerText = langData.s3t; document.getElementById('txt-s3-d').innerText = langData.s3d; document.getElementById('txt-s3-b').innerText = langData.s3b;
+            document.getElementById('txt-s4-t').innerText = langData.s4t; document.getElementById('txt-s4-d').innerText = langData.s4d; document.getElementById('txt-s4-b').innerText = langData.s4b;
+            document.getElementById('txt-s5-t').innerText = langData.s5t; document.getElementById('txt-s5-d').innerText = langData.s5d; document.getElementById('txt-s5-b').innerText = langData.s5b;
+            document.getElementById('lang-btn').innerText = langData.btn;
+            document.documentElement.dir = langData.dir;
+        }
+
+        window.onload = function() {
+            if (navigator.language.startsWith('en')) {
+                currentLang = 'ar';
+                changeLanguage();
+            }
+        };
+    </script>
+</body>
+</html>

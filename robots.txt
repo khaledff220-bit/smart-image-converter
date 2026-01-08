@@ -1,5 +1,14 @@
+# منع الملفات المؤقتة والخاصة من الظهور في جوجل
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /assets/css/
+Disallow: /assets/js/
 
-# رابط خريطة الموقع الرسمي لمحركات البحث
+# تحديد مسار خريطة الموقع لتسهيل الأرشفة
 Sitemap: https://smart-image-converter.vercel.app/sitemap.xml
+
+# تحسين كفاءة الزحف
+Crawl-delay: 1

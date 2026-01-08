@@ -3,18 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">دمج ملفات PDF - محول الصور الذكي</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "أداة دمج PDF - محول الصور الذكي",
+      "url": "https://smart-image-converter.vercel.app/merge-pdf.html",
+      "applicationCategory": "PDFTool",
+      "description": "اجمع عدة ملفات PDF في مستند واحد بسرعة وسهولة وبخصوصية تامة محلياً.",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <title id="page-title">دمج ملفات PDF أونلاين - تجميع عدة ملفات في مستند واحد</title>
+    <meta name="description" content="أسهل أداة لدمج عدة ملفات PDF في مستند واحد مرتب. رتب ملفاتك واجمعها بسرعة فائقة وبخصوصية تامة دون الحاجة لرفعها إلى خوادم خارجية.">
+    <meta name="keywords" content="دمج PDF, تجميع ملفات PDF, تحويل عدة ملفات الى PDF واحد, منظم ملفات PDF مجاني, جمع مستندات, PDF Joiner">
     <link rel="canonical" href="https://smart-image-converter.vercel.app/merge-pdf.html" />
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; flex-wrap: wrap; }
-        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
         .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
         .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
         .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; vertical-align: middle; }
+        
+        /* تحسين مظهر قائمة الملفات */
+        #fileList li { background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 8px; border-radius: 5px; border-right: 3px solid #00f2ff; }
     </style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
@@ -47,7 +68,7 @@
     <main>
         <header class="main-header">
             <h2 class="header-title" id="txt-hero-title">دمج ملفات PDF بسهولة</h2>
-            <p class="header-subtitle" id="txt-hero-desc">اجمع عدة ملفات PDF في مستند واحد مرتب واحترافي بضغطة زر.</p>
+            <p class="header-subtitle" id="txt-hero-desc">اجمع عدة ملفات PDF في مستند واحد مرتب واحترافي بضغطة زر وبأمان تام.</p>
         </header>
 
         <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
@@ -61,19 +82,19 @@
                     <label for="pdfInput" class="file-label" id="txt-label">اختر ملفات PDF لدمجها</label>
 
                     <div id="fileListContainer" style="margin-top: 20px; display: none; text-align: right;">
-                        <p id="txt-list-title" style="color: #00f2ff; margin-bottom: 10px;">الملفات المختارة:</p>
+                        <p id="txt-list-title" style="color: #00f2ff; margin-bottom: 10px; font-weight: bold;">الملفات المختارة:</p>
                         <ul id="fileList" style="list-style: none; padding: 0; color: white; font-size: 0.85em;"></ul>
                     </div>
                 </div>
 
-                <div id="status" style="margin: 15px 0; color: var(--secondary-color);"></div>
+                <div id="status" style="margin: 15px 0; color: #a29bfe; font-weight: bold; text-align: center;"></div>
                 <button id="btnMerge" class="btn" onclick="mergePDFs()" style="width: 100%;">ابدأ دمج الملفات الآن</button>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-bottom"><p id="txt-footer">&copy; 2026 محول الصور الذكي.</p></div>
+    <footer class="site-footer" style="text-align: center; padding: 30px 0;">
+        <p id="txt-footer">&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
     </footer>
 
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>

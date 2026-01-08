@@ -3,14 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">تحسين جودة الصور - محول الصور الذكي</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "أداة تحسين جودة الصور - محول الصور الذكي",
+      "url": "https://smart-image-converter.vercel.app/image-quality.html",
+      "applicationCategory": "ImageEditor",
+      "description": "تحسين جودة الصور الضبابية وزيادة حدة التفاصيل أونلاين مجاناً بخصوصية تامة.",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <title id="page-title">تحسين جودة الصور أونلاين - زيادة وضوح الصور الضبابية مجاناً</title>
+    <meta name="description" content="اجعل صورك أكثر حدة ووضوحاً باستخدام تقنيات المعالجة الرقمية. أداة مجانية لزيادة دقة الصور وتحسين تفاصيلها بضغطة زر واحدة دون رفعها للسيرفر.">
+    <meta name="keywords" content="تحسين جودة الصور, زيادة دقة الصور اونلاين, توضيح الصور المشوشة, معالجة الصور الرقمية, رفع جودة الصور مجانا, تكبير الصور بدون فقدان الجودة">
     <link rel="canonical" href="https://smart-image-converter.vercel.app/image-quality.html" />
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; flex-wrap: wrap; }
-        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
         .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
         .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
@@ -60,20 +78,22 @@
                     <input type="file" id="qualityUpload" class="file-input" accept="image/*">
                     <label for="qualityUpload" class="file-label" id="txt-label">ارفع الصورة لتحسينها</label>
 
-                    <div id="previewContainer" style="margin-top: 20px; display: none;">
-                        <p id="txt-preview" style="color: #00f2ff; margin-bottom: 10px;">تم اختيار الصورة:</p>
-                        <img id="imagePreview" src="" alt="Preview" style="max-width: 100%; border-radius: 10px; border: 2px solid #00f2ff; box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);">
+                    <div id="previewContainer" style="margin-top: 20px; display: none; text-align: center;">
+                        <p id="txt-preview" style="color: #00f2ff; margin-bottom: 10px; font-size: 0.9em;">الصورة المختارة:</p>
+                        <img id="imagePreview" src="" alt="Preview" style="max-width: 100%; max-height: 300px; border-radius: 10px; border: 2px solid #00f2ff; box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);">
                     </div>
                 </div>
 
-                <div id="status" style="margin: 15px 0; color: var(--neon-blue); font-weight: bold;"></div>
+                <div id="status" style="margin: 15px 0; color: #a29bfe; font-weight: bold; text-align: center;"></div>
                 <button id="btnImprove" class="btn" style="width: 100%;">حسن جودة صورتك</button>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-bottom"><p id="txt-footer">&copy; 2026 محول الصور الذكي.</p></div>
+        <div class="footer-bottom" style="text-align: center; padding: 20px 0;">
+            <p id="txt-footer">&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+        </div>
     </footer>
 
     <script src="assets/js/app.js"></script>

@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
   <url>
-    <loc>https://smart-image-converter.vercel.app/index.html</loc>
-    <priority>1.0</priority>
+    <loc>https://smart-image-converter.vercel.app/</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
   </url>
-  
-  <url>
-    <loc>https://smart-image-converter.vercel.app/password-protect.html</loc>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://smart-image-converter.vercel.app/decrypt.html</loc>
-    <priority>0.9</priority>
-  </url>
-  
-  <url>
-    <loc>https://smart-image-converter.vercel.app/image-quality.html</loc>
-    <priority>0.9</priority>
-  </url>
-  
+
   <url>
     <loc>https://smart-image-converter.vercel.app/merge-pdf.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
-  
+
   <url>
     <loc>https://smart-image-converter.vercel.app/compress-pdf.html</loc>
-    <priority>0.9</priority>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
-  
+
   <url>
-    <loc>https://smart-image-converter.vercel.app/about.html</loc>
-    <priority>0.7</priority>
+    <loc>https://smart-image-converter.vercel.app/password-protect.html</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
-  
+
   <url>
-    <loc>https://smart-image-converter.vercel.app/privacy.html</loc>
-    <priority>0.5</priority>
+    <loc>https://smart-image-converter.vercel.app/image-quality.html</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
+
+  <url>
+    <loc>https://smart-image-converter.vercel.app/decrypt.html</loc>
+    <lastmod>2026-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>

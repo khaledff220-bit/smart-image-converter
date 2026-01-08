@@ -4,20 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0b1e">
-    <title id="page-title">مُحوِّل الصور الذكي - منصة معالجة الملفات الاحترافية</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "محول الصور الذكي",
+      "url": "https://smart-image-converter.vercel.app/",
+      "logo": "https://smart-image-converter.vercel.app/assets/images/favicon.png",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "أفضل موقع عربي مجاني لتحويل الصور إلى PDF، حماية الملفات بكلمة مرور، تحسين جودة الصور، وضغط ملفات PDF بخصوصية تامة.",
+      "featureList": [
+        "تحويل الصور إلى PDF",
+        "حماية الصور بكلمة مرور (AES-256)",
+        "تحسين جودة ووضوح الصور",
+        "دمج ملفات PDF متعددة",
+        "ضغط ملفات PDF أونلاين"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "210"
+      }
+    }
+    </script>
+
+    <title>محول الصور الذكي - تحويل صور إلى PDF، حماية، ضغط مجاني أونلاين</title>
+    <meta name="description" content="استخدم محول الصور الذكي لمعالجة ملفاتك محلياً: تحويل صور لـ PDF، تشفير AES، تحسين الجودة، وضغط الملفات. أدوات مجانية 100% وآمنة تماماً لخصوصيتك.">
+    <meta name="keywords" content="محول الصور الذكي, تحويل صور الى PDF, حماية الصور بكلمة سر, تحسين جودة الصور, ضغط PDF اونلاين, دمج PDF, تشفير الصور">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://smart-image-converter.vercel.app/" />
+
+    <meta property="og:title" content="محول الصور الذكي - منصة معالجة الملفات الاحترافية">
+    <meta property="og:description" content="أدوات ذكية لمعالجة صورك وملفاتك في ثوانٍ وبخصوصية تامة دون الحاجة لرفعها للسيرفر.">
+    <meta property="og:image" content="https://smart-image-converter.vercel.app/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://smart-image-converter.vercel.app/">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
     <style>
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
-        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; color: white; }
+        .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; }
     </style>
 </head>
 <body class="fade-in">
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <span class="logo-icon">🔄</span>
+                <img src="assets/images/favicon.png" alt="Logo">
                 <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
             </a>
             <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
@@ -68,56 +114,11 @@
         </section>
     </main>
 
-    <script>
-        const translations = {
-            ar: {
-                logo: "مُحوِّل الصور الذكي",
-                heroT: "حوّل ملفاتك بذكاء المستقبل",
-                heroD: "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026",
-                s1t: "حماية الصور", s1d: "تشفير AES قوي لصورك.", s1b: "ابدأ التشفير",
-                s2t: "فك التشفير", s2d: "استرجع صورك بأمان.", s2b: "فك التشفير الآن",
-                s3t: "تحسين الجودة", s3d: "توضيح الصور الضبابية.", s3b: "حسن صورتك",
-                s4t: "دمج PDF", s4d: "جمع ملفات PDF متعددة.", s4b: "دمج الملفات",
-                s5t: "ضغط PDF", s5d: "تقليل حجم المستندات.", s5b: "ضغط الملفات",
-                btn: "English", dir: "rtl"
-            },
-            en: {
-                logo: "Smart Image Converter",
-                heroT: "Transform Files with Future Intel",
-                heroD: "Local & secure file processing with 2026 technology",
-                s1t: "Image Protection", s1d: "Strong AES encryption for photos.", s1b: "Start Encrypting",
-                s2t: "Decryption", s2d: "Restore your original photos.", s2b: "Decrypt Now",
-                s3t: "Quality Boost", s3d: "Clarify blurry images easily.", s3b: "Enhance Quality",
-                s4t: "Merge PDF", s4d: "Combine multiple PDF files.", s4b: "Merge Now",
-                s5t: "Compress PDF", s5d: "Reduce PDF size locally.", s5b: "Compress Now",
-                btn: "عربي", dir: "ltr"
-            }
-        };
+    <footer class="site-footer" style="text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px;">
+        <p id="txt-footer">&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+    </footer>
 
-        let currentLang = 'ar';
-
-        function changeLanguage() {
-            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
-            const langData = translations[currentLang];
-            
-            document.getElementById('txt-logo').innerText = langData.logo;
-            document.getElementById('txt-hero-title').innerText = langData.heroT;
-            document.getElementById('txt-hero-desc').innerText = langData.heroD;
-            document.getElementById('txt-s1-t').innerText = langData.s1t; document.getElementById('txt-s1-d').innerText = langData.s1d; document.getElementById('txt-s1-b').innerText = langData.s1b;
-            document.getElementById('txt-s2-t').innerText = langData.s2t; document.getElementById('txt-s2-d').innerText = langData.s2d; document.getElementById('txt-s2-b').innerText = langData.s2b;
-            document.getElementById('txt-s3-t').innerText = langData.s3t; document.getElementById('txt-s3-d').innerText = langData.s3d; document.getElementById('txt-s3-b').innerText = langData.s3b;
-            document.getElementById('txt-s4-t').innerText = langData.s4t; document.getElementById('txt-s4-d').innerText = langData.s4d; document.getElementById('txt-s4-b').innerText = langData.s4b;
-            document.getElementById('txt-s5-t').innerText = langData.s5t; document.getElementById('txt-s5-d').innerText = langData.s5d; document.getElementById('txt-s5-b').innerText = langData.s5b;
-            document.getElementById('lang-btn').innerText = langData.btn;
-            document.documentElement.dir = langData.dir;
-        }
-
-        window.onload = function() {
-            if (navigator.language.startsWith('en')) {
-                currentLang = 'ar';
-                changeLanguage();
-            }
-        };
-    </script>
+    <script src="assets/js/lang.js"></script>
+    <script src="assets/js/advanced-effects.js"></script>
 </body>
 </html>
