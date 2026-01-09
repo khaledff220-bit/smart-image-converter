@@ -21,19 +21,23 @@ const translations = {
         "txt-s4-t": "دمج PDF", "txt-s4-b": "دمج الملفات",
         "txt-s5-t": "ضغط PDF", "txt-s5-b": "ضغط الملفات",
 
-        // صفحة حماية وفك التشفير وتحسين الجودة
+        // العناصر المشتركة في صفحات الأدوات
         "txt-card-title": "معالجة البيانات المتقدمة",
         "txt-label": "اختر الملف المطلوب معالجته",
         "txt-pass-label": "كلمة المرور:",
         "txt-level-label": "مستوى التشفير:",
         "opt-high": "عالي (AES-256)", 
         "opt-standard": "قياسي (AES-128)",
+        "pass-ph": "أدخل كلمة المرور هنا",
+        "txt-preview": "معاينة الملف المختارة:",
+        "txt-list-title": "الملفات المختارة للدمج:",
+
+        // أزرار الأكشن
         "btnEncrypt": "تشفير وتحميل الملف",
         "btnDecrypt": "فك التشفير وعرض الصورة",
         "btnImprove": "حسن جودة صورتك",
-        "downloadLink": "تحميل الصورة المستعادة",
-        "pass-ph": "أدخل كلمة المرور هنا",
-        "txt-preview": "معاينة الصورة المختارة:",
+        "btnMerge": "ابدأ دمج الملفات الآن",
+        "downloadLink": "تحميل الملف المستعاد",
 
         // الفوتر
         "txt-footer": "© 2026 محول الصور الذكي. جميع الحقوق محفوظة."
@@ -60,19 +64,23 @@ const translations = {
         "txt-s4-t": "Merge PDF", "txt-s4-b": "Merge Files",
         "txt-s5-t": "Compress PDF", "txt-s5-b": "Compress Files",
 
-        // Protect, Decrypt & Quality Pages
+        // Common Tool Elements
         "txt-card-title": "Advanced Data Processing",
         "txt-label": "Choose the file to process",
         "txt-pass-label": "Password:",
         "txt-level-label": "Encryption Level:",
         "opt-high": "High (AES-256)", 
         "opt-standard": "Standard (AES-128)",
+        "pass-ph": "Enter password here",
+        "txt-preview": "Selected file preview:",
+        "txt-list-title": "Files selected for merging:",
+
+        // Action Buttons
         "btnEncrypt": "Encrypt & Download",
         "btnDecrypt": "Decrypt & View Image",
         "btnImprove": "Improve Image Quality",
-        "downloadLink": "Download Restored Image",
-        "pass-ph": "Enter password here",
-        "txt-preview": "Selected Image Preview:",
+        "btnMerge": "Start Merging Now",
+        "downloadLink": "Download Restored File",
 
         // Footer
         "txt-footer": "© 2026 Smart Image Converter. All rights reserved."
@@ -83,17 +91,17 @@ function changeLanguage() {
     const htmlTag = document.documentElement;
     const currentLang = htmlTag.getAttribute('lang') === 'ar' ? 'en' : 'ar';
     
-    // تغيير الخصائص الأساسية للـ HTML
+    // ضبط اتجاه الصفحة واللغة
     htmlTag.setAttribute('lang', currentLang);
     htmlTag.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
 
     const t = translations[currentLang];
     
-    // ترجمة كافة العناصر بناءً على الـ ID
+    // تحديث كافة النصوص بناءً على الـ ID
     for (let id in t) {
         const element = document.getElementById(id);
         if (element) {
-            // معالجة خاصة لحقول الإدخال (Placeholder)
+            // معالجة خاصة لحقول الإدخال لتغيير الـ Placeholder
             if (id === 'pass-ph' && document.getElementById('password')) {
                 document.getElementById('password').placeholder = t[id];
             } else {
@@ -102,14 +110,29 @@ function changeLanguage() {
         }
     }
     
-    // حفظ اللغة في الذاكرة المحلية
+    // حفظ التفضيلات في المتصفح
     localStorage.setItem('preferredLang', currentLang);
 }
 
-// التأكد من ضبط اللغة الصحيحة عند تحميل الصفحة
+// تشغيل اللغة المحفوظة عند فتح أي صفحة
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang');
     if (savedLang && savedLang !== document.documentElement.getAttribute('lang')) {
-        changeLanguage(); 
+        // نقوم بتغيير اللغة بدون تبديل (Toggle) القيمة الحالية
+        const htmlTag = document.documentElement;
+        htmlTag.setAttribute('lang', savedLang);
+        htmlTag.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+        
+        const t = translations[savedLang];
+        for (let id in t) {
+            const element = document.getElementById(id);
+            if (element) {
+                if (id === 'pass-ph' && document.getElementById('password')) {
+                    document.getElementById('password').placeholder = t[id];
+                } else {
+                    element.innerText = t[id];
+                }
+            }
+        }
     }
 });
