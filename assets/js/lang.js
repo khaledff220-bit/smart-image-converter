@@ -1,130 +1,65 @@
 const translations = {
     ar: {
-        logo: "مُحوِّل الصور الذكي", btn: "English", dir: "rtl",
-        m1: "الرئيسية", m2: "🔒 حماية", m3: "🔑 تشفير", m4: "🖼️ جودة", m5: "📄 دمج", m6: "⚙️ ضغط",
-        // index.html
-        heroT_index: "حوّل ملفاتك بذكاء المستقبل",
-        heroD_index: "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026",
-        // compress-pdf.html
-        heroT_compress: "تقليل حجم PDF",
-        heroD_compress: "وفر مساحة التخزين عبر ضغط ملفات PDF مع الحفاظ على وضوح المحتوى.",
-        cardT_compress: "ضاغط الملفات الذكي",
-        label_compress: "اختر ملف PDF للضغط",
-        origSize: "حجم الملف الأصلي:", compSize: "الحجم بعد الضغط:", actionBtn_compress: "بدء الضغط والتحميل",
-        // decrypt.html
-        heroT_decrypt: "استعادة صورك الأصلية",
-        heroD_decrypt: "أدخل الملف المشفر وكلمة المرور الصحيحة لاسترجاع صورتك فوراً.",
-        cardT_decrypt: "فك التشفير الآمن",
-        label_decrypt: "اختر الملف المشفر (.enc)",
-        passLabel: "كلمة المرور:", btnDecrypt: "فك التشفير الآن", fileSelected: "تم اختيار ملف مشفر:",
-        // password-protect.html
-        heroT_protect: "تشفير الصور بخصوصية تامة",
-        heroD_protect: "حول صورك إلى ملفات مشفرة لا يمكن فتحها إلا بكلمة مرور من اختيارك.",
-        cardT_protect: "حماية البيانات القوية",
-        label_protect: "اختر الصورة المراد حمايتها",
-        passSet: "تعيين كلمة المرور:", encryptLevel: "مستوى التشفير:",
-        optHigh: "عالي (AES-256)", optStandard: "قياسي (AES-128)", btnEncrypt: "تشفير وتحميل الملف",
-        // image-quality.html
-        heroT_quality: "زيادة وضوح الصور",
-        heroD_quality: "استخدم تقنيات المعالجة الرقمية لتحويل الصور الضبابية إلى صور أكثر حدة ووضوحاً.",
-        cardT_quality: "محسن الدقة الذكي", label_quality: "ارفع الصورة لتحسينها", preview: "تم اختيار الصورة:", btnImprove: "حسن جودة صورتك",
-        // merge-pdf.html
-        heroT_merge: "دمج ملفات PDF بسهولة",
-        heroD_merge: "اجمع عدة ملفات PDF في مستند واحد مرتب واحترافي بضغطة زر.",
-        cardT_merge: "منظم المستندات الذكي", label_merge: "اختر ملفات PDF لدمجها", listTitle: "الملفات المختارة:", btnMerge: "ابدأ دمج الملفات الآن",
-        // Footer
-        footer: "© 2026 محول الصور الذكي."
+        logo: "مُحوِّل الصور الذكي",
+        langBtn: "English",
+        heroTitle: "حوّل ملفاتك بذكاء المستقبل",
+        heroDesc: "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026",
+        s1t: "حماية الصور", s1d: "قم بتشفير صورك بكلمة مرور قوية لا يمكن كسرها باستخدام تقنية AES.", s1b: "ابدأ التشفير",
+        s2t: "فك التشفير", s2d: "استرجع صورك الأصلية من ملفاتك المشفرة بسرعة وأمان تام.", s2b: "فك التشفير الآن",
+        s3t: "تحسين الجودة", s3d: "ضاعف دقة الصور الضبابية واجعلها أكثر ووضوحاً بضغطة زر.", s3b: "حسن جودة صورتك",
+        s4t: "دمج PDF", s4d: "اجمع عدة ملفات PDF في مستند واحد مرتب ومنسق.", s4b: "دمج الملفات",
+        s5t: "ضغط PDF", s5d: "قلل حجم مستنداتك دون التأثير على جودة النصوص والرسومات.", s5b: "ضغط الملفات",
+        footer: "© 2026 محول الصور الذكي. جميع الحقوق محفوظة."
     },
     en: {
-        logo: "Smart Image Converter", btn: "عربي", dir: "ltr",
-        m1: "Home", m2: "🔒 Protect", m3: "🔑 Decrypt", m4: "🖼️ Quality", m5: "📄 Merge", m6: "⚙️ Compress",
-        // index.html
-        heroT_index: "Transform Files with Future Intel",
-        heroD_index: "Secure local file processing platform - 2026 Tech",
-        // compress-pdf.html
-        heroT_compress: "Compress PDF Size",
-        heroD_compress: "Save storage space by compressing PDF files while maintaining quality.",
-        cardT_compress: "Smart File Compressor",
-        label_compress: "Select PDF file to compress",
-        origSize: "Original File Size:", compSize: "Compressed Size:", actionBtn_compress: "Start Compression & Download",
-        // decrypt.html
-        heroT_decrypt: "Restore Original Photos",
-        heroD_decrypt: "Enter the encrypted file and correct password to retrieve your photo instantly.",
-        cardT_decrypt: "Secure Decryption",
-        label_decrypt: "Choose encrypted file (.enc)",
-        passLabel: "Password:", btnDecrypt: "Decrypt Now", fileSelected: "Encrypted file selected:",
-        // password-protect.html
-        heroT_protect: "Encrypted Image Privacy",
-        heroD_protect: "Convert your photos into encrypted files that can only be opened with your password.",
-        cardT_protect: "Strong Data Protection",
-        label_protect: "Choose image to protect",
-        passSet: "Set Password:", encryptLevel: "Encryption Level:",
-        optHigh: "High (AES-256)", optStandard: "Standard (AES-128)", btnEncrypt: "Encrypt & Download File",
-        // image-quality.html
-        heroT_quality: "Upscale Image Quality",
-        heroD_quality: "Use digital processing techniques to transform blurry images into sharper, clearer ones.",
-        cardT_quality: "AI Quality Enhancer", label_quality: "Upload image to enhance", preview: "Image selected:", btnImprove: "Enhance Your Photo",
-        // merge-pdf.html
-        heroT_merge: "Merge PDF Files Easily",
-        heroD_merge: "Combine multiple PDF files into one organized, professional document at the click of a button.",
-        cardT_merge: "Smart Document Organizer", label_merge: "Select PDF files to merge", listTitle: "Selected Files:", btnMerge: "Start Merging Now",
-        // Footer
-        footer: "© 2026 Smart Image Converter."
+        logo: "Smart Image Converter",
+        langBtn: "عربي",
+        heroTitle: "Convert Your Files with Future AI",
+        heroDesc: "A comprehensive platform to process images and files locally with 2026 technologies.",
+        s1t: "Image Protection", s1d: "Encrypt your images with a strong password using unbreakable AES technology.", s1b: "Start Encrypting",
+        s2t: "Decryption", s2d: "Quickly and securely recover your original images from encrypted files.", s2b: "Decrypt Now",
+        s3t: "Quality Enhance", s3d: "Double the resolution of blurry images and make them clearer with one click.", s3b: "Improve Quality",
+        s4t: "Merge PDF", s4d: "Combine multiple PDF files into one organized and formatted document.", s4b: "Merge Files",
+        s5t: "Compress PDF", s5d: "Reduce the size of your documents without affecting text or graphic quality.", s5b: "Compress Files",
+        footer: "© 2026 Smart Image Converter. All rights reserved."
     }
 };
 
-let currentLang = 'ar';
-function changeLanguage() { currentLang = (currentLang === 'ar') ? 'en' : 'ar'; applyTranslations(); }
-
-function applyTranslations() {
-    const langData = translations[currentLang];
-    const path = window.location.pathname;
+function changeLanguage() {
+    const htmlTag = document.documentElement;
+    const currentLang = htmlTag.getAttribute('lang') === 'ar' ? 'en' : 'ar';
     
-    updateText('txt-logo', langData.logo);
-    updateText('lang-btn', langData.btn);
-    updateText('txt-footer', langData.footer);
+    // تغيير الخصائص الأساسية
+    htmlTag.setAttribute('lang', currentLang);
+    htmlTag.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
 
-    for(let i=1; i<=6; i++) { updateText('m' + i, langData['m' + i]); }
-
-    if (path.includes('compress-pdf.html')) {
-        updateText('txt-hero-title', langData.heroT_compress); updateText('txt-hero-desc', langData.heroD_compress);
-        updateText('txt-card-title', langData.cardT_compress); updateText('txt-label', langData.label_compress);
-        updateText('txt-orig-size', langData.origSize); updateText('txt-comp-size', langData.compSize);
-        updateText('txt-btn-action', langData.actionBtn_compress);
-    } 
-    else if (path.includes('decrypt.html')) {
-        updateText('txt-hero-title', langData.heroT_decrypt); updateText('txt-hero-desc', langData.heroD_decrypt);
-        updateText('txt-card-title', langData.cardT_decrypt); updateText('txt-label', langData.label_decrypt);
-        updateText('txt-pass-label', langData.passLabel); updateText('btnDecrypt', langData.btnDecrypt);
-        updateText('txt-file-selected', langData.fileSelected);
-    }
-    else if (path.includes('password-protect.html')) {
-        updateText('txt-hero-title', langData.heroT_protect); updateText('txt-hero-desc', langData.heroD_protect);
-        updateText('txt-card-title', langData.cardT_protect); updateText('txt-label', langData.label_protect);
-        updateText('txt-pass-label', langData.passSet); updateText('txt-level-label', langData.encryptLevel);
-        updateText('opt-high', langData.optHigh); updateText('opt-standard', langData.optStandard);
-        updateText('btnEncrypt', langData.btnEncrypt);
-    }
-    else if (path.includes('image-quality.html')) {
-        updateText('txt-hero-title', langData.heroT_quality); updateText('txt-hero-desc', langData.heroD_quality);
-        updateText('txt-card-title', langData.cardT_quality); updateText('txt-label', langData.label_quality);
-        updateText('txt-preview', langData.preview); updateText('btnImprove', langData.btnImprove);
-    }
-    else if (path.includes('merge-pdf.html')) {
-        updateText('txt-hero-title', langData.heroT_merge); updateText('txt-hero-desc', langData.heroD_merge);
-        updateText('txt-card-title', langData.cardT_merge); updateText('txt-label', langData.label_merge);
-        updateText('txt-list-title', langData.listTitle); updateText('btnMerge', langData.btnMerge);
-    }
-    else {
-        updateText('txt-hero-title', langData.heroT_index); updateText('txt-hero-desc', langData.heroD_index);
-    }
+    // تحديث النصوص بناءً على الـ IDs
+    const t = translations[currentLang];
+    document.getElementById('txt-logo').innerText = t.logo;
+    document.getElementById('lang-btn').innerText = t.langBtn;
+    document.getElementById('txt-hero-title').innerText = t.heroTitle;
+    document.getElementById('txt-hero-desc').innerText = t.heroDesc;
     
-    document.documentElement.dir = langData.dir;
-    document.documentElement.lang = currentLang;
+    // ترجمة الأقسام
+    document.getElementById('txt-s1-t').innerText = t.s1t;
+    document.getElementById('txt-s1-d').innerText = t.s1d;
+    document.getElementById('txt-s1-b').innerText = t.s1b;
+    
+    document.getElementById('txt-s2-t').innerText = t.s2t;
+    document.getElementById('txt-s2-d').innerText = t.s2d;
+    document.getElementById('txt-s2-b').innerText = t.s2b;
+    
+    document.getElementById('txt-s3-t').innerText = t.s3t;
+    document.getElementById('txt-s3-d').innerText = t.s3d;
+    document.getElementById('txt-s3-b').innerText = t.s3b;
+    
+    document.getElementById('txt-s4-t').innerText = t.s4t;
+    document.getElementById('txt-s4-d').innerText = t.s4d;
+    document.getElementById('txt-s4-b').innerText = t.s4b;
+    
+    document.getElementById('txt-s5-t').innerText = t.s5t;
+    document.getElementById('txt-s5-d').innerText = t.s5d;
+    document.getElementById('txt-s5-b').innerText = t.s5b;
+    
+    document.getElementById('txt-footer').innerText = t.footer;
 }
-
-function updateText(id, text) { const el = document.getElementById(id); if (el) el.innerText = text; }
-
-window.addEventListener('DOMContentLoaded', () => {
-    if (navigator.language.startsWith('en')) { currentLang = 'en'; applyTranslations(); }
-});
