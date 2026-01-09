@@ -1,83 +1,99 @@
 /**
  * Smart Image Converter - App Logic 2026
- * نظام التشفير وحماية البيانات محلياً (Client-Side)
+ * نظام التشفير وتحسين الجودة محلياً
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // تعريف العناصر الأساسية
+    
+    // --- أولاً: منطق حماية الصور (التشفير) ---
     const fileInput = document.getElementById('imageUpload');
     const fileLabel = document.getElementById('txt-label');
     const passwordInput = document.getElementById('password');
     const btnEncrypt = document.getElementById('btnEncrypt');
     const statusDiv = document.getElementById('status');
 
-    // 1. مراقب اختيار الملف (إظهار اسم الملف المختار)
-    if (fileInput) {
+    if (fileInput && fileLabel) {
         fileInput.addEventListener('change', function(e) {
             if (e.target.files.length > 0) {
                 const fileName = e.target.files[0].name;
                 const fileSize = (e.target.files[0].size / 1024).toFixed(2);
-                
-                // تحديث النص ليظهر اسم الملف وحجمه
                 fileLabel.innerHTML = `✅ تم اختيار: <br><span style="color: #a29bfe;">${fileName} (${fileSize} KB)</span>`;
-                statusDiv.innerText = "جاهز للتشفير.. أدخل كلمة المرور واضغط زر التشفير";
-                statusDiv.style.color = "#a29bfe";
             }
         });
     }
 
-    // 2. منطق التشفير وتحميل الملف
     if (btnEncrypt) {
         btnEncrypt.addEventListener('click', async () => {
             const file = fileInput.files[0];
             const password = passwordInput.value;
-            const encryptionLevel = document.getElementById('encryptionLevel').value;
+            if (!file || !password) { alert("يرجى اختيار ملف وكلمة مرور!"); return; }
 
-            // التحقق من المدخلات
-            if (!file) {
-                alert("يرجى اختيار ملف أولاً!");
-                return;
-            }
-            if (!password || password.length < 4) {
-                alert("يرجى إدخال كلمة مرور قوية (4 رموز على الأقل)!");
-                return;
-            }
-
-            statusDiv.innerText = "⏳ جاري المعالجة والتشفير...";
-            statusDiv.style.color = "#ff9f43";
-
+            statusDiv.innerText = "⏳ جاري التشفير...";
             const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    const base64Data = event.target.result;
-                    
-                    // عملية التشفير باستخدام CryptoJS
-                    // نستخدم المستوى المختار (AES-256 افتراضياً)
-                    const encryptedData = CryptoJS.AES.encrypt(base64Data, password).toString();
-
-                    // إنشاء ملف نصي يحتوي على البيانات المشفرة
-                    const blob = new Blob([encryptedData], { type: 'text/plain' });
-                    const downloadUrl = URL.createObjectURL(blob);
-                    
-                    // تنفيذ التحميل التلقائي
-                    const link = document.createElement('a');
-                    link.href = downloadUrl;
-                    link.download = `protected_${file.name}.enc`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-
-                    statusDiv.innerText = "✅ تم التشفير وتحميل الملف بنجاح!";
-                    statusDiv.style.color = "#00d2d3";
-                } catch (err) {
-                    console.error("Encryption Error:", err);
-                    statusDiv.innerText = "❌ حدث خطأ أثناء التشفير، حاول مجدداً.";
-                    statusDiv.style.color = "#ff6b6b";
-                }
+            reader.onload = (event) => {
+                const encrypted = CryptoJS.AES.encrypt(event.target.result, password).toString();
+                const blob = new Blob([encrypted], { type: 'text/plain' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `protected_${file.name}.enc`;
+                link.click();
+                statusDiv.innerText = "✅ تم التشفير والتحميل!";
             };
-
-            // بدء قراءة الملف
             reader.readAsDataURL(file);
+        });
+    }
+
+    // --- ثانياً: محرك تحسين الجودة (تم نقله للداخل ليتم تفعيله) ---
+    const qualityUpload = document.getElementById('qualityUpload');
+    const btnImprove = document.getElementById('btnImprove');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewContainer = document.getElementById('previewContainer');
+
+    if (qualityUpload) {
+        qualityUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+                    previewContainer.style.display = 'block'; // إظهار حاوية المعاينة
+                    if(statusDiv) statusDiv.innerText = "تم تحميل الصورة بنجاح ✅";
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    if (btnImprove) {
+        btnImprove.addEventListener('click', function() {
+            if (!imagePreview || !imagePreview.src || imagePreview.src.includes('window.location.href')) {
+                alert("يرجى اختيار صورة أولاً!");
+                return;
+            }
+
+            if(statusDiv) statusDiv.innerText = "⏳ جاري المعالجة الرقمية للصور...";
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.src = imagePreview.src;
+
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                
+                // تطبيق فلاتر التحسين (Contrast & Sharpness)
+                ctx.filter = 'contrast(1.1) brightness(1.05) saturate(1.1)';
+                ctx.drawImage(img, 0, 0);
+                
+                const improvedUrl = canvas.toDataURL('image/jpeg', 1.0);
+                const link = document.createElement('a');
+                link.href = improvedUrl;
+                link.download = "improved_image.jpg";
+                link.click();
+                
+                if(statusDiv) statusDiv.innerText = "✅ اكتمل التحسين! تم تحميل الصورة.";
+            };
         });
     }
 });
