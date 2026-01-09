@@ -33,18 +33,12 @@
         .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
         .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; vertical-align: middle; }
-        
-        /* تحسين مظهر قائمة الملفات */
-        #fileList li { background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 8px; border-radius: 5px; border-right: 3px solid #00f2ff; }
+        #fileList li { background: rgba(255,255,255,0.05); margin-bottom: 5px; padding: 8px; border-radius: 5px; border-right: 3px solid #00f2ff; text-align: right; }
+        .tutorial-section { margin-top: 50px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; border: 1px dashed rgba(162, 155, 254, 0.3); }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .step h3 { color: #a29bfe; margin-bottom: 10px; }
+        .step p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
     </style>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PNHBTPESQT');
-    </script>
 </head>
 <body class="fade-in">
     <nav>
@@ -71,27 +65,48 @@
             <p class="header-subtitle" id="txt-hero-desc">اجمع عدة ملفات PDF في مستند واحد مرتب واحترافي بضغطة زر وبأمان تام.</p>
         </header>
 
-        <section class="tutorial-section" style="margin-top: 50px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; border: 1px dashed rgba(162, 155, 254, 0.3);">
-    <h2 id="txt-step-h" style="color: #00f2ff; text-align: center; margin-bottom: 30px;">🎬 كيفية دمج ملفات PDF خطوة بخطوة</h2>
-    <div class="steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-        <div class="step">
-            <h3 id="txt-step1-t" style="color: #a29bfe;">الخطوة 1: اختيار الملفات</h3>
-            <p id="txt-step1-d">اضغط على زر "اختر ملفات PDF" وحدد جميع المستندات التي ترغب في دمجها من جهازك.</p>
-        </div>
-        <div class="step">
-            <h3 id="txt-step2-t" style="color: #a29bfe;">الخطوة 2: مراجعة القائمة</h3>
-            <p id="txt-step2-d">تأكد من ظهور أسماء كافة الملفات في القائمة للتأكد من جاهزيتها.</p>
-        </div>
-        <div class="step">
-            <h3 id="txt-step3-t" style="color: #a29bfe;">الخطوة 3: المعالجة المحلية</h3>
-            <p id="txt-step3-d">اضغط على "ابدأ الدمج". تتم العملية داخل متصفحك مباشرة لضمان الخصوصية.</p>
-        </div>
-        <div class="step">
-            <h3 id="txt-step4-t" style="color: #a29bfe;">الخطوة 4: التحميل الفوري</h3>
-            <p id="txt-step4-d">سيقوم النظام بتجميع الصفحات وتحميل ملف PDF مدمج تلقائياً.</p>
-        </div>
-    </div>
-</section>
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
+            <div class="service-card slide-up">
+                <div class="service-icon">📄</div>
+                <h3 id="txt-card-title">منظم المستندات الذكي</h3>
+
+                <div class="upload-section">
+                    <div class="upload-icon">➕</div>
+                    <input type="file" id="pdfInput" class="file-input" accept="application/pdf" multiple>
+                    <label for="pdfInput" class="file-label" id="txt-label">اختر ملفات PDF لدمجها</label>
+
+                    <div id="fileListContainer" style="margin-top: 20px; display: none;">
+                        <p id="txt-list-title" style="color: #00f2ff; margin-bottom: 10px; font-weight: bold;">الملفات المختارة:</p>
+                        <ul id="fileList" style="list-style: none; padding: 0; color: white; font-size: 0.85em;"></ul>
+                    </div>
+                </div>
+
+                <div id="status" style="margin: 15px 0; color: #a29bfe; font-weight: bold; text-align: center;"></div>
+                <button id="btnMerge" class="btn" onclick="mergePDFs()" style="width: 100%;">ابدأ دمج الملفات الآن</button>
+            </div>
+        </section>
+
+        <section class="tutorial-section">
+            <h2 id="txt-step-h" style="color: #00f2ff; text-align: center;">🎬 كيفية دمج ملفات PDF خطوة بخطوة</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3 id="txt-step1-t">الخطوة 1: اختيار الملفات</h3>
+                    <p id="txt-step1-d">اضغط على زر "اختر ملفات PDF" وحدد جميع المستندات التي ترغب في دمجها من جهازك.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step2-t">الخطوة 2: مراجعة القائمة</h3>
+                    <p id="txt-step2-d">تأكد من ظهور أسماء كافة الملفات في القائمة للتأكد من جاهزيتها للدمج.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step3-t">الخطوة 3: المعالجة المحلية</h3>
+                    <p id="txt-step3-d">اضغط على "ابدأ الدمج". تتم العملية داخل متصفحك لضمان خصوصية بياناتك.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step4-t">الخطوة 4: التحميل الفوري</h3>
+                    <p id="txt-step4-d">سيقوم النظام بتجميع الصفحات وتحميل ملف PDF مدمج تلقائياً على جهازك.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer" style="text-align: center; padding: 30px 0;">
