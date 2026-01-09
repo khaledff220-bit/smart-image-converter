@@ -28,6 +28,33 @@ const translations = {
         "status-wait": "⏳ Compressing file... please wait",
         "status-done": "✅ Compressed successfully!",
         "txt-footer": "© 2026 Smart Image Converter. All rights reserved."
+
+	const translations = {
+    ar: {
+        // ... (الأكواد السابقة) ...
+        "txt-step-h": "🎬 كيفية دمج ملفات PDF خطوة بخطوة",
+        "txt-step1-t": "الخطوة 1: اختيار الملفات",
+        "txt-step1-d": "اضغط على زر 'اختر ملفات PDF' وحدد جميع المستندات التي ترغب في دمجها.",
+        "txt-step2-t": "الخطوة 2: مراجعة القائمة",
+        "txt-step2-d": "تأكد من ظهور أسماء كافة الملفات في القائمة للتأكد من جاهزيتها للدمج.",
+        "txt-step3-t": "الخطوة 3: المعالجة المحلية",
+        "txt-step3-d": "اضغط على 'ابدأ الدمج'. تتم العملية داخل متصفحك لضمان خصوصية بياناتك.",
+        "txt-step4-t": "الخطوة 4: التحميل الفوري",
+        "txt-step4-d": "سيقوم النظام بتجميع الصفحات وتحميل ملف PDF مدمج تلقائياً على جهازك."
+    },
+    en: {
+        // ... (الأكواد السابقة) ...
+        "txt-step-h": "🎬 How to Merge PDF Files Step by Step",
+        "txt-step1-t": "Step 1: Select Files",
+        "txt-step1-d": "Click 'Choose PDF Files' and select all documents you want to merge.",
+        "txt-step2-t": "Step 2: Review List",
+        "txt-step2-d": "Make sure all file names appear in the list to ensure they are ready.",
+        "txt-step3-t": "Step 3: Local Processing",
+        "txt-step3-d": "Click 'Start Merge'. Processing happens in your browser for 100% privacy.",
+        "txt-step4-t": "Step 4: Instant Download",
+        "txt-step4-d": "The system will combine pages and download your merged PDF automatically."
+    }
+};
     }
 };
 
