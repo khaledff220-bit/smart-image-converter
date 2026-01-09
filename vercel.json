@@ -13,10 +13,25 @@
       "source": "/(.*).html",
       "headers": [
         {
-          "key": "Cache-Control", 
+          "key": "Cache-Control",
           "value": "public, max-age=3600"
         }
       ]
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/home",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/protect",
+      "destination": "/password-protect.html"
+    },
+    {
+      "source": "/quality",
+      "destination": "/image-quality.html"
+    }
+  ],
+  "cleanUrls": true
 }
