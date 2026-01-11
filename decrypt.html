@@ -7,21 +7,57 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <style>
+        /* إصلاح مشكلة اختفاء المحتوى خلف الخلفية */
+        .main-container {
+            position: relative;
+            z-index: 100; /* رفع المحتوى فوق طبقة الخلفية */
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            background: rgba(10, 11, 30, 0.85); /* إضافة خلفية داكنة لتمييز العناصر */
+            border-radius: 20px;
+            backdrop-filter: blur(10px); /* تأثير زجاجي */
+            border: 1px solid rgba(255, 118, 117, 0.2);
+        }
+
         .upload-section {
             border: 2px dashed #ff7675;
-            padding: 30px;
+            padding: 40px;
             border-radius: 15px;
             cursor: pointer;
             background: rgba(255, 118, 117, 0.05);
             transition: 0.3s;
+            text-align: center;
         }
-        .upload-section:hover { background: rgba(255, 118, 117, 0.1); border-color: #fab1a0; }
-        #fileNameDisplay { display: block; margin-top: 10px; color: #ff7675; font-size: 0.9rem; }
-        #decryptedImage { max-width: 100%; border-radius: 10px; border: 2px solid #a29bfe; display: none; margin: 20px auto; }
+
+        .upload-section:hover { 
+            background: rgba(255, 118, 117, 0.1); 
+            border-color: #fab1a0; 
+        }
+
+        #fileNameDisplay { 
+            display: block; 
+            margin-top: 15px; 
+            color: #ff7675; 
+            font-weight: bold;
+        }
+
+        #decryptedImage { 
+            max-width: 100%; 
+            border-radius: 10px; 
+            border: 2px solid #a29bfe; 
+            display: none; 
+            margin: 20px auto; 
+        }
+
+        .service-card {
+            position: relative;
+            z-index: 101;
+        }
     </style>
 </head>
 <body class="fade-in">
-    <nav>
+    <nav style="position: relative; z-index: 200;">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="assets/images/favicon.png" alt="Logo">
@@ -36,44 +72,61 @@
         </div>
     </nav>
 
-    <main class="main-container" style="max-width: 700px; margin: auto; padding: 20px;">
-        <header class="main-header" style="text-align: center;">
+    <main class="main-container">
+        <header class="main-header" style="text-align: center; margin-bottom: 30px;">
             <h2 class="header-title" id="txt-hero-title-decrypt">استعادة الصور المشفرة</h2>
             <p class="header-subtitle" id="txt-hero-desc-decrypt">أدخل الملف المشفر وكلمة المرور الصحيحة لاستعادة صورتك الأصلية فوراً.</p>
         </header>
 
-        <section class="service-card slide-up" style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 118, 117, 0.3);">
+        <section class="service-card slide-up">
             <div class="upload-section" onclick="document.getElementById('fileUpload').click()">
-                <div class="upload-icon" style="font-size: 40px;">🔓</div>
+                <div class="upload-icon" style="font-size: 50px; margin-bottom: 10px;">🔓</div>
                 <input type="file" id="fileUpload" class="file-input" accept=".enc,.txt" style="display: none;">
-                <label id="txt-label-decrypt" style="cursor: pointer;">اختر الملف المشفر (.enc)</label>
+                <label id="txt-label-decrypt" style="cursor: pointer; font-size: 1.1rem;">اختر الملف المشفر (.enc)</label>
                 <span id="fileNameDisplay"></span>
             </div>
 
-            <div class="options-container" style="margin-top: 20px; text-align: right;">
-                <label id="txt-pass-label-decrypt" style="color: #a29bfe; font-weight: bold; display: block;">كلمة المرور:</label>
+            <div class="options-container" style="margin-top: 25px; text-align: right;">
+                <label id="txt-pass-label-decrypt" style="color: #a29bfe; font-weight: bold; display: block; margin-bottom: 10px;">كلمة المرور:</label>
                 <input type="password" id="password" placeholder="أدخل كلمة المرور لفك التشفير"
-                       style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.05); color: white; border: 1px solid #333; margin-top: 10px; outline: none;">
+                       style="width: 100%; padding: 14px; border-radius: 8px; background: rgba(0,0,0,0.3); color: white; border: 1px solid #444; outline: none; transition: 0.3s;">
             </div>
 
-            <div id="status" style="margin: 15px 0; color: #a29bfe; text-align: center; font-weight: bold;"></div>
+            <div id="status" style="margin: 20px 0; color: #ff7675; text-align: center; font-weight: bold; min-height: 24px;"></div>
 
-            <button id="btnDecrypt" class="btn" style="width: 100%; background: #ff7675; color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: bold;">فك التشفير وعرض الصورة</button>
+            <button id="btnDecrypt" class="btn" style="width: 100%; background: #ff7675; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(255, 118, 117, 0.3);">
+                فك التشفير وعرض الصورة
+            </button>
 
-            <div id="resultArea" style="margin-top: 20px; text-align: center;">
-                <img id="decryptedImage">
-                <a id="downloadLink" class="btn" style="display: none; margin-top: 10px; background: #00d2d3; text-decoration: none; padding: 10px 20px; border-radius: 5px; color: white;">تحميل الصورة المستعادة</a>
+            <div id="resultArea" style="margin-top: 30px; text-align: center;">
+                <img id="decryptedImage" alt="Decrypted Result">
+                <a id="downloadLink" class="btn" style="display: none; margin-top: 15px; background: #00d2d3; text-decoration: none; padding: 12px 25px; border-radius: 8px; color: white; font-weight: bold;">تحميل الصورة المستعادة</a>
             </div>
         </section>
 
-        <section id="how-to-decrypt-section" style="margin-top: 40px; text-align: right; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            <h3 id="how-to-decrypt-title" style="color: #ff7675;">كيف تعمل استعادة الصور؟</h3>
-            <p id="how-to-decrypt-p" style="color: #ccc; font-size: 0.9rem; line-height: 1.6;">نحن نستخدم تقنية <strong>AES Decryption</strong> لفك تشفير بيانات الصورة داخل متصفحك. لا يتم إرسال كلمة المرور أو الملف إلى أي خوادم خارجية، مما يضمن أماناً بنسبة 100%.</p>
+        <section id="how-to-decrypt-section" style="margin-top: 50px; text-align: right; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+            <h3 id="how-to-decrypt-title" style="color: #ff7675; margin-bottom: 15px;">كيف تعمل استعادة الصور؟</h3>
+            <p id="how-to-decrypt-p" style="color: #bbb; font-size: 0.95rem; line-height: 1.8;">
+                نحن نستخدم تقنية <strong>AES Decryption</strong> لفك تشفير بيانات الصورة داخل متصفحك. لا يتم إرسال كلمة المرور أو الملف إلى أي خوادم خارجية، مما يضمن أماناً بنسبة 100%.
+            </p>
         </section>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="assets/js/app.js"></script>
     <script src="assets/js/lang.js"></script>
+    <script src="assets/js/app.js"></script>
+    
+    <script>
+        // كود سريع للتأكد من تحديث اسم الملف فور الاختيار
+        const fileInput = document.getElementById('fileUpload');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        if(fileInput) {
+            fileInput.addEventListener('change', function() {
+                if(this.files[0]) {
+                    fileNameDisplay.innerText = "📁 " + this.files[0].name;
+                }
+            });
+        }
+    </script>
 </body>
 </html>
