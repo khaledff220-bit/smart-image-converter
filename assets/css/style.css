@@ -744,3 +744,37 @@ nav {
         filter: hue-rotate(360deg);
     }
 }
+
+
+
+
+/* ============================================
+   🛠️ إصلاح استجابة لوحة المفاتيح واللمس
+=============================================== */
+
+/* 1. منع الطبقات الجمالية من اعتراض النقرات */
+.dynamic-glow::before,
+.interactive-card::after,
+.service-card::before,
+.service-card::after {
+    pointer-events: none !important;
+    z-index: -1 !important;
+}
+
+/* 2. رفع خانات الإدخال فوق كل شيء لضمان التركيز (Focus) */
+input[type="password"], 
+input[type="text"], 
+input[type="file"],
+.file-label,
+button.btn {
+    position: relative !important;
+    z-index: 99 !important; /* طبقة عليا جداً */
+    pointer-events: auto !important;
+    touch-action: manipulation; /* تحسين استجابة اللمس على الموبايل */
+}
+
+/* 3. التأكد من أن منطقة الرفع قابلة للنقر */
+.upload-section {
+    position: relative;
+    z-index: 10;
+}
