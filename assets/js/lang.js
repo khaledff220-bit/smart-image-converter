@@ -81,6 +81,7 @@ const translations = {
         // Decrypt Page
         "txt-title-dec-page": "Image Decryption - Restore Protected Photos",
         "txt-hero-title-decrypt": "Restore Encrypted Images",
+	"txt-card-title-dec": "Data Decryption",
         "txt-hero-desc-decrypt": "Enter the encrypted file and correct password to restore your original image instantly.",
         "txt-label-decrypt": "Select Encrypted File (.enc)",
         "txt-pass-label-decrypt": "Password:",
