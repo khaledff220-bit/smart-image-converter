@@ -1,46 +1,38 @@
 const translations = {
     ar: {
-        // Navbar
-        "m1": "الرئيسية", "m2": "🔒 حماية", "m3": "🔑 فك", "m4": "🖼️ جودة", "m5": "📄 دمج", "m6": "⚙️ ضغط",
-        "lang-btn": "English",
         "txt-logo": "Smart Image Converter",
-        
-        // Index Page
-        "hero-h1": "حوِّل ملفاتك بذكاء المستقبل",
-        "hero-p": "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026.",
+        "lang-btn": "English",
+        "m1": "الرئيسية", "m2": "🔒 حماية", "m3": "🔑 فك", "m4": "🖼️ جودة", "m5": "📄 دمج", "m6": "⚙️ ضغط",
+        "hero-h1": "حوّل ملفاتك بذكاء المستقبل",
+        "hero-p": "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026",
         "card-protect-t": "حماية الصور",
         "card-protect-p": "قم بتشفير صورك بكلمة مرور قوية لا يمكن كسرها باستخدام تقنية AES.",
-        "btn-start": "ابدأ الآن",
-
-        // Protect Page
-        "txt-hero-title-protect": "تشفير الصور بخصوصية تامة",
-        "txt-hero-desc-protect": "حول صورك إلى ملفات مشفرة لا يمكن فتحها إلا بكلمة مرور.",
-        "txt-label-protect": "اضغط لرفع الصورة المراد حمايتها",
-        "txt-pass-label": "تعيين كلمة المرور:",
-        "btnEncrypt": "تشفير وتحميل الملف",
-        
+        "txt-s2-t": "فك التشفير",
+        "txt-s2-d": "استرجع صورك الأصلية من ملفاتك المشفرة بسرعة وأمان تام.",
+        "txt-s3-t": "تحسين الجودة",
+        "txt-s3-d": "ضاعف دقة الصور الضبابية واجعلها أكثر ووضوحاً بضغطة زر.",
+        "txt-s4-t": "دمج PDF",
+        "txt-s4-d": "اجمع عدة ملفات PDF في مستند واحد مرتب ومنسق.",
+        "txt-s5-t": "ضغط PDF",
+        "txt-s5-d": "قلل حجم مستنداتك دون التأثير على جودة النصوص والرسومات.",
         "txt-footer": "© 2026 محول الصور الذكي. جميع الحقوق محفوظة."
     },
     en: {
-        // Navbar
-        "m1": "Home", "m2": "🔒 Protect", "m3": "🔑 Decrypt", "m4": "🖼️ Quality", "m5": "📄 Merge", "m6": "⚙️ Compress",
-        "lang-btn": "عربي",
         "txt-logo": "Smart Image Converter",
-
-        // Index Page
+        "lang-btn": "عربي",
+        "m1": "Home", "m2": "🔒 Protect", "m3": "🔑 Decrypt", "m4": "🖼️ Quality", "m5": "📄 Merge", "m6": "⚙️ Compress",
         "hero-h1": "Convert Files with Future Intelligence",
-        "hero-p": "A comprehensive platform for processing images and files locally with 2026 technology.",
+        "hero-p": "A comprehensive platform for local file processing with 2026 tech.",
         "card-protect-t": "Image Protection",
-        "card-protect-p": "Encrypt your images with a strong password using AES technology.",
-        "btn-start": "Start Now",
-
-        // Protect Page
-        "txt-hero-title-protect": "Encrypt Images Privately",
-        "txt-hero-desc-protect": "Secure your images with a password only you know.",
-        "txt-label-protect": "Click to upload image to protect",
-        "txt-pass-label": "Set Password:",
-        "btnEncrypt": "Encrypt & Download",
-
+        "card-protect-p": "Encrypt your images with an unbreakable password using AES technology.",
+        "txt-s2-t": "Decryption",
+        "txt-s2-d": "Restore your original images from encrypted files quickly and safely.",
+        "txt-s3-t": "Quality Enhance",
+        "txt-s3-d": "Double the resolution of blurry images and make them clearer instantly.",
+        "txt-s4-t": "Merge PDF",
+        "txt-s4-d": "Combine multiple PDF files into one organized document.",
+        "txt-s5-t": "Compress PDF",
+        "txt-s5-d": "Reduce document size without affecting text or graphic quality.",
         "txt-footer": "© 2026 Smart Image Converter. All rights reserved."
     }
 };
@@ -54,11 +46,7 @@ function applyLanguage(lang) {
     for (let id in t) {
         const element = document.getElementById(id);
         if (element) {
-            if (element.tagName === 'INPUT') {
-                element.placeholder = t[id];
-            } else {
-                element.innerText = t[id];
-            }
+            element.innerText = t[id];
         }
     }
     localStorage.setItem('preferredLang', lang);
