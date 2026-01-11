@@ -1,80 +1,89 @@
-// --- 1. منطق حماية الصور (Encryption) ---
-const btnEncrypt = document.getElementById('btnEncrypt');
-if (btnEncrypt) {
-    btnEncrypt.addEventListener('click', async () => {
-        const imageInput = document.getElementById('imageUpload');
-        const passwordInput = document.getElementById('password');
-        const status = document.getElementById('status');
+/* ============================================
+   ⚙️ المِحرك البرمجي - Smart Image Converter
+=============================================== */
 
-        if (!imageInput.files[0] || !passwordInput.value) {
-            alert("يرجى اختيار صورة وإدخال كلمة مرور!");
-            return;
-        }
-
-        status.innerText = "⏳ جاري التشفير والحماية...";
-        
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const imageData = e.target.result;
-            // استخدام مكتبة CryptoJS للتشفير
-            const encrypted = CryptoJS.AES.encrypt(imageData, passwordInput.value).toString();
-            
-            const blob = new Blob([encrypted], { type: 'text/plain' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = imageInput.files[0].name + ".enc";
-            link.click();
-            
-            status.innerText = "✅ تم التشفير والتحميل بنجاح!";
-        };
-        reader.readAsDataURL(imageInput.files[0]);
-    });
-}
-
-// --- 2. منطق ضغط PDF (كودك السابق مع تحسين) ---
-const pdfCompressInput = document.getElementById('pdfInput');
-if (pdfCompressInput) {
-    const originalSizeLabel = document.getElementById('originalSize');
-    const compressedSizeLabel = document.getElementById('compressedSize');
-    const compressInfoContainer = document.getElementById('compressInfoContainer');
-    const afterCompressDiv = document.getElementById('afterCompress');
-
-    pdfCompressInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            compressInfoContainer.style.display = 'block';
-            originalSizeLabel.innerText = (file.size / 1024 / 1024).toFixed(2) + " MB";
-            if (afterCompressDiv) afterCompressDiv.style.display = 'none';
-        }
-    });
-}
-
-window.compressPDF = async function() {
-    const fileInput = document.getElementById('pdfInput');
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. عناصر صفحة التشفير
+    const btnEncrypt = document.getElementById('btnEncrypt'); // تأكد من وجود هذا الـ ID في HTML
+    const fileUpload = document.getElementById('fileUpload');
+    const passwordInput = document.getElementById('password');
     const status = document.getElementById('status');
+    const resultArea = document.getElementById('resultArea');
+    const downloadLink = document.getElementById('downloadLink');
 
-    if (!fileInput || !fileInput.files[0]) return alert("يرجى اختيار ملف!");
+    // دالة التشفير
+    if (btnEncrypt) {
+        btnEncrypt.addEventListener('click', async () => {
+            const file = fileUpload.files[0];
+            const password = passwordInput.value;
 
-    status.innerText = "⏳ جاري تقليل حجم الملف...";
+            if (!file || !password) {
+                status.innerText = document.documentElement.lang === 'ar' ? "❌ يرجى اختيار صورة وادخال كلمة مرور!" : "❌ Please select an image and enter a password!";
+                status.style.color = "var(--danger)";
+                return;
+            }
 
-    try {
-        const arrayBuffer = await fileInput.files[0].arrayBuffer();
-        const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
-        const pdfBytes = await pdfDoc.save({ useObjectStreams: true });
-
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = "compressed_smart_doc.pdf";
-        link.click();
-
-        if (document.getElementById('afterCompress')) {
-            document.getElementById('afterCompress').style.display = 'block';
-            document.getElementById('compressedSize').innerText = (blob.size / 1024 / 1024).toFixed(2) + " MB";
-        }
-        status.innerText = "✅ تم الضغط والتحميل!";
-    } catch (err) {
-        console.error(err);
-        status.innerText = "❌ فشل الضغط، تأكد من سلامة الملف.";
+            status.innerText = document.documentElement.lang === 'ar' ? "⏳ جاري التشفير..." : "⏳ Encrypting...";
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const rawData = e.target.result;
+                // تشفير البيانات باستخدام CryptoJS
+                const encrypted = CryptoJS.AES.encrypt(rawData, password).toString();
+                
+                // تجهيز ملف التحميل
+                const blob = new Blob([encrypted], { type: "text/plain" });
+                const url = URL.createObjectURL(blob);
+                
+                downloadLink.href = url;
+                downloadLink.download = file.name + ".enc";
+                
+                // إظهار النتائج
+                status.innerText = document.documentElement.lang === 'ar' ? "✅ تم التشفير بنجاح!" : "✅ Encryption Successful!";
+                status.style.color = "var(--neon-blue)";
+                resultArea.style.display = "block";
+                downloadLink.style.display = "inline-flex";
+            };
+            reader.readAsDataURL(file);
+        });
     }
-};
+
+    // 2. عناصر صفحة فك التشفير
+    const btnDecrypt = document.getElementById('btnDecrypt');
+    const decryptedImage = document.getElementById('decryptedImage');
+
+    if (btnDecrypt) {
+        btnDecrypt.addEventListener('click', () => {
+            const file = fileUpload.files[0];
+            const password = passwordInput.value;
+
+            if (!file || !password) {
+                status.innerText = document.documentElement.lang === 'ar' ? "❌ يرجى رفع الملف المشفر وكلمة المرور" : "❌ Please upload the .enc file and password";
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const encryptedData = e.target.result;
+                    const decrypted = CryptoJS.AES.decrypt(encryptedData, password).toString(CryptoJS.enc.Utf8);
+                    
+                    if (!decrypted) throw new Error();
+
+                    decryptedImage.src = decrypted;
+                    decryptedImage.style.display = "block";
+                    status.innerText = "✅ تم استعادة الصورة";
+                    
+                    // إعداد رابط التحميل للصورة المفكوكة
+                    downloadLink.href = decrypted;
+                    downloadLink.download = "restored_image.png";
+                    downloadLink.style.display = "inline-flex";
+                } catch (error) {
+                    status.innerText = "❌ كلمة مرور خاطئة أو ملف تالف!";
+                    status.style.color = "var(--danger)";
+                }
+            };
+            reader.readAsText(file);
+        });
+    }
+});
