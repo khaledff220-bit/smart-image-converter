@@ -36,22 +36,24 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://smart-image-converter.vercel.app/" />
 
-    <meta property="og:title" content="محول الصور الذكي - منصة معالجة الملفات الاحترافية">
-    <meta property="og:description" content="أدوات ذكية لمعالجة صورك وملفاتك في ثوانٍ وبخصوصية تامة دون الحاجة لرفعها للسيرفر.">
-    <meta property="og:image" content="https://smart-image-converter.vercel.app/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://smart-image-converter.vercel.app/">
-    <meta property="og:type" content="website">
-
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
-        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; flex-wrap: wrap; }
         .nav-logo { display: flex; align-items: center; text-decoration: none; color: white; }
         .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; }
+        .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
+        .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
+        .nav-menu a:hover { color: #a29bfe; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
+        
+        @media (max-width: 600px) {
+            .nav-container { justify-content: center; gap: 10px; }
+            .nav-menu { gap: 10px; font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body class="fade-in">
@@ -59,52 +61,62 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="assets/images/favicon.png" alt="Logo">
-                <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
+                <h1 id="txt-logo">Smart Image Converter</h1>
             </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" id="m1">الرئيسية</a></li>
+                <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
+                <li><a href="decrypt.html" id="m3">🔑 فك</a></li>
+                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
+                <li><a href="merge-pdf.html" id="m5">📄 دمج</a></li>
+                <li><a href="compress-pdf.html" id="m6">⚙️ ضغط</a></li>
+            </ul>
+
             <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
         </div>
     </nav>
 
     <main>
         <header class="main-header">
-            <h2 id="txt-hero-title" class="header-title">حوّل ملفاتك بذكاء المستقبل</h2>
-            <p id="txt-hero-desc" class="header-subtitle">منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026</p>
+            <h2 id="hero-h1" class="header-title">حوّل ملفاتك بذكاء المستقبل</h2>
+            <p id="hero-p" class="header-subtitle">منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026</p>
         </header>
 
         <section class="services-grid">
             <div class="service-card slide-up">
                 <div class="service-icon">🔒</div>
-                <h3 id="txt-s1-t">حماية الصور</h3>
-                <p id="txt-s1-d">قم بتشفير صورك بكلمة مرور قوية لا يمكن كسرها باستخدام تقنية AES.</p>
-                <a href="password-protect.html" id="txt-s1-b" class="btn">ابدأ التشفير</a>
+                <h3 id="card-protect-t">حماية الصور</h3>
+                <p id="card-protect-p">قم بتشفير صورك بكلمة مرور قوية لا يمكن كسرها باستخدام تقنية AES.</p>
+                <a href="password-protect.html" class="btn">ابدأ الآن</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">🔑</div>
                 <h3 id="txt-s2-t">فك التشفير</h3>
                 <p id="txt-s2-d">استرجع صورك الأصلية من ملفاتك المشفرة بسرعة وأمان تام.</p>
-                <a href="decrypt.html" id="txt-s2-b" class="btn btn-secondary">فك التشفير الآن</a>
+                <a href="decrypt.html" class="btn btn-secondary">افتح ملفك</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">🖼️</div>
                 <h3 id="txt-s3-t">تحسين الجودة</h3>
                 <p id="txt-s3-d">ضاعف دقة الصور الضبابية واجعلها أكثر ووضوحاً بضغطة زر.</p>
-                <a href="image-quality.html" id="txt-s3-b" class="btn">حسن جودة صورتك</a>
+                <a href="image-quality.html" class="btn">تحسين الدقة</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">📄</div>
                 <h3 id="txt-s4-t">دمج PDF</h3>
                 <p id="txt-s4-d">اجمع عدة ملفات PDF في مستند واحد مرتب ومنسق.</p>
-                <a href="merge-pdf.html" id="txt-s4-b" class="btn">دمج الملفات</a>
+                <a href="merge-pdf.html" class="btn">ابدأ الدمج</a>
             </div>
 
             <div class="service-card slide-up">
                 <div class="service-icon">⚙️</div>
                 <h3 id="txt-s5-t">ضغط PDF</h3>
                 <p id="txt-s5-d">قلل حجم مستنداتك دون التأثير على جودة النصوص والرسومات.</p>
-                <a href="compress-pdf.html" id="txt-s5-b" class="btn">ضغط الملفات</a>
+                <a href="compress-pdf.html" class="btn">تقليل الحجم</a>
             </div>
         </section>
     </main>
