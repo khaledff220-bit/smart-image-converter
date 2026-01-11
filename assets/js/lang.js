@@ -55,16 +55,22 @@ const translations = {
     }
 };
 
+// الدالة المحدثة التي تدعم innerHTML و placeholders
 function applyLanguage(lang) {
     const htmlTag = document.documentElement;
     htmlTag.setAttribute('lang', lang);
     htmlTag.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
     const t = translations[lang];
     for (let id in t) {
         const element = document.getElementById(id);
         if (element) {
-            if (element.tagName === 'INPUT') { element.placeholder = t[id]; }
-            else { element.innerText = t[id]; }
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = t[id];
+            } else {
+                // استخدام innerHTML يضمن ترجمة الفقرات الطويلة التي تحتوي على أرقام أو رموز
+                element.innerHTML = t[id];
+            }
         }
     }
     localStorage.setItem('preferredLang', lang);
