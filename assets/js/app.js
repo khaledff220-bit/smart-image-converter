@@ -87,3 +87,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// ميزة تحسين الجودة (Upscale)
+const btnUpscale = document.getElementById('btnUpscale');
+if (btnUpscale) {
+    btnUpscale.addEventListener('click', () => {
+        const fileInput = document.getElementById('fileUpload');
+        const file = fileInput.files[0];
+        const status = document.getElementById('status');
+        
+        if (!file) {
+            status.innerText = "❌ يرجى اختيار صورة أولاً";
+            return;
+        }
+
+        status.innerText = "⏳ جاري المعالجة وتحسين البكسلات...";
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.getElementById('upscaledCanvas');
+                const ctx = canvas.getContext('2d');
+                
+                // مضاعفة الحجم مرتين (2x Upscale)
+                canvas.width = img.width * 2;
+                canvas.height = img.height * 2;
+
+                // تحسين جودة التنعيم
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                status.innerText = "✅ اكتمل التحسين!";
+                document.getElementById('resultArea').style.display = "block";
+                
+                const downloadLink = document.getElementById('downloadLink');
+                downloadLink.href = canvas.toDataURL("image/png");
+                downloadLink.download = "upscaled_image.png";
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
