@@ -3,32 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="txt-title-dec-page">فك تشفير الصور - Smart Image Converter</title>
+    <title id="txt-title-dec-page">فك التشفير - Smart Converter</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    
     <style>
-        /* إضافة لمسات خاصة بصفحة فك التشفير لضمان الظهور فوق الخلفية */
-        .main-container {
-            position: relative;
-            z-index: 10;
-            margin-top: 2rem;
-            padding-bottom: 5rem;
-        }
-        #decryptedImage {
-            max-width: 100%;
-            border-radius: 15px;
-            margin-top: 20px;
-            display: none;
-            box-shadow: var(--shadow-neon);
-            border: 2px solid var(--neon-purple);
-        }
-        #status {
-            min-height: 30px;
-            margin: 15px 0;
-            font-weight: 600;
-            color: var(--neon-blue);
-        }
+        #decryptedImage { max-width: 100%; border-radius: 15px; margin-top: 20px; display: none; border: 2px solid var(--neon-purple); }
     </style>
 </head>
 <body class="fade-in">
@@ -44,6 +23,7 @@
                 <li><a href="index.html" id="m1">الرئيسية</a></li>
                 <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
                 <li><a href="decrypt.html" class="active" id="m3">🔑 فك</a></li>
+                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
             </ul>
             <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
         </div>
@@ -52,73 +32,51 @@
     <main class="main-container">
         <header class="main-header">
             <h2 class="header-title" id="txt-hero-title-decrypt">استعادة الصور المشفرة</h2>
-            <p class="header-subtitle" id="txt-hero-desc-decrypt">أدخل الملف المشفر وكلمة المرور الصحيحة لاستعادة صورتك الأصلية فوراً بتقنيات 2026.</p>
+            <p class="header-subtitle" id="txt-hero-desc-decrypt">أدخل الملف المشفر وكلمة المرور الصحيحة لاستعادة صورتك الأصلية فوراً.</p>
         </header>
 
-        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 800px;">
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: auto;">
             <div class="service-card slide-up interactive-card">
                 <div class="service-icon">🔓</div>
                 <h3 id="txt-card-title-dec">فك حماية البيانات</h3>
-                
+
                 <div class="upload-section" onclick="document.getElementById('fileUpload').click()">
                     <div class="upload-icon">📁</div>
-                    <input type="file" id="fileUpload" class="file-input" accept=".enc,.txt">
+                    <input type="file" id="fileUpload" class="file-input" accept=".enc,.txt" onchange="previewImage(this)">
                     <label id="txt-label-decrypt" class="file-label">اختر الملف المشفر (.enc)</label>
-                    <p id="fileNameDisplay" style="margin-top:15px; color: var(--neon-blue); font-weight: bold;"></p>
-                </div>
-
-                <div class="options-grid" style="grid-template-columns: 1fr;">
-                    <div class="option-card dynamic-glow">
-                        <label id="txt-pass-label-decrypt">كلمة المرور:</label>
-                        <input type="password" id="password" placeholder="أدخل كلمة المرور هنا..." 
-                               style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 12px; color: white; margin-top: 10px; outline: none;">
+                    <div id="fileInfo" style="display: none; margin-top:15px;">
+                        <p id="fileName" style="color: var(--neon-blue); font-weight: bold;"></p>
                     </div>
                 </div>
 
-                <div id="status"></div>
+                <div class="options-grid" style="grid-template-columns: 1fr; margin-top: 20px;">
+                    <div class="option-card dynamic-glow">
+                        <label id="txt-pass-label-decrypt">كلمة المرور:</label>
+                        <input type="password" id="password" placeholder="********" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 12px; color: white; margin-top: 10px; outline: none;">
+                    </div>
+                </div>
+
+                <div id="status" style="text-align: center; margin: 15px 0; color: var(--neon-blue);"></div>
 
                 <button id="btnDecrypt" class="btn" style="width: 100%;">
-                    <span>🔓</span> <span id="btnDecryptText">فك التشفير وعرض الصورة</span>
+                    <span id="btnDecryptText">فك التشفير وعرض الصورة</span>
                 </button>
 
-                <div id="resultArea" style="text-align: center;">
+                <div id="resultArea" style="text-align: center; margin-top: 20px;">
                     <img id="decryptedImage" alt="Restored Image">
                     <br>
-                    <a id="downloadLink" class="btn btn-secondary" style="display: none; margin-top: 20px;">
-                        📥 تحميل الصورة المستعادة
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="faq-container">
-            <div class="faq-item active">
-                <div class="faq-question">
-                    <span id="how-to-decrypt-title">كيف تعمل عملية الاستعادة؟</span>
-                </div>
-                <div class="faq-answer">
-                    <p id="dec-step1-d">تتم العملية محلياً 100%؛ حيث يقوم المتصفح باستخدام مفتاح التشفير (كلمة المرور) لفك خوارزمية AES-256 وإعادة بناء بكسلات الصورة الأصلية دون رفعها لأي سيرفر.</p>
+                    <a id="downloadLink" class="btn btn-secondary" style="display: none; margin-top: 20px;">📥 تحميل الصورة المستعادة</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-bottom">
-            <p id="txt-footer">© 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
-        </div>
+        <p id="txt-footer">© 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="assets/js/lang.js"></script>
     <script src="assets/js/app.js"></script>
-
-    <script>
-        // كود تفاعلي لتحديث اسم الملف فور الاختيار
-        document.getElementById('fileUpload').addEventListener('change', function() {
-            const fileName = this.files[0] ? this.files[0].name : "";
-            document.getElementById('fileNameDisplay').innerText = fileName ? "📂 " + fileName : "";
-        });
-    </script>
 </body>
 </html>

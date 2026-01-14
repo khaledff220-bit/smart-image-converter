@@ -1,66 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="txt-title-upscale-page">تحسين جودة الصور - Smart Converter</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body class="fade-in">
-    <div class="stars"></div>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <div class="logo-icon">🖼️</div>
-                <h1 id="txt-logo">Smart Converter</h1>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index.html" id="m1">الرئيسية</a></li>
-                <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
-                <li><a href="decrypt.html" id="m3">🔑 فك</a></li>
-                <li><a href="upscale.html" class="active" id="m4">🖼️ جودة</a></li>
-            </ul>
-            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
-        </div>
-    </nav>
-
-    <main class="main-header">
-        <h2 class="header-title" id="txt-hero-title-upscale">تحسين جودة الصور</h2>
-        <p class="header-subtitle" id="txt-hero-desc-upscale">اجعل صورك أكثر وضوحاً ودقة باستخدام تقنيات معالجة البكسلات المتقدمة.</p>
-
-        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: auto;">
-            <div class="service-card slide-up interactive-card">
-                <div class="service-icon">✨</div>
-                
-                <div class="upload-section" onclick="document.getElementById('fileUpload').click()">
-                    <div class="upload-icon">📤</div>
-                    <input type="file" id="fileUpload" class="file-input" accept="image/*">
-                    <label id="txt-label-upscale" class="file-label">اختر صورة لتحسينها</label>
-                    <span id="fileNameDisplay" style="color: var(--neon-blue); display: block; margin-top: 15px; font-weight: bold;"></span>
-                </div>
-
-                <div id="status" style="margin: 20px 0; color: var(--neon-blue); font-weight: bold; text-align: center;"></div>
-
-                <button id="btnUpscale" class="btn" style="width: 100%;">
-                    <span id="txt-btn-upscale">ابدأ التحسين الآن</span>
-                </button>
-
-                <div id="resultArea" style="margin-top: 25px; display: none; text-align: center;">
-                    <canvas id="upscaledCanvas" style="max-width: 100%; border-radius: 15px; border: 2px solid var(--neon-blue); box-shadow: var(--shadow-neon);"></canvas>
-                    <br><br>
-                    <a id="downloadLink" class="btn btn-secondary">📥 تحميل الصورة المحسنة</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-bottom">
-            <p id="txt-footer">© 2026 محول الصور الذكي</p>
-        </div>
-    </footer>
-
-    <script src="assets/js/lang.js"></script>
-    <script src="assets/js/app.js"></script>
-</body>
-</html>
