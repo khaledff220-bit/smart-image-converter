@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -10,7 +12,7 @@
       ]
     },
     {
-      "source": "/(.*).html",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -18,20 +20,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/home",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/protect",
-      "destination": "/password-protect.html"
-    },
-    {
-      "source": "/quality",
-      "destination": "/image-quality.html"
-    }
-  ],
-  "cleanUrls": true
+  ]
 }
