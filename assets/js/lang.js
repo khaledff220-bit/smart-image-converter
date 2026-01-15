@@ -14,6 +14,17 @@ const translations = {
         "m6": "⚙️ ضغط",
         "lang-btn": "English",
 
+        // صفحة تحسين الجودة (image-quality.html)
+        "txt-title-upscale-page": "تحسين جودة الصور - Smart Converter",
+        "txt-hero-title-upscale": "تحسين جودة الصور",
+        "txt-hero-desc-upscale": "تقنية 2026 لمعالجة البكسلات مباشرة في متصفحك.",
+        "txt-label-upscale": "اضغط لاختيار صورة",
+        "txt-preview-label": "المعاينة الحالية:",
+        "txt-btn-upscale-start": "ابدأ التحسين الآمن",
+        "txt-btn-download": "📥 تحميل الصورة المحسنة",
+        "txt-privacy-title": "🔒 حماية وخصوصية بياناتك",
+        "txt-privacy-desc": "تتم عملية تحسين الصور بالكامل داخل متصفحك. نحن لا نقوم برفع صورك إلى أي خادم خارجي، مما يضمن أماناً بنسبة 100%.",
+
         // الواجهة الرئيسية (index.html)
         "hero-h1": "حوّل ملفاتك بذكاء المستقبل",
         "hero-p": "منصة شاملة لمعالجة الصور والملفات محلياً بأمان تام وبتقنيات 2026",
@@ -28,10 +39,9 @@ const translations = {
         "txt-s5-t": "ضغط PDF",
         "txt-s5-d": "قلل حجم مستنداتك دون التأثير على جودة النصوص والرسومات.",
 
-        // أزرار الواجهة الرئيسية (IDs المضافة للإصلاح)
+        // أزرار الواجهة الرئيسية
         "txt-btn-encrypt": "تشفير الصور",
         "btnDecryptText": "استعادة الصور",
-        "txt-btn-upscale-start": "تحسين الدقة",
         "m5-btn": "ابدأ الدمج",
         "m6-btn": "تقليل الحجم",
 
@@ -42,7 +52,7 @@ const translations = {
         "txt-label-encrypt": "اختر الصورة المراد حمايتها",
         "txt-pass-label-encrypt": "عيّن كلمة مرور قوية:",
         "how-it-works-title": "كيف تعمل تقنية الحماية لدينا؟",
-        "enc-desc-detail": "نحن نستخدم بروتوكول AES-256، وهو المعيار العالمي لحماية البيانات. يتم تحويل الصورة لنص مشفر تماماً لا يمكن فتحه إلا بمفتاحك الخاص.",
+        "enc-desc-detail": "نحن نستخدم بروتوكول AES-256، وهو المعيار العالمي لحماية البيانات.",
 
         // قسم فك التشفير (decrypt.html)
         "txt-hero-title-decrypt": "استعادة الصور المشفرة",
@@ -51,7 +61,6 @@ const translations = {
         "txt-label-decrypt": "اختر الملف المشفر (.enc)",
         "txt-pass-label-decrypt": "كلمة المرور:",
 
-        // التذييل
         "txt-footer": "© 2026 محول الصور الذكي. جميع الحقوق محفوظة."
     },
     en: {
@@ -64,6 +73,17 @@ const translations = {
         "m5": "📄 Merge",
         "m6": "⚙️ Compress",
         "lang-btn": "عربي",
+
+        // Image Quality Page (image-quality.html)
+        "txt-title-upscale-page": "Image Upscaler - Smart Converter",
+        "txt-hero-title-upscale": "AI Image Upscaling",
+        "txt-hero-desc-upscale": "2026 technology to process pixels directly in your browser.",
+        "txt-label-upscale": "Click to select an image",
+        "txt-preview-label": "Current Preview:",
+        "txt-btn-upscale-start": "Start Secure Upscale",
+        "txt-btn-download": "📥 Download Enhanced Image",
+        "txt-privacy-title": "🔒 Data Privacy & Protection",
+        "txt-privacy-desc": "The upscaling process happens entirely in your browser. We never upload your images to any server, ensuring 100% security.",
 
         // Main Interface (index.html)
         "hero-h1": "Convert with Future Intelligence",
@@ -79,30 +99,28 @@ const translations = {
         "txt-s5-t": "PDF Compress",
         "txt-s5-d": "Reduce file size without affecting document quality.",
 
-        // Main Interface Buttons (Fixed IDs)
+        // Main Interface Buttons
         "txt-btn-encrypt": "Encrypt Image",
         "btnDecryptText": "Restore Image",
-        "txt-btn-upscale-start": "Upscale Now",
         "m5-btn": "Start Merging",
         "m6-btn": "Compress Now",
 
-        // Protection Section (password-protect.html)
+        // Protection Section
         "txt-hero-title-encrypt": "Secure Image Encryption",
         "txt-hero-desc-encrypt": "Protect your images locally using AES-256 technology.",
         "txt-card-title-enc": "Create Protection Layer",
         "txt-label-encrypt": "Choose image to protect",
         "txt-pass-label-encrypt": "Set a strong password:",
         "how-it-works-title": "How does it work?",
-        "enc-desc-detail": "We use AES-256 protocol, the global standard for data protection. Your image is converted into fully encrypted text that can only be unlocked with your private key.",
+        "enc-desc-detail": "We use AES-256 protocol, the global standard for data protection.",
 
-        // Decryption Section (decrypt.html)
+        // Decryption Section
         "txt-hero-title-decrypt": "Restore Encrypted Images",
-        "txt-hero-desc-decrypt": "Enter the encrypted file and correct password to restore your image.",
+        "txt-hero-desc-decrypt": "Enter the encrypted file and correct password.",
         "txt-card-title-dec": "Data Decryption",
         "txt-label-decrypt": "Select encrypted file (.enc)",
         "txt-pass-label-decrypt": "Password:",
 
-        // Footer
         "txt-footer": "© 2026 Smart Image Converter. All rights reserved."
     }
 };
