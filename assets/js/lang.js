@@ -61,6 +61,41 @@ const translations = {
         "txt-label-decrypt": "اختر الملف المشفر (.enc)",
         "txt-pass-label-decrypt": "كلمة المرور:",
 
+        // قسم دمج PDF (merge-pdf.html)
+        "txt-hero-title-merge": "دمج ملفات PDF بسهولة",
+        "txt-hero-desc-merge": "اجمع عدة ملفات PDF في مستند واحد مرتب واحترافي بضغطة زر وبأمان تام.",
+        "txt-card-title-merge": "منظم المستندات الذكي",
+        "txt-label-merge": "اختر ملفات PDF لدمجها",
+        "txt-list-title": "الملفات المختارة:",
+        "btn-merge-action": "ابدأ دمج الملفات الآن",
+        "txt-step-h-merge": "🎬 كيفية دمج ملفات PDF خطوة بخطوة",
+        "txt-step1-t-merge": "الخطوة 1: اختيار الملفات",
+        "txt-step1-d-merge": "اضغط على زر 'اختر ملفات PDF' وحدد جميع المستندات التي ترغب في دمجها من جهازك.",
+        "txt-step2-t-merge": "الخطوة 2: مراجعة القائمة",
+        "txt-step2-d-merge": "تأكد من ظهور أسماء كافة الملفات في القائمة للتأكد من جاهزيتها للدمج.",
+        "txt-step3-t-merge": "الخطوة 3: المعالجة المحلية",
+        "txt-step3-d-merge": "اضغط على 'ابدأ الدمج'. تتم العملية داخل متصفحك لضمان خصوصية بياناتك.",
+        "txt-step4-t-merge": "الخطوة 4: التحميل الفوري",
+        "txt-step4-d-merge": "سيقوم النظام بتجميع الصفحات وتحميل ملف PDF مدمج تلقائياً على جهازك.",
+
+        // قسم ضغط PDF (compress-pdf.html)
+        "txt-hero-title-compress": "تقليل حجم PDF",
+        "txt-hero-desc-compress": "وفر مساحة التخزين عبر ضغط ملفات PDF مع الحفاظ على وضوح المحتوى.",
+        "txt-card-title-compress": "ضاغط الملفات الذكي",
+        "txt-label-compress": "اختر ملف PDF للضغط",
+        "txt-orig-size": "حجم الملف الأصلي:",
+        "txt-comp-size": "الحجم بعد الضغط:",
+        "btn-compress-action": "بدء الضغط والتحميل",
+        "txt-step-h-compress": "🎬 كيفية ضغط ملفات PDF خطوة بخطوة",
+        "txt-step1-t-compress": "الخطوة 1: رفع الملف",
+        "txt-step1-d-compress": "اختر ملف PDF الذي ترغب في تقليل حجمه من جهازك.",
+        "txt-step2-t-compress": "الخطوة 2: تحليل الحجم",
+        "txt-step2-d-compress": "سيقوم النظام بحساب الحجم الحالي وتقدير الحجم بعد الضغط.",
+        "txt-step3-t-compress": "الخطوة 3: الضغط الآمن",
+        "txt-step3-d-compress": "تتم عملية الضغط محلياً دون رفع الملف لأي خادم خارجي.",
+        "txt-step4-t-compress": "الخطوة 4: التحميل",
+        "txt-step4-d-compress": "بمجرد الانتهاء، سيتم تحميل النسخة المضغوطة تلقائياً.",
+
         "txt-footer": "© 2026 محول الصور الذكي. جميع الحقوق محفوظة."
     },
     en: {
@@ -120,6 +155,41 @@ const translations = {
         "txt-card-title-dec": "Data Decryption",
         "txt-label-decrypt": "Select encrypted file (.enc)",
         "txt-pass-label-decrypt": "Password:",
+
+        // PDF Merge Section (merge-pdf.html)
+        "txt-hero-title-merge": "Merge PDF Files Easily",
+        "txt-hero-desc-merge": "Combine multiple PDF files into one organized document instantly and securely.",
+        "txt-card-title-merge": "Smart Document Organizer",
+        "txt-label-merge": "Choose PDF files to merge",
+        "txt-list-title": "Selected Files:",
+        "btn-merge-action": "Start Merging Now",
+        "txt-step-h-merge": "🎬 How to Merge PDF Step by Step",
+        "txt-step1-t-merge": "Step 1: Select Files",
+        "txt-step1-d-merge": "Click 'Choose PDF files' and select all documents you want to merge from your device.",
+        "txt-step2-t-merge": "Step 2: Review List",
+        "txt-step2-d-merge": "Make sure all file names appear in the list to ensure they are ready for merging.",
+        "txt-step3-t-merge": "Step 3: Local Processing",
+        "txt-step3-d-merge": "Click 'Start Merging'. The process happens in your browser to ensure data privacy.",
+        "txt-step4-t-merge": "Step 4: Instant Download",
+        "txt-step4-d-merge": "The system will combine pages and automatically download the merged PDF file.",
+
+        // PDF Compress Section (compress-pdf.html)
+        "txt-hero-title-compress": "Reduce PDF Size",
+        "txt-hero-desc-compress": "Save storage space by compressing PDF files while maintaining content clarity.",
+        "txt-card-title-compress": "Smart File Compressor",
+        "txt-label-compress": "Choose PDF file to compress",
+        "txt-orig-size": "Original File Size:",
+        "txt-comp-size": "Compressed Size:",
+        "btn-compress-action": "Start Compression & Download",
+        "txt-step-h-compress": "🎬 How to Compress PDF Step by Step",
+        "txt-step1-t-compress": "Step 1: Upload File",
+        "txt-step1-d-compress": "Select the PDF file you want to reduce in size from your device.",
+        "txt-step2-t-compress": "Step 2: Size Analysis",
+        "txt-step2-d-compress": "The system will calculate the current size and estimate the compressed size.",
+        "txt-step3-t-compress": "Step 3: Secure Compression",
+        "txt-step3-d-compress": "The compression process happens locally without uploading to any external server.",
+        "txt-step4-t-compress": "Step 4: Download",
+        "txt-step4-d-compress": "Once finished, the compressed version will be downloaded automatically.",
 
         "txt-footer": "© 2026 Smart Image Converter. All rights reserved."
     }
