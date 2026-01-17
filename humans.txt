@@ -1,0 +1,21 @@
+/* TEAM */
+Owner: Smart Image Converter
+Site: https://smart-image-converter.vercel.app/
+Twitter: @imageconverter
+Contact: contact@smart-image-converter.com
+
+/* SITE */
+Last update: 2026/01/17
+Language: Arabic, English
+Doctype: HTML5
+Components: Pure CSS, Vanilla JavaScript
+Software: VSCode, Termux
+
+/* THANKS */
+Google Fonts: Inter, Roboto
+Icons: Unicode Emoji
+Hosting: Vercel
+
+/* NOTE */
+This website is built with passion for helping Arabic users.
+All tools are 100% free and privacy-focused.
