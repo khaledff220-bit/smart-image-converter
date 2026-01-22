@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "أداة دمج PDF - محول الصور الذكي",
+      "url": "https://smart-image-converter.vercel.app/merge-pdf.html",
+      "applicationCategory": "PDFTool",
+      "description": "اجمع عدة ملفات PDF في مستند واحد بسرعة وسهولة وبخصوصية تامة محلياً.",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <title id="page-title">دمج ملفات PDF أونلاين - تجميع عدة ملفات في مستند واحد</title>
+    <meta name="description" content="أسهل أداة لدمج عدة ملفات PDF في مستند واحد مرتب. رتب ملفاتك واجمعها بسرعة فائقة وبخصوصية تامة دون الحاجة لرفعها إلى خوادم خارجية.">
+    <meta name="keywords" content="دمج PDF, تجميع ملفات PDF, تحويل عدة ملفات الى PDF واحد, منظم ملفات PDF مجاني, جمع مستندات, PDF Joiner">
+    <link rel="canonical" href="https://smart-image-converter.vercel.app/merge-pdf.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#4f46e5">
+<link rel="apple-touch-icon" href="/assets/images/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <style>
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; flex-wrap: wrap; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2 ); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
+        .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
+        .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
+        .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; vertical-align: middle; }
+        #fileList .file-item { background: rgba(255,255,255,0.05); margin-bottom: 10px; padding: 12px; border-radius: 10px; border-right: 4px solid #00f2ff; display: flex; justify-content: space-between; align-items: center; }
+        .tutorial-section { margin-top: 50px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; border: 1px dashed rgba(162, 155, 254, 0.3); }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .step h3 { color: #a29bfe; margin-bottom: 10px; }
+        .step p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
+        .file-info { color: #00f2ff; font-weight: bold; margin-bottom: 10px; display: block; }
+    </style>
+</head>
+<body class="fade-in">
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/favicon.png" alt="Logo">
+                <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" id="m1">الرئيسية</a></li>
+                <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
+                <li><a href="decrypt.html" id="m3">🔑 فك تشفير</a></li>
+                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
+                <li><a href="merge-pdf.html" class="active" id="m5">📄 دمج</a></li>
+                <li><a href="compress-pdf.html" id="m6">⚙️ ضغط</a></li>
+            </ul>
+            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
+        </div>
+    </nav>
+
+    <main>
+        <header class="main-header">
+            <h2 class="header-title" id="txt-hero-title-merge">دمج ملفات PDF بسهولة</h2>
+            <p class="header-subtitle" id="txt-hero-desc-merge">اجمع عدة ملفات PDF في مستند واحد مرتب واحترافي بضغطة زر وبأمان تام.</p>
+        </header>
+
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
+            <div class="service-card slide-up">
+                <div class="service-icon">📄</div>
+                <h3 id="txt-card-title-merge">منظم المستندات الذكي</h3>
+
+                <div class="upload-section" id="dropArea">
+                    <div class="upload-icon">➕</div>
+                    <input type="file" id="pdfImages" class="file-input" accept="image/*" multiple>
+                    <label for="pdfImages" class="file-label" id="txt-label-merge">اختر ملفات PDF لدمجها</label>
+
+                    <div id="fileListContainer" style="margin-top: 20px;">
+                        <span id="file-info"  class="file-info">0 من 20 صورة</span>
+                        <p id="txt-list-title" style="color: #00f2ff; margin-bottom: 10px; font-weight: bold;">الملفات المختارة:</p>
+                        <div id="fileList"></div>
+                    </div>
+                </div>
+
+                <div id="status" style="margin: 15px 0; color: #a29bfe; font-weight: bold; text-align: center;"></div>
+                
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button id="btn-merge-action" class="btn" onclick="mergeToPDF()" style="flex: 2;">ابدأ دمج الملفات الآن</button>
+                    <button id="btn-clear-merge" class="btn btn-secondary" onclick="clearAll()" style="flex: 1;">مسح الكل</button>
+                </div>
+
+                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: right; font-size: 0.9rem;">
+                    <div style="margin-bottom: 15px;">
+                        <label id="txt-label-orient" style="color: #a29bfe; display: block; margin-bottom: 5px;">اتجاه الصفحة:</label>
+			<input type="radio" name="orientation" value="portrait" checked> <span id="txt-orient-v">عمودي</span>
+			<input type="radio" name="orientation" value="landscape" style="margin-right: 15px;"> <span id="txt-orient-h">أفقي</span>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label id="txt-label-size" style="color: #a29bfe; display: block; margin-bottom: 5px;">حجم الصفحة:</label>
+                        <select id="pageSize" style="background: #1a1b3a; color: white; border: 1px solid #a29bfe; padding: 5px; border-radius: 5px; width: 100%;">
+                            <option value="a4">A4 (Standard)</option>
+                            <option value="letter">Letter</option>
+                            <option value="legal">Legal</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 20px;">
+                        <label><input type="checkbox" id="addPageNumbers"> <span id="txt-check-numbers">أرقام الصفحات</span></label>
+			<label><input type="checkbox" id="addWatermark"> <span id="txt-check-watermark">علامة مائية</span></label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tutorial-section">
+            <h2 id="txt-step-h-merge" style="color: #00f2ff; text-align: center;">🎬 كيفية دمج ملفات PDF خطوة بخطوة</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3 id="txt-step1-t-merge">الخطوة 1: اختيار الملفات</h3>
+                    <p id="txt-step1-d-merge">اضغط على زر "اختر ملفات PDF" وحدد جميع المستندات التي ترغب في دمجها من جهازك.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step2-t-merge">الخطوة 2: مراجعة القائمة</h3>
+                    <p id="txt-step2-d-merge">تأكد من ظهور أسماء كافة الملفات في القائمة للتأكد من جاهزيتها للدمج.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step3-t-merge">الخطوة 3: المعالجة المحلية</h3>
+                    <p id="txt-step3-d-merge">اضغط على "ابدأ الدمج". تتم العملية داخل متصفحك لضمان خصوصية بياناتك.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step4-t-merge">الخطوة 4: التحميل الفوري</h3>
+                    <p id="txt-step4-d-merge">سيقوم النظام بتجميع الصفحات وتحميل ملف PDF مدمج تلقائياً على جهازك.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="related-tools">
+    <h3 id="txt-related-title">🛠️ أدوات أخرى قد تحتاجها:</h3>
+    <div class="tools-grid">
+        <a href="compress-pdf.html" class="tool-link">
+            <span>⚙️</span>
+            <div>
+                <strong id="txt-related-compress">ضغط PDF</strong>
+                <small id="txt-related-compress-desc">قلل حجم ملفاتك</small>
+            </div>
+        </a>
+        <a href="password-protect.html" class="tool-link">
+            <span>🔒</span>
+            <div>
+                <strong id="txt-related-protect">حماية الصور</strong>
+                <small id="txt-related-protect-desc">أضف كلمة مرور</small>
+            </div>
+        </a>
+        <a href="image-quality.html" class="tool-link">
+            <span>✨</span>
+            <div>
+                <strong id="txt-related-quality">تحسين الجودة</strong>
+                <small id="txt-related-quality-desc">حسن صورك</small>
+            </div>
+        </a>
+    </div>
+</div>
+
+    <footer class="site-footer" style="text-align: center; padding: 30px 0;">
+        <p id="txt-footer">&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="assets/js/merge-pdf.js"></script>
+    <script src="assets/js/advanced-effects.js"></script>
+    <script src="assets/js/lang.js"></script>
+</body>
+</html>
