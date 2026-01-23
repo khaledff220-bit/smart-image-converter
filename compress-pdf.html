@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title id="page-title">ضغط ملفات PDF أونلاين - تقليل حجم PDF مع الحفاظ على الجودة</title>
+    <meta name="description" content="أداة ذكية لضغط ملفات PDF وتقليل حجمها بنسبة كبيرة دون التأثير على وضوح النصوص. تتم عملية الضغط داخل متصفحك مباشرة لضمان أقصى درجات الأمان والخصوصية.">
+    <meta name="keywords" content="ضغط PDF مجانا, تقليل حجم ملف PDF, تصغير PDF اونلاين, ضغط PDF بدون رفع الملفات, تصغير حجم المستندات">
+    <link rel="canonical" href="https://smart-image-converter.vercel.app/compress-pdf.html" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "أداة ضغط PDF الذكية",
+      "url": "https://smart-image-converter.vercel.app/compress-pdf.html",
+      "applicationCategory": "UtilitiesApplication",
+      "description": "تقليل حجم ملفات PDF بنسبة تصل إلى 90% مع الحفاظ على الجودة العالية للمستندات.",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <meta name="theme-color" content="#4f46e5">
+    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <style>
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; flex-wrap: wrap; }
+        .lang-btn { background: rgba(162, 155, 254, 0.2 ); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; transition: 0.3s; }
+        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
+        .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
+        .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; color: white; }
+        .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; }
+        .tutorial-section { margin-top: 50px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; border: 1px dashed rgba(162, 155, 254, 0.3); }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .step h3 { color: #a29bfe; margin-bottom: 10px; }
+        .step p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
+        .level-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; cursor: pointer; transition: 0.3s; text-align: center; }
+        .level-card:hover { border-color: #00f2ff; background: rgba(0,242,255,0.05); }
+        .level-card.selected { border-color: #00f2ff; background: rgba(0,242,255,0.1); box-shadow: 0 0 15px rgba(0,242,255,0.2); }
+        .level-card h4 { color: #00f2ff; margin-bottom: 5px; }
+        .level-card p { font-size: 0.8rem; color: #aaa; margin: 0; }
+        .progress-bar-container { background: rgba(255,255,255,0.1); height: 10px; border-radius: 5px; margin: 10px 0; overflow: hidden; }
+        .progress-bar { height: 100%; background: #00f2ff; width: 0%; transition: 0.5s; }
+    </style>
+</head>
+<body class="fade-in">
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/favicon.png" alt="Logo">
+                <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" id="m1">الرئيسية</a></li>
+                <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
+                <li><a href="decrypt.html" id="m3">🔑 فك تشفير</a></li>
+                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
+                <li><a href="merge-pdf.html" id="m5">📄 دمج</a></li>
+                <li><a href="compress-pdf.html" class="active" id="m6">⚙️ ضغط</a></li>
+            </ul>
+            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
+        </div>
+    </nav>
+
+    <main>
+        <header class="main-header">
+            <h2 class="header-title" id="txt-hero-title-compress">تقليل حجم PDF الذكي</h2>
+            <p class="header-subtitle" id="txt-hero-desc-compress">وفر مساحة التخزين عبر ضغط ملفات PDF محلياً مع الحفاظ على وضوح المحتوى.</p>
+        </header>
+
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
+            <div class="service-card slide-up">
+                <div class="service-icon">📉</div>
+                <h3 id="txt-card-title-compress">ضاغط الملفات الآمن</h3>
+
+                <div class="upload-section" id="pdfDropArea">
+                    <div class="upload-icon">🗜️</div>
+                    <input type="file" id="pdfFile" class="file-input" accept="application/pdf">
+                    <label for="pdfFile" class="file-label" id="txt-label-compress">اختر ملف PDF المراد ضغطه</label>
+
+                    <div id="pdfInfo" style="margin-top: 20px; display: none; background: rgba(0, 242, 255, 0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: right;">
+                        <p id="fileName" style="color: #00f2ff; font-weight: bold; margin-bottom: 5px;"></p>
+                        
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                <span id="txt-orig-size">الحجم الحالي:</span>
+                                <span id="originalSizeText" style="color: white;">-</span>
+                            </div>
+                            <div class="progress-bar-container"><div class="progress-bar" id="originalBar" style="width: 100%;"></div></div>
+
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px; margin-top: 10px;">
+                                <span id="txt-comp-size" style="color: #00f2ff;">الحجم بعد الضغط:</span>
+                                <span id="compressedSizeText" style="color: #00f2ff;">-</span>
+                            </div>
+                            <div class="progress-bar-container"><div class="progress-bar" id="compressedBar" style="background: #00f2ff;"></div></div>
+                            <p style="text-align: center; color: #00f2ff; font-weight: bold; margin-top: 5px;"><span id="txt-savings-label">نسبة التوفير:</span> <span id="savingsText">0%</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <p id="txt-comp-level-title" style="color: #a29bfe; margin-bottom: 10px; text-align: right;">اختر قوة الضغط:</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                        <div class="level-card" data-level="low">
+                            <h4 id="txt-level-low" >خفيف</h4>
+                            <p id="txt-level-low-desc">أعلى جودة</p>
+                        </div>
+                        <div class="level-card selected" data-level="medium">
+                            <h4 id="txt-level-med">متوازن</h4>
+                            <p id="txt-level-med-desc">موصى به</p>
+                        </div>
+                        <div class="level-card" data-level="high">
+                            <h4 id="txt-level-high">قوي</h4>
+                            <p id="txt-level-high-desc">أصغر حجم</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="status" style="margin: 15px 0; color: #a29bfe; font-weight: bold; text-align: center; min-height: 1.5em;"></div>
+
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="btn" onclick="processPDFCompression()" id="btn-compress-action" style="flex: 2;">ابدأ المعالجة والتحميل</button>
+                    <button class="btn btn-secondary" onclick="resetTool()" id="btn-reset-compress" style="flex: 1;">إلغاء</button>
+                </div>
+
+                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: right; font-size: 0.9rem;">
+                    <label style="display: block; margin-bottom: 10px;"><input type="checkbox" id="optimizeImages" checked><span id="txt-opt-img"> ضغط الصور الداخلية </span></label>
+                    <label style="display: block; margin-bottom: 10px;"><input type="checkbox" id="removeMetadata" checked><span id="txt-rem-meta"> تنظيف البيانات الوصفية </span></label>
+                </div>
+            </div>
+        </section>
+
+        <section class="tutorial-section">
+            <h2 id="txt-step-h-compress" style="color: #00f2ff; text-align: center;">⚙️ كيف تعمل تقنية الضغط المحلي؟</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3 id="txt-step1-t-compress">1. استيراد الملف</h3>
+                    <p id="txt-step1-d-compress">يتم قراءة ملفك داخل ذاكرة المتصفح المؤقتة فقط.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step2-t-compress">2. إعادة البناء</h3>
+                    <p id="txt-step2-d-compress">يقوم النظام بإعادة كتابة هيكل الـ PDF ليكون أكثر كفاءة.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step3-t-compress">3. ضغط العناصر</h3>
+                    <p id="txt-step3-d-compress">يتم ضغط الخطوط والصور المدمجة لتقليل الحجم الكلي.</p>
+                </div>
+                <div class="step">
+                    <h3 id="txt-step4-t-compress">4. التحميل الآمن</h3>
+                    <p id="txt-step4-d-compress">تحصل على ملفك الجديد دون أن يغادر جهازك أبداً.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="related-tools">
+        <h3 id="txt-related-title">🛠️ أدوات إضافية:</h3>
+        <div class="tools-grid">
+            <a href="merge-pdf.html" class="tool-link">
+                <span>📄</span>
+                <div>
+                    <strong id="txt-related-merge">دمج PDF</strong>
+                    <small id="txt-related-merge-desc">اجمع عدة ملفات</small>
+                </div>
+            </a>
+            <a href="password-protect.html" class="tool-link">
+                <span>🔒</span>
+                <div>
+                    <strong id="txt-related-protect">حماية الملفات</strong>
+                    <small id="txt-related-protect-desc">تشفير بكلمة سر</small>
+                </div>
+            </a>
+            <a href="image-quality.html" class="tool-link">
+                <span>✨</span>
+                <div>
+                    <strong id="txt-related-quality">تحسين الصور</strong>
+                    <small id="txt-related-quality-desc">رفع الجودة</small>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="site-footer" style="text-align: center; padding: 30px 0;">
+        <p id="txt-footer">&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="assets/js/compress-pdf.js"></script>
+    <script src="assets/js/advanced-effects.js"></script>
+    <script src="assets/js/lang.js"></script>
+</body>
+</html>

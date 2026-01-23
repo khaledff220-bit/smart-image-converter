@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="txt-title-upscale-page">تحسين جودة الصور - Smart Converter</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#4f46e5">
+<link rel="apple-touch-icon" href="/assets/images/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="fade-in">
+    <div class="stars"></div>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">🖼️</div>
+                <h1 id="txt-logo">Smart Converter</h1>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" id="m1">الرئيسية</a></li>
+                <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
+                <li><a href="decrypt.html" id="m3">🔑 فك</a></li>
+                <li><a href="upscale.html" class="active" id="m4">🖼️ جودة</a></li>
+            </ul>
+            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
+        </div>
+    </nav>
+
+    <main class="main-header">
+        <h2 class="header-title" id="txt-hero-title-upscale">تحسين جودة الصور</h2>
+        <p class="header-subtitle" id="txt-hero-desc-upscale">تقنية 2026 لمعالجة البكسلات مباشرة في متصفحك.</p>
+
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: auto;">
+            <div class="service-card slide-up interactive-card">
+                <div class="service-icon">✨</div>
+                
+                <div class="upload-section" onclick="document.getElementById('fileUpload').click()">
+                    <div class="upload-icon">📤</div>
+                    <input type="file" id="fileUpload" class="file-input" accept="image/*" onchange="previewImage(this)">
+                    <label id="txt-label-upscale" class="file-label">اضغط لاختيار صورة</label>
+                    <div id="fileInfo" style="margin-top: 10px; color: var(--neon-blue); font-size: 0.9rem; display: none;">
+                        📄 <span id="fileName"></span>
+                    </div>
+                </div>
+
+                <div id="previewContainer" style="display: none; margin: 20px 0; text-align: center;">
+                    <p id="txt-preview-label" style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 10px;">المعاينة الحالية:</p>
+                    <img id="selectionPreview" style="max-height: 200px; border-radius: 8px; border: 1px solid var(--card-border); box-shadow: 0 0 15px rgba(0,243,255,0.2);">
+                </div>
+
+                <div id="status" style="margin: 15px 0; color: var(--neon-blue); font-weight: bold; text-align: center;"></div>
+
+                <button id="btnUpscale" class="btn" style="width: 100%;">
+                    <span id="txt-btn-upscale-start">ابدأ التحسين الآمن</span>
+                </button>
+
+                <div id="resultArea" style="margin-top: 25px; display: none; text-align: center;">
+                    <canvas id="upscaledCanvas" style="max-width: 100%; border-radius: 15px; border: 2px solid var(--neon-blue); box-shadow: var(--shadow-neon);"></canvas>
+                    <br><br>
+                    <a id="downloadLink" class="btn btn-secondary">
+                        <span id="txt-btn-download">📥 تحميل الصورة المحسنة</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="service-card" style="margin-top: 30px; border: 1px dashed var(--neon-blue); background: rgba(0,243,255,0.05);">
+                <h3 id="txt-privacy-title">🔒 حماية وخصوصية بياناتك</h3>
+                <p id="txt-privacy-desc" style="font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary);">
+                    تتم عملية تحسين الصور بالكامل داخل متصفحك. نحن لا نقوم برفع صورك إلى أي خادم خارجي، مما يضمن أماناً بنسبة 100%.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <div class="related-tools">
+    <h3 id="txt-related-title">🛠️ أدوات أخرى قد تحتاجها:</h3>
+    <div class="tools-grid">
+        <a href="compress-pdf.html" class="tool-link">
+            <span>⚙️</span>
+            <div>
+                <strong id="txt-related-compress">ضغط PDF</strong>
+                <small id="txt-related-compress-desc">قلل حجم ملفاتك</small>
+            </div>
+        </a>
+        <a href="password-protect.html" class="tool-link">
+            <span>🔒</span>
+            <div>
+                <strong id="txt-related-protect">حماية الصور</strong>
+                <small id="txt-related-protect-desc">أضف كلمة مرور</small>
+            </div>
+        </a>
+        <a href="image-quality.html" class="tool-link">
+            <span>✨</span>
+            <div>
+                <strong id="txt-related-quality">تحسين الجودة</strong>
+                <small id="txt-related-quality-desc">حسن صورك</small>
+            </div>
+        </a>
+    </div>
+</div>
+
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p id="txt-footer">© 2026 محول الصور الذكي</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/lang.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
