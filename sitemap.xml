@@ -3,42 +3,41 @@
 
   <url>
     <loc>https://smart-image-converter.vercel.app/</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
 
   <url>
     <loc>https://smart-image-converter.vercel.app/merge-pdf</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://smart-image-converter.vercel.app/compress-pdf</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
+    <priority>1.00</priority> </url>
 
   <url>
     <loc>https://smart-image-converter.vercel.app/password-protect</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://smart-image-converter.vercel.app/image-quality</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://smart-image-converter.vercel.app/decrypt</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
