@@ -3,199 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title id="page-title">ضغط ملفات PDF أونلاين - تقليل حجم PDF مع الحفاظ على الجودة</title>
-    <meta name="description" content="أداة ذكية لضغط ملفات PDF وتقليل حجمها بنسبة كبيرة دون التأثير على وضوح النصوص. تتم عملية الضغط داخل متصفحك مباشرة لضمان أقصى درجات الأمان والخصوصية.">
-    <meta name="keywords" content="ضغط PDF مجانا, تقليل حجم ملف PDF, تصغير PDF اونلاين, ضغط PDF بدون رفع الملفات, تصغير حجم المستندات">
-    <link rel="canonical" href="https://smart-image-converter.vercel.app/compress-pdf.html" />
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "أداة ضغط PDF الذكية",
-      "url": "https://smart-image-converter.vercel.app/compress-pdf.html",
-      "applicationCategory": "UtilitiesApplication",
-      "description": "تقليل حجم ملفات PDF بنسبة تصل إلى 90% مع الحفاظ على الجودة العالية للمستندات.",
-      "operatingSystem": "Any",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-    }
-    </script>
-
-    <meta name="theme-color" content="#4f46e5">
-    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title id="page-title">ضغط ملفات PDF أونلاين | محول الصور الذكي</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
     <style>
+        /* التنسيقات لضمان مظهر موحد وسلس */
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; flex-wrap: wrap; }
-        .lang-btn { background: rgba(162, 155, 254, 0.2 ); color: #a29bfe; border: 1px solid #a29bfe; padding: 5px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; margin: 0 10px; transition: 0.3s; }
-        .lang-btn:hover { background: #a29bfe; color: #0a0b1e; }
         .nav-menu { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
         .nav-menu a { text-decoration: none; color: white; font-size: 0.9rem; transition: 0.3s; }
         .nav-menu a:hover, .nav-menu a.active { color: #a29bfe; }
         .nav-logo { display: flex; align-items: center; text-decoration: none; color: white; }
         .nav-logo img { width: 32px; height: 32px; margin-left: 10px; border-radius: 5px; }
-        .tutorial-section { margin-top: 50px; padding: 20px; background: rgba(255, 255, 255, 0.02); border-radius: 15px; border: 1px dashed rgba(162, 155, 254, 0.3); }
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .step h3 { color: #a29bfe; margin-bottom: 10px; }
-        .step p { font-size: 0.9rem; line-height: 1.6; color: #ccc; }
-        .level-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; cursor: pointer; transition: 0.3s; text-align: center; }
-        .level-card:hover { border-color: #00f2ff; background: rgba(0,242,255,0.05); }
-        .level-card.selected { border-color: #00f2ff; background: rgba(0,242,255,0.1); box-shadow: 0 0 15px rgba(0,242,255,0.2); }
-        .level-card h4 { color: #00f2ff; margin-bottom: 5px; }
-        .level-card p { font-size: 0.8rem; color: #aaa; margin: 0; }
-        .progress-bar-container { background: rgba(255,255,255,0.1); height: 10px; border-radius: 5px; margin: 10px 0; overflow: hidden; }
-        .progress-bar { height: 100%; background: #00f2ff; width: 0%; transition: 0.5s; }
+
+        .compression-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+        }
+        .stat-item { text-align: center; }
+        .stat-label { display: block; color: #a29bfe; font-size: 0.8rem; }
+        .stat-value { display: block; color: #00f2ff; font-weight: bold; font-size: 1.1rem; }
+
+        .progress-container { width: 100%; background: rgba(255,255,255,0.1); height: 18px; border-radius: 10px; margin: 20px 0; overflow: hidden; display: none; border: 1px solid rgba(0, 242, 255, 0.3); }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, #a29bfe, #00f2ff); width: 0%; transition: 0.3s; text-align: center; font-size: 0.8rem; line-height: 18px; color: #000; font-weight: bold; }
     </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PNHBTPESQT');</script></head>
+
+    <script src="assets/libs/pdfjs/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
 <body class="fade-in">
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="assets/images/favicon.png" alt="Logo">
-                <h1 id="txt-logo">مُحوِّل الصور الذكي</h1>
+                <h1>مُحوِّل الصور الذكي</h1>
             </a>
             <ul class="nav-menu">
-                <li><a href="index.html" id="m1">الرئيسية</a></li>
-                <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
-                <li><a href="decrypt.html" id="m3">🔑 فك تشفير</a></li>
-                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
-                <li><a href="merge-pdf.html" id="m5">📄 دمج</a></li>
-                <li><a href="compress-pdf.html" class="active" id="m6">⚙️ ضغط</a></li>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="merge-pdf.html">📄 دمج</a></li>
+                <li><a href="compress-pdf.html" class="active">⚙️ ضغط</a></li>
             </ul>
-            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
         </div>
     </nav>
 
     <main>
         <header class="main-header">
-            <h2 class="header-title" id="txt-hero-title-compress">تقليل حجم PDF الذكي</h2>
-            <p class="header-subtitle" id="txt-hero-desc-compress">وفر مساحة التخزين عبر ضغط ملفات PDF محلياً مع الحفاظ على وضوح المحتوى.</p>
+            <h2 class="header-title">ضغط ملفات PDF بذكاء</h2>
+            <p class="header-subtitle">قلل حجم مستنداتك مع الحفاظ على الجودة بخصوصية تامة داخل جهازك.</p>
         </header>
 
         <section class="services-grid" style="grid-template-columns: 1fr; max-width: 700px;">
             <div class="service-card slide-up">
-                <div class="service-icon">📉</div>
-                <h3 id="txt-card-title-compress">ضاغط الملفات الآمن</h3>
+                <div class="service-icon">⚙️</div>
+                <h3>أداة تقليص الحجم</h3>
 
-                <div class="upload-section" id="pdfDropArea">
-                    <div class="upload-icon">🗜️</div>
-                    <input type="file" id="pdfFile" class="file-input" accept="application/pdf">
-                    <label for="pdfFile" class="file-label" id="txt-label-compress">اختر ملف PDF المراد ضغطه</label>
+                <div class="upload-section" id="dropArea">
+                    <div class="upload-icon">📉</div>
+                    <input type="file" id="pdfInput" class="file-input" accept=".pdf">
+                    <label for="pdfInput" class="file-label">اضغط هنا لاختيار ملف PDF لضغطه</label>
+                </div>
 
-                    <div id="pdfInfo" style="margin-top: 20px; display: none; background: rgba(0, 242, 255, 0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: right;">
-                        <p id="fileName" style="color: #00f2ff; font-weight: bold; margin-bottom: 5px;"></p>
-                        
-                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                                <span id="txt-orig-size">الحجم الحالي:</span>
-                                <span id="originalSizeText" style="color: white;">-</span>
-                            </div>
-                            <div class="progress-bar-container"><div class="progress-bar" id="originalBar" style="width: 100%;"></div></div>
-
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px; margin-top: 10px;">
-                                <span id="txt-comp-size" style="color: #00f2ff;">الحجم بعد الضغط:</span>
-                                <span id="compressedSizeText" style="color: #00f2ff;">-</span>
-                            </div>
-                            <div class="progress-bar-container"><div class="progress-bar" id="compressedBar" style="background: #00f2ff;"></div></div>
-                            <p style="text-align: center; color: #00f2ff; font-weight: bold; margin-top: 5px;"><span id="txt-savings-label">نسبة التوفير:</span> <span id="savingsText">0%</span></p>
-                        </div>
+                <div class="compression-stats" id="fileStats" style="display:none;">
+                    <div class="stat-item">
+                        <span class="stat-label">عدد الصفحات</span>
+                        <span class="stat-value" id="pageCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">الحجم الحالي</span>
+                        <span class="stat-value" id="originalSize">0 MB</span>
                     </div>
                 </div>
 
-                <div style="margin-top: 20px;">
-                    <p id="txt-comp-level-title" style="color: #a29bfe; margin-bottom: 10px; text-align: right;">اختر قوة الضغط:</p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-                        <div class="level-card" data-level="low">
-                            <h4 id="txt-level-low" >خفيف</h4>
-                            <p id="txt-level-low-desc">أعلى جودة</p>
-                        </div>
-                        <div class="level-card selected" data-level="medium">
-                            <h4 id="txt-level-med">متوازن</h4>
-                            <p id="txt-level-med-desc">موصى به</p>
-                        </div>
-                        <div class="level-card" data-level="high">
-                            <h4 id="txt-level-high">قوي</h4>
-                            <p id="txt-level-high-desc">أصغر حجم</p>
-                        </div>
-                    </div>
+                <div style="margin: 20px 0; text-align: right;">
+                    <label style="color: #ccc; font-size: 0.9rem;">جودة الضغط: <span id="qualityValue" style="color: #00f2ff;">80%</span></label>
+                    <input type="range" id="qualitySlider" min="10" max="100" value="80" style="width: 100%; margin-top: 10px;">
                 </div>
 
-                <div id="status" style="margin: 15px 0; color: #a29bfe; font-weight: bold; text-align: center; min-height: 1.5em;"></div>
+                <div class="progress-container" id="progressCont">
+                    <div class="progress-bar" id="progressBar">0%</div>
+                </div>
 
                 <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button class="btn" onclick="processPDFCompression()" id="btn-compress-action" style="flex: 2;">ابدأ المعالجة والتحميل</button>
-                    <button class="btn btn-secondary" onclick="resetTool()" id="btn-reset-compress" style="flex: 1;">إلغاء</button>
+                    <button class="btn" id="compressBtn" onclick="startCompression()" style="flex: 2;">🚀 بدء عملية الضغط</button>
+                    <button class="btn btn-secondary" onclick="location.reload()" style="flex: 1;">إلغاء</button>
                 </div>
 
-                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: right; font-size: 0.9rem;">
-                    <label style="display: block; margin-bottom: 10px;"><input type="checkbox" id="optimizeImages" checked><span id="txt-opt-img"> ضغط الصور الداخلية </span></label>
-                    <label style="display: block; margin-bottom: 10px;"><input type="checkbox" id="removeMetadata" checked><span id="txt-rem-meta"> تنظيف البيانات الوصفية </span></label>
-                </div>
-            </div>
-        </section>
-
-        <section class="tutorial-section">
-            <h2 id="txt-step-h-compress" style="color: #00f2ff; text-align: center;">⚙️ كيف تعمل تقنية الضغط المحلي؟</h2>
-            <div class="steps">
-                <div class="step">
-                    <h3 id="txt-step1-t-compress">1. استيراد الملف</h3>
-                    <p id="txt-step1-d-compress">يتم قراءة ملفك داخل ذاكرة المتصفح المؤقتة فقط.</p>
-                </div>
-                <div class="step">
-                    <h3 id="txt-step2-t-compress">2. إعادة البناء</h3>
-                    <p id="txt-step2-d-compress">يقوم النظام بإعادة كتابة هيكل الـ PDF ليكون أكثر كفاءة.</p>
-                </div>
-                <div class="step">
-                    <h3 id="txt-step3-t-compress">3. ضغط العناصر</h3>
-                    <p id="txt-step3-d-compress">يتم ضغط الخطوط والصور المدمجة لتقليل الحجم الكلي.</p>
-                </div>
-                <div class="step">
-                    <h3 id="txt-step4-t-compress">4. التحميل الآمن</h3>
-                    <p id="txt-step4-d-compress">تحصل على ملفك الجديد دون أن يغادر جهازك أبداً.</p>
+                <div id="results" style="display:none; margin-top: 20px; padding: 15px; background: rgba(162, 155, 254, 0.1); border-radius: 10px; border: 1px solid #a29bfe;">
+                    <p style="color: #00f2ff; margin-bottom: 10px; font-weight: bold;">✅ تم الضغط بنجاح!</p>
+                    <p style="font-size: 0.9rem;">الحجم الجديد: <span id="finalNew" style="color: #a29bfe;"></span></p>
+                    <a id="downloadLink" class="btn" style="display: block; text-align: center; margin-top: 10px; text-decoration: none;">⬇️ تحميل الملف المضغوط</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <div class="related-tools">
-        <h3 id="txt-related-title">🛠️ أدوات إضافية:</h3>
-        <div class="tools-grid">
-            <a href="merge-pdf.html" class="tool-link">
-                <span>📄</span>
-                <div>
-                    <strong id="txt-related-merge">دمج PDF</strong>
-                    <small id="txt-related-merge-desc">اجمع عدة ملفات</small>
-                </div>
-            </a>
-            <a href="password-protect.html" class="tool-link">
-                <span>🔒</span>
-                <div>
-                    <strong id="txt-related-protect">حماية الملفات</strong>
-                    <small id="txt-related-protect-desc">تشفير بكلمة سر</small>
-                </div>
-            </a>
-            <a href="image-quality.html" class="tool-link">
-                <span>✨</span>
-                <div>
-                    <strong id="txt-related-quality">تحسين الصور</strong>
-                    <small id="txt-related-quality-desc">رفع الجودة</small>
-                </div>
-            </a>
-        </div>
-    </div>
+    <script src="assets/js/pdf-compressor.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'assets/libs/pdfjs/pdf.worker.min.js';
+        let currentFile = null;
 
-    <footer class="site-footer" style="text-align: center; padding: 30px 0;">
-        <p id="txt-footer">&copy; 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
-    </footer>
+        // دالة اختيار الملف
+        document.getElementById('pdfInput').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            currentFile = file;
 
-    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-    <script src="assets/js/compress-pdf.js"></script>
-    <script src="assets/js/advanced-effects.js"></script>
-    <script src="assets/js/lang.js"></script>
+            document.getElementById('fileStats').style.display = 'grid';
+            document.getElementById('originalSize').textContent = (file.size / (1024*1024)).toFixed(2) + " MB";
+            document.getElementById('results').style.display = 'none';
+
+            const typedarray = new Uint8Array(await file.arrayBuffer());
+            const pdf = await pdfjsLib.getDocument(typedarray).promise;
+            document.getElementById('pageCount').textContent = pdf.numPages;
+        });
+
+        document.getElementById('qualitySlider').addEventListener('input', (e) => {
+            document.getElementById('qualityValue').textContent = e.target.value + '%';
+        });
+
+        // دالة الضغط المصححة
+        async function startCompression() {
+            if (!currentFile) return alert("اختر ملفاً أولاً");
+
+            const quality = document.getElementById('qualitySlider').value;
+            const progressCont = document.getElementById('progressCont');
+            const progressBar = document.getElementById('progressBar');
+            const compressBtn = document.getElementById('compressBtn');
+            const resultsDiv = document.getElementById('results');
+
+            progressCont.style.display = 'block';
+            resultsDiv.style.display = 'none';
+            compressBtn.disabled = true;
+
+            try {
+                const compressedBlob = await compressPDFReal(currentFile, quality, (percent) => {
+                    progressBar.style.width = percent + '%';
+                    progressBar.textContent = Math.round(percent) + '%';
+                });
+
+                resultsDiv.style.display = 'block';
+                progressCont.style.display = 'none'; // إخفاء الشريط عند النجاح
+                document.getElementById('finalNew').textContent = (compressedBlob.size / (1024*1024)).toFixed(2) + " MB";
+
+                const url = URL.createObjectURL(compressedBlob);
+                const dl = document.getElementById('downloadLink');
+                dl.href = url;
+                dl.download = "compressed_" + currentFile.name;
+
+            } catch (err) {
+                alert("خطأ أثناء الضغط: " + err.message);
+                progressCont.style.display = 'none';
+            } finally {
+                compressBtn.disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>
