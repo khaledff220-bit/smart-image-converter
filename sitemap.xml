@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://smart-image-converter.vercel.app/</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.00</priority>
-  </url>
-
-  <url>
-    <loc>https://smart-image-converter.vercel.app/merge-pdf</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://smart-image-converter.vercel.app/compress-pdf</loc>
-    <lastmod>2026-01-30</lastmod>
+    <loc>https://smart-image-converter.vercel.app/merge-pdf.html</loc>
+    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.00</priority> </url>
-
-  <url>
-    <loc>https://smart-image-converter.vercel.app/password-protect</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://smart-image-converter.vercel.app/image-quality</loc>
-    <lastmod>2026-01-30</lastmod>
+    <loc>https://smart-image-converter.vercel.app/compress-pdf.html</loc>
+    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority> 
   </url>
-
   <url>
-    <loc>https://smart-image-converter.vercel.app/decrypt</loc>
-    <lastmod>2026-01-30</lastmod>
+    <loc>https://smart-image-converter.vercel.app/password-protect.html</loc>
+    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://smart-image-converter.vercel.app/image-quality.html</loc>
+    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://smart-image-converter.vercel.app/decrypt.html</loc>
+    <lastmod>2026-01-31T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
+```
+
+## ✅ خطوات إضافية لتحسين الفهرسة:
+
+1. **تحقق من robots.txt** - تأكد أنه يشير لملف sitemap:
+```
+   Sitemap: https://smart-image-converter.vercel.app/sitemap.xml

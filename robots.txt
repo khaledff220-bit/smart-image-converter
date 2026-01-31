@@ -1,11 +1,4 @@
 User-agent: *
 Allow: /
-Allow: /assets/css/
-Allow: /assets/js/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /temp/
 
 Sitemap: https://smart-image-converter.vercel.app/sitemap.xml
-
-Crawl-delay: 1
