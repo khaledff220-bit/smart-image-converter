@@ -3,116 +3,790 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="https://smart-image-converter.vercel.app/decrypt" />
-
-    <title id="txt-title-dec-page">فك التشفير - Smart Converter</title>
-
+    <title id="txt-title-dec-page">فك تشفير الصور المشفرة | استعادة الصور المحمية بكلمة مرور | محول الصور الذكي</title>
+    
+    <meta name="description" content="أداة عربية متقدمة لفك تشفير الصور المشفرة بـ AES-256. استعد صورك الأصلية من الملفات المشفرة بكلمة مرور. عملية 100% محلية وآمنة داخل متصفحك.">
+    
+    <meta name="keywords" content="فك تشفير الصور, استعادة الصور المشفرة, فك حماية الصور, فك تشفير AES-256, استرجاع الصور المحمية, فك تشفير بكلمة مرور">
+    
+    <link rel="canonical" href="https://smart-image-converter.vercel.app/decrypt.html" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<meta name="theme-color" content="#4f46e5">
-<link rel="apple-touch-icon" href="/assets/images/icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#4f46e5">
+    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
     <style>
-        #decryptedImage { max-width: 100%; border-radius: 15px; margin-top: 20px; display: none; border: 2px solid var(--neon-purple); }
+        .decryption-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .security-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+
+        .security-card {
+            background: linear-gradient(145deg, rgba(10, 11, 30, 0.8), rgba(20, 30, 60, 0.8));
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-card:hover {
+            transform: translateY(-5px);
+            border-color: #00f2ff;
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.2);
+        }
+
+        .security-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(10, 11, 30, 0.9), rgba(25, 35, 70, 0.9));
+            border-radius: 20px;
+            border: 2px solid rgba(33, 150, 243, 0.3);
+        }
+
+        .step-item {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2196F3;
+            display: block;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .step-label {
+            color: #a29bfe;
+            font-size: 1rem;
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .encryption-info {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(25, 118, 210, 0.1));
+            border: 2px dashed #2196F3;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            text-align: center;
+            animation: glow-blue 3s infinite alternate;
+        }
+
+        @keyframes glow-blue {
+            from { box-shadow: 0 0 15px rgba(33, 150, 243, 0.3); }
+            to { box-shadow: 0 0 25px rgba(33, 150, 243, 0.5); }
+        }
+
+        .feature-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 0 3px;
+        }
+
+        .badge-blue { background: #2196F3; color: white; }
+        .badge-green { background: #4CAF50; color: white; }
+        .badge-orange { background: #FF9800; color: white; }
+        .badge-purple { background: #a29bfe; color: white; }
+
+        #decryptedImage {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+            display: none;
+            border: 2px solid #2196F3;
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);
+        }
+
+        .file-upload-area {
+            border: 2px dashed #2196F3;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 20px 0;
+            background: rgba(33, 150, 243, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-upload-area:hover {
+            background: rgba(33, 150, 243, 0.1);
+            border-color: #00f2ff;
+        }
+
+        .password-input {
+            position: relative;
+            margin: 25px 0;
+        }
+
+        .password-input input {
+            width: 100%;
+            padding: 15px 50px 15px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .password-input input:focus {
+            border-color: #00f2ff;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            outline: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #a29bfe;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .success-message {
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 10px;
+            border: 1px solid #4CAF50;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(244, 67, 54, 0.1);
+            border-radius: 10px;
+            border: 1px solid #f44336;
+        }
+
+        @media (max-width: 768px) {
+            .security-features {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .step-item {
+                min-width: 100%;
+            }
+
+            .encryption-info {
+                padding: 20px 15px;
+            }
+        }
     </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PNHBTPESQT');</script></head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PNHBTPESQT');
+    </script>
+</head>
 <body class="fade-in">
     <div class="stars"></div>
 
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <div class="logo-icon">🔑</div>
-                <h1 id="txt-logo">Smart Image Converter</h1>
+                <div class="logo-icon">🔓</div>
+                <h1 id="txt-logo">محول الصور الذكي</h1>
             </a>
+
             <ul class="nav-menu">
-                <li><a href="index.html" id="m1">الرئيسية</a></li>
+                <li><a href="index.html" id="m1">🏠 الرئيسية</a></li>
                 <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
-                <li><a href="decrypt.html" class="active" id="m3">🔑 فك</a></li>
-                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
+                <li><a href="decrypt.html" id="m3" class="active">🔑 فك تشفير</a></li>
+                <li><a href="image-quality.html" id="m4">🖼️ تحسين جودة</a></li>
             </ul>
-            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">English</button>
+
+            <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">
+                🌐 English
+            </button>
         </div>
     </nav>
 
     <main class="main-container">
         <header class="main-header">
-            <h2 class="header-title" id="txt-hero-title-decrypt">استعادة الصور المشفرة</h2>
-            <p class="header-subtitle" id="txt-hero-desc-decrypt">أدخل الملف المشفر وكلمة المرور الصحيحة لاستعادة صورتك الأصلية فوراً.</p>
+            <h1 class="header-title" id="txt-hero-title-decrypt">
+                <span class="decryption-badge">🔓 فك تشفير AES-256 العسكري</span>
+                <br>
+                استعادة الصور المشفرة بكلمة مرور
+            </h1>
+            <p class="header-subtitle" id="txt-hero-desc-decrypt">
+                <strong>✨ أول أداة عربية لفك تشفير الصور المشفرة تعمل 100% داخل متصفحك!</strong>
+                <br>
+                أدخل الملف المشفـر وكلمة المرور الصحيحة لاستعادة صورتك الأصلية فورياً
+            </p>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <span class="feature-badge badge-blue">🔐 AES-256</span>
+                <span class="feature-badge badge-green">⚡ معالجة محلية</span>
+                <span class="feature-badge badge-orange">🤖 ذكاء اصطناعي</span>
+                <span class="feature-badge badge-purple">🔓 فك تشفير آمن</span>
+            </div>
         </header>
+
+        <div class="process-steps">
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <span class="step-label">رفع الملف المشفر</span>
+            </div>
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <span class="step-label">إدخال كلمة المرور</span>
+            </div>
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <span class="step-label">فك التشفير الآمن</span>
+            </div>
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <span class="step-label">تحميل الصورة الأصلية</span>
+            </div>
+        </div>
+
+        <section class="security-features">
+            <div class="security-card">
+                <span class="security-icon">🔐</span>
+                <h3>تشفير AES-256 العسكري</h3>
+                <p>فك تشفير باستخدام نفس المعايير العسكرية المستخدمة في حماية البيانات الحساسة.</p>
+            </div>
+
+            <div class="security-card">
+                <span class="security-icon">⚡</span>
+                <h3>معالجة محلية 100%</h3>
+                <p>جميع عمليات فك التشفير تتم داخل متصفحك. ملفاتك لا تترك جهازك أبداً.</p>
+            </div>
+
+            <div class="security-card">
+                <span class="security-icon">🤖</span>
+                <h3>ذكاء اصطناعي للكشف</h3>
+                <p>خوارزميات ذكية تكتشف تلقائياً نوع التشفير وتطبق الطريقة المناسبة للفك.</p>
+            </div>
+
+            <div class="security-card">
+                <span class="security-icon">🔒</span>
+                <h3>حماية الكلمات السرية</h3>
+                <p>كلمات المرور لا تحفظ ولا ترسل لأي سيرفر. تبقى في ذاكرة المتصفح المؤقتة فقط.</p>
+            </div>
+        </section>
+
+        <div class="encryption-info">
+            <h3 style="color: #2196F3; margin-bottom: 20px;">
+                🔐 تقنية التشفير المستخدمة - AES-256 Encryption Technology
+            </h3>
+            <p>
+                نستخدم تقنية <strong>AES-256 (Advanced Encryption Standard)</strong> العسكرية،
+                نفس التقنية المستخدمة من قبل الحكومات والبنوك العالمية لحماية بياناتهم الحساسة.
+            </p>
+
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+                <span class="feature-badge badge-blue">256-bit Key</span>
+                <span class="feature-badge badge-blue">14 Encryption Rounds</span>
+                <span class="feature-badge badge-blue">Block Cipher</span>
+                <span class="feature-badge badge-blue">Military Standard</span>
+            </div>
+        </div>
 
         <section class="services-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: auto;">
             <div class="service-card slide-up interactive-card">
                 <div class="service-icon">🔓</div>
-                <h3 id="txt-card-title-dec">فك حماية البيانات</h3>
+                <h3 id="txt-card-title-dec">أداة فك التشفير المتقدمة</h3>
 
-                <div class="upload-section" onclick="document.getElementById('fileUpload').click()">
-                    <div class="upload-icon">📁</div>
-                    <input type="file" id="fileUpload" class="file-input" accept=".enc,.txt" onchange="previewImage(this)">
-                    <label id="txt-label-decrypt" class="file-label">اختر الملف المشفر (.enc)</label>
-                    <div id="fileInfo" style="display: none; margin-top:15px;">
-                        <p id="fileName" style="color: var(--neon-blue); font-weight: bold;"></p>
+                <div class="file-upload-area" onclick="document.getElementById('fileUpload').click()">
+                    <div class="upload-icon" style="font-size: 4rem; margin-bottom: 20px;">📁</div>
+                    <input type="file" id="fileUpload" class="file-input" accept=".enc,.aes,.crypt,.secured,.locked" style="display: none;">
+                    <label id="txt-label-decrypt" class="file-label" style="font-size: 1.2rem; cursor: pointer;">
+                        <strong>اسحب وأفلت الملف المشفـر هنا</strong>
+                        <br>
+                        <small>أو انقر لاختيار من جهازك</small>
+                    </label>
+                    <div id="fileInfo" style="display: none; margin-top: 20px;">
+                        <p id="fileName" style="color: #2196F3; font-weight: bold; font-size: 1.1rem;"></p>
+                        <p id="fileSize" style="color: #a29bfe; font-size: 0.9rem;"></p>
                     </div>
                 </div>
 
-                <div class="options-grid" style="grid-template-columns: 1fr; margin-top: 20px;">
-                    <div class="option-card dynamic-glow">
-                        <label id="txt-pass-label-decrypt">كلمة المرور:</label>
-                        <input type="password" id="password" placeholder="********" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 12px; color: white; margin-top: 10px; outline: none;">
-                    </div>
+                <div class="password-input">
+                    <label id="txt-pass-label-decrypt" style="display: block; color: #ccc; margin-bottom: 10px; font-size: 1.1rem;">
+                        🔑 كلمة المرور - Password:
+                    </label>
+                    <input type="password" id="password" placeholder="أدخل كلمة المرور المستخدمة في التشفير"
+                           style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(33, 150, 243, 0.3); border-radius: 12px; color: white; margin-top: 10px; outline: none; font-size: 1rem;">
+                    <button class="toggle-password" type="button" onclick="togglePasswordVisibility()">
+                        👁️
+                    </button>
                 </div>
 
-                <div id="status" style="text-align: center; margin: 15px 0; color: var(--neon-blue);"></div>
+                <div id="status" style="text-align: center; margin: 20px 0; min-height: 24px;"></div>
 
-                <button id="btnDecrypt" class="btn" style="width: 100%;">
-                    <span id="btnDecryptText">فك التشفير وعرض الصورة</span>
+                <button id="btnDecrypt" class="btn" style="width: 100%; padding: 1rem; font-size: 1.1rem; background: linear-gradient(135deg, #2196F3, #1976D2);">
+                    <span id="btnDecryptText">🚀 بدء عملية فك التشفير</span>
                 </button>
 
-                <div id="resultArea" style="text-align: center; margin-top: 20px;">
-                    <img id="decryptedImage" alt="Restored Image">
-                    <br>
-                    <a id="downloadLink" class="btn btn-secondary" style="display: none; margin-top: 20px;">📥 تحميل الصورة المستعادة</a>
+                <div id="resultArea" style="text-align: center; margin-top: 30px; display: none;">
+                    <div id="imagePreview" style="display: none;">
+                        <h4 style="color: #4CAF50; margin-bottom: 15px;">✅ تم فك التشفير بنجاح!</h4>
+                        <img id="decryptedImage" alt="الصورة المستعادة">
+                        <p id="imageInfo" style="color: #a29bfe; margin-top: 10px; font-size: 0.9rem;"></p>
+                    </div>
+                    <a id="downloadLink" class="btn btn-secondary" style="display: none; margin-top: 20px; padding: 12px 30px; background: linear-gradient(135deg, #4CAF50, #2E7D32);">
+                        📥 تحميل الصورة المستعادة
+                    </a>
                 </div>
             </div>
         </section>
+
+        <div style="margin: 50px 0; padding: 30px; background: rgba(255, 255, 255, 0.02); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h2 style="text-align: center; color: #2196F3; margin-bottom: 30px;">
+                ❓ الأسئلة الشائعة عن فك التشفير
+            </h2>
+
+            <div style="margin: 20px 0; padding: 20px; background: rgba(255, 255, 255, 0.03); border-radius: 10px; border-left: 4px solid #2196F3;">
+                <h4 style="color: #a29bfe; margin-bottom: 10px;">🤔 هل يمكن لأي شخص فك تشفير ملفاتي بدون كلمة المرور؟</h4>
+                <p><strong>❌ مستحيل!</strong> بدون كلمة المرور الصحيحة، فك تشفير ملف AES-256 يستغرق مليارات السنين بأسرع الحواسيب.</p>
+            </div>
+
+            <div style="margin: 20px 0; padding: 20px; background: rgba(255, 255, 255, 0.03); border-radius: 10px; border-left: 4px solid #2196F3;">
+                <h4 style="color: #a29bfe; margin-bottom: 10px;">🔒 هل يتم حفظ كلمة المرور التي أدخلها؟</h4>
+                <p><strong>✅ لا، أبداً!</strong> كلمة المرور تبقى في ذاكرة المتصفح المؤقتة وتُحذف تلقائياً بعد العملية.</p>
+            </div>
+
+            <div style="margin: 20px 0; padding: 20px; background: rgba(255, 255, 255, 0.03); border-radius: 10px; border-left: 4px solid #2196F3;">
+                <h4 style="color: #a29bfe; margin-bottom: 10px;">⚡ ما هي سرعة عملية فك التشفير؟</h4>
+                <p><strong>✅ فورية تقريباً!</strong> معظم الملفات تفك تشفيرها في أقل من ثانيتين، حسب حجم الملف وقوة جهازك.</p>
+            </div>
+        </div>
     </main>
 
     <div class="related-tools">
-    <h3 id="txt-related-title">🛠️ أدوات أخرى قد تحتاجها:</h3>
-    <div class="tools-grid">
-        <a href="compress-pdf.html" class="tool-link">
-            <span>⚙️</span>
-            <div>
-                <strong id="txt-related-compress">ضغط PDF</strong>
-                <small id="txt-related-compress-desc">قلل حجم ملفاتك</small>
-            </div>
-        </a>
-        <a href="password-protect.html" class="tool-link">
-            <span>🔒</span>
-            <div>
-                <strong id="txt-related-protect">حماية الصور</strong>
-                <small id="txt-related-protect-desc">أضف كلمة مرور</small>
-            </div>
-        </a>
-        <a href="image-quality.html" class="tool-link">
-            <span>✨</span>
-            <div>
-                <strong id="txt-related-quality">تحسين الجودة</strong>
-                <small id="txt-related-quality-desc">حسن صورك</small>
-            </div>
-        </a>
+        <h3 id="txt-related-title">🛠️ أدوات أخرى قد تحتاجها:</h3>
+        <div class="tools-grid">
+            <a href="password-protect.html" class="tool-link">
+                <span>🔒</span>
+                <div>
+                    <strong id="txt-related-protect">حماية الصور</strong>
+                    <small id="txt-related-protect-desc">تشفير الصور بكلمة مرور</small>
+                </div>
+            </a>
+            <a href="image-quality.html" class="tool-link">
+                <span>✨</span>
+                <div>
+                    <strong id="txt-related-quality">تحسين الجودة</strong>
+                    <small id="txt-related-quality-desc">تحسين جودة الصور</small>
+                </div>
+            </a>
+            <a href="compress-pdf.html" class="tool-link">
+                <span>📄</span>
+                <div>
+                    <strong id="txt-related-compress">ضغط PDF</strong>
+                    <small id="txt-related-compress-desc">تصغير حجم المستندات</small>
+                </div>
+            </a>
+        </div>
     </div>
-</div>
 
     <footer class="site-footer">
-        <p id="txt-footer">© 2026 محول الصور الذكي. جميع الحقوق محفوظة.</p>
+        <div style="text-align: center; padding: 40px 0;">
+            <p id="txt-footer" style="font-size: 1.1rem; margin-bottom: 15px;">
+                © 2024 محول الصور الذكي - أداة فك التشفير المتقدمة
+            </p>
+            <p style="color: #aaa; font-size: 0.9rem; line-height: 1.6;">
+                جميع عمليات فك التشفير محلية ولا يتم رفع الملفات لأي سيرفر خارجي.
+            </p>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="assets/js/lang.js"></script>
-    <script src="assets/js/app.js"></script>
+
+    <script>
+        'use strict';
+
+        let currentFile = null;
+        let isProcessing = false;
+
+        // ============== دالة فك التشفير الرئيسية ==============
+        async function decryptAES_CBC(encryptedFile, password) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        console.log('🔓 بدء فك التشفير...');
+                        
+                        const base64Data = e.target.result;
+                        console.log('📄 طول بيانات Base64:', base64Data.length);
+                        
+                        const encryptedBytes = CryptoJS.enc.Base64.parse(base64Data);
+                        console.log('🔢 طول البيانات المشفرة:', encryptedBytes.sigBytes, 'بايت');
+                        
+                        // استخراج الأجزاء: salt (16 بايت) + iv (16 بايت) + ciphertext
+                        const salt = CryptoJS.lib.WordArray.create(encryptedBytes.words.slice(0, 4), 16);
+                        const iv = CryptoJS.lib.WordArray.create(encryptedBytes.words.slice(4, 8), 16);
+                        const ciphertextWords = encryptedBytes.words.slice(8);
+                        const ciphertextLength = encryptedBytes.sigBytes - 32;
+                        const ciphertext = CryptoJS.lib.WordArray.create(ciphertextWords, ciphertextLength);
+                        
+                        console.log('🧂 Salt:', salt.sigBytes, 'بايت');
+                        console.log('🔑 IV:', iv.sigBytes, 'بايت');
+                        console.log('🔒 Ciphertext:', ciphertext.sigBytes, 'بايت');
+                        
+                        const key = CryptoJS.PBKDF2(password, salt, {
+                            keySize: 256/32,
+                            iterations: 1000
+                        });
+                        
+                        console.log('🔄 جاري فك التشفير...');
+                        const decrypted = CryptoJS.AES.decrypt(
+                            { ciphertext: ciphertext },
+                            key,
+                            {
+                                iv: iv,
+                                mode: CryptoJS.mode.CBC,
+                                padding: CryptoJS.pad.Pkcs7
+                            }
+                        );
+                        
+                        console.log('✅ فك التشفير ناجح');
+                        console.log('📊 حجم البيانات المفكوكة:', decrypted.sigBytes, 'بايت');
+                        
+                        const decryptedBytes = CryptoJS.enc.Latin1.stringify(decrypted);
+                        const blob = new Blob([decryptedBytes], { type: 'image/jpeg' });
+                        
+                        console.log('💾 حجم الـ Blob:', blob.size, 'بايت');
+                        
+                        if (blob.size < 1024) {
+                            reject(new Error('كلمة المرور خاطئة أو البيانات تالفة'));
+                        } else {
+                            resolve(blob);
+                        }
+                        
+                    } catch (error) {
+                        console.error('❌ خطأ في فك التشفير:', error);
+                        reject(new Error('فشل فك التشفير - ' + error.message));
+                    }
+                };
+                
+                reader.readAsText(encryptedFile);
+            });
+        }
+
+        // ============== دالة بدء فك التشفير ==============
+        async function startDecryption() {
+            if (!currentFile) {
+                showStatus('❌ الرجاء اختيار ملف مشفـر أولاً', 'error');
+                return;
+            }
+
+            const password = document.getElementById('password').value;
+            if (!password || password.length < 4) {
+                showStatus('❌ كلمة المرور يجب أن تكون 4 أحرف على الأقل', 'error');
+                return;
+            }
+
+            if (isProcessing) {
+                showStatus('⚠️ هناك عملية فك تشفير جارية', 'warning');
+                return;
+            }
+
+            isProcessing = true;
+            const decryptBtn = document.getElementById('btnDecrypt');
+            const status = document.getElementById('status');
+            const originalText = decryptBtn.innerHTML;
+            
+            decryptBtn.innerHTML = '⏳ جاري فك التشفير...';
+            decryptBtn.disabled = true;
+            showStatus('🔓 جاري فك تشفير الملف...', 'processing');
+
+            hidePreviousResults();
+
+            try {
+                const decryptedBlob = await decryptAES_CBC(currentFile, password);
+                
+                if (decryptedBlob.size < 1024) {
+                    throw new Error('حجم البيانات صغير جداً');
+                }
+
+                showDecryptionResults(decryptedBlob);
+                showStatus('✅ تم فك التشفير بنجاح!', 'success');
+                
+            } catch (error) {
+                console.error('❌ خطأ:', error);
+                
+                let errorMessage = '❌ فشل فك التشفير';
+                if (error.message.includes('كلمة المرور خاطئة') || error.message.includes('حجم البيانات')) {
+                    errorMessage = '❌ كلمة المرور خاطئة!';
+                } else if (error.message.includes('تنسيق')) {
+                    errorMessage = '❌ تنسيق الملف غير مدعوم';
+                }
+                
+                showStatus(errorMessage, 'error');
+                hidePreviousResults();
+                
+            } finally {
+                decryptBtn.innerHTML = originalText;
+                decryptBtn.disabled = false;
+                isProcessing = false;
+            }
+        }
+
+        // ============== الدوال المساعدة ==============
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('status');
+            if (!statusElement) return;
+            
+            statusElement.innerHTML = message;
+            statusElement.className = type === 'error' ? 'error-message' :
+                                     type === 'success' ? 'success-message' : '';
+            statusElement.style.display = 'block';
+        }
+
+        function showDecryptionResults(blob) {
+            const resultArea = document.getElementById('resultArea');
+            const imagePreview = document.getElementById('imagePreview');
+            const decryptedImage = document.getElementById('decryptedImage');
+            const downloadLink = document.getElementById('downloadLink');
+            
+            if (!resultArea || !decryptedImage || !downloadLink) return;
+
+            const imageUrl = URL.createObjectURL(blob);
+
+            decryptedImage.onload = function() {
+                console.log('✅ تم تحميل الصورة بنجاح');
+                this.style.display = 'block';
+            };
+
+            decryptedImage.onerror = function() {
+                console.error('❌ فشل تحميل الصورة');
+                this.style.display = 'none';
+            };
+
+            decryptedImage.src = imageUrl;
+
+            const imageInfo = document.getElementById('imageInfo');
+            if (imageInfo) {
+                imageInfo.textContent = `📸 الصورة الأصلية - ${formatFileSize(blob.size)}`;
+            }
+
+            downloadLink.href = imageUrl;
+            downloadLink.download = `decrypted_${Date.now()}.jpg`;
+            downloadLink.style.display = 'inline-block';
+
+            if (imagePreview) {
+                imagePreview.style.display = 'block';
+            }
+
+            resultArea.style.display = 'block';
+
+            window.addEventListener('beforeunload', () => {
+                URL.revokeObjectURL(imageUrl);
+            });
+        }
+
+        function hidePreviousResults() {
+            const resultArea = document.getElementById('resultArea');
+            const imagePreview = document.getElementById('imagePreview');
+            const decryptedImage = document.getElementById('decryptedImage');
+            const downloadLink = document.getElementById('downloadLink');
+            
+            if (decryptedImage) {
+                decryptedImage.src = '';
+                decryptedImage.style.display = 'none';
+            }
+            
+            if (downloadLink) {
+                downloadLink.href = '#';
+                downloadLink.style.display = 'none';
+            }
+            
+            if (imagePreview) {
+                imagePreview.style.display = 'none';
+            }
+            
+            if (resultArea) {
+                resultArea.style.display = 'none';
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const allowedExtensions = ['.enc', '.aes', '.crypt', '.secured', '.locked'];
+            const fileExtension = file.name.toLowerCase();
+            const isValidExtension = allowedExtensions.some(ext => fileExtension.endsWith(ext));
+
+            if (!isValidExtension) {
+                showStatus(`❌ الملف يجب أن يكون مشفراً (${allowedExtensions.join(', ')})`, 'error');
+                return;
+            }
+
+            currentFile = file;
+
+            const fileInfo = document.getElementById('fileInfo');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            
+            if (fileInfo && fileName && fileSize) {
+                fileName.textContent = `🔒 ${file.name}`;
+                fileSize.textContent = `حجم الملف: ${formatFileSize(file.size)}`;
+                fileInfo.style.display = 'block';
+            }
+
+            hidePreviousResults();
+            showStatus('✅ تم تحميل الملف المشفـر', 'success');
+        }
+
+        function setupDragAndDrop() {
+            const uploadArea = document.querySelector('.file-upload-area');
+            if (!uploadArea) return;
+
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#00f2ff';
+                this.style.background = 'rgba(33, 150, 243, 0.1)';
+            });
+            
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#2196F3';
+                this.style.background = 'rgba(33, 150, 243, 0.05)';
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#2196F3';
+                this.style.background = 'rgba(33, 150, 243, 0.05)';
+                
+                const fileInput = document.getElementById('fileUpload');
+                if (e.dataTransfer.files.length > 0) {
+                    const file = e.dataTransfer.files[0];
+                    const allowedExtensions = ['.enc', '.aes', '.crypt', '.secured', '.locked'];
+                    const fileExtension = file.name.toLowerCase();
+                    const isValidExtension = allowedExtensions.some(ext => fileExtension.endsWith(ext));
+                    
+                    if (!isValidExtension) {
+                        showStatus(`❌ الملف يجب أن يكون مشفراً (${allowedExtensions.join(', ')})`, 'error');
+                        return;
+                    }
+                    
+                    fileInput.files = e.dataTransfer.files;
+                    handleFileSelect({ target: fileInput });
+                }
+            });
+        }
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.toggle-password');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        function initializePage() {
+            const fileInput = document.getElementById('fileUpload');
+            if (fileInput) {
+                fileInput.addEventListener('change', handleFileSelect);
+                setupDragAndDrop();
+            }
+
+            const decryptBtn = document.getElementById('btnDecrypt');
+            if (decryptBtn) {
+                decryptBtn.addEventListener('click', startDecryption);
+            }
+
+            const passwordInput = document.getElementById('password');
+            if (passwordInput) {
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        startDecryption();
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔓 صفحة فك التشفير جاهزة');
+            initializePage();
+        });
+
+    </script>
+
 </body>
 </html>
