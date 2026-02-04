@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="txt-title-dec-page">فك تشفير الصور المشفرة | استعادة الصور المحمية بكلمة مرور | محول الصور الذكي</title>
+    <title id="txt-title-dec-page">فك تشفير الصور المشفرة | استعادة الصور المحمية بكلمة مرور</title>
     
-    <meta name="description" content="أداة عربية متقدمة لفك تشفير الصور المشفرة بـ AES-256. استعد صورك الأصلية من الملفات المشفرة بكلمة مرور. عملية 100% محلية وآمنة داخل متصفحك.">
+    <meta name="description" content="أداة عربية لفك تشفير الصور المشفرة بـ AES-256. استعد صورك الأصلية من الملفات المشفرة بكلمة مرور. عملية 100% محلية وآمنة داخل متصفحك.">
     
     <meta name="keywords" content="فك تشفير الصور, استعادة الصور المشفرة, فك حماية الصور, فك تشفير AES-256, استرجاع الصور المحمية, فك تشفير بكلمة مرور">
     
@@ -139,9 +139,10 @@
 
         #decryptedImage {
             max-width: 100%;
+            max-height: 500px;
             border-radius: 15px;
-            margin-top: 20px;
-            display: none;
+            margin: 20px auto;
+            display: block;
             border: 2px solid #2196F3;
             box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);
         }
@@ -216,6 +217,16 @@
             border: 1px solid #f44336;
         }
 
+        .processing-message {
+            color: #2196F3;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 10px;
+            border: 1px solid #2196F3;
+        }
+
         @media (max-width: 768px) {
             .security-features {
                 grid-template-columns: 1fr;
@@ -233,6 +244,10 @@
 
             .encryption-info {
                 padding: 20px 15px;
+            }
+            
+            #decryptedImage {
+                max-height: 300px;
             }
         }
     </style>
@@ -252,18 +267,18 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <div class="logo-icon">🔓</div>
-                <h1 id="txt-logo">محول الصور الذكي</h1>
+                <h1 id="txt-logo">Smart Image Converter</h1>
             </a>
 
             <ul class="nav-menu">
-                <li><a href="index.html" id="m1">🏠 الرئيسية</a></li>
+                <li><a href="index.html" id="m1">الرئيسية</a></li>
                 <li><a href="password-protect.html" id="m2">🔒 حماية</a></li>
-                <li><a href="decrypt.html" id="m3" class="active">🔑 فك تشفير</a></li>
-                <li><a href="image-quality.html" id="m4">🖼️ تحسين جودة</a></li>
+                <li><a href="decrypt.html" id="m3" class="active">🔑 فك</a></li>
+                <li><a href="image-quality.html" id="m4">🖼️ جودة</a></li>
             </ul>
 
             <button onclick="changeLanguage()" id="lang-btn" class="lang-btn">
-                🌐 English
+                English
             </button>
         </div>
     </nav>
@@ -276,7 +291,7 @@
                 استعادة الصور المشفرة بكلمة مرور
             </h1>
             <p class="header-subtitle" id="txt-hero-desc-decrypt">
-                <strong>✨ أول أداة عربية لفك تشفير الصور المشفرة تعمل 100% داخل متصفحك!</strong>
+                <strong>أداة لفك تشفير الصور المشفرة تعمل 100% داخل متصفحك!</strong>
                 <br>
                 أدخل الملف المشفـر وكلمة المرور الصحيحة لاستعادة صورتك الأصلية فورياً
             </p>
@@ -372,7 +387,7 @@
 
                 <div class="password-input">
                     <label id="txt-pass-label-decrypt" style="display: block; color: #ccc; margin-bottom: 10px; font-size: 1.1rem;">
-                        🔑 كلمة المرور - Password:
+                        🔑 كلمة المرور:
                     </label>
                     <input type="password" id="password" placeholder="أدخل كلمة المرور المستخدمة في التشفير"
                            style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(33, 150, 243, 0.3); border-radius: 12px; color: white; margin-top: 10px; outline: none; font-size: 1rem;">
@@ -423,25 +438,25 @@
     </main>
 
     <div class="related-tools">
-        <h3 id="txt-related-title">🛠️ أدوات أخرى قد تحتاجها:</h3>
+        <h3 id="txt-related-title" style="text-align: center; margin-bottom: 30px; color: var(--neon-blue);">🛠️ أدوات أخرى قد تحتاجها:</h3>
         <div class="tools-grid">
             <a href="password-protect.html" class="tool-link">
-                <span>🔒</span>
-                <div>
+                <span style="font-size: 2.5em;">🔒</span>
+                <div style="margin-top: 15px;">
                     <strong id="txt-related-protect">حماية الصور</strong>
                     <small id="txt-related-protect-desc">تشفير الصور بكلمة مرور</small>
                 </div>
             </a>
             <a href="image-quality.html" class="tool-link">
-                <span>✨</span>
-                <div>
-                    <strong id="txt-related-quality">تحسين الجودة</strong>
-                    <small id="txt-related-quality-desc">تحسين جودة الصور</small>
+                <span style="font-size: 2.5em;">✨</span>
+                <div style="margin-top: 15px;">
+                    <strong id="txt-related-quality">تحسين جودة</strong>
+                    <small id="txt-related-quality-desc">تحسين وضوح الصور</small>
                 </div>
             </a>
             <a href="compress-pdf.html" class="tool-link">
-                <span>📄</span>
-                <div>
+                <span style="font-size: 2.5em;">📄</span>
+                <div style="margin-top: 15px;">
                     <strong id="txt-related-compress">ضغط PDF</strong>
                     <small id="txt-related-compress-desc">تصغير حجم المستندات</small>
                 </div>
@@ -452,7 +467,7 @@
     <footer class="site-footer">
         <div style="text-align: center; padding: 40px 0;">
             <p id="txt-footer" style="font-size: 1.1rem; margin-bottom: 15px;">
-                © 2024 محول الصور الذكي - أداة فك التشفير المتقدمة
+                © 2026 محول الصور الذكي - أمانك أولويتنا
             </p>
             <p style="color: #aaa; font-size: 0.9rem; line-height: 1.6;">
                 جميع عمليات فك التشفير محلية ولا يتم رفع الملفات لأي سيرفر خارجي.
@@ -475,29 +490,29 @@
                 reader.onload = function(e) {
                     try {
                         console.log('🔓 بدء فك التشفير...');
-                        
+
                         const base64Data = e.target.result;
                         console.log('📄 طول بيانات Base64:', base64Data.length);
-                        
+
                         const encryptedBytes = CryptoJS.enc.Base64.parse(base64Data);
                         console.log('🔢 طول البيانات المشفرة:', encryptedBytes.sigBytes, 'بايت');
-                        
+
                         // استخراج الأجزاء: salt (16 بايت) + iv (16 بايت) + ciphertext
                         const salt = CryptoJS.lib.WordArray.create(encryptedBytes.words.slice(0, 4), 16);
                         const iv = CryptoJS.lib.WordArray.create(encryptedBytes.words.slice(4, 8), 16);
                         const ciphertextWords = encryptedBytes.words.slice(8);
                         const ciphertextLength = encryptedBytes.sigBytes - 32;
                         const ciphertext = CryptoJS.lib.WordArray.create(ciphertextWords, ciphertextLength);
-                        
+
                         console.log('🧂 Salt:', salt.sigBytes, 'بايت');
                         console.log('🔑 IV:', iv.sigBytes, 'بايت');
                         console.log('🔒 Ciphertext:', ciphertext.sigBytes, 'بايت');
-                        
+
                         const key = CryptoJS.PBKDF2(password, salt, {
                             keySize: 256/32,
                             iterations: 1000
                         });
-                        
+
                         console.log('🔄 جاري فك التشفير...');
                         const decrypted = CryptoJS.AES.decrypt(
                             { ciphertext: ciphertext },
@@ -508,21 +523,65 @@
                                 padding: CryptoJS.pad.Pkcs7
                             }
                         );
-                        
+
                         console.log('✅ فك التشفير ناجح');
                         console.log('📊 حجم البيانات المفكوكة:', decrypted.sigBytes, 'بايت');
+
+                        // تحويل البيانات إلى Uint8Array - هذا هو الإصلاح الرئيسي!
+                        const decryptedBytes = decrypted.toString(CryptoJS.enc.Latin1);
+                        const byteArray = new Uint8Array(decryptedBytes.length);
+                        for (let i = 0; i < decryptedBytes.length; i++) {
+                            byteArray[i] = decryptedBytes.charCodeAt(i);
+                        }
+
+                        // اكتشاف نوع الصورة من البايتات
+                        let mimeType = 'image/jpeg';
+                        let fileExtension = 'jpg';
                         
-                        const decryptedBytes = CryptoJS.enc.Latin1.stringify(decrypted);
-                        const blob = new Blob([decryptedBytes], { type: 'image/jpeg' });
-                        
+                        if (byteArray.length > 4) {
+                            // PNG: 89 50 4E 47
+                            if (byteArray[0] === 0x89 && byteArray[1] === 0x50 && 
+                                byteArray[2] === 0x4E && byteArray[3] === 0x47) {
+                                mimeType = 'image/png';
+                                fileExtension = 'png';
+                                console.log('🎨 تنسيق الصورة: PNG');
+                            }
+                            // JPEG: FF D8 FF
+                            else if (byteArray[0] === 0xFF && byteArray[1] === 0xD8 && byteArray[2] === 0xFF) {
+                                mimeType = 'image/jpeg';
+                                fileExtension = 'jpg';
+                                console.log('🎨 تنسيق الصورة: JPEG');
+                            }
+                            // GIF: 47 49 46 38
+                            else if (byteArray[0] === 0x47 && byteArray[1] === 0x49 && 
+                                     byteArray[2] === 0x46 && byteArray[3] === 0x38) {
+                                mimeType = 'image/gif';
+                                fileExtension = 'gif';
+                                console.log('🎨 تنسيق الصورة: GIF');
+                            }
+                            // WebP: 52 49 46 46
+                            else if (byteArray[0] === 0x52 && byteArray[1] === 0x49 && 
+                                     byteArray[2] === 0x46 && byteArray[3] === 0x46) {
+                                mimeType = 'image/webp';
+                                fileExtension = 'webp';
+                                console.log('🎨 تنسيق الصورة: WebP');
+                            }
+                        }
+
+                        // إنشاء Blob مع النوع الصحيح
+                        const blob = new Blob([byteArray], { type: mimeType });
+                        blob.fileExtension = fileExtension;
+
                         console.log('💾 حجم الـ Blob:', blob.size, 'بايت');
-                        
+                        console.log('📝 نوع MIME:', mimeType);
+                        console.log('📁 امتداد الملف:', fileExtension);
+
                         if (blob.size < 1024) {
                             reject(new Error('كلمة المرور خاطئة أو البيانات تالفة'));
                         } else {
                             resolve(blob);
                         }
-                        
+
                     } catch (error) {
                         console.error('❌ خطأ في فك التشفير:', error);
                         reject(new Error('فشل فك التشفير - ' + error.message));
@@ -599,7 +658,8 @@
             
             statusElement.innerHTML = message;
             statusElement.className = type === 'error' ? 'error-message' :
-                                     type === 'success' ? 'success-message' : '';
+                                     type === 'success' ? 'success-message' : 
+                                     type === 'processing' ? 'processing-message' : '';
             statusElement.style.display = 'block';
         }
 
@@ -613,6 +673,7 @@
 
             const imageUrl = URL.createObjectURL(blob);
 
+            // إعداد معالجات الأحداث للصورة
             decryptedImage.onload = function() {
                 console.log('✅ تم تحميل الصورة بنجاح');
                 this.style.display = 'block';
@@ -620,26 +681,34 @@
 
             decryptedImage.onerror = function() {
                 console.error('❌ فشل تحميل الصورة');
+                showStatus('❌ تعذر تحميل الصورة - قد تكون البيانات تالفة', 'error');
                 this.style.display = 'none';
             };
 
+            // تحميل الصورة
             decryptedImage.src = imageUrl;
 
+            // تحديث معلومات الصورة
             const imageInfo = document.getElementById('imageInfo');
             if (imageInfo) {
                 imageInfo.textContent = `📸 الصورة الأصلية - ${formatFileSize(blob.size)}`;
             }
 
+            // إعداد رابط التحميل مع الامتداد الصحيح
+            const fileExtension = blob.fileExtension || 'jpg';
             downloadLink.href = imageUrl;
-            downloadLink.download = `decrypted_${Date.now()}.jpg`;
+            downloadLink.download = `restored_image_${Date.now()}.${fileExtension}`;
+            downloadLink.innerHTML = `📥 تحميل الصورة (.${fileExtension})`;
             downloadLink.style.display = 'inline-block';
 
+            // إظهار قسم النتائج
             if (imagePreview) {
                 imagePreview.style.display = 'block';
             }
 
             resultArea.style.display = 'block';
 
+            // تنظيف الذاكرة عند إغلاق الصفحة
             window.addEventListener('beforeunload', () => {
                 URL.revokeObjectURL(imageUrl);
             });
