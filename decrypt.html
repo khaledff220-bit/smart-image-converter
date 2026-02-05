@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="txt-title-dec-page">فك تشفير الصور المشفرة | استعادة الصور المحمية بكلمة مرور</title>
@@ -252,12 +253,18 @@
         }
     </style>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
+
+
+<script>
+if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+    window["ga-disable-G-PNHBTPESQT"] = true;
+    console.log("🚫 Localhost detected: Google Analytics Disabled");
+}
+</script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-PNHBTPESQT');
+
+
     </script>
 </head>
 <body class="fade-in">
@@ -475,6 +482,8 @@
         </div>
     </footer>
 
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
     <script>
@@ -484,173 +493,6 @@
         let isProcessing = false;
 
         // ============== دالة فك التشفير الرئيسية ==============
-        async function decryptAES_CBC(encryptedFile, password) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    try {
-                        console.log('🔓 بدء فك التشفير...');
-
-                        const base64Data = e.target.result;
-                        console.log('📄 طول بيانات Base64:', base64Data.length);
-
-                        const encryptedBytes = CryptoJS.enc.Base64.parse(base64Data);
-                        console.log('🔢 طول البيانات المشفرة:', encryptedBytes.sigBytes, 'بايت');
-
-                        // استخراج الأجزاء: salt (16 بايت) + iv (16 بايت) + ciphertext
-                        const salt = CryptoJS.lib.WordArray.create(encryptedBytes.words.slice(0, 4), 16);
-                        const iv = CryptoJS.lib.WordArray.create(encryptedBytes.words.slice(4, 8), 16);
-                        const ciphertextWords = encryptedBytes.words.slice(8);
-                        const ciphertextLength = encryptedBytes.sigBytes - 32;
-                        const ciphertext = CryptoJS.lib.WordArray.create(ciphertextWords, ciphertextLength);
-
-                        console.log('🧂 Salt:', salt.sigBytes, 'بايت');
-                        console.log('🔑 IV:', iv.sigBytes, 'بايت');
-                        console.log('🔒 Ciphertext:', ciphertext.sigBytes, 'بايت');
-
-                        const key = CryptoJS.PBKDF2(password, salt, {
-                            keySize: 256/32,
-                            iterations: 1000
-                        });
-
-                        console.log('🔄 جاري فك التشفير...');
-                        const decrypted = CryptoJS.AES.decrypt(
-                            { ciphertext: ciphertext },
-                            key,
-                            {
-                                iv: iv,
-                                mode: CryptoJS.mode.CBC,
-                                padding: CryptoJS.pad.Pkcs7
-                            }
-                        );
-
-                        console.log('✅ فك التشفير ناجح');
-                        console.log('📊 حجم البيانات المفكوكة:', decrypted.sigBytes, 'بايت');
-
-                        // تحويل البيانات إلى Uint8Array - هذا هو الإصلاح الرئيسي!
-                        const decryptedBytes = decrypted.toString(CryptoJS.enc.Latin1);
-                        const byteArray = new Uint8Array(decryptedBytes.length);
-                        for (let i = 0; i < decryptedBytes.length; i++) {
-                            byteArray[i] = decryptedBytes.charCodeAt(i);
-                        }
-
-                        // اكتشاف نوع الصورة من البايتات
-                        let mimeType = 'image/jpeg';
-                        let fileExtension = 'jpg';
-                        
-                        if (byteArray.length > 4) {
-                            // PNG: 89 50 4E 47
-                            if (byteArray[0] === 0x89 && byteArray[1] === 0x50 && 
-                                byteArray[2] === 0x4E && byteArray[3] === 0x47) {
-                                mimeType = 'image/png';
-                                fileExtension = 'png';
-                                console.log('🎨 تنسيق الصورة: PNG');
-                            }
-                            // JPEG: FF D8 FF
-                            else if (byteArray[0] === 0xFF && byteArray[1] === 0xD8 && byteArray[2] === 0xFF) {
-                                mimeType = 'image/jpeg';
-                                fileExtension = 'jpg';
-                                console.log('🎨 تنسيق الصورة: JPEG');
-                            }
-                            // GIF: 47 49 46 38
-                            else if (byteArray[0] === 0x47 && byteArray[1] === 0x49 && 
-                                     byteArray[2] === 0x46 && byteArray[3] === 0x38) {
-                                mimeType = 'image/gif';
-                                fileExtension = 'gif';
-                                console.log('🎨 تنسيق الصورة: GIF');
-                            }
-                            // WebP: 52 49 46 46
-                            else if (byteArray[0] === 0x52 && byteArray[1] === 0x49 && 
-                                     byteArray[2] === 0x46 && byteArray[3] === 0x46) {
-                                mimeType = 'image/webp';
-                                fileExtension = 'webp';
-                                console.log('🎨 تنسيق الصورة: WebP');
-                            }
-                        }
-
-                        // إنشاء Blob مع النوع الصحيح
-                        const blob = new Blob([byteArray], { type: mimeType });
-                        blob.fileExtension = fileExtension;
-
-                        console.log('💾 حجم الـ Blob:', blob.size, 'بايت');
-                        console.log('📝 نوع MIME:', mimeType);
-                        console.log('📁 امتداد الملف:', fileExtension);
-
-                        if (blob.size < 1024) {
-                            reject(new Error('كلمة المرور خاطئة أو البيانات تالفة'));
-                        } else {
-                            resolve(blob);
-                        }
-
-                    } catch (error) {
-                        console.error('❌ خطأ في فك التشفير:', error);
-                        reject(new Error('فشل فك التشفير - ' + error.message));
-                    }
-                };
-                
-                reader.readAsText(encryptedFile);
-            });
-        }
-
-        // ============== دالة بدء فك التشفير ==============
-        async function startDecryption() {
-            if (!currentFile) {
-                showStatus('❌ الرجاء اختيار ملف مشفـر أولاً', 'error');
-                return;
-            }
-
-            const password = document.getElementById('password').value;
-            if (!password || password.length < 4) {
-                showStatus('❌ كلمة المرور يجب أن تكون 4 أحرف على الأقل', 'error');
-                return;
-            }
-
-            if (isProcessing) {
-                showStatus('⚠️ هناك عملية فك تشفير جارية', 'warning');
-                return;
-            }
-
-            isProcessing = true;
-            const decryptBtn = document.getElementById('btnDecrypt');
-            const status = document.getElementById('status');
-            const originalText = decryptBtn.innerHTML;
-            
-            decryptBtn.innerHTML = '⏳ جاري فك التشفير...';
-            decryptBtn.disabled = true;
-            showStatus('🔓 جاري فك تشفير الملف...', 'processing');
-
-            hidePreviousResults();
-
-            try {
-                const decryptedBlob = await decryptAES_CBC(currentFile, password);
-                
-                if (decryptedBlob.size < 1024) {
-                    throw new Error('حجم البيانات صغير جداً');
-                }
-
-                showDecryptionResults(decryptedBlob);
-                showStatus('✅ تم فك التشفير بنجاح!', 'success');
-                
-            } catch (error) {
-                console.error('❌ خطأ:', error);
-                
-                let errorMessage = '❌ فشل فك التشفير';
-                if (error.message.includes('كلمة المرور خاطئة') || error.message.includes('حجم البيانات')) {
-                    errorMessage = '❌ كلمة المرور خاطئة!';
-                } else if (error.message.includes('تنسيق')) {
-                    errorMessage = '❌ تنسيق الملف غير مدعوم';
-                }
-                
-                showStatus(errorMessage, 'error');
-                hidePreviousResults();
-                
-            } finally {
-                decryptBtn.innerHTML = originalText;
-                decryptBtn.disabled = false;
-                isProcessing = false;
-            }
-        }
-
         // ============== الدوال المساعدة ==============
         function showStatus(message, type) {
             const statusElement = document.getElementById('status');
@@ -854,6 +696,8 @@
             console.log('🔓 صفحة فك التشفير جاهزة');
             initializePage();
         });
+
+
 
     </script>
 
