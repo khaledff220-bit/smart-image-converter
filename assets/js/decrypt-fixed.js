@@ -157,3 +157,101 @@ document.addEventListener("DOMContentLoaded", () => {
         await decryptFileFixed(fileInput.files[0], passwordInput.value);
     });
 });
+
+
+'use strict';
+
+class FixedDecryptionSystem {
+    constructor() {
+        this.version = '3.2';
+    }
+
+    async decryptFile(file, password) {
+        try {
+            this.validateInputs(file, password);
+            const arrayBuffer = await file.arrayBuffer();
+            const fileData = new Uint8Array(arrayBuffer);
+            const textData = new TextDecoder().decode(fileData);
+            
+            const cleanText = textData.trim();
+            const decrypted = CryptoJS.AES.decrypt(cleanText, password, {
+                format: CryptoJS.format.OpenSSL
+            });
+
+            if (!decrypted || decrypted.sigBytes <= 0) throw new Error('كلمة المرور خاطئة');
+
+            const decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
+            if (!decryptedText.startsWith('data:image')) throw new Error('البيانات غير صالحة');
+
+            const base64Data = decryptedText.split(',')[1];
+            return this.finalizeBlob(base64Data, file.name);
+        } catch (error) {
+            console.error('❌ خطأ:', error);
+            throw error;
+        }
+    }
+
+    finalizeBlob(base64Data, filename) {
+        const byteCharacters = atob(base64Data);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) byteNumbers[i] = byteCharacters.charCodeAt(i);
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: 'image/jpeg' });
+
+        // ✅ التوافق مع ID الملف الخاص بك
+        const imgPreview = document.getElementById('decryptedImage');
+        const resultArea = document.getElementById('resultArea');
+        const downloadLink = document.getElementById('downloadLink');
+
+        if (imgPreview) {
+            const url = URL.createObjectURL(blob);
+            imgPreview.src = url;
+            imgPreview.style.display = 'block';
+            if(resultArea) resultArea.style.display = 'block';
+            if(document.getElementById('imagePreview')) document.getElementById('imagePreview').style.display = 'block';
+            
+            if (downloadLink) {
+                downloadLink.href = url;
+                downloadLink.download = "restored_" + filename.replace('.enc', '');
+                downloadLink.style.display = 'inline-block';
+            }
+        }
+        return blob;
+    }
+
+    validateInputs(file, password) {
+        if (!file) throw new Error('اختر ملفاً');
+        if (!password) throw new Error('أدخل كلمة المرور');
+    }
+}
+
+// دالة التشغيل المرتبطة بالزر
+async function startDecryption() {
+    const fileInput = document.getElementById("fileUpload");
+    const passwordInput = document.getElementById("password"); // تم التصحيح هنا
+    const btn = document.getElementById("btnDecrypt");
+
+    if (!fileInput?.files?.length || !passwordInput?.value) {
+        alert("تأكد من اختيار الملف وإدخال كلمة المرور");
+        return;
+    }
+
+    try {
+        btn.disabled = true;
+        btn.innerText = "⏳ جاري الفك...";
+        const system = new FixedDecryptionSystem();
+        await system.decryptFile(fileInput.files[0], passwordInput.value);
+    } catch (e) {
+        alert("فشل فك التشفير: تأكد من كلمة المرور");
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "🚀 بدء عملية فك التشفير";
+    }
+}
+
+// ربط الزر عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("btnDecrypt");
+    if (btn) btn.addEventListener("click", startDecryption);
+});
+
