@@ -133,3 +133,27 @@ async function decryptFileFixed(file, password) {
     const decryptor = new FixedDecryptionSystem();
     return decryptor.decryptFile(file, password);
 }
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("btnDecrypt");
+    if (!btn) return;
+
+    btn.addEventListener("click", async () => {
+        const fileInput = document.getElementById("fileUpload");
+        const passwordInput = document.getElementById("passwordInput");
+
+        if (!fileInput?.files?.length) {
+            alert("من فضلك اختر ملفًا");
+            return;
+        }
+
+        if (!passwordInput?.value) {
+            alert("من فضلك أدخل كلمة المرور");
+            return;
+        }
+
+        await decryptFileFixed(fileInput.files[0], passwordInput.value);
+    });
+});
