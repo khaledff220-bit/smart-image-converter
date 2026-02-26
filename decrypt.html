@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://smart-image-converter.vercel.app/decrypt" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- تحسين SEO متقدم -->
     <title>فك تشفير الصور المحمية | استرجاع الصور المشفرة | محول الصور الذكي</title>
@@ -125,7 +126,7 @@
                     </div>
                     
                     <h3 style="color: var(--neon-green);">📷 الصورة المفكوكة:</h3>
-                    <img id="decryptedImage" class="preview-image" style="display: none;">
+                    <img id="decryptedImage" class="preview-image" width="400" height="300" style="max-height: 300px; display: none;">
                     
                     <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
                         <button id="downloadBtn" class="download-button" style="display: none;">
@@ -174,5 +175,22 @@
     <script src="assets/js/crypto-core.js"></script>
     <script src="assets/js/decrypt.js"></script>
     <script src="assets/js/lang.js"></script>
+    <!-- تحميل المكتبات الأساسية -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+<!-- تأخير تحميل ملفاتنا -->
+<script>
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            // تحميل ملفاتنا بعد ثانية من تحميل الصفحة
+            const scripts = ['assets/js/crypto-core.js', 'assets/js/password-protect.js'];
+            scripts.forEach(function(src) {
+                const script = document.createElement('script');
+                script.src = src;
+                document.body.appendChild(script);
+            });
+        }, 1000);
+    });
+</script>
 </body>
 </html>
