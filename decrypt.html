@@ -3,366 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فك تشفير الصور | Smart Image Converter</title>
-    <meta name="description" content="أداة فك تشفير الصور المشفرة باستخدام AES-256 بأمان وسرعة فائقة.">
+    <link rel="canonical" href="https://smart-image-converter.vercel.app/decrypt" />
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- تحسين SEO متقدم -->
+    <title>فك تشفير الصور المحمية | استرجاع الصور المشفرة | محول الصور الذكي</title>
+    <meta name="description" content="أداة متقدمة لفك تشفير الصور المحمية بكلمة مرور. استرجع صورك المشفرة بسهولة باستخدام كلمة المرور الصحيحة. آمن ومجاني 100%.">
+    <meta name="keywords" content="فك تشفير الصور, استرجاع الصور المشفرة, فك حماية الصور, كسر تشفير الصور, استعادة الصور">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Open Graph -->
+    <meta property="og:title" content="فك تشفير الصور - استرجاع الصور المحمية">
+    <meta property="og:description" content="استرجع صورك المشفرة بسهولة وأمان">
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- إعدادات الجوال -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#4f46e5">
+    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
     
-    <!-- CryptoJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    
-    <!-- CSS الخاص بفك التشفير -->
+    <!-- ملفات CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/decrypt.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <!-- مكتبات خارجية -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
+    <div class="background-animation"></div>
+
     <!-- شريط التنقل -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-lock-open me-2"></i>
-                فك تشفير الصور
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">🔑</div>
+                <h1>Smart Image Converter</h1>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="encrypt.html">تشفير</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="decrypt.html">فك التشفير</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">عن الأداة</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="password-protect.html">🔒 حماية</a></li>
+                <li><a href="decrypt.html" class="active">🔑 فك التشفير</a></li>
+                <li><a href="image-quality.html">🖼️ جودة</a></li>
+            </ul>
+            <button onclick="changeLanguage()" class="lang-btn" id="langBtn">English</button>
         </div>
     </nav>
 
-    <!-- الخلفية المتحركة -->
-    <div id="animatedBackground">
-        <div class="gradient-circle circle-1"></div>
-        <div class="gradient-circle circle-2"></div>
-        <div class="gradient-circle circle-3"></div>
-    </div>
+    <main class="main-header">
+        <!-- قسم البطل -->
+        <div class="hero-section">
+            <h1 class="header-title">🔓 فك تشفير الصور المحمية - استرجاع الصور المشفرة</h1>
+            <p class="header-subtitle">استرجع صورك المشفرة بسهولة باستخدام كلمة المرور الصحيحة. أداة آمنة تعمل محلياً على جهازك.</p>
+        </div>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="main-content">
-        <!-- قسم الهيدر -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="hero-content">
-                            <h1 class="hero-title">فك تشفير الصور بأمان تام</h1>
-                            <p class="hero-description">
-                                استرجع صورك المشفرة بسهولة وأمان باستخدام خوارزمية AES-256 المتقدمة.
-                                جميع العمليات تتم على جهازك دون رفع أي ملفات للخوادم.
-                            </p>
-                            <div class="hero-features">
-                                <span class="feature-badge"><i class="fas fa-shield-alt"></i> آمن 100%</span>
-                                <span class="feature-badge"><i class="fas fa-bolt"></i> سريع</span>
-                                <span class="feature-badge"><i class="fas fa-eye"></i> معاينة مباشرة</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="hero-image">
-                            <div class="image-frame">
-                                <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
-                                     alt="فك التشفير">
-                                <div class="floating-card">
-                                    <i class="fas fa-unlock-alt"></i>
-                                    <p>فك تشفير ناجح</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- محتوى نصي غني -->
+        <section class="info-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🔄 عملية عكسية كاملة</h3>
+                    <p>نفس خوارزمية AES-256 المستخدمة في التشفير، معكوسة بدقة لاستعادة الصورة الأصلية.</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔐 يتطلب نفس كلمة المرور</h3>
+                    <p>لا يمكن فك التشفير إلا باستخدام نفس كلمة المرور التي استخدمتها عند حماية الصورة.</p>
+                </div>
+                <div class="info-card">
+                    <h3>⚡ فوري ومجاني</h3>
+                    <p>عملية فك التشفير تحدث فوراً على جهازك، بدون انتظار أو رسوم.</p>
                 </div>
             </div>
         </section>
 
-        <!-- أداة فك التشفير -->
-        <section class="tool-section">
-            <div class="container">
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <h2><i class="fas fa-unlock-alt me-2"></i>أداة فك التشفير</h2>
-                        <p>اختر الملف المشفر وأدخل كلمة المرور</p>
+        <!-- بطاقة فك التشفير -->
+        <section class="services-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: auto;">
+            <div class="service-card glass-card" id="decryptCard">
+                
+                <!-- السهم التشجيعي -->
+                <div class="feature-badge">
+                    <div class="arrow-pointer">👇</div>
+                    <span>ضع ملفك المشفر هنا لبدء فك التشفير</span>
+                </div>
+
+                <div class="service-icon" style="font-size: 3em;">🔓</div>
+                <h2 style="color: var(--neon-blue);">فك تشفير الصور AES-256</h2>
+
+                <!-- منطقة رفع الملفات -->
+                <div class="upload-area" id="decryptUploadArea">
+                    <div class="upload-icon">📁</div>
+                    <input type="file" id="fileUpload" class="file-input" accept=".enc" style="display: none;">
+                    <label class="file-label">انقر لاختيار الملف المشفر (.enc)</label>
+                    <p class="file-subtitle">الحد الأقصى: 50 ميجابايت</p>
+                    <div id="decryptFileInfo" style="display: none; margin-top: 15px;">
+                        <span id="decryptFileName"></span>
+                    </div>
+                </div>
+
+                <!-- حقل كلمة المرور -->
+                <div style="margin: 30px 0;">
+                    <label style="color: var(--neon-green);">🔑 كلمة المرور:</label>
+                    <input type="password" id="passwordInput" class="password-field" placeholder="أدخل كلمة المرور المستخدمة في التشفير">
+                </div>
+
+                <!-- حالة الخطأ -->
+                <div id="errorMessage" class="alert alert-danger" style="display: none;">
+                    <span id="errorText"></span>
+                </div>
+
+                <!-- حالة التحميل -->
+                <div id="decryptStatus" style="margin: 20px 0; text-align: center;"></div>
+
+                <!-- زر فك التشفير -->
+                <button id="btnDecrypt" class="encrypt-button" disabled>
+                    <i class="fas fa-bolt"></i>
+                    فك التشفير الآن
+                </button>
+
+                <!-- بطاقة المعاينة -->
+                <div id="previewCard" class="preview-container" style="display: none; margin-top: 30px;">
+                    <div class="blur-overlay" id="blurOverlay">
+                        <div class="spinner-border"></div>
+                        <p>جاري فك التشفير...</p>
                     </div>
                     
-                    <div class="tool-body">
-                        <!-- منطقة التنبيهات -->
-                        <div id="notificationArea" class="notification-area"></div>
-                        
-                        <!-- خطوات الاستخدام -->
-                        <div class="steps-guide">
-                            <div class="step">
-                                <div class="step-icon">1</div>
-                                <h4>اختر الملف</h4>
-                                <p>اختر الملف المشفر (.enc)</p>
-                            </div>
-                            <div class="step">
-                                <div class="step-icon">2</div>
-                                <h4>أدخل كلمة المرور</h4>
-                                <p>أدخل نفس كلمة المرور المستخدمة</p>
-                            </div>
-                            <div class="step">
-                                <div class="step-icon">3</div>
-                                <h4>استرجع الصورة</h4>
-                                <p>شاهد صورتك واسترجعها</p>
-                            </div>
-                        </div>
-                        
-                        <!-- منطقة الإدخال -->
-                        <div class="input-area">
-                            <!-- اختيار الملف -->
-                            <div class="input-group">
-                                <label for="fileUpload">
-                                    <i class="fas fa-file-upload me-2"></i>
-                                    الملف المشفر
-                                </label>
-                                <div class="file-drop-zone" id="fileDropZone">
-                                    <input type="file" id="fileUpload" accept=".enc" class="file-input">
-                                    <div class="drop-content">
-                                        <i class="fas fa-cloud-upload-alt"></i>
-                                        <p>اسحب الملف أو انقر للاختيار</p>
-                                        <small>الحد الأقصى: 20MB | الملفات المدعومة: .enc</small>
-                                    </div>
-                                </div>
-                                <div class="file-info" id="fileInfo">
-                                    <i class="fas fa-file"></i>
-                                    <span id="fileName"></span>
-                                    <button class="btn-remove" id="btnRemoveFile">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <!-- كلمة المرور -->
-                            <div class="input-group">
-                                <label for="passwordInput">
-                                    <i class="fas fa-key me-2"></i>
-                                    كلمة المرور
-                                </label>
-                                <div class="password-wrapper">
-                                    <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور المستخدمة في التشفير">
-                                    <button type="button" id="togglePassword" class="btn-toggle-password">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                                <div class="hint">
-                                    <i class="fas fa-info-circle"></i>
-                                    يجب أن تكون نفس كلمة المرور المستخدمة عند التشفير
-                                </div>
-                            </div>
-                            
-                            <!-- زر الفك -->
-                            <div class="action-buttons">
-                                <button id="btnDecrypt" class="btn-primary">
-                                    <i class="fas fa-bolt me-2"></i>
-                                    <span id="btnText">فك التشفير الآن</span>
-                                    <span class="spinner" id="btnSpinner"></span>
-                                </button>
-                            </div>
-                            
-                            <!-- سهم التوجيه -->
-                            <div class="guide-arrow" id="guideArrow">
-                                <i class="fas fa-arrow-down"></i>
-                                <p>الصورة الناتجة تظهر أدناه</p>
-                            </div>
-                        </div>
-                        
-                        <!-- بطاقة المعاينة -->
-                        <div class="preview-card" id="previewCard">
-                            <div class="preview-header">
-                                <h3>
-                                    <i class="fas fa-eye me-2"></i>
-                                    معاينة ما قبل التحميل
-                                </h3>
-                                <span class="live-badge">LIVE</span>
-                            </div>
-                            
-                            <div class="preview-body">
-                                <!-- تأثير Blur -->
-                                <div class="blur-overlay" id="blurOverlay">
-                                    <div class="loading-content">
-                                        <div class="spinner-large"></div>
-                                        <p>جاري فك التشفير...</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- الصورة -->
-                                <div class="image-container">
-                                    <div class="image-placeholder" id="imagePlaceholder">
-                                        <i class="fas fa-image"></i>
-                                        <p>ستظهر الصورة هنا بعد فك التشفير</p>
-                                    </div>
-                                    <img id="decryptedImage" class="preview-image" alt="الصورة المفكوكة">
-                                </div>
-                                
-                                <!-- معلومات الصورة -->
-                                <div class="image-info" id="imageInfo">
-                                    <div class="info-item">
-                                        <i class="fas fa-file-image"></i>
-                                        <div>
-                                            <span class="info-label">الصيغة</span>
-                                            <span id="imageFormat" class="info-value">-</span>
-                                        </div>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-weight-hanging"></i>
-                                        <div>
-                                            <span class="info-label">الحجم</span>
-                                            <span id="imageSize" class="info-value">-</span>
-                                        </div>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-expand-alt"></i>
-                                        <div>
-                                            <span class="info-label">الأبعاد</span>
-                                            <span id="imageDimensions" class="info-value">-</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="preview-footer">
-                                <button id="downloadBtn" class="btn-success">
-                                    <i class="fas fa-download me-2"></i>
-                                    تحميل الصورة
-                                </button>
-                                <button id="clearResult" class="btn-outline">
-                                    <i class="fas fa-trash me-2"></i>
-                                    مسح النتيجة
-                                </button>
-                                <button id="newDecryption" class="btn-outline">
-                                    <i class="fas fa-redo me-2"></i>
-                                    فك تشفير جديد
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- مميزات الأداة -->
-        <section class="features-section">
-            <div class="container">
-                <h2 class="section-title">لماذا تختار أداتنا؟</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon security">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>أمان كامل</h3>
-                        <p>جميع العمليات تتم على جهازك، لا نرفع أي ملفات لخوادمنا</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon speed">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>سرعة فائقة</h3>
-                        <p>فك تشفير سريع حتى للملفات الكبيرة باستخدام خوارزميات متطورة</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon preview">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h3>معاينة مباشرة</h3>
-                        <p>شاهد صورتك قبل التحميل مع تأثيرات عرض مميزة</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon support">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>متعدد المنصات</h3>
-                        <p>يعمل على جميع الأجهزة والمتصفحات بدون تثبيت</p>
+                    <h3 style="color: var(--neon-green);">📷 الصورة المفكوكة:</h3>
+                    <img id="decryptedImage" class="preview-image" style="display: none;">
+                    
+                    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+                        <button id="downloadBtn" class="download-button" style="display: none;">
+                            <i class="fas fa-download"></i> تحميل الصورة
+                        </button>
+                        <button id="clearResult" class="btn btn-outline-danger">
+                            <i class="fas fa-trash"></i> مسح النتائج
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- الأسئلة الشائعة -->
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="section-title">الأسئلة الشائعة</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>ماذا أفعل إذا نسيت كلمة المرور؟</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>للأسف، مع خوارزمية AES-256 القوية، لا يمكن فك التشفير بدون كلمة المرور الصحيحة. ننصح بحفظ كلمات المرور في مكان آمن.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>هل يمكن فك تشفير ملفات كبيرة؟</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>نعم، تدعم الأداة الملفات حتى 20 ميجابايت. للصور الأكبر، ننصح بتقسيمها قبل التشفير.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>ما هي الصيغ المدعومة؟</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>ندعم JPEG، PNG، GIF، WebP، BMP. سيتم الحفاظ على الجودة الأصلية.</p>
-                        </div>
-                    </div>
+        <div class="faq-container" style="max-width: 800px; margin: 50px auto;">
+            <h3 style="color: var(--neon-blue); text-align: center; margin-bottom: 30px;">❓ أسئلة شائعة عن فك التشفير</h3>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>🔍</span>
+                    <strong>ماذا لو نسيت كلمة المرور؟</strong>
+                </div>
+                <div class="faq-answer" style="display: none;">
+                    <p>للأسف، إذا نسيت كلمة المرور، لا يمكن استعادة الصورة. نحن لا نخزن كلمات المرور ولا يمكن استعادتها. هذا جزء من تصميم الأمان: حتى نحن لا نستطيع فك تشفير صورك بدون كلمة المرور.</p>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <!-- الفوتر -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3><i class="fas fa-lock-open me-2"></i>Smart Image Converter</h3>
-                    <p>أداة متكاملة لتشفير وفك تشفير الصور</p>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>🔒</span>
+                    <strong>هل يمكن فك التشفير بدون برامج؟</strong>
                 </div>
-                <div class="footer-links">
-                    <a href="index.html">الرئيسية</a>
-                    <a href="encrypt.html">تشفير</a>
-                    <a href="decrypt.html">فك التشفير</a>
-                    <a href="about.html">عن الأداة</a>
-                </div>
-                <div class="footer-copy">
-                    <p>© 2024 جميع الحقوق محفوظة</p>
+                <div class="faq-answer" style="display: none;">
+                    <p>نعم! أداتنا تعمل مباشرة في المتصفح بدون الحاجة لتثبيت أي برامج. فقط ارفع الملف المشفر وأدخل كلمة المرور.</p>
                 </div>
             </div>
         </div>
+    </main>
+
+    <!-- التذييل -->
+    <footer class="site-footer">
+        <p>© 2026 محول الصور الذكي - جميع العمليات محلية وآمنة</p>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- ملف JavaScript لفك التشفير -->
+    <!-- ملفات JavaScript -->
+    <script src="assets/js/crypto-core.js"></script>
     <script src="assets/js/decrypt.js"></script>
-    
-    <!-- ملف تهيئة الصفحة -->
-    <script src="assets/js/decrypt-init.js"></script>
+    <script src="assets/js/lang.js"></script>
 </body>
 </html>
