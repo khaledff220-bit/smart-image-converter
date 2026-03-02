@@ -2,23 +2,23 @@
   "name": "محول الصور الذكي 2026",
   "short_name": "المحول الذكي",
   "description": "منصة ذكاء المستقبل لمعالجة وتشفير الصور والملفات محلياً وبأمان تام",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0a0b1e",
   "theme_color": "#4f46e5",
   "icons": [
     {
-      "src": "assets/images/favicon.png",
+      "src": "assets/images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "assets/images/favicon.png",
+      "src": "assets/images/icon-192.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable"
     }
   ]
 }
