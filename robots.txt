@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /test_engine
+Disallow: /assets/js/
+Disallow: /assets/css/
 
+# تحديث رابط السايت ماب لضمان وصول العناكب للنسخة الجديدة
 Sitemap: https://smart-image-converter.vercel.app/sitemap.xml
