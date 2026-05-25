@@ -1,11 +1,25 @@
 {
-  "buildCommand": null,
   "outputDirectory": ".",
-  "installCommand": null,
-  "framework": null,
-  "devCommand": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/tools/:path",
+      "destination": "/tools/:path.html"
+    },
+    {
+      "source": "/en/tools/:path",
+      "destination": "/en/tools/:path.html"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
@@ -17,12 +31,17 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/en/tools/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        },
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
@@ -40,18 +59,6 @@
           "value": "strict-origin-when-cross-origin"
         }
       ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/tools",
-      "destination": "/tools/image-to-pdf.html",
-      "permanent": true
-    },
-    {
-      "source": "/en/tools",
-      "destination": "/en/tools/image-to-pdf.html",
-      "permanent": true
     }
   ]
 }
