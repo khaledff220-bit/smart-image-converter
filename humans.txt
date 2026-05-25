@@ -1,21 +1,38 @@
 /* TEAM */
-Owner: Smart Image Converter
-Site: https://smart-image-converter.vercel.app/
-Twitter: @imageconverter
-Contact: contact@smart-image-converter.com
-
-/* SITE */
-Last update: 2026/01/17
-Language: Arabic, English
-Doctype: HTML5
-Components: Pure CSS, Vanilla JavaScript
-Software: VSCode, Termux
-
+    Developer: Smart Image Converter Team
+    Contact: https://smart-image-converter.vercel.app/contact.html
+    Twitter: @smart_converter
+    
 /* THANKS */
-Google Fonts: Inter, Roboto
-Icons: Unicode Emoji
-Hosting: Vercel
-
-/* NOTE */
-This website is built with passion for helping Arabic users.
-All tools are 100% free and privacy-focused.
+    Special thanks to all users who trust our privacy-first tools
+    
+/* SITE */
+    Standards: HTML5, CSS3, ES2020, PWA
+    Components: PDF-lib, vanilla JavaScript
+    Software: VS Code, Git, Vercel
+    
+/* LAST UPDATE */
+    2026-05-25
+    
+/* LANGUAGES */
+    Arabic (primary)
+    English (secondary)
+    
+/* PRIVACY */
+    Zero external uploads - All processing happens locally in your browser
+    No tracking - We don't collect any personal data
+    Open source friendly
+    
+/* TOOLS */
+    Image to PDF Converter
+    PDF Compressor
+    PDF Merger
+    PDF Password Protector
+    PDF Decryptor
+    Image Quality Enhancer
+    
+/* SEO */
+    Optimized for Google Search
+    Structured Data (Schema.org)
+    Mobile-first design
+    Core Web Vitals optimized

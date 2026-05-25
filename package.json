@@ -1,6 +1,32 @@
 {
-  "dependencies": {
-    "crypto-js": "^4.2.0",
-    "pdf-lib": "^1.17.1"
+  "name": "smart-image-converter",
+  "version": "2.0.0",
+  "description": "منصة متكاملة لتحويل الصور إلى PDF، ضغط وتشفير الملفات، دمج PDF، تحسين جودة الصور",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'No build step required'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": [
+    "pdf",
+    "image-converter",
+    "pdf-compressor",
+    "pdf-merger",
+    "pdf-encrypt",
+    "pdf-decrypt",
+    "image-quality",
+    "privacy-first",
+    "offline-first",
+    "pwa"
+  ],
+  "author": "Smart Image Converter Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-repo/smart-image-converter"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
   }
 }
