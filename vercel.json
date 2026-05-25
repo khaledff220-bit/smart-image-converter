@@ -3,22 +3,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/en",
-      "destination": "/en/index.html"
-    },
-    {
-      "source": "/tools/:path",
-      "destination": "/tools/:path.html"
-    },
-    {
-      "source": "/en/tools/:path",
-      "destination": "/en/tools/:path.html"
-    }
+    { "source": "/tools/:path", "destination": "/en/tools/:path.html" },
+    { "source": "/compress-pdf", "destination": "/compress-pdf.html" },
+    { "source": "/decrypt", "destination": "/decrypt.html" },
+    { "source": "/image-quality", "destination": "/image-quality.html" },
+    { "source": "/merge-pdf", "destination": "/merge-pdf.html" },
+    { "source": "/password-protect", "destination": "/password-protect.html" }
   ],
   "headers": [
     {
@@ -31,17 +21,12 @@
       ]
     },
     {
-      "source": "/en/tools/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
+          "value": "public, max-age=3600"
+        },
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
