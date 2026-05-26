@@ -1,3 +1,7 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/tools/:path", "destination": "/en/tools/:path.html" },
+    { "source": "/en/:path", "destination": "/en/:path.html" }
+  ]
 }
