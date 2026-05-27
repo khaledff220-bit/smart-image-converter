@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/tools/:path", "destination": "/en/tools/:path.html" },
-    { "source": "/en/:path", "destination": "/en/:path.html" },
-    { "source": "/:path", "destination": "/:path.html" }
-  ]
-}
