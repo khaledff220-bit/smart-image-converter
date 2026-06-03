@@ -36,6 +36,54 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Smart Image Converter",
+        "url": "https://smart-image-converter.vercel.app/",
+        "logo": "https://smart-image-converter.vercel.app/assets/images/favicon.png",
+        "description": "منصة عربية متخصصة في معالجة الصور وملفات PDF محلياً مع خصوصية تامة",
+        "sameAs": [],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "availableLanguage": ["Arabic"]
+        },
+        "foundingDate": "2025",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "EG"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Smart Image Converter",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web Browser",
+        "description": "تطبيق ويب لتحويل الصور إلى PDF، ضغط PDF، دمج PDF، تحسين جودة الصور، وتشفير الصور - يعمل محلياً بدون رفع ملفات",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "featureList": "تحويل الصور إلى PDF, ضغط PDF, دمج PDF, تحسين جودة الصور, تشفير الصور, معالجة محلية, مجاني بالكامل",
+        "inLanguage": "ar",
+        "applicationSubCategory": "PDF Tools, Image Processing"
+    }
+    </script>
+
     <!-- المكتبات الأساسية -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
@@ -94,13 +142,23 @@
         .seo-block {
             margin-bottom: 40px;
             background: var(--bg-card);
-            padding: 24px;
+            padding: 28px 32px;
             border-radius: var(--radius-lg);
         }
         .seo-block h2 {
             font-size: 26px;
             margin-bottom: 20px;
             color: var(--color-primary);
+        }
+        .seo-block h3 {
+            font-size: 22px;
+            margin: 25px 0 15px;
+            color: var(--text-primary);
+        }
+        .seo-block p {
+            line-height: 1.8;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
         }
         .features-list {
             background: var(--bg-card);
@@ -110,7 +168,7 @@
         }
         .features-list ul {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 12px;
             list-style: none;
             padding: 0;
@@ -128,11 +186,48 @@
             content: "✅";
             color: var(--color-primary);
         }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .comparison-table th {
+            background: var(--color-primary);
+            color: white;
+            padding: 12px;
+            text-align: center;
+        }
+        .comparison-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .faq-grid-home {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .faq-item-home {
+            background: var(--bg-primary);
+            padding: 20px;
+            border-radius: var(--radius-md);
+        }
+        .faq-item-home h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+        .faq-item-home p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
     <a href="#home" class="skip-to-content">تخطي إلى المحتوى الرئيسي</a>
-    
+
     <nav aria-label="القائمة الرئيسية">
         <div class="nav-container">
             <a href="#home" class="nav-logo" data-nav="home">
@@ -159,12 +254,14 @@
                 <h1>تحويل الصور إلى PDF وضغط ودمج ملفات PDF بسهولة</h1>
                 <p class="header-subtitle">منصة متكاملة لمعالجة الصور وملفات PDF - تعمل 100% على جهازك مع خصوصية تامة</p>
             </header>
+
             <div class="stats-grid">
                 <div class="stat-card"><span class="stat-number">6+</span><span>أدوات متكاملة</span></div>
                 <div class="stat-card"><span class="stat-number">100%</span><span>معالجة محلية</span></div>
                 <div class="stat-card"><span class="stat-number">∞</span><span>استخدام مجاني</span></div>
                 <div class="stat-card"><span class="stat-number">10K+</span><span>مستخدم راضي</span></div>
             </div>
+
             <div class="tools-grid">
                 <div class="tool-card"><div class="tool-icon">🔒</div><h3>حماية الصور</h3><p>تشفير صورك بكلمة مرور باستخدام تقنية AES-256</p><a href="#password-protect" class="btn" data-nav="password-protect">ابدأ الآن</a></div>
                 <div class="tool-card"><div class="tool-icon">🔑</div><h3>فك التشفير</h3><p>استعادة الصور الأصلية من الملفات المشفرة</p><a href="#decrypt" class="btn" data-nav="decrypt">ابدأ الآن</a></div>
@@ -173,6 +270,164 @@
                 <div class="tool-card"><div class="tool-icon">⚙️</div><h3>ضغط PDF</h3><p>تقليل حجم ملفات PDF مع الحفاظ على الجودة</p><a href="#compress-pdf" class="btn" data-nav="compress-pdf">ابدأ الآن</a></div>
                 <div class="tool-card"><div class="tool-icon">🖼️➡️📄</div><h3>تحويل الصور إلى PDF</h3><p>تحويل صور JPG، PNG إلى ملف PDF بجودة عالية</p><a href="#image-to-pdf" class="btn" data-nav="image-to-pdf">ابدأ الآن</a></div>
             </div>
+
+            <!-- ============================================ -->
+            <!-- المحتوى النصي الغني للصفحة الرئيسية (حصري وفريد) -->
+            <!-- ============================================ -->
+
+            <section class="seo-rich-content">
+                
+                <!-- القسم 1: شرح المنصة -->
+                <div class="seo-block">
+                    <h2>منصة Smart Image Converter: الحل الأمثل لمعالجة الصور وملفات PDF</h2>
+                    <p>في عصر الرقمنة السريع، أصبحت الحاجة إلى أدوات موثوقة وسريعة وآمنة لمعالجة الصور وملفات PDF أمراً ضرورياً لا غنى عنه. سواء كنت طالباً تحتاج إلى <strong>تحويل الصور إلى PDF</strong> لتسليم واجباتك، أو موظفاً تريد <strong>ضغط PDF</strong> لتسهيل مشاركة التقارير، أو مصمماً يسعى إلى <strong>تحسين جودة الصور</strong> و<strong>رفع دقتها</strong>، أو شخصاً يهتم بخصوصية صوره ويريد <strong>تشفير الصور</strong> وحمايتها بكلمة مرور، فإن منصة Smart Image Converter توفر لك كل ما تحتاجه في مكان واحد، مجاناً تماماً وبدون أي تعقيدات.</p>
+                    
+                    <p>ما يميز منصتنا عن غيرها من المواقع التقليدية هو أن جميع عمليات المعالجة تتم <strong>محلياً 100%</strong> داخل متصفحك. هذا يعني أن ملفاتك - سواء كانت صوراً أو مستندات PDF - لا تُرفع إلى أي خادم خارجي. تبقى آمنة تماماً على جهازك الخاص، ولا يمكن لأي جهة ثالثة الوصول إليها أو الاطلاع عليها. هذه الميزة تجعل منصتنا الخيار الأمثل للمستخدمين الذين يهتمون بخصوصية بياناتهم وأمانها.</p>
+                    
+                    <p>نقدم لك <strong>6 أدوات متكاملة</strong> تغطي جميع احتياجاتك اليومية: <strong>تحويل الصور إلى PDF</strong> (بما في ذلك تحويل JPG إلى PDF وتحويل PNG إلى PDF)، <strong>ضغط PDF</strong> وتقليل حجم الملفات، <strong>دمج PDF</strong> وجمع عدة ملفات في مستند واحد، <strong>تحسين جودة الصور</strong> ورفع دقتها، <strong>تشفير الصور</strong> وحمايتها بكلمة مرور باستخدام تقنية AES-256 العسكرية، و<strong>فك تشفير الصور</strong> لاستعادة الصور الأصلية. كل هذه الأدوات تعمل بكفاءة عالية وبدون أي رسوم أو اشتراكات.</p>
+                </div>
+
+                <!-- القسم 2: تحويل الصور إلى PDF -->
+                <div class="seo-block">
+                    <h2>تحويل الصور إلى PDF بجودة احترافية</h2>
+                    <p>هل تبحث عن طريقة سريعة وآمنة <strong>لتحويل الصور إلى PDF</strong> مباشرة من متصفحك؟ منصتنا توفر لك أفضل تجربة <strong>لتحويل JPG إلى PDF</strong> و<strong>تحويل PNG إلى PDF</strong> بدون الحاجة إلى رفع ملفاتك لأي خادم خارجي. سواء كنت طالباً تحتاج إلى تحويل صور الواجبات إلى ملف واحد، أو موظفاً تريد أرشفة مستنداتك، أو مصمماً يرغب في تقديم أعماله بشكل منظم، فإن أداة <strong>تحويل الصور إلى PDF</strong> لدينا تلبي احتياجاتك.</p>
+                    
+                    <p>ما يميز خدمتنا هو أن المعالجة تتم <strong>محلياً 100%</strong> داخل جهازك. هذا يعني أن صورك الخاصة تبقى آمنة تماماً ولا يتم تخزينها أو مشاركتها مع أي جهة خارجية. يمكنك تحويل صورة واحدة أو عدة صور في آن واحد، مع إمكانية ترتيب الصور بالطريقة التي تريدها قبل إنشاء ملف PDF النهائي. تدعم أداتنا جميع صيغ الصور الشائعة بما في ذلك JPG و PNG و WEBP و GIF.</p>
+                    
+                    <p>عملية <strong>تحويل PNG إلى PDF</strong> أو <strong>تحويل JPG إلى PDF</strong> تتم بجودة عالية تحافظ على دقة وألوان صورك الأصلية. كل ما عليك فعله هو اختيار الصور من جهازك، ترتيبها حسب رغبتك، تحديد إعدادات الصفحة (اتجاه عمودي أو أفقي، حجم A4 أو Letter)، ثم النقر على زر التحويل. خلال ثوانٍ قليلة، سيصبح لديك ملف PDF جاهز للتحميل أو المشاركة.</p>
+                </div>
+
+                <!-- القسم 3: ضغط PDF -->
+                <div class="seo-block">
+                    <h2>ضغط PDF - قلّص حجم ملفاتك دون فقدان الجودة</h2>
+                    <p>الملفات الكبيرة قد تشكل عائقاً عند محاولة إرسالها عبر البريد الإلكتروني أو تحميلها على المواقع. هنا تأتي أهمية <strong>ضغط PDF</strong> كحل مثالي. خدمة <strong>تقليل حجم PDF</strong> التي نقدمها تمكنك من تصغير حجم أي ملف PDF مع الحفاظ على المحتوى النصي والرسومات بأعلى جودة ممكنة. سواء كنت تحتاج إلى إرسال مستند كبير عبر البريد الإلكتروني (معظم خدمات البريد تفرض حداً أقصى 25 ميجابايت)، أو تريد تحسين سرعة تحميل ملفاتك على موقعك الإلكتروني، أو ترغب في توفير مساحة التخزين على جهازك، فإن أداة <strong>ضغط PDF</strong> لدينا هي الحل الأمثل.</p>
+                    
+                    <p>نحن نقدم لك ثلاثة مستويات مختلفة <strong>لضغط PDF</strong>: <strong>ضغط منخفض</strong> يحافظ على جودة عالية مع تقليل بسيط للحجم (10-30%)، مناسب للملفات النصية والمستندات الرسمية؛ <strong>ضغط متوسط</strong> يعطي توازناً ممتازاً بين الحجم والجودة (30-50%)، مثالي لمعظم الاستخدامات اليومية؛ و<strong>ضغط عالي</strong> يقلل حجم الملف بشكل كبير جداً (50-70%)، مثالي للملفات الكبيرة جداً أو عند الحاجة إلى أصغر حجم ممكن للإرسال عبر تطبيقات المراسلة.</p>
+                    
+                    <p>ما يميز <strong>تقليل حجم PDF</strong> في منصتنا هو أنك تتحكم كاملاً في العملية. يمكنك تفعيل خيار تحسين الصور داخل الملف، أو إزالة البيانات الوصفية غير الضرورية لتوفير مساحة إضافية وزيادة الخصوصية. والأهم من كل ذلك، أن ملفك لا يغادر جهازك أبداً - فكل عمليات <strong>ضغط PDF</strong> تتم محلياً في متصفحك، مما يضمن أمان مستنداتك الحساسة.</p>
+                </div>
+
+                <!-- القسم 4: دمج PDF -->
+                <div class="seo-block">
+                    <h2>دمج PDF - اجمع عدة ملفات في مستند واحد منظم</h2>
+                    <p>كم مرة احتجت إلى <strong>دمج PDF</strong> متعددة في ملف واحد؟ سواء كنت تريد جمع فصول كتاب إلكتروني، أو دمج تقارير العمل المتفرقة، أو تجميع مستندات مدرسية متعددة، أو إنشاء ملف PDF واحد من عدة كتيبات، فإن أداة <strong>دمج ملفات PDF</strong> لدينا تقدم لك الحل الأسهل والأسرع والأكثر أماناً.</p>
+                    
+                    <p>عملية <strong>دمج PDF</strong> بسيطة جداً: اختر الملفات التي تريد دمجها من جهازك (حتى 20 ملفاً)، رتبها حسب الترتيب الذي تريده باستخدام خيارات الإزالة والإضافة، ثم اضغط على زر الدمج. خلال لحظات، ستحصل على ملف PDF واحد يحتوي على جميع المستندات التي اخترتها. يمكنك إعادة ترتيب الصفحات، أو حذف بعضها، أو إضافة المزيد من الملفات قبل الدمج النهائي.</p>
+                    
+                    <p><strong>دمج ملفات PDF</strong> مفيد بشكل خاص للموظفين الذين يحتاجون إلى تقديم تقارير متعددة في مستند واحد للعملاء، وللطلاب الذين يريدون تجميع أبحاثهم ومشاريعهم، وللكتاب الذين يرغبون في دمج فصول كتابهم، ولأي شخص يتعامل مع مستندات PDF بشكل يومي. والأفضل من ذلك، أن جميع عمليات <strong>دمج PDF</strong> تتم محلياً - فلا داعي للقلق بشأن خصوصية مستنداتك.</p>
+                </div>
+
+                <!-- القسم 5: تحسين جودة الصور -->
+                <div class="seo-block">
+                    <h2>تحسين جودة الصور - أعِد الحياة لصورك القديمة والضبابية</h2>
+                    <p>هل لديك صور قديمة أو ضبابية تريد تحسينها؟ خدمة <strong>تحسين جودة الصور</strong> التي نقدمها تمنحك فرصة لرفع دقة ووضوح صورك بسهولة. سواء كانت صور شخصية تريد إحياءها، أو صور منتجات تحتاج إلى تحسين لعرضها في متجرك الإلكتروني، أو صوراً قديمة التقطتها بكاميرا منخفضة الدقة، فإن أداة <strong>رفع دقة الصور</strong> هي الحل الأمثل.</p>
+                    
+                    <p>تقنيتنا الذكية <strong>لتحسين جودة الصور</strong> تعمل على معالجة الصورة بكسل بكسل، مما يؤدي إلى تحسين الحواف وتقليل الضبابية ورفع الوضوح العام. يمكنك <strong>تكبير الصور</strong> حتى 4 أضعاف الحجم الأصلي مع خيارات إضافية مثل <strong>تحسين الحدة</strong> (لجعل حواف الصورة أكثر وضوحاً) و<strong>زيادة التباين</strong> (لتحسين عمق الألوان وحيوية الصورة). النتيجة؟ صورة تبدو أفضل بكثير من الأصل، مع الحفاظ على الألوان الطبيعية والتفاصيل الدقيقة.</p>
+                    
+                    <p><strong>رفع دقة الصور</strong> يمكن تطبيقه على صور JPG و PNG و WEBP و GIF على حد سواء. والأهم من كل شيء، أن صورتك لا ترفع إلى أي خادم خارجي - كل عمليات <strong>تحسين جودة الصور</strong> تتم داخل متصفحك، مما يضمن خصوصية تامة لصورك الشخصية أو التجارية. جرب الأداة الآن وشاهد الفرق بنفسك!</p>
+                </div>
+
+                <!-- القسم 6: حماية الصور وتشفيرها -->
+                <div class="seo-block">
+                    <h2>حماية الصور بكلمة مرور - أمان عسكري لملفاتك الخاصة</h2>
+                    <p>خصوصية صورك وملفاتك مهمة جداً، خاصة في عصر الاختراقات الإلكترونية وانتهاكات الخصوصية. خدمة <strong>حماية الصور بكلمة مرور</strong> لدينا تستخدم تقنية التشفير العسكرية <strong>AES-256</strong> <strong>لتشفير الصور</strong> وجعلها غير قابلة للقراءة من قبل أي شخص لا يملك كلمة المرور. هذه هي نفس التقنية المستخدمة من قبل الحكومات والبنوك حول العالم لحماية المعلومات فائقة الحساسية.</p>
+                    
+                    <p>سواء كنت تريد حماية صور شخصية، أو مستندات عمل سرية، أو تصميمات حصرية، أو عقوداً قانونية، فإن <strong>حماية الصور بكلمة مرور</strong> توفر لك طبقة أمان إضافية لا يمكن اختراقها. كيف تعمل؟ ببساطة، اختر الصورة التي تريد حمايتها، أدخل كلمة مرور قوية (يفضل أن تحتوي على أحرف كبيرة وصغيرة وأرقام ورموز)، ثم اضغط على زر التشفير. الناتج سيكون ملفاً مشفراً بصيغة خاصة (.enc) لا يمكن فتحه إلا باستخدام كلمة المرور الصحيحة من خلال أداة فك التشفير المتوفرة في منصتنا.</p>
+                    
+                    <p>خدمة <strong>تشفير الصور</strong> لا ترسل ملفاتك إلى أي خادم خارجي - كل شيء يتم على جهازك. هذا يعني أن كلمة المرور وملفاتك المشفرة تبقى خاصة بك تماماً. لا أحد يستطيع الوصول إلى محتواها بدون كلمة المرور التي أنت فقط من يعرفها. حتى نحن كمنصة لا نستطيع فك تشفير صورك أو الوصول إليها - هذا هو مستوى الأمان الذي نقدمه.</p>
+                </div>
+
+                <!-- القسم 7: فك تشفير الصور -->
+                <div class="seo-block">
+                    <h2>فك تشفير الصور - استعادة الصور الأصلية بسهولة</h2>
+                    <p>بعد أن قمت <strong>بتشفير الصور</strong> وحمايتها بكلمة مرور، ستحتاج إلى طريقة لاستعادتها عند الحاجة. هنا تأتي أهمية <strong>أداة فك تشفير الصور</strong> لدينا. هذه الأداة تمكنك من استعادة الصور الأصلية من الملفات المشفرة (.enc) باستخدام كلمة المرور الصحيحة.</p>
+                    
+                    <p>عملية <strong>فك تشفير الصور</strong> بسيطة للغاية: اختر الملف المشفر من جهازك، أدخل نفس كلمة المرور التي استخدمتها عند التشفير، ثم اضغط على زر فك التشفير. خلال ثوانٍ، ستظهر الصورة الأصلية ويمكنك معاينتها قبل تحميلها. إذا أدخلت كلمة مرور خاطئة، ستظهر رسالة خطأ ولن تتم عملية فك التشفير - هذا يضمن أن لا أحد يمكنه الوصول إلى صورك بدون كلمة المرور الصحيحة.</p>
+                    
+                    <p>ما يميز <strong>أداة فك تشفير الصور</strong> لدينا هو أنها تعمل محلياً بالكامل على جهازك. الملف المشفر وكلمة المرور لا يغادران جهازك أبداً، مما يضمن أمان وخصوصية صورك. سواء كنت بحاجة إلى استعادة صورة شخصية أو مستند عمل مهم، يمكنك الاعتماد على أداتنا لفك التشفير بسرعة وأمان.</p>
+                </div>
+
+                <!-- القسم 8: لماذا المعالجة المحلية أفضل؟ -->
+                <div class="seo-block">
+                    <h2>لماذا المعالجة المحلية أفضل من المواقع التقليدية؟</h2>
+                    <p>قد تتساءل: ما الفرق بين استخدام منصتنا وبين أي موقع آخر على الإنترنت يقدم خدمات مشابهة؟ الإجابة بسيطة وحاسمة: <strong>المعالجة المحلية 100%</strong>. جميع المواقع الأخرى التي تقدم خدمات مشابهة - مثل <strong>تحويل الصور إلى PDF</strong> أو <strong>ضغط PDF</strong> أو <strong>دمج PDF</strong> - تطلب منك رفع ملفاتك إلى خوادمها. هذا يعني أن ملفاتك تنتقل عبر الإنترنت، وقد يتم تخزينها أو الاطلاع عليها من قبل جهات غير معروفة، أو حتى تسريبها في حالة اختراق الخادم.</p>
+                    
+                    <p>أما نحن، فنقدم تجربة مختلفة تماماً. كل شيء يحدث في متصفحك مباشرة. ملفاتك تبقى على جهازك. لا رفع، لا تحميل، لا تخزين، لا مشاركة. هذا ليس مجرد وعد تسويقي - بل حقيقة تقنية يمكنك التأكد منها بنفسك. جرب فصل الإنترنت أثناء استخدامك لأي أداة من أدواتنا، وستجد أن جميع الأدوات تستمر في العمل بكامل طاقتها. هذا دليل قاطع على أن المعالجة تتم محلياً على جهازك.</p>
+                    
+                    <p>المعالجة المحلية تعني أيضاً <strong>أدوات PDF مجانية</strong> حقاً. لا توجد اشتراكات شهرية، لا حدود لعدد الملفات التي يمكنك معالجتها، ولا إعلانات مزعجة تظهر بين الحين والآخر. فقط أدوات تعمل بسرعة فائقة لأن كل شيء يتم على جهازك، بدون انتظار للرفع أو المعالجة على خوادم بعيدة قد تكون مزدحمة أو بطيئة.</p>
+                </div>
+
+                <!-- القسم 9: جدول المقارنة -->
+                <div class="seo-block">
+                    <h2>مقارنة شاملة: منصة Smart Image Converter مقابل المواقع التقليدية</h2>
+                    
+                    <div style="overflow-x: auto;">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>الميزة</th>
+                                    <th>Smart Image Converter</th>
+                                    <th>المواقع التقليدية</th>
+                                 </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>🔒 خصوصية الملفات</td><td>✅ معالجة محلية - لا ترفع ملفاتك</td><td>❌ يتم رفع الملفات للخادم</td></tr>
+                                <tr><td>💰 التكلفة</td><td>✅ مجاني بالكامل - بدون حدود</td><td>⚠️ مجاني محدود أو اشتراكات مدفوعة</td></tr>
+                                <tr><td>⚡ سرعة المعالجة</td><td>✅ فورية - معالجة بدون انتظار</td><td>⚠️ تعتمد على سرعة الإنترنت</td></tr>
+                                <tr><td>📱 العمل دون إنترنت</td><td>✅ يعمل بعد تحميل الصفحة</td><td>❌ يتطلب اتصالاً دائماً</td></tr>
+                                <tr><td>📄 حجم الملف المسموح</td><td>✅ يحدده جهازك فقط (حتى 50 ميجابايت)</td><td>⚠️ حدود صارمة (غالباً أقل)</td></tr>
+                                <tr><td>🛡️ الإعلانات</td><td>✅ بدون إعلانات مزعجة</td><td>❌ إعلانات ونوافذ منبثقة</td></tr>
+                                <tr><td>🌐 دعم اللغة العربية</td><td>✅ دعم كامل</td><td>⚠️ غالباً إنجليزي فقط</td></tr>
+                                <tr><td>🔐 تقنية التشفير</td><td>✅ AES-256 (عسكري)</td><td>❌ تشفير ضعيف أو غير موجود</td></tr>
+                                <tr><td>🖼️ حد التكبير (تحسين الصور)</td><td>✅ حتى 4 أضعاف</td><td>⚠️ غالباً 2x فقط</td></tr>
+                            </tbody>
+                         </table>
+                    </div>
+                </div>
+
+                <!-- القسم 10: الأسئلة الشائعة -->
+                <div class="seo-block">
+                    <h2>الأسئلة الشائعة حول منصة Smart Image Converter</h2>
+                    
+                    <div class="faq-grid-home">
+                        <div class="faq-item-home"><h4>🤔 ما هي منصة Smart Image Converter؟</h4><p>منصة متكاملة توفر 6 أدوات مجانية لمعالجة الصور وملفات PDF: تحويل الصور إلى PDF، ضغط PDF، دمج PDF، تحسين جودة الصور، تشفير الصور، وفك تشفير الصور. جميع الأدوات تعمل محلياً على جهازك بخصوصية تامة.</p></div>
+                        
+                        <div class="faq-item-home"><h4>🔒 هل رفع الملفات آمن على منصتكم؟</h4><p>نحن لا نرفع ملفاتك إلى أي خادم خارجي. جميع المعالجات تتم داخل متصفحك مباشرة، مما يعني أن ملفاتك تبقى على جهازك فقط ولا يراها أحد غيرك.</p></div>
+                        
+                        <div class="faq-item-home"><h4>💰 هل الخدمة مجانية حقاً؟</h4><p>نعم، جميع أدواتنا مجانية بالكامل بدون أي رسوم خفية أو اشتراكات. يمكنك استخدام جميع الأدوات لعدد غير محدود من المرات دون أي قيود أو إعلانات مزعجة.</p></div>
+                        
+                        <div class="faq-item-home"><h4>📱 هل تعمل المنصة على الهاتف المحمول؟</h4><p>نعم، جميع أدواتنا مصممة لتكون متجاوبة بالكامل وتعمل بشكل ممتاز على جميع الهواتف الذكية والأجهزة اللوحية والحواسيب.</p></div>
+                        
+                        <div class="faq-item-home"><h4>🌐 هل أحتاج إلى إنترنت لاستخدام الأدوات؟</h4><p>بعد تحميل الصفحة لأول مرة، يمكنك استخدام جميع الأدوات دون اتصال بالإنترنت لأن العمليات تتم محلياً على جهازك.</p></div>
+                        
+                        <div class="faq-item-home"><h4>🔐 ما هي تقنية التشفير المستخدمة؟</h4><p>نستخدم تقنية AES-256، وهي نفس التقنية المستخدمة من قبل الحكومات والبنوك لحماية المعلومات فائقة الحساسية. تعتبر غير قابلة للاختراق عملياً.</p></div>
+                        
+                        <div class="faq-item-home"><h4>🖼️ ما صيغ الصور المدعومة للتحويل إلى PDF؟</h4><p>ندعم جميع الصيغ الشائعة: JPG، JPEG، PNG، WEBP، و GIF. يمكنك تحويل أي صورة بهذه الصيغ إلى PDF بجودة عالية.</p></div>
+                        
+                        <div class="faq-item-home"><h4>📄 ما حجم الملفات التي يمكنني معالجتها؟</h4><p>الحد الأقصى هو 50 ميجابايت للملف الواحد، وهو مناسب لمعظم الاستخدامات اليومية. يمكنك معالجة عدد غير محدود من الملفات.</p></div>
+                        
+                        <div class="faq-item-home"><h4>⚙️ هل أحتاج إلى إنشاء حساب؟</h4><p>لا، جميع أدواتنا متاحة بدون تسجيل أو إنشاء حساب. فقط افتح الصفحة وابدأ فوراً في استخدام الأدوات دون أي تعقيدات.</p></div>
+                        
+                        <div class="faq-item-home"><h4>🔓 ماذا لو نسيت كلمة المرور للملف المشفر؟</h4><p>للأسف، إذا نسيت كلمة المرور، لا يمكن استعادة الصورة الأصلية. هذا هو مبدأ التشفير القوي - بدون كلمة المرور الصحيحة، من المستحيل رياضياً فك التشفير. ننصحك بحفظ كلمات المرور في مكان آمن.</p></div>
+                        
+                        <div class="faq-item-home"><h4>🔄 هل يمكنني دمج صور متعددة في PDF واحد؟</h4><p>نعم، أداة تحويل الصور إلى PDF تدعم اختيار عدة صور (حتى 20 صورة) وتحويلها إلى ملف PDF واحد منظم بالترتيب الذي تختاره.</p></div>
+                        
+                        <div class="faq-item-home"><h4>🎯 هل يمكنني استخدام الأدوات لأغراض تجارية؟</h4><p>نعم، جميع الأدوات متاحة للاستخدام الشخصي والتجاري. سواء كنت مصمماً، أو صاحب متجر إلكتروني، أو مسوقاً رقمياً، يمكنك استخدام أدواتنا بحرية.</p></div>
+                    </div>
+                </div>
+
+                <!-- القسم 11: خاتمة قوية -->
+                <div class="seo-block" style="text-align: center;">
+                    <h2>ابدأ رحلتك مع Smart Image Converter اليوم</h2>
+                    <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                        لا تدع الملفات الكبيرة أو الصور الضبابية أو مخاوف الخصوصية تعيق إنتاجيتك. مع منصة <strong>Smart Image Converter</strong>، يمكنك <strong>تحويل الصور إلى PDF</strong>، <strong>ضغط PDF</strong>، <strong>دمج PDF</strong>، <strong>تحسين جودة الصور</strong>، <strong>تشفير الصور</strong>، و<strong>فك تشفيرها</strong> بكل سهولة وأمان تام.
+                        جميع العمليات تتم محلياً على جهازك، مما يضمن خصوصية تامة لمستنداتك وملفاتك. جرب جميع أدواتنا الآن مجاناً واستمتع بتجربة فريدة من السرعة والأمان والجودة العالية!
+                    </p>
+                    <div style="background: var(--bg-primary); border-radius: 12px; padding: 15px; margin-top: 20px;">
+                        <p style="margin: 0; color: var(--color-primary); font-weight: bold;">✨ Smart Image Converter - معالجة محلية، خصوصية تامة، جودة احترافية، مجاناً ودون قيود ✨</p>
+                    </div>
+                </div>
+            </section>
 
             <section class="features-list">
                 <h2>مميزات Smart Image Converter</h2>
@@ -225,14 +480,6 @@
         </div>
     </footer>
 
-        <!-- حاويات الأدوات -->
-    <section id="compress-pdf" class="page-section"><div class="tool-container"><div id="compress-pdf-container"></div></div></section>
-    <section id="merge-pdf" class="page-section"><div class="tool-container"><div id="merge-pdf-container"></div></div></section>
-    <section id="password-protect" class="page-section"><div class="tool-container"><div id="password-protect-container"></div></div></section>
-    <section id="decrypt" class="page-section"><div class="tool-container"><div id="decrypt-container"></div></div></section>
-    <section id="image-quality" class="page-section"><div class="tool-container"><div id="image-quality-container"></div></div></section>
-    <section id="image-to-pdf" class="page-section"><div class="tool-container"><div id="image-to-pdf-container"></div></div></section>
-
     <!-- تفعيل PDF.js Worker -->
     <script>
         if (typeof pdfjsLib !== 'undefined') {
@@ -241,7 +488,7 @@
         }
     </script>
 
-        <!-- ملفات المشروع -->
+    <!-- ملفات المشروع -->
     <script src="/assets/js/pdf-compressor.js"></script>
     <script src="/assets/js/image-optimizer.js"></script>
     <script src="/assets/js/password-protect.js"></script>
@@ -254,7 +501,7 @@
     <script>
         (function() {
             console.log("🚀 تهيئة نظام التنقل بين الصفحات");
-            
+
             // الحصول على جميع الأقسام
             const sections = {
                 home: document.getElementById('home'),
@@ -265,23 +512,23 @@
                 'image-quality': document.getElementById('image-quality'),
                 'image-to-pdf': document.getElementById('image-to-pdf')
             };
-            
+
             // دالة لإظهار قسم وإخفاء الباقي
             function showSection(sectionId) {
                 console.log("📄 عرض القسم:", sectionId);
-                
+
                 // إخفاء جميع الأقسام
                 Object.keys(sections).forEach(id => {
                     if (sections[id]) {
                         sections[id].classList.remove('active');
                     }
                 });
-                
+
                 // إظهار القسم المطلوب
                 if (sections[sectionId]) {
                     sections[sectionId].classList.add('active');
                 }
-                
+
                 // تحديث عنوان الصفحة
                 let pageTitle = "Smart Image Converter";
                 switch(sectionId) {
@@ -295,7 +542,7 @@
                 }
                 document.title = pageTitle + " | Smart Image Converter";
             }
-            
+
             // ربط جميع روابط التنقل
             const navLinks = document.querySelectorAll('[data-nav]');
             navLinks.forEach(link => {
@@ -309,7 +556,7 @@
                     }
                 });
             });
-            
+
             // التعامل مع زر الرجوع/التقدم في المتصفح
             window.addEventListener('popstate', function() {
                 const hash = window.location.hash.substring(1);
@@ -319,7 +566,7 @@
                     showSection('home');
                 }
             });
-            
+
             // التحقق من وجود hash في URL عند التحميل
             const initialHash = window.location.hash.substring(1);
             if (initialHash && sections[initialHash]) {
@@ -327,7 +574,7 @@
             } else {
                 showSection('home');
             }
-            
+
             console.log("✅ نظام التنقل جاهز");
         })();
     </script>

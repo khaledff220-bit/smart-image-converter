@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0b1e">
+    <title>تحويل الصور إلى PDF وضغط ودمج ملفات PDF مجاناً | Smart Image Converter</title>
+    <meta name="description" content="أفضل منصة عربية لتحويل الصور إلى PDF، ضغط وتقليل حجم PDF، دمج PDF، تحسين جودة الصور، وتشفير الصور. معالجة محلية 100% - مجاني ولا ترفع ملفاتك للخادم.">
+    <meta name="keywords" content="تحويل الصور إلى PDF, تحويل JPG إلى PDF, تحويل PNG إلى PDF, ضغط PDF, تقليل حجم PDF, دمج PDF, دمج ملفات PDF, تحسين جودة الصور, رفع دقة الصور, حماية الصور بكلمة مرور, تشفير الصور, أدوات PDF مجانية, معالجة الصور عبر الإنترنت, أدوات PDF العربية">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="google-site-verification" content="1YBP2sbUMH1uIADFn88vYgs-UHOOlEoYkxtp9tixugE">
+    <meta name="yandex-verification" content="aec7ad1050eecf51">
+    <link rel="canonical" href="https://smart-image-converter.vercel.app/">
+    <meta property="og:title" content="تحويل الصور إلى PDF وضغط ودمج ملفات PDF مجاناً | Smart Image Converter">
+    <meta property="og:description" content="منصة متكاملة لمعالجة الصور وملفات PDF بخصوصية تامة - معالجة محلية 100% بدون رفع ملفاتك للخادم">
+    <meta property="og:url" content="https://smart-image-converter.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:image" content="/assets/images/og-image.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Smart Image Converter",
+        "url": "https://smart-image-converter.vercel.app/",
+        "description": "منصة متكاملة لتحويل الصور إلى PDF، ضغط PDF، دمج PDF، تحسين جودة الصور، وتشفير الصور - معالجة محلية 100%",
+        "inLanguage": "ar"
+    }
+    </script>
+
+    <!-- المكتبات الأساسية -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <style>
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .drag-drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            background: var(--bg-card);
+        }
+        .drag-drop-zone:hover, .drag-drop-zone.drag-over {
+            border-color: var(--border-glow);
+            background: rgba(0, 242, 255, 0.05);
+        }
+        .level-card {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: 1px solid var(--border-color);
+        }
+        .level-card.selected {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+        .seo-rich-content {
+            max-width: 100%;
+            margin: 40px 0;
+        }
+        .seo-block {
+            margin-bottom: 40px;
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+        }
+        .seo-block h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+        .features-list {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            margin: 40px 0;
+        }
+        .features-list ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+        }
+        .features-list li {
+            padding: 10px 15px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .features-list li::before {
+            content: "✅";
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    <a href="#home" class="skip-to-content">تخطي إلى المحتوى الرئيسي</a>
+    
+    <nav aria-label="القائمة الرئيسية">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" data-nav="home">
+                <img src="/assets/images/favicon.png" alt="Smart Image Converter" width="32" height="32">
+                <h2>Smart Image Converter</h2>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" data-nav="home">الرئيسية</a></li>
+                <li><a href="#password-protect" data-nav="password-protect">حماية الصور</a></li>
+                <li><a href="#decrypt" data-nav="decrypt">فك التشفير</a></li>
+                <li><a href="#image-quality" data-nav="image-quality">تحسين الجودة</a></li>
+                <li><a href="#merge-pdf" data-nav="merge-pdf">دمج PDF</a></li>
+                <li><a href="#compress-pdf" data-nav="compress-pdf">ضغط PDF</a></li>
+                <li><a href="#image-to-pdf" data-nav="image-to-pdf">تحويل إلى PDF</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <main id="home" class="page-section active">
+        <div class="tool-container">
+            <header class="main-header">
+                <span class="hero-badge">🚀 معالجة محلية وآمنة</span>
+                <h1>تحويل الصور إلى PDF وضغط ودمج ملفات PDF بسهولة</h1>
+                <p class="header-subtitle">منصة متكاملة لمعالجة الصور وملفات PDF - تعمل 100% على جهازك مع خصوصية تامة</p>
+            </header>
+            <div class="stats-grid">
+                <div class="stat-card"><span class="stat-number">6+</span><span>أدوات متكاملة</span></div>
+                <div class="stat-card"><span class="stat-number">100%</span><span>معالجة محلية</span></div>
+                <div class="stat-card"><span class="stat-number">∞</span><span>استخدام مجاني</span></div>
+                <div class="stat-card"><span class="stat-number">10K+</span><span>مستخدم راضي</span></div>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card"><div class="tool-icon">🔒</div><h3>حماية الصور</h3><p>تشفير صورك بكلمة مرور باستخدام تقنية AES-256</p><a href="#password-protect" class="btn" data-nav="password-protect">ابدأ الآن</a></div>
+                <div class="tool-card"><div class="tool-icon">🔑</div><h3>فك التشفير</h3><p>استعادة الصور الأصلية من الملفات المشفرة</p><a href="#decrypt" class="btn" data-nav="decrypt">ابدأ الآن</a></div>
+                <div class="tool-card"><div class="tool-icon">🖼️</div><h3>تحسين الجودة</h3><p>رفع دقة الصور الضبابية وجعلها أكثر وضوحاً</p><a href="#image-quality" class="btn" data-nav="image-quality">ابدأ الآن</a></div>
+                <div class="tool-card"><div class="tool-icon">📄</div><h3>دمج PDF</h3><p>دمج عدة ملفات PDF في مستند واحد مرتب</p><a href="#merge-pdf" class="btn" data-nav="merge-pdf">ابدأ الآن</a></div>
+                <div class="tool-card"><div class="tool-icon">⚙️</div><h3>ضغط PDF</h3><p>تقليل حجم ملفات PDF مع الحفاظ على الجودة</p><a href="#compress-pdf" class="btn" data-nav="compress-pdf">ابدأ الآن</a></div>
+                <div class="tool-card"><div class="tool-icon">🖼️➡️📄</div><h3>تحويل الصور إلى PDF</h3><p>تحويل صور JPG، PNG إلى ملف PDF بجودة عالية</p><a href="#image-to-pdf" class="btn" data-nav="image-to-pdf">ابدأ الآن</a></div>
+            </div>
+
+            <section class="features-list">
+                <h2>مميزات Smart Image Converter</h2>
+                <ul>
+                    <li>تحويل الصور إلى PDF بجودة عالية</li>
+                    <li>ضغط PDF دون رفع الملفات للخادم</li>
+                    <li>دمج ملفات PDF بسرعة فائقة</li>
+                    <li>تشفير الصور بتقنية AES-256</li>
+                    <li>تحسين جودة الصور محلياً على جهازك</li>
+                    <li>مجاني بالكامل بدون حدود أو اشتراكات</li>
+                    <li>يعمل على الهاتف والكمبيوتر والأجهزة اللوحية</li>
+                    <li>معالجة محلية 100% - خصوصية تامة</li>
+                    <li>يعمل دون اتصال بالإنترنت بعد التحميل</li>
+                    <li>بدون إعلانات مزعجة أو نوافذ منبثقة</li>
+                    <li>تحويل JPG إلى PDF بسهولة</li>
+                    <li>تحويل PNG إلى PDF بجودة عالية</li>
+                    <li>تقليل حجم PDF بنسبة تصل إلى 70%</li>
+                    <li>واجهة عربية بالكامل وسهلة الاستخدام</li>
+                </ul>
+            </section>
+
+            <section class="how-it-works">
+                <h2>كيف تعمل المنصة؟</h2>
+                <div class="steps">
+                    <div class="step"><span class="step-number">1</span><h4>اختر ملفك</h4><p>ارفع الملف الذي تريد معالجته من جهازك</p></div>
+                    <div class="step"><span class="step-number">2</span><h4>اختر الإعدادات</h4><p>حدد الخيارات المناسبة لاحتياجاتك</p></div>
+                    <div class="step"><span class="step-number">3</span><h4>معالجة محلية</h4><p>تتم المعالجة داخل متصفحك - خصوصية كاملة</p></div>
+                    <div class="step"><span class="step-number">4</span><h4>تحميل النتيجة</h4><p>احصل على ملفك النهائي فوراً</p></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- حاويات الأدوات -->
+    <section id="compress-pdf" class="page-section"><div class="tool-container"><div id="compress-pdf-container"></div></div></section>
+    <section id="merge-pdf" class="page-section"><div class="tool-container"><div id="merge-pdf-container"></div></div></section>
+    <section id="password-protect" class="page-section"><div class="tool-container"><div id="password-protect-container"></div></div></section>
+    <section id="decrypt" class="page-section"><div class="tool-container"><div id="decrypt-container"></div></div></section>
+    <section id="image-quality" class="page-section"><div class="tool-container"><div id="image-quality-container"></div></div></section>
+    <section id="image-to-pdf" class="page-section"><div class="tool-container"><div id="image-to-pdf-container"></div></div></section>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Smart Image Converter. جميع الحقوق محفوظة</p>
+            <div class="footer-links">
+                <a href="privacy.html">سياسة الخصوصية</a>
+                <a href="terms.html">الشروط والأحكام</a>
+                <a href="contact.html">اتصل بنا</a>
+            </div>
+        </div>
+    </footer>
+
+        <!-- حاويات الأدوات -->
+    <section id="compress-pdf" class="page-section"><div class="tool-container"><div id="compress-pdf-container"></div></div></section>
+    <section id="merge-pdf" class="page-section"><div class="tool-container"><div id="merge-pdf-container"></div></div></section>
+    <section id="password-protect" class="page-section"><div class="tool-container"><div id="password-protect-container"></div></div></section>
+    <section id="decrypt" class="page-section"><div class="tool-container"><div id="decrypt-container"></div></div></section>
+    <section id="image-quality" class="page-section"><div class="tool-container"><div id="image-quality-container"></div></div></section>
+    <section id="image-to-pdf" class="page-section"><div class="tool-container"><div id="image-to-pdf-container"></div></div></section>
+
+    <!-- تفعيل PDF.js Worker -->
+    <script>
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            console.log("✅ PDF.js worker configured");
+        }
+    </script>
+
+        <!-- ملفات المشروع -->
+    <script src="/assets/js/pdf-compressor.js"></script>
+    <script src="/assets/js/image-optimizer.js"></script>
+    <script src="/assets/js/password-protect.js"></script>
+    <script src="/assets/js/merge-pdf.js"></script>
+    <script src="/assets/js/decrypt.js"></script>
+    <script src="/assets/js/image-to-pdf.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <!-- كود التنقل بين الصفحات -->
+    <script>
+        (function() {
+            console.log("🚀 تهيئة نظام التنقل بين الصفحات");
+            
+            // الحصول على جميع الأقسام
+            const sections = {
+                home: document.getElementById('home'),
+                'compress-pdf': document.getElementById('compress-pdf'),
+                'merge-pdf': document.getElementById('merge-pdf'),
+                'password-protect': document.getElementById('password-protect'),
+                'decrypt': document.getElementById('decrypt'),
+                'image-quality': document.getElementById('image-quality'),
+                'image-to-pdf': document.getElementById('image-to-pdf')
+            };
+            
+            // دالة لإظهار قسم وإخفاء الباقي
+            function showSection(sectionId) {
+                console.log("📄 عرض القسم:", sectionId);
+                
+                // إخفاء جميع الأقسام
+                Object.keys(sections).forEach(id => {
+                    if (sections[id]) {
+                        sections[id].classList.remove('active');
+                    }
+                });
+                
+                // إظهار القسم المطلوب
+                if (sections[sectionId]) {
+                    sections[sectionId].classList.add('active');
+                }
+                
+                // تحديث عنوان الصفحة
+                let pageTitle = "Smart Image Converter";
+                switch(sectionId) {
+                    case 'home': pageTitle = "الرئيسية - تحويل الصور إلى PDF وضغط PDF"; break;
+                    case 'compress-pdf': pageTitle = "ضغط PDF - قلص حجم ملفات PDF مجاناً"; break;
+                    case 'merge-pdf': pageTitle = "دمج PDF - ادمج عدة ملفات PDF في ملف واحد"; break;
+                    case 'image-to-pdf': pageTitle = "تحويل الصور إلى PDF - تحويل JPG و PNG إلى PDF"; break;
+                    case 'image-quality': pageTitle = "تحسين جودة الصور - رفع دقة الصور مجاناً"; break;
+                    case 'password-protect': pageTitle = "حماية الصور - تشفير الصور بكلمة مرور"; break;
+                    case 'decrypt': pageTitle = "فك تشفير الصور - استعادة الصور الأصلية"; break;
+                }
+                document.title = pageTitle + " | Smart Image Converter";
+            }
+            
+            // ربط جميع روابط التنقل
+            const navLinks = document.querySelectorAll('[data-nav]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-nav');
+                    if (sectionId && sections[sectionId]) {
+                        showSection(sectionId);
+                        // تحديث URL بدون إعادة تحميل
+                        history.pushState(null, '', '#' + sectionId);
+                    }
+                });
+            });
+            
+            // التعامل مع زر الرجوع/التقدم في المتصفح
+            window.addEventListener('popstate', function() {
+                const hash = window.location.hash.substring(1);
+                if (hash && sections[hash]) {
+                    showSection(hash);
+                } else {
+                    showSection('home');
+                }
+            });
+            
+            // التحقق من وجود hash في URL عند التحميل
+            const initialHash = window.location.hash.substring(1);
+            if (initialHash && sections[initialHash]) {
+                showSection(initialHash);
+            } else {
+                showSection('home');
+            }
+            
+            console.log("✅ نظام التنقل جاهز");
+        })();
+    </script>
+</body>
+</html>
