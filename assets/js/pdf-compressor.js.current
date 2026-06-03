@@ -1,0 +1,121 @@
+/**                                            * محرك ضغط PDF الحقيقي - النسخة النهائية المحسنة
+ * Real PDF Compression Engine - Ultimate Optimized Version
+ * يعمل 100% داخل المتصفح                      * @version 3.0.0                              */                                           
+class PDFCompressor {                             constructor() {
+        this.pdfjsLib = window.pdfjsLib;              this.settings = {
+            maxFileSize: 50 * 1024 * 1024, // 50MB                                                      maxPages: 100,                                defaultQuality: 0.55,
+            // الحد الأدنى للحجم قبل الضغط (أقل من 500KB لا نضغط)
+            minFileSizeToCompress: 500 * 1024, // 500KB                                                 // الحد الأقصى للأبعاد
+            maxWidth: 1400,
+            maxHeight: 2000,
+            // إعدادات الضغط حسب المستوى (محسنة)
+            compressionLevels: {
+                low: { quality: 0.70, scale: 0.90, label: 'منخفض' },                                        medium: { quality: 0.45, scale: 0.75, label: 'متوسط' },                                     high: { quality: 0.25, scale: 0.60, label: 'عالي' }                                     }
+        };
+                                                      this.isProcessing = false;
+        this.currentProgress = 0;                 }
+                                                  /**
+     * الضغط الرئيسي للملف                         * @param {File} file - ملف PDF
+     * @param {number} quality - جودة الضغط (0.1 إلى 1)                                          * @param {Function} progressCallback - دالة تحديث التقدم
+     * @returns {Promise<Blob>} - ملف PDF المضغوط
+     */                                           async compressPDF(file, quality = 0.55, progressCallback = null) {
+        if (this.isProcessing) {
+            throw new Error('عملية ضغط جارية بالفعل');
+        }                                     
+        // منع ضغط الملفات الصغيرة جداً (أقل من 500KB)
+        if (file.size < this.settings.minFileSizeToCompress) {
+            console.log(`📊 الملف صغير جداً (${this.formatBytes(file.size)})، سيتم إرجاعه كما هو`);
+            return file;                              }                                     
+        this.isProcessing = true;
+        this.currentProgress = 0;
+                                                      try {                                             // التحقق من صحة الملف                        this.validateFile(file);          
+            const originalSize = file.size;               console.log(`📊 بدء ضغط الملف: ${file.name}`);                                              console.log(`📊 الحجم الأصلي: ${this.formatBytes(originalSize)}`);                          console.log(`📊 جودة الضغط: ${Math.round(quality * 100)}%`);                    
+            // تحميل مستند PDF                            const arrayBuffer = await file.arrayBuffer();                                               const loadingTask = this.pdfjsLib.getDocument({ data: arrayBuffer });                       const pdfDoc = await loadingTask.promise;                                       
+            console.log(`📊 عدد الصفحات: ${pdfDoc.numPages}`);
+                                                          // التحقق من عدد الصفحات                      if (pdfDoc.numPages > this.settings.maxPages) {
+                throw new Error(`عدد الصفحات كبير جداً (${pdfDoc.numPages} > ${this.settings.maxPages})`);                                             }                                                                                           // تحديد مستوى الضغط بناءً على الجودة                                                        const compressionLevel = this.getCompressionLevel(quality);                                 console.log(`📊 مستوى الضغط: ${compressionLevel.label} (Scale: ${compressionLevel.scale}, Quality: ${compressionLevel.quality})`);                                          
+            // مصفوفة لتخزين الصفحات المضغوطة
+            const compressedPages = [];                   let totalPageSize = 0;
+                                                          // معالجة كل صفحة                             for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {                                  if (!this.isProcessing) {                         throw new Error('تم إلغاء العملية');                                                    }                             
+                // تحديث التقدم                               this.currentProgress = (pageNum / pdfDoc.numPages) * 90;                                    if (progressCallback) {
+                    progressCallback(this.currentProgress);
+                }                                                                                           // جلب الصفحة مع تقليل الأبعاد حسب مستوى الضغط                                              const page = await pdfDoc.getPage(pageNum);                                                 let viewport = page.getViewport({ scale: compressionLevel.scale });                                                                       // تطبيق الحد الأقصى للأبعاد
+                const scaleFactor = Math.min(                     this.settings.maxWidth / viewport.width,                                                    this.settings.maxHeight / viewport.height,                                                  1                                         );                                                                                          if (scaleFactor < 1) {                            viewport = page.getViewport({ scale: compressionLevel.scale * scaleFactor });                                                         }                                                                                           // إنشاء Canvas
+                const canvas = document.createElement('canvas');                                            canvas.width = Math.floor(viewport.width);                                                  canvas.height = Math.floor(viewport.height);                                
+                const ctx = canvas.getContext('2d');
+                                                              // عرض الصفحة على Canvas                      const renderContext = {                           canvasContext: ctx,                           viewport: viewport                        };                                                                                          await page.render(renderContext).promise;                                                                                                 // ضغط الصورة باستخدام toBlob (أفضل من toDataURL)                                           const compressedImage = await this.compressCanvasImageWithBlob(                                 canvas,                                       compressionLevel.quality,
+                    pageNum                                   );
+                                                              // حساب حجم الصفحة
+                const pageSize = Math.round(compressedImage.length / 1024);
+                totalPageSize += compressedImage.length;                                                    console.log(`📄 صفحة ${pageNum}: ${pageSize} KB`);                                                                                        compressedPages.push({                            width: viewport.width,                        height: viewport.height,                      imageData: compressedImage                });                                                                                         // تحرير الذاكرة                              page.cleanup();                           }                                                                                           console.log(`📊 إجمالي حجم الصور: ${this.formatBytes(totalPageSize)}`);
+
+            // إنشاء PDF جديد من الصور المضغوطة
+            this.currentProgress = 95;                    if (progressCallback) progressCallback(95);                                                                                               const finalPDF = await this.createPDFFromImages(compressedPages);                           const compressedSize = finalPDF.size;
+            const savings = Math.round((1 - (compressedSize / originalSize)) * 100);                                                                  console.log(`📊 الحجم بعد الضغط: ${this.formatBytes(compressedSize)}`);                     console.log(`📊 نسبة التوفير: ${savings}%`);                                                                                              this.currentProgress = 100;                   if (progressCallback) progressCallback(100);                                                                                              // إذا كان الملف المضغوط أكبر من الأصلي، نرجع الأصلي
+            if (compressedSize >= originalSize) {
+                console.warn(`⚠️ الملف المضغوط أكبر من الأصلي، سيتم إرجاع الملف الأصلي`);
+                return file;
+            }                                 
+            return finalPDF;                  
+        } catch (error) {                                 console.error('PDF compression error:', error);                                             throw error;
+        } finally {                                       this.isProcessing = false;
+        }                                         }
+                                                  /**                                            * تحديد مستوى الضغط بناءً على جودة الإدخال
+     */
+    getCompressionLevel(quality) {                    if (quality <= 0.35) {                            return this.settings.compressionLevels.high;                                            } else if (quality <= 0.6) {                      return this.settings.compressionLevels.medium;                                          } else {                                          return this.settings.compressionLevels.low;                                             }                                         }                                                                                           /**                                            * ضغط صورة Canvas باستخدام toBlob (أفضل أداء)                                               * @param {HTMLCanvasElement} canvas - العنصر Canvas                                         * @param {number} quality - الجودة            * @returns {Promise<string>} - بيانات الصورة المضغوطة
+     */                                           async compressCanvasImageWithBlob(canvas, quality, pageNum) {                                   return new Promise((resolve, reject) => {
+            try {                                             canvas.toBlob(async (blob) => {                                                                 if (!blob) {                                      reject(new Error('فشل تحويل Canvas إلى Blob'));
+                        return;                                   }                         
+                    // تحويل Blob إلى DataURL                     const reader = new FileReader();                                                            reader.onload = (e) => {                          resolve(e.target.result);                                                               };
+                    reader.onerror = () => {                          reject(new Error('فشل تحويل Blob إلى DataURL'));                                        };
+                    reader.readAsDataURL(blob);                                                                                                           }, 'image/jpeg', quality);                } catch (error) {
+                console.error(`خطأ في ضغط صفحة ${pageNum}:`, error);
+                // استخدام toDataURL كبديل                    resolve(canvas.toDataURL('image/jpeg', quality));
+            }                                         });
+    }                                                                                           /**
+     * إنشاء PDF من الصور                          * @param {Array} pages - مصفوفة الصفحات
+     * @returns {Promise<Blob>} - ملف PDF          */                                           async createPDFFromImages(pages) {                return new Promise((resolve, reject) => {
+            try {                                             if (window.jspdf && window.jspdf.jsPDF) {                                                       this.createPDFWithJSPDF(pages).then(resolve).catch(reject);                             } else {
+                    console.error("❌ jsPDF غير متاح");                                                         reject(new Error('مكتبة إنشاء PDF غير متاحة'));                                         }
+            } catch (error) {                                 reject(error);                            }
+        });                                       }
+                                                  /**                                            * إنشاء PDF باستخدام jsPDF مع إزالة البيانات الوصفية                                        */
+    async createPDFWithJSPDF(pages) {                 const { jsPDF } = window.jspdf;
+                                                      // استخدام A4 كحجم افتراضي
+        const pdf = new jsPDF({                           orientation: pages[0].width > pages[0].height ? 'landscape' : 'portrait',
+            unit: 'px',                                   format: [pages[0].width, pages[0].height]                                               });                                                                                         // إزالة البيانات الوصفية (لتقليل الحجم)
+        pdf.setProperties({                               title: '',
+            subject: '',                                  author: '',
+            creator: 'Smart Image Converter',             keywords: ''                              });
+                                                      for (let i = 0; i < pages.length; i++) {                                                        const page = pages[i];
+                                                          if (i > 0) {
+                pdf.addPage([page.width, page.height]);                                                 }
+                                                          // إضافة الصورة إلى PDF مع تحسين الضغط                                                      pdf.addImage(
+                page.imageData,
+                'JPEG',                                       0,
+                0,                                            page.width,                                   page.height,                                  undefined,
+                'FAST'                                    );                                        }
+                                                      // حفظ كمصفوفة بايت
+        const pdfBytes = pdf.output('arraybuffer');
+        return new Blob([pdfBytes], { type: 'application/pdf' });                               }
+                                                  /**
+     * التحقق من صحة الملف                         */
+    validateFile(file) {
+        if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {                  throw new Error('الملف ليس من نوع PDF');
+        }                                     
+        if (file.size > this.settings.maxFileSize) {
+            throw new Error(`حجم الملف كبير جداً (${this.formatBytes(file.size)} > ${this.formatBytes(this.settings.maxFileSize)})`);              }                                     
+        if (file.size === 0) {                            throw new Error('الملف فارغ');
+        }
+    }                                         
+    /**                                            * تنسيق البايتات                              */                                           formatBytes(bytes) {
+        const units = ['B', 'KB', 'MB', 'GB'];        let size = bytes;
+        let unitIndex = 0;                                                                          while (size >= 1024 && unitIndex < units.length - 1) {
+            size /= 1024;                                 unitIndex++;
+        }                                                                                           return size.toFixed(2) + ' ' + units[unitIndex];                                        }                                                                                           /**                                            * إلغاء الضغط                                 */
+    cancel() {                                        this.isProcessing = false;
+    }                                         }                                                                                           // إنشاء نسخة عامة للاستخدام
+window.PDFCompressor = PDFCompressor;         
+// دالة الضغط الرئيسية للاستخدام المباشر      async function compressPDFReal(file, quality = 55, progressCallback = null) {                   const compressor = new PDFCompressor();
+    return compressor.compressPDF(file, quality / 100, progressCallback);
+}

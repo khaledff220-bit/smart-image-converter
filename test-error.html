@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>اختبار الأخطاء - Smart Image Converter</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #0a0b1e; color: white; }
+        .error { color: #ff6b6b; background: #2a0a0a; padding: 10px; margin: 10px 0; border-radius: 8px; }
+        .success { color: #51cf66; }
+        pre { background: #1a1a2e; padding: 10px; border-radius: 8px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔍 فحص أخطاء الموقع</h1>
+    <div id="result"></div>
+    
+    <script>
+        (function() {
+            const result = document.getElementById('result');
+            
+            // مراقبة الأخطاء
+            window.onerror = function(msg, url, line, col, error) {
+                result.innerHTML += '<div class="error">❌ خطأ: ' + msg + '<br>📍 الملف: ' + (url || 'unknown') + '<br>📍 السطر: ' + line + '</div>';
+                return false;
+            };
+            
+            // محاولة تحميل main.js
+            const script = document.createElement('script');
+            script.src = '/assets/js/main.js';
+            script.onload = function() {
+                result.innerHTML += '<div class="success">✅ تم تحميل assets/js/main.js بنجاح</div>';
+            };
+            script.onerror = function() {
+                result.innerHTML += '<div class="error">❌ فشل تحميل assets/js/main.js</div>';
+            };
+            document.head.appendChild(script);
+            
+            result.innerHTML += '<div class="success">✅ جاري فحص المسارات...</div>';
+        })();
+    </script>
+</body>
+</html>

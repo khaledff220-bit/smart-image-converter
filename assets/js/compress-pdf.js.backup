@@ -1,0 +1,218 @@
+// أداة ضغط PDF - نسخة محسنة مع إدارة الذاكرة ومعالجة الأخطاء
+
+window.initcompresspdf = function(containerId) {
+    console.log("✅ تهيئة أداة ضغط PDF في الحاوية:", containerId);
+    
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error("❌ الحاوية غير موجودة:", containerId);
+        return;
+    }
+    
+    // التحقق من تحميل المكتبة
+    if (typeof PDFLib === 'undefined') {
+        container.innerHTML = '<div style="color: var(--color-error); text-align: center; padding: 40px;">❌ عذراً، مكتبة المعالجة لم يتم تحميلها بعد</div>';
+        return;
+    }
+    
+    // حقن HTML
+    container.innerHTML = `
+        <div class="tool-container">
+            <h2>🗜️ ضغط PDF</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">قلل حجم ملفات PDF مع الحفاظ على الجودة</p>
+            
+            <div class="drag-drop-zone" id="pdfDropArea" style="margin-bottom: 20px;">
+                <div class="drag-icon">📁</div>
+                <h3>اسحب ملف PDF هنا أو اضغط للاختيار</h3>
+                <input type="file" id="pdfFile" accept=".pdf,application/pdf" style="display: none;">
+            </div>
+            
+            <div class="file-info" id="pdfInfo" style="display: none; background: var(--bg-card); border-radius: 12px; padding: 15px; margin: 20px 0;">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                    <span>📄 الملف: <strong id="fileName">-</strong></span>
+                    <span>📏 الحجم الأصلي: <span id="originalSizeText">-</span></span>
+                    <span>🗜️ الحجم بعد الضغط: <span id="compressedSizeText">-</span></span>
+                    <span>💾 نسبة التوفير: <span id="savingsText">-</span></span>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <h3>⚙️ مستوى الضغط</h3>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <div class="level-card" data-level="low">منخفض</div>
+                    <div class="level-card selected" data-level="medium">متوسط</div>
+                    <div class="level-card" data-level="high">عالي</div>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <label><input type="checkbox" id="optimizeImages" checked> تحسين الصور داخل الملف</label>
+                <label style="margin-right: 15px;"><input type="checkbox" id="removeMetadata"> إزالة البيانات الوصفية</label>
+            </div>
+            
+            <button class="btn" id="compressActionBtn" style="width:100%;">🗜️ بدء الضغط</button>
+            <div id="status" style="margin-top: 20px; text-align: center;"></div>
+        </div>
+    `;
+    
+    // العناصر
+    const pdfFileInput = container.querySelector('#pdfFile');
+    const pdfDropArea = container.querySelector('#pdfDropArea');
+    const pdfInfo = container.querySelector('#pdfInfo');
+    const compressionCards = container.querySelectorAll('.level-card');
+    const statusDiv = container.querySelector('#status');
+    const compressBtn = container.querySelector('#compressActionBtn');
+    
+    let selectedFile = null;
+    let selectedLevel = 'medium';
+    let isProcessing = false;
+    
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    function updatePreview() {
+        if (!selectedFile) return;
+        const originalSizeSpan = container.querySelector('#originalSizeText');
+        const compressedSizeSpan = container.querySelector('#compressedSizeText');
+        const savingsSpan = container.querySelector('#savingsText');
+        
+        if (originalSizeSpan) originalSizeSpan.textContent = formatFileSize(selectedFile.size);
+        let ratio = selectedLevel === 'high' ? 0.5 : (selectedLevel === 'medium' ? 0.75 : 0.9);
+        if (compressedSizeSpan) compressedSizeSpan.textContent = formatFileSize(selectedFile.size * ratio);
+        if (savingsSpan) savingsSpan.textContent = Math.round((1 - ratio) * 100) + '%';
+    }
+    
+    function setLoading(loading) {
+        isProcessing = loading;
+        if (compressBtn) {
+            compressBtn.disabled = loading;
+            compressBtn.textContent = loading ? '⏳ جاري الضغط...' : '🗜️ بدء الضغط';
+        }
+    }
+    
+    function handlePDFFile(file) {
+        if (!file || file.type !== 'application/pdf') {
+            if (statusDiv) statusDiv.innerHTML = '<span style="color: var(--color-error);">❌ الرجاء اختيار ملف PDF صالح</span>';
+            return;
+        }
+        if (file.size > 50 * 1024 * 1024) {
+            if (statusDiv) statusDiv.innerHTML = '<span style="color: var(--color-error);">❌ حجم الملف يتجاوز 50MB</span>';
+            return;
+        }
+        
+        selectedFile = file;
+        const fileNameSpan = container.querySelector('#fileName');
+        if (fileNameSpan) fileNameSpan.textContent = file.name;
+        if (pdfInfo) pdfInfo.style.display = 'block';
+        if (statusDiv) statusDiv.innerHTML = '';
+        updatePreview();
+    }
+    
+    // مستويات الضغط
+    compressionCards.forEach(card => {
+        card.addEventListener('click', function() {
+            compressionCards.forEach(c => {
+                c.classList.remove('selected');
+                c.style.background = '';
+            });
+            this.classList.add('selected');
+            this.style.background = 'var(--color-primary)';
+            selectedLevel = this.dataset.level;
+            if (selectedFile) updatePreview();
+        });
+    });
+    
+    // رفع الملف
+    pdfDropArea.addEventListener('click', () => pdfFileInput.click());
+    
+    pdfFileInput.addEventListener('change', (e) => {
+        if (e.target.files[0]) handlePDFFile(e.target.files[0]);
+        pdfFileInput.value = '';
+    });
+    
+    // سحب وإفلات
+    pdfDropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        pdfDropArea.classList.add('drag-over');
+    });
+    
+    pdfDropArea.addEventListener('dragleave', () => {
+        pdfDropArea.classList.remove('drag-over');
+    });
+    
+    pdfDropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        pdfDropArea.classList.remove('drag-over');
+        if (e.dataTransfer.files[0]) handlePDFFile(e.dataTransfer.files[0]);
+    });
+    
+    // دالة الضغط
+    async function compressPDF() {
+        if (!selectedFile) {
+            if (statusDiv) statusDiv.innerHTML = '<span style="color: var(--color-error);">⚠️ الرجاء اختيار ملف أولاً</span>';
+            return;
+        }
+        
+        if (isProcessing) {
+            if (statusDiv) statusDiv.innerHTML = '<span style="color: var(--color-warning);">⏳ جاري المعالجة...</span>';
+            return;
+        }
+        
+        setLoading(true);
+        if (statusDiv) statusDiv.innerHTML = '<span style="color: var(--color-info);">⏳ جاري ضغط الملف...</span>';
+        
+        try {
+            const arrayBuffer = await selectedFile.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+            
+            const removeMetadata = container.querySelector('#removeMetadata')?.checked || false;
+            
+            if (removeMetadata) {
+                pdfDoc.setTitle('');
+                pdfDoc.setAuthor('');
+                pdfDoc.setCreator('');
+                pdfDoc.setProducer('');
+            }
+            
+            const pdfBytes = await pdfDoc.save({
+                useObjectStreams: true,
+                addDefaultPage: false,
+                updateFieldAppearances: false
+            });
+            
+            const newSize = pdfBytes.length;
+            const savings = Math.round((1 - (newSize / selectedFile.size)) * 100);
+            
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `compressed_${selectedFile.name}`;
+            link.click();
+            
+            // تحرير الذاكرة
+            URL.revokeObjectURL(url);
+            
+            if (statusDiv) {
+                statusDiv.innerHTML = `<span style="color: var(--color-success);">✅ تم الضغط بنجاح! توفير مساحة: ${savings}%</span>`;
+            }
+            
+        } catch (error) {
+            console.error('PDF compression error:', error);
+            if (statusDiv) {
+                statusDiv.innerHTML = '<span style="color: var(--color-error);">❌ حدث خطأ. قد يكون الملف مشفراً أو تالفاً.</span>';
+            }
+        } finally {
+            setLoading(false);
+        }
+    }
+    
+    compressBtn.addEventListener('click', compressPDF);
+    
+    console.log("✅ أداة ضغط PDF جاهزة للاستخدام");
+};

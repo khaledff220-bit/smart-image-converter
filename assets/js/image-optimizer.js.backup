@@ -1,0 +1,276 @@
+// أداة تحسين جودة الصور وتكبيرها - تعمل مع النظام الديناميكي (SPA)
+
+window.initimagequality = function(containerId) {
+    console.log("✅ تهيئة أداة تحسين جودة الصور في الحاوية:", containerId);
+    
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error("❌ الحاوية غير موجودة:", containerId);
+        return;
+    }
+    
+    // حقن HTML
+    container.innerHTML = `
+        <div class="tool-container">
+            <h2>🖼️ تحسين جودة الصور وتكبيرها</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">قم بتحسين وتكبير صورك حتى 4 أضعاف مع الحفاظ على الجودة</p>
+            
+            <div class="drag-drop-zone" id="uploadArea" style="margin-bottom: 20px;">
+                <div class="drag-icon">🖼️</div>
+                <h3>اسحب الصورة هنا أو اضغط للاختيار</h3>
+                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif" style="display: none;">
+            </div>
+            
+            <div id="fileInfo" style="display: none; background: var(--bg-card); border-radius: 12px; padding: 15px; margin: 20px 0;">
+                <div id="fileName"></div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <h3>⚙️ مستوى التكبير</h3>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <div class="level-card" data-scale="2">2x - ضعف الحجم</div>
+                    <div class="level-card selected" data-scale="3">3x - ثلاثة أضعاف</div>
+                    <div class="level-card" data-scale="4">4x - أربعة أضعاف</div>
+                </div>
+                <p style="color: var(--text-muted); font-size: 12px; margin-top: 10px;">⚠️ التكبير العالي قد يزيد من حجم الملف النهائي</p>
+            </div>
+            
+            <button class="btn" id="upscaleBtn" style="width:100%;">✨ تحسين الجودة والتكبير</button>
+            <div id="status" style="margin-top: 20px; text-align: center;"></div>
+            
+            <div id="resultArea" style="display: none; margin-top: 30px;">
+                <div style="background: var(--bg-card); border-radius: 12px; padding: 20px;">
+                    <h3 style="margin-bottom: 15px;">📊 النتيجة</h3>
+                    <div id="resultInfo"></div>
+                    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                        <a href="#" id="downloadLink" class="btn">📥 تحميل الصورة المحسنة</a>
+                        <button id="clearResult" class="btn btn-secondary">🔄 صورة أخرى</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="previewArea" style="display: none; margin-top: 30px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="background: var(--bg-card); border-radius: 12px; padding: 15px; text-align: center;">
+                        <h4>🖼️ الصورة الأصلية</h4>
+                        <img id="originalPreview" style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                        <p id="originalInfo" style="font-size: 12px; margin-top: 10px;"></p>
+                    </div>
+                    <div style="background: var(--bg-card); border-radius: 12px; padding: 15px; text-align: center;">
+                        <h4>✨ الصورة المحسنة</h4>
+                        <img id="enhancedPreview" style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                        <p id="enhancedInfo" style="font-size: 12px; margin-top: 10px;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // العناصر
+    const uploadArea = container.querySelector('#uploadArea');
+    const fileInput = container.querySelector('#fileInput');
+    const fileInfo = container.querySelector('#fileInfo');
+    const fileNameSpan = container.querySelector('#fileName');
+    const upscaleBtn = container.querySelector('#upscaleBtn');
+    const statusDiv = container.querySelector('#status');
+    const resultArea = container.querySelector('#resultArea');
+    const resultInfo = container.querySelector('#resultInfo');
+    const downloadLink = container.querySelector('#downloadLink');
+    const clearResultBtn = container.querySelector('#clearResult');
+    const previewArea = container.querySelector('#previewArea');
+    const originalPreview = container.querySelector('#originalPreview');
+    const enhancedPreview = container.querySelector('#enhancedPreview');
+    const originalInfo = container.querySelector('#originalInfo');
+    const enhancedInfo = container.querySelector('#enhancedInfo');
+    
+    let selectedFile = null;
+    let currentScale = 3;
+    let currentDownloadUrl = null;
+    let isProcessing = false;
+    
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(1024));
+        return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    function showNotification(message, type) {
+        if (window.SmartImageConverter && window.SmartImageConverter.showToast) {
+            window.SmartImageConverter.showToast(message, type);
+        }
+    }
+    
+    function revokeDownloadUrl() {
+        if (currentDownloadUrl) {
+            URL.revokeObjectURL(currentDownloadUrl);
+            currentDownloadUrl = null;
+        }
+    }
+    
+    function setProcessing(processing) {
+        isProcessing = processing;
+        if (upscaleBtn) {
+            upscaleBtn.disabled = processing;
+            upscaleBtn.textContent = processing ? '⏳ جاري التحسين...' : '✨ تحسين الجودة والتكبير';
+        }
+    }
+    
+    function clearResults() {
+        revokeDownloadUrl();
+        if (resultArea) resultArea.style.display = 'none';
+        if (previewArea) previewArea.style.display = 'none';
+        if (originalPreview) originalPreview.src = '';
+        if (enhancedPreview) enhancedPreview.src = '';
+        if (statusDiv) statusDiv.innerHTML = '';
+        if (downloadLink) downloadLink.href = '#';
+        showNotification('🧹 تم مسح النتائج', 'info');
+    }
+    
+    function handleFile(file) {
+        if (!file || !file.type.startsWith('image/')) {
+            showNotification('❌ الرجاء اختيار صورة صالحة', 'error');
+            return;
+        }
+        if (file.size > 20 * 1024 * 1024) {
+            showNotification('❌ حجم الصورة يتجاوز 20MB', 'error');
+            return;
+        }
+        
+        selectedFile = file;
+        clearResults();
+        
+        if (fileInfo) fileInfo.style.display = 'block';
+        if (fileNameSpan) {
+            fileNameSpan.innerHTML = `<div><strong>${file.name}</strong><br><small>الحجم: ${formatFileSize(file.size)}</small></div>`;
+        }
+        
+        // عرض معاينة الصورة الأصلية
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if (originalPreview) originalPreview.src = e.target.result;
+            if (previewArea) previewArea.style.display = 'block';
+            
+            const img = new Image();
+            img.onload = () => {
+                if (originalInfo) originalInfo.innerHTML = `📐 الأبعاد: ${img.width} × ${img.height} بكسل<br>💾 الحجم: ${formatFileSize(file.size)}`;
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        
+        if (statusDiv) statusDiv.innerHTML = '';
+        showNotification('✅ تم اختيار الصورة بنجاح', 'success');
+    }
+    
+    async function upscaleImage() {
+        if (!selectedFile) {
+            showNotification('❌ الرجاء اختيار صورة أولاً', 'error');
+            return;
+        }
+        if (isProcessing) return;
+        
+        setProcessing(true);
+        if (statusDiv) statusDiv.innerHTML = '<span style="color: var(--color-info);">⏳ جاري تحسين الصورة...</span>';
+        
+        try {
+            // قراءة الصورة
+            const imageData = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.onerror = reject;
+                reader.readAsDataURL(selectedFile);
+            });
+            
+            // إنشاء صورة للتكبير
+            const img = new Image();
+            await new Promise((resolve, reject) => {
+                img.onload = resolve;
+                img.onerror = reject;
+                img.src = imageData;
+            });
+            
+            // إنشاء Canvas للتكبير
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width * currentScale;
+            canvas.height = img.height * currentScale;
+            const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            // تحويل إلى Blob
+            const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.95));
+            const url = URL.createObjectURL(blob);
+            
+            revokeDownloadUrl();
+            currentDownloadUrl = url;
+            if (downloadLink) downloadLink.href = url;
+            if (downloadLink) downloadLink.download = `enhanced_${selectedFile.name}`;
+            
+            // عرض الصورة المحسنة
+            if (enhancedPreview) enhancedPreview.src = url;
+            if (enhancedInfo) enhancedInfo.innerHTML = `📐 الأبعاد: ${canvas.width} × ${canvas.height} بكسل<br>💾 الحجم: ${formatFileSize(blob.size)}`;
+            
+            if (resultInfo) {
+                resultInfo.innerHTML = `
+                    <p>✅ تم تحسين الصورة بنجاح!</p>
+                    <p>📏 نسبة التكبير: ${currentScale}x</p>
+                    <p>📐 الأبعاد الجديدة: ${canvas.width} × ${canvas.height}</p>
+                `;
+            }
+            
+            if (resultArea) resultArea.style.display = 'block';
+            if (statusDiv) statusDiv.innerHTML = '';
+            showNotification('✅ تم تحسين الصورة بنجاح!', 'success');
+            
+        } catch (error) {
+            console.error('Upscale error:', error);
+            if (statusDiv) statusDiv.innerHTML = '<span style="color: var(--color-error);">❌ حدث خطأ أثناء تحسين الصورة</span>';
+            showNotification('❌ حدث خطأ أثناء تحسين الصورة', 'error');
+        } finally {
+            setProcessing(false);
+        }
+    }
+    
+    // مستويات التكبير
+    container.querySelectorAll('.level-card').forEach(card => {
+        card.addEventListener('click', function() {
+            container.querySelectorAll('.level-card').forEach(c => {
+                c.classList.remove('selected');
+                c.style.background = '';
+            });
+            this.classList.add('selected');
+            this.style.background = 'var(--color-primary)';
+            currentScale = parseInt(this.dataset.scale);
+        });
+    });
+    
+    // الأحداث
+    uploadArea?.addEventListener('click', () => fileInput?.click());
+    
+    fileInput?.addEventListener('change', (e) => {
+        if (e.target.files[0]) handleFile(e.target.files[0]);
+        fileInput.value = '';
+    });
+    
+    uploadArea?.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('drag-over');
+    });
+    
+    uploadArea?.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('drag-over');
+    });
+    
+    uploadArea?.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('drag-over');
+        if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+    });
+    
+    upscaleBtn?.addEventListener('click', upscaleImage);
+    clearResultBtn?.addEventListener('click', clearResults);
+    
+    console.log("✅ أداة تحسين جودة الصور جاهزة للاستخدام");
+};

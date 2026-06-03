@@ -1,0 +1,18 @@
+# ============================================
+# Robots.txt المصحح لـ Smart Image Converter
+# ============================================
+
+User-agent: *
+Allow: /
+# السماح بالوصول لملفات التصميم والبرمجة (ضروري جداً)
+Allow: /assets/
+
+# منع الوصول لملفات النظام والتطوير
+Disallow: /test_engine.html
+Disallow: /test_*
+Disallow: /*.tmp$
+Disallow: /*.bak$
+Disallow: /*.log$
+
+# خريطة الموقع
+Sitemap: https://smart-image-converter.vercel.app/sitemap.xml
