@@ -1,9 +1,13 @@
-// أداة تحسين جودة الصور - نسخة محسنة SEO مع محتوى عربي غني ومتوافقة مع الصفحة الرئيسية
+// أداة تحسين جودة الصور - النسخة الكاملة مع محتوى نصي غني (SEO متقدم)
 
 window.initimagequality = function(containerId) {
-    console.log("✅ تهيئة أداة تحسين جودة الصور");
+    console.log("✅ تهيئة أداة تحسين جودة الصور للحاوية:", containerId);
     const container = document.getElementById(containerId);
-    if (!container) return;
+    if (!container) {
+        console.error("❌ الحاوية غير موجودة:", containerId);
+        return;
+    }
+    console.log("✅ تم العثور على الحاوية، جاري بناء واجهة الأداة...");
 
     container.innerHTML = `
         <div class="tool-container">
@@ -18,10 +22,8 @@ window.initimagequality = function(containerId) {
                 <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">🔐 ملفاتك لا تترك جهازك أبداً - معالجة محلية 100%</p>
             </div>
 
-            <!-- عنوان H1 احترافي مع الكلمة المفتاحية الرئيسية -->
+            <!-- عنوان H1 احترافي -->
             <h1 style="text-align: center; font-size: 28px; margin-bottom: 15px;">🖼️ تحسين جودة الصور ورفع الدقة - تكبير الصور بذكاء بدون فقدان الجودة</h1>
-            
-            <!-- وصف افتتاحي جذاب -->
             <p style="color: var(--text-muted); text-align: center; margin-bottom: 25px; font-size: 16px; line-height: 1.6;">
                 ✅ <strong>تحسين جودة الصور</strong> و<strong>رفع دقة الصور</strong> حتى 4 أضعاف مع تحسين الحدة وإزالة الضبابية 
                 - معالجة محلية بالكامل على جهازك - مجاني ولا يحتاج إلى إنشاء حساب
@@ -91,10 +93,10 @@ window.initimagequality = function(containerId) {
             </div>
 
             <!-- ============================================ -->
-            <!-- المحتوى النصي الغني لتحسين السيو - متوافق مع E-E-A-T -->
+            <!-- المحتوى النصي الغني الكامل لتحسين السيو (SEO) -->
             <!-- ============================================ -->
 
-            <!-- قسم شرح شامل (أكثر من 1000 كلمة) -->
+            <!-- 1. قسم شرح شامل (أكثر من 1000 كلمة) -->
             <section class="seo-block" style="margin-top: 50px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">ما هي أداة تحسين جودة الصور ورفع الدقة من Smart Image Converter؟</h2>
                 
@@ -109,7 +111,7 @@ window.initimagequality = function(containerId) {
                 <p>سواء كنت ترغب في <strong>تحسين الصور القديمة</strong> التي التقطتها بكاميرا منخفضة الدقة، أو تحتاج إلى <strong>رفع جودة الصور</strong> لمنتجات متجرك الإلكتروني، أو تريد <strong>تكبير الصور بدون فقدان الجودة</strong> لطباعتها بحجم كبير، فإن أداتنا توفر لك الحل الأمثل. كل ذلك مجاناً تماماً، بدون إعلانات مزعجة، وبدون حدود لعدد الصور التي يمكنك معالجتها.</p>
             </section>
 
-            <!-- قسم: لماذا تستخدم هذه الأداة؟ -->
+            <!-- 2. قسم: لماذا تستخدم هذه الأداة؟ -->
             <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">لماذا تحتاج إلى أداة تحسين جودة الصور ورفع الدقة؟</h2>
                 
@@ -124,11 +126,11 @@ window.initimagequality = function(containerId) {
                     
                     <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>الحفاظ على الذكريات:</strong> الصور العائلية القديمة قد تكون ضبابية أو منخفضة الدقة. <strong>تحسين الصور القديمة</strong> يمكن أن يعيد الحياة لهذه الذكريات ويجعلها أكثر وضوحاً للعرض أو الطباعة.</li>
                     
-                    <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>توفير الوقت والمال:</strong> بدلاً من دفع اشتراكات باهظة لبرامج تحرير الصور الاحترافية، يمكنك استخدام أداتنا المجانية <strong>لتحسين جودة الصور اون لاين</strong> (بل دون اتصال بالإنترنت) بكل سهولة وسرعة.</li>
+                    <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>توفير الوقت والمال:</strong> بدلاً من دفع اشتراكات باهظة لبرامج تحرير الصور الاحترافية مثل Photoshop، يمكنك استخدام أداتنا المجانية <strong>لتحسين جودة الصور اون لاين</strong> (بل دون اتصال بالإنترنت) بكل سهولة وسرعة.</li>
                 </ul>
             </section>
 
-            <!-- قسم مميزات الأداة -->
+            <!-- 3. قسم مميزات الأداة -->
             <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">مميزات أداة تحسين جودة الصور ورفع الدقة من Smart Image Converter</h2>
                 
@@ -151,7 +153,7 @@ window.initimagequality = function(containerId) {
                 </ul>
             </section>
 
-            <!-- قسم حالات الاستخدام العملية -->
+            <!-- 4. قسم حالات الاستخدام العملية -->
             <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">حالات استخدام عملية لأداة تحسين جودة الصور ورفع الدقة</h2>
                 
@@ -185,7 +187,7 @@ window.initimagequality = function(containerId) {
                 </ul>
             </section>
 
-            <!-- جدول المقارنة مع المواقع المنافسة -->
+            <!-- 5. جدول المقارنة -->
             <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">لماذا أداة Smart Image Converter أفضل من غيرها لتحسين جودة الصور؟</h2>
                 
@@ -199,165 +201,48 @@ window.initimagequality = function(containerId) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 10px;">🔒 <strong>خصوصية الصور وأمانها</strong></td>
-                                <td style="padding: 10px;">✅ معالجة محلية - صورك لا ترفع للخادم أبداً</td>
-                                <td style="padding: 10px;">❌ يتم رفع الصور للخادم (مخاطر أمنية)</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 10px;">💰 <strong>التكلفة</strong></td>
-                                <td style="padding: 10px;">✅ مجاني بالكامل بدون أي رسوم خفية</td>
-                                <td style="padding: 10px;">⚠️ مجاني محدود أو اشتراكات شهرية باهظة</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 10px;">⚡ <strong>سرعة المعالجة</strong></td>
-                                <td style="padding: 10px;">✅ فورية - معالجة مباشرة على جهازك</td>
-                                <td style="padding: 10px;">⚠️ بطيئة - تعتمد على سرعة الإنترنت وحجم الخادم</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 10px;">📱 <strong>العمل دون إنترنت</strong></td>
-                                <td style="padding: 10px;">✅ يعمل بعد تحميل الصفحة لأول مرة</td>
-                                <td style="padding: 10px;">❌ يتطلب اتصالاً دائمًا بالإنترنت</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 10px;">🖼️ <strong>حد التكبير</strong></td>
-                                <td style="padding: 10px;">✅ حتى 4 أضعاف الحجم الأصلي</td>
-                                <td style="padding: 10px;">⚠️ غالباً 2x فقط للنسخ المجانية</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 10px;">🎨 <strong>خيارات التحسين</strong></td>
-                                <td style="padding: 10px;">✅ تحسين الحدة، زيادة التباين، معاينة فورية</td>
-                                <td style="padding: 10px;">⚠️ خيارات محدودة أو مدفوعة</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 10px;">📄 <strong>عدد الصور المسموح</strong></td>
-                                <td style="padding: 10px;">✅ غير محدود - معالجة أي عدد من الصور</td>
-                                <td style="padding: 10px;">❌ حدود صارمة يومية أو شهرية</td>
-                             </tr>
-                            <tr>
-                                <td style="padding: 10px;">🛡️ <strong>الإعلانات</strong></td>
-                                <td style="padding: 10px;">✅ بدون إعلانات مزعجة أو نوافذ منبثقة</td>
-                                <td style="padding: 10px;">❌ إعلانات كثيرة ونوافذ منبثقة</td>
-                             </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">🔒 خصوصية الصور</td><td style="padding: 10px;">✅ معالجة محلية - صورك لا ترفع للخادم</td><td style="padding: 10px;">❌ يتم رفع الصور للخادم</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">💰 التكلفة</td><td style="padding: 10px;">✅ مجاني بالكامل بدون حدود</td><td style="padding: 10px;">⚠️ مجاني محدود أو اشتراكات مدفوعة</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">⚡ سرعة المعالجة</td><td style="padding: 10px;">✅ فورية - معالجة مباشرة على جهازك</td><td style="padding: 10px;">⚠️ بطيئة - تعتمد على سرعة الإنترنت</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">📱 العمل دون إنترنت</td><td style="padding: 10px;">✅ يعمل بعد تحميل الصفحة</td><td style="padding: 10px;">❌ يتطلب اتصالاً دائمًا</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">🖼️ حد التكبير</td><td style="padding: 10px;">✅ حتى 4 أضعاف</td><td style="padding: 10px;">⚠️ غالباً 2x فقط</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">📄 عدد الصور المسموح</td><td style="padding: 10px;">✅ غير محدود</td><td style="padding: 10px;">❌ حدود صارمة يومية</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">🛡️ الإعلانات</td><td style="padding: 10px;">✅ بدون إعلانات مزعجة</td><td style="padding: 10px;">❌ إعلانات كثيرة</td></tr>
                         </tbody>
                     </table>
                 </div>
             </section>
 
-            <!-- قسم الأسئلة الشائعة FAQ (15 سؤالاً) -->
+            <!-- 6. قسم الأسئلة الشائعة FAQ -->
             <section class="faq-section" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">الأسئلة الشائعة حول تحسين جودة الصور ورفع الدقة</h2>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني تحسين جودة الصور القديمة والضبابية؟</h3>
-                    <p>نعم، <strong>تحسين جودة الصور القديمة</strong> هي إحدى المهام الأساسية لأداتنا. يمكنك <strong>رفع دقة الصور</strong> القديمة وتحسين وضوحها وإزالة الضبابية والغبار منها. النتائج مذهلة خاصة مع الصور الشخصية القديمة والتاريخية.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني تحسين جودة الصور القديمة والضبابية؟</h3><p>نعم، <strong>تحسين جودة الصور القديمة</strong> هي إحدى المهام الأساسية لأداتنا. يمكنك <strong>رفع دقة الصور</strong> القديمة وتحسين وضوحها وإزالة الضبابية والغبار منها. النتائج مذهلة خاصة مع الصور الشخصية القديمة والتاريخية.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل تفقد الصورة جودتها بعد التكبير؟</h3>
-                    <p>لا، أداة <strong>تحسين جودة الصور</strong> لدينا تستخدم تقنيات ذكية لـ <strong>تكبير الصور بدون فقدان الجودة</strong>. عند استخدام مستوى التكبير 2x أو 3x، ستلاحظ تحسناً كبيراً في الوضوح مع الحفاظ على التفاصيل الدقيقة والألوان الطبيعية. مستوى 4x قد يؤثر قليلاً على بعض التفاصيل الدقيقة لكنه يبقى ممتازاً لمعظم الاستخدامات.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل تفقد الصورة جودتها بعد التكبير؟</h3><p>لا، أداة <strong>تحسين جودة الصور</strong> لدينا تستخدم تقنيات ذكية لـ <strong>تكبير الصور بدون فقدان الجودة</strong>. عند استخدام مستوى التكبير 2x أو 3x، ستلاحظ تحسناً كبيراً في الوضوح مع الحفاظ على التفاصيل الدقيقة والألوان الطبيعية.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ كيف يمكنني رفع دقة الصورة بشكل مجاني؟</h3>
-                    <p><strong>رفع دقة الصور</strong> مجاناً يتم بسهولة عبر منصتنا. كل ما عليك فعله هو اختيار الصورة، تحديد مستوى التكبير المناسب (2x، 3x، أو 4x)، ثم الضغط على زر التحسين. النتيجة تحصل عليها فوراً دون أي رسوم أو اشتراكات.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ كيف يمكنني رفع دقة الصورة بشكل مجاني؟</h3><p><strong>رفع دقة الصور</strong> مجاناً يتم بسهولة عبر منصتنا. كل ما عليك فعله هو اختيار الصورة، تحديد مستوى التكبير المناسب (2x، 3x، أو 4x)، ثم الضغط على زر التحسين. النتيجة تحصل عليها فوراً دون أي رسوم أو اشتراكات.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني استخدام الصور المحسنة تجارياً؟</h3>
-                    <p>نعم، يمكنك استخدام أداة <strong>تحسين جودة الصور اون لاين</strong> لأغراض تجارية مثل تحسين صور المنتجات في متجرك الإلكتروني، الصور الإعلانية، أو أي استخدام تجاري آخر. الأداة مجانية تماماً ولا تفرض أي قيود على الاستخدام التجاري.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني استخدام الصور المحسنة تجارياً؟</h3><p>نعم، يمكنك استخدام أداة <strong>تحسين جودة الصور اون لاين</strong> لأغراض تجارية مثل تحسين صور المنتجات في متجرك الإلكتروني، الصور الإعلانية، أو أي استخدام تجاري آخر. الأداة مجانية تماماً ولا تفرض أي قيود على الاستخدام التجاري.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما الفرق بين تحسين الحدة وزيادة التباين؟</h3>
-                    <p><strong>تحسين الحدة</strong> يركز على جعل حواف الصورة أكثر وضوحاً وتفصيلاً، مما يجعل التفاصيل الدقيقة أكثر بروزاً. أما <strong>زيادة التباين</strong> فيحسن الفرق بين الألوان الفاتحة والداكنة مما يجعل الصورة أكثر حيوية وعمقاً. يمكنك تفعيل الخيارين معاً للحصول على أفضل <strong>تحسين لجودة الصورة</strong>.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما الفرق بين تحسين الحدة وزيادة التباين؟</h3><p><strong>تحسين الحدة</strong> يركز على جعل حواف الصورة أكثر وضوحاً وتفصيلاً. أما <strong>زيادة التباين</strong> فيحسن الفرق بين الألوان الفاتحة والداكنة مما يجعل الصورة أكثر حيوية. يمكنك تفعيل الخيارين معاً للحصول على أفضل نتيجة.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل تعمل الأداة على الهاتف المحمول؟</h3>
-                    <p>نعم، أداة <strong>تحسين جودة الصور</strong> مصممة لتكون متجاوبة بالكامل وتعمل بشكل ممتاز على جميع الهواتف الذكية والأجهزة اللوحية. يمكنك <strong>رفع دقة الصور</strong> وتحسين جودتها مباشرة من هاتفك بنفس سهولة استخدامها على الحاسوب.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل تعمل الأداة على الهاتف المحمول؟</h3><p>نعم، أداة <strong>تحسين جودة الصور</strong> مصممة لتكون متجاوبة بالكامل وتعمل بشكل ممتاز على جميع الهواتف الذكية والأجهزة اللوحية.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل صورتي آمنة على منصتكم؟</h3>
-                    <p>نعم، لأن جميع عمليات <strong>تحسين جودة الصور</strong> تتم محلياً على جهازك. صورك لا تُرفع إلى أي خادم خارجي، بل تبقى على جهازك الخاص. هذا يعني أن خصوصية صورك مضمونة 100% ولا يمكن لأي جهة أخرى الوصول إليها.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل صورتي آمنة على منصتكم؟</h3><p>نعم، لأن جميع عمليات <strong>تحسين جودة الصور</strong> تتم محلياً على جهازك. صورك لا تُرفع إلى أي خادم خارجي، بل تبقى على جهازك الخاص. هذا يعني أن خصوصية صورك مضمونة 100%.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما حجم الصورة الذي يمكنني معالجته؟</h3>
-                    <p>الحد الأقصى لحجم الصورة هو 20 ميجابايت، وهو مناسب لمعظم الصور الرقمية. للمعالجة المحلية، هذا الحد يضمن أداءً جيداً على جميع الأجهزة. الصور الأكبر من 20 ميجابايت قد تبطئ المعالجة أو تسبب مشاكل في الأداء.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما حجم الصورة الذي يمكنني معالجته؟</h3><p>الحد الأقصى لحجم الصورة هو 20 ميجابايت، وهو مناسب لمعظم الصور الرقمية. للمعالجة المحلية، هذا الحد يضمن أداءً جيداً على جميع الأجهزة.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني معالجة صور متعددة في وقت واحد؟</h3>
-                    <p>حالياً، الأداة مصممة لمعالجة صورة واحدة في كل مرة لضمان أفضل أداء وجودة. يمكنك معالجة صور متعددة بالتتابع - بعد الانتهاء من صورة، اضغط على "صورة أخرى" وكرر العملية.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني معالجة صور متعددة في وقت واحد؟</h3><p>حالياً، الأداة مصممة لمعالجة صورة واحدة في كل مرة لضمان أفضل أداء وجودة. يمكنك معالجة صور متعددة بالتتابع - بعد الانتهاء من صورة، اضغط على "صورة أخرى" وكرر العملية.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما هي صيغ الصور المدعومة؟</h3>
-                    <p>أداة <strong>تحسين جودة الصور</strong> تدعم جميع الصيغ الشائعة: JPG, JPEG, PNG, WEBP, و GIF. يمكنك تحسين أي صورة بهذه الصيغ بسهولة وسرعة.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما هي صيغ الصور المدعومة؟</h3><p>أداة <strong>تحسين جودة الصور</strong> تدعم جميع الصيغ الشائعة: JPG, JPEG, PNG, WEBP, و GIF. يمكنك تحسين أي صورة بهذه الصيغ بسهولة وسرعة.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل أحتاج إلى اتصال بالإنترنت لاستخدام الأداة؟</h3>
-                    <p>لا، بعد تحميل صفحة الأداة لأول مرة، يمكنك استخدامها <strong>لتحسين جودة الصور</strong> دون اتصال بالإنترنت. هذا مفيد جداً عند السفر أو في المناطق ذات الاتصال الضعيف.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل أحتاج إلى اتصال بالإنترنت لاستخدام الأداة؟</h3><p>لا، بعد تحميل صفحة الأداة لأول مرة، يمكنك استخدامها <strong>لتحسين جودة الصور</strong> دون اتصال بالإنترنت. هذا مفيد جداً عند السفر أو في المناطق ذات الاتصال الضعيف.</p></div>
 
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني التراجع عن التغييرات؟</h3>
-                    <p>نعم، يمكنك دائماً معاينة الصورة الأصلية والصورة المحسنة جنباً إلى جنب قبل التحميل. إذا لم تكن راضياً عن النتيجة، يمكنك تعديل الإعدادات (مستوى التكبير، تحسين الحدة، زيادة التباين) وتجربة مرة أخرى دون الحاجة لرفع الصورة من جديد.</p>
-                </div>
-
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل تؤثر الأداة على دقة الألوان في الصورة؟</h3>
-                    <p>لا، تقنيتنا <strong>لتحسين جودة الصور</strong> تحافظ على دقة الألوان الطبيعية قدر الإمكان. خيار "زيادة التباين" قد يعزز الألوان قليلاً لجعلها أكثر حيوية، لكنه لا يغير الألوان الأساسية بشكل كبير. يمكنك دائماً ترك هذا الخيار غير مفعل إذا كنت تريد الحفاظ على الألوان الأصلية بالكامل.</p>
-                </div>
-
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل أحتاج إلى إنشاء حساب لاستخدام الأداة؟</h3>
-                    <p>لا، أداة <strong>تحسين جودة الصور</strong> متاحة للجميع بدون تسجيل أو إنشاء حساب. فقط افتح الصفحة وابدأ فوراً في استخدام الأداة دون أي تعقيدات أو التزامات.</p>
-                </div>
-
-                <div style="margin-bottom: 25px;">
-                    <h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني استخدام الأداة لتحسين صور المنتجات في متجري الإلكتروني؟</h3>
-                    <p>بالتأكيد! أداة <strong>رفع جودة الصور</strong> مثالية لتحسين صور المنتجات في المتاجر الإلكترونية. الصور عالية الجودة تزيد من ثقة العملاء وتحسن معدلات التحويل. يمكنك معالجة عدد غير محدود من صور المنتجات مجاناً.</p>
-                </div>
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل أحتاج إلى إنشاء حساب لاستخدام الأداة؟</h3><p>لا، أداة <strong>تحسين جودة الصور</strong> متاحة للجميع بدون تسجيل أو إنشاء حساب. فقط افتح الصفحة وابدأ فوراً في استخدام الأداة دون أي تعقيدات.</p></div>
             </section>
 
-            <!-- قسم طريقة الاستخدام خطوة بخطوة -->
-            <div class="how-to-use" style="margin-top: 40px; padding: 25px; background: var(--bg-card); border-radius: 16px;">
-                <h2 style="font-size: 22px; margin-bottom: 20px;">📖 طريقة استخدام أداة تحسين جودة الصور ورفع الدقة - خطوة بخطوة</h2>
-                
-                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-                    <div style="flex:1; text-align:center;">
-                        <div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white; font-weight: bold;">1</div>
-                        <strong>اختر الصورة التي تريد تحسينها</strong>
-                        <br><small>اسحب الصورة أو اضغط على منطقة الرفع للاختيار من جهازك</small>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white; font-weight: bold;">2</div>
-                        <strong>اختر مستوى التكبير المناسب</strong>
-                        <br><small>2x للجودة العالية، 3x للتوازن، 4x للتكبير الاحترافي</small>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white; font-weight: bold;">3</div>
-                        <strong>فعّل خيارات التحسين الإضافية</strong>
-                        <br><small>تحسين الحدة و/أو زيادة التباين للحصول على أفضل نتيجة</small>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white; font-weight: bold;">4</div>
-                        <strong>ابدأ عملية تحسين الجودة</strong>
-                        <br><small>اضغط زر "تحسين جودة الصورة ورفع دقتها" وانتظر قليلاً</small>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white; font-weight: bold;">5</div>
-                        <strong>حمل الصورة المحسنة</strong>
-                        <br><small>شاهد الفرق بين الصورة الأصلية والمحسنة ثم حمل النتيجة</small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- خاتمة قوية -->
+            <!-- 7. خاتمة قوية -->
             <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px; text-align: center;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">استخدم أداة تحسين جودة الصور ورفع الدقة اليوم مجاناً</h2>
                 <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
@@ -368,6 +253,18 @@ window.initimagequality = function(containerId) {
                     <p style="margin: 0; color: var(--color-primary); font-weight: bold;">✨ Smart Image Converter - الجودة العالية بخصوصية تامة، مجاناً ودون قيود ✨</p>
                 </div>
             </section>
+
+            <!-- 8. طريقة الاستخدام خطوة بخطوة -->
+            <div class="how-to-use" style="margin-top: 40px; padding: 25px; background: var(--bg-card); border-radius: 16px;">
+                <h2 style="font-size: 22px; margin-bottom: 20px;">📖 طريقة استخدام أداة تحسين جودة الصور ورفع الدقة - خطوة بخطوة</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">1</div><strong>اختر الصورة</strong><br><small>اسحب الصورة أو اضغط للاختيار</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">2</div><strong>اختر مستوى التكبير</strong><br><small>2x / 3x / 4x حسب حاجتك</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">3</div><strong>فعّل خيارات التحسين</strong><br><small>حدة و/أو تباين</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">4</div><strong>ابدأ تحسين الجودة</strong><br><small>اضغط زر تحسين جودة الصورة</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">5</div><strong>حمل الصورة المحسنة</strong><br><small>احصل على الصورة فوراً</small></div>
+                </div>
+            </div>
         </div>
     `;
 
@@ -410,7 +307,7 @@ window.initimagequality = function(containerId) {
     }
 
     function showNotification(msg, type) {
-        console.log(`📢 إشعار: ${msg} (${type})`);
+        console.log(`📢 إشعار: ${msg}`);
         if (window.SmartImageConverter && window.SmartImageConverter.showToast) {
             window.SmartImageConverter.showToast(msg, type);
         }
@@ -612,6 +509,7 @@ window.initimagequality = function(containerId) {
         }
     }
 
+    // ربط الأحداث
     container.querySelectorAll('.level-card').forEach(card => {
         card.addEventListener('click', function() {
             container.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
@@ -620,25 +518,37 @@ window.initimagequality = function(containerId) {
         });
     });
 
-    uploadArea?.addEventListener('click', () => fileInput?.click());
-    fileInput?.addEventListener('change', (e) => {
-        if (e.target.files[0]) handleFile(e.target.files[0]);
-        fileInput.value = '';
-    });
-    uploadArea?.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        uploadArea.classList.add('drag-over');
-    });
-    uploadArea?.addEventListener('dragleave', () => {
-        uploadArea.classList.remove('drag-over');
-    });
-    uploadArea?.addEventListener('drop', (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove('drag-over');
-        if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
-    });
-    upscaleBtn?.addEventListener('click', upscaleImage);
-    clearResultBtn?.addEventListener('click', clearResults);
+    if (uploadArea && fileInput) {
+        uploadArea.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files[0]) handleFile(e.target.files[0]);
+            fileInput.value = '';
+        });
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('drag-over');
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('drag-over');
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+            if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+        });
+        console.log("✅ تم ربط منطقة رفع الملف");
+    }
+    
+    if (upscaleBtn) {
+        upscaleBtn.addEventListener('click', upscaleImage);
+        console.log("✅ تم ربط زر التحسين");
+    }
+    if (clearResultBtn) {
+        clearResultBtn.addEventListener('click', clearResults);
+        console.log("✅ تم ربط زر المسح");
+    }
 
-    console.log("✅ أداة تحسين جودة الصور جاهزة - نسخة محسنة SEO متوافقة مع الصفحة الرئيسية");
+    console.log("✅ أداة تحسين جودة الصور جاهزة - نسخة كاملة بالمحتوى الغني!");
 };
+
+console.log("✅ تم تحميل ملف image-optimizer.js بنجاح (وظيفة initimagequality معرفة)");
