@@ -1,0 +1,39 @@
+{
+  "redirects": [
+    {
+      "source": "/password-protect",
+      "destination": "/#password-protect",
+      "permanent": true
+    },
+    {
+      "source": "/decrypt",
+      "destination": "/#decrypt",
+      "permanent": true
+    },
+    {
+      "source": "/image-quality",
+      "destination": "/#image-quality",
+      "permanent": true
+    },
+    {
+      "source": "/merge-pdf",
+      "destination": "/#merge-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/compress-pdf",
+      "destination": "/#compress-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/tools/image-to-pdf",
+      "destination": "/#image-to-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/image-to-pdf",
+      "destination": "/#image-to-pdf",
+      "permanent": true
+    }
+  ]
+}
