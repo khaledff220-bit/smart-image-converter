@@ -231,8 +231,9 @@ class PDFCompressor {
 window.PDFCompressor = PDFCompressor;
 
 // ============================================
-// دالة تهيئة واجهة المستخدم
+// دالة تهيئة واجهة المستخدم مع محتوى SEO غني
 // ============================================
+
 window.initPDFCompressor = function(containerId) {
     console.log("✅ تهيئة أداة ضغط PDF المحسنة");
     const container = document.getElementById(containerId);
@@ -243,6 +244,7 @@ window.initPDFCompressor = function(containerId) {
 
     container.innerHTML = `
         <div class="tool-container">
+            <!-- شارة الثقة والأمان -->
             <div class="trust-badge" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(59,130,246,0.15)); border-radius: 60px; padding: 12px 24px; margin-bottom: 25px; text-align: center;">
                 <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
                     <span style="background: #10b981; color: white; padding: 4px 12px; border-radius: 30px; font-size: 12px;">🔒 100% خصوصية</span>
@@ -253,12 +255,14 @@ window.initPDFCompressor = function(containerId) {
                 <p style="margin-top: 12px; font-size: 14px; color: var(--text-secondary);">🔐 ملفاتك لا تترك جهازك أبداً - معالجة محلية 100%</p>
             </div>
 
+            <!-- عنوان H1 احترافي -->
             <h1 style="text-align: center; font-size: 28px; margin-bottom: 15px;">🗜️ ضغط PDF - قلّص حجم ملفاتك بضغطة زر وبجودة عالية</h1>
             <p style="color: var(--text-muted); text-align: center; margin-bottom: 25px; font-size: 16px;">✅ ضغط حقيقي للصور بنسبة تصل إلى 70% - معالجة محلية 100% - مجاني تماماً</p>
 
+            <!-- منطقة رفع الملف -->
             <div class="drag-drop-zone" id="uploadAreaPDF" style="margin-bottom: 20px;">
                 <div class="drag-icon">📄</div>
-                <h3>اختر ملف PDF أو اسحبه هنا</h3>
+                <h3>اختر ملف PDF أو اسحبه هنا لضغطه</h3>
                 <input type="file" id="pdfInput" accept=".pdf" style="display: none;">
                 <small>يدعم جميع أنواع PDF | الحد الأقصى 50 ميجابايت</small>
             </div>
@@ -267,6 +271,7 @@ window.initPDFCompressor = function(containerId) {
                 <div id="fileNamePDF"></div>
             </div>
 
+            <!-- إعدادات الضغط -->
             <div style="margin: 20px 0;">
                 <h2 style="font-size: 22px; margin-bottom: 15px;">⚙️ إعدادات ضغط PDF</h2>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;" id="levelContainer">
@@ -277,6 +282,7 @@ window.initPDFCompressor = function(containerId) {
                 <p style="font-size: 12px; color: var(--text-muted); margin-top: 10px;">⚠️ الضغط العالي يقلل حجم الملف بشكل كبير ولكن قد يؤثر قليلاً على جودة الصور داخل الملف.</p>
             </div>
 
+            <!-- خيارات إضافية -->
             <div style="margin: 20px 0;">
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <label><input type="checkbox" id="optimizeImages" checked> 🖼️ تحسين وضغط الصور داخل الملف</label>
@@ -306,18 +312,167 @@ window.initPDFCompressor = function(containerId) {
                 </div>
             </div>
 
+            <!-- ============================================ -->
+            <!-- المحتوى النصي الغني لتحسين السيو (1000+ كلمة) -->
+            <!-- ============================================ -->
+
+            <!-- 1. قسم شرح شامل -->
             <section class="seo-block" style="margin-top: 50px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
                 <h2 style="font-size: 26px; margin-bottom: 20px;">ما هي أداة ضغط PDF من Smart Image Converter؟</h2>
-                <p><strong>أداة ضغط PDF</strong> من Smart Image Converter هي خدمة مجانية بالكامل تتيح لك <strong>تقليل حجم ملفات PDF</strong> مع الحفاظ على الجودة الأصلية للنصوص والصور. تتم المعالجة محلياً 100% داخل متصفحك، مما يعني أن ملفاتك لا تُرفع إلى أي خادم خارجي، بل تبقى آمنة على جهازك الخاص.</p>
+                
+                <p><strong>أداة ضغط PDF</strong> من Smart Image Converter هي خدمة مجانية بالكامل تتيح لك <strong>تقليل حجم ملفات PDF</strong> مع الحفاظ على الجودة الأصلية للنصوص والصور. في عالم اليوم الرقمي، أصبحت ملفات PDF جزءاً أساسياً من حياتنا اليومية - سواء للعمل، الدراسة، أو الاستخدام الشخصي. لكن المشكلة التي يواجهها الكثيرون هي الحجم الكبير لهذه الملفات، مما يجعل إرسالها عبر البريد الإلكتروني أو تحميلها على المواقع أمراً صعباً.</p>
+                
+                <p>هنا تأتي أهمية <strong>ضغط PDF</strong> كحل مثالي لهذه المشكلة. خدمة <strong>تقليل حجم PDF</strong> التي نقدمها تمكنك من تصغير حجم أي ملف PDF مع الحفاظ على المحتوى النصي والرسومات بأعلى جودة ممكنة. سواء كنت طالباً تحتاج إلى إرسال بحث علمي، أو موظفاً تريد مشاركة تقرير مهم، أو صاحب موقع إلكتروني ترغب في تحسين سرعة تحميل ملفاتك، فإن أداتنا هي الحل الأمثل.</p>
+                
+                <p>ما يميز <strong>ضغط PDF</strong> في منصتنا هو أنك تتحكم كاملاً في العملية. يمكنك تفعيل خيار تحسين الصور داخل الملف، أو إزالة البيانات الوصفية غير الضرورية لتوفير مساحة إضافية. والأهم من كل ذلك، أن ملفك لا يغادر جهازك أبداً - فكل عمليات <strong>ضغط ملفات PDF</strong> تتم محلياً في متصفحك، مما يضمن خصوصية تامة وأمان كامل لمستنداتك الحساسة.</p>
+                
+                <p>نحن نقدم لك ثلاثة مستويات مختلفة <strong>لضغط PDF</strong>: ضغط منخفض يحافظ على جودة عالية مع تقليل بسيط للحجم، ضغط متوسط يعطي توازناً ممتازاً بين الحجم والجودة، وضغط عالي يقلل حجم الملف بشكل كبير - مثالي للملفات الكبيرة جداً أو عند الحاجة إلى أصغر حجم ممكن للإرسال عبر البريد الإلكتروني أو تطبيقات المراسلة التي تفرض حدوداً على حجم الملفات.</p>
             </section>
 
+            <!-- 2. قسم: لماذا تحتاج إلى ضغط PDF؟ -->
+            <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
+                <h2 style="font-size: 26px; margin-bottom: 20px;">لماذا تحتاج إلى ضغط PDF؟ 5 أسباب تجعل ضغط الملفات ضرورة</h2>
+                
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>تسهيل إرسال الملفات عبر البريد الإلكتروني:</strong> معظم خدمات البريد الإلكتروني تفرض حداً أقصى لحجم المرفقات (عادة 25 ميجابايت). <strong>ضغط PDF</strong> يسمح لك بإرسال مستندات أكبر حجماً دون مواجهة مشاكل.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>توفير مساحة التخزين:</strong> سواء كنت تخزن الملفات على جهازك الشخصي أو في السحابة، <strong>تقليل حجم PDF</strong> يساعدك على توفير مساحة ثمينة وزيادة عدد الملفات التي يمكنك الاحتفاظ بها.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>تحسين سرعة التحميل على المواقع:</strong> إذا كنت تدير موقعاً إلكترونياً وتقدم ملفات PDF للتحميل، فإن الملفات المضغوطة تَحمل بشكل أسرع، مما يحسن تجربة المستخدم ويقلل من معدل الارتداد (Bounce Rate).</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>تسهيل المشاركة عبر تطبيقات المراسلة:</strong> تطبيقات مثل WhatsApp وTelegram تفرض حدوداً على حجم الملفات. <strong>ضغط ملفات PDF</strong> يسمح لك بمشاركة مستنداتك بسهولة عبر هذه المنصات.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: flex-start; gap: 10px;">📌 <strong>تحسين أداء الأرشيفات الرقمية:</strong> إذا كنت تدير أرشيفاً رقمياً للمستندات، فإن <strong>ضغط PDF</strong> يساعدك على تخزين عدد أكبر من المستندات في مساحة أقل، مع الحفاظ على إمكانية الوصول إليها بسهولة.</li>
+                </ul>
+            </section>
+
+            <!-- 3. قسم مميزات الأداة -->
+            <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
+                <h2 style="font-size: 26px; margin-bottom: 20px;">مميزات أداة ضغط PDF من Smart Image Converter</h2>
+                
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>خصوصية تامة 100%:</strong> ملفاتك لا تترك جهازك أبداً - معالجة محلية دون رفع للخادم. هذا يعني أن مستنداتك الحساسة تبقى آمنة تماماً.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>سرعة فائقة في ضغط PDF:</strong> معالجة فورية داخل المتصفح دون انتظار رفع أو تحميل من خوادم بعيدة. النتيجة تحصل عليها في ثوانٍ.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>ثلاثة مستويات للضغط:</strong> اختر بين الضغط المنخفض (جودة عالية)، المتوسط (توازن مثالي)، أو العالي (أصغر حجم ممكن) حسب احتياجاتك.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>تحسين الصور داخل PDF:</strong> ضغط الصور داخل ملف PDF بشكل ذكي لتقليل الحجم دون فقدان الجودة المرئية.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>إزالة البيانات الوصفية:</strong> خيار إضافي لإزالة معلومات غير ضرورية مثل المؤلف والتاريخ لتقليل الحجم بشكل أكبر وزيادة الخصوصية.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>متوافق مع جميع الأجهزة:</strong> يعمل على الحاسوب، الهاتف، والجهاز اللوحي بواجهة سهلة الاستخدام ومحسنة للشاشات الصغيرة.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>مجاني بالكامل:</strong> بدون حدود لعدد الملفات، بدون اشتراكات، بدون إعلانات مزعجة. استخدم الأداة مجاناً لعدد غير محدود من المرات.</li>
+                    
+                    <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">✅ <strong>يعمل دون اتصال بالإنترنت:</strong> بعد تحميل الصفحة لأول مرة، يمكنك استخدام أداة ضغط PDF حتى عندما تكون غير متصل بالإنترنت.</li>
+                </ul>
+            </section>
+
+            <!-- 4. قسم حالات الاستخدام العملية -->
+            <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
+                <h2 style="font-size: 26px; margin-bottom: 20px;">متى تحتاج إلى ضغط PDF؟ حالات استخدام عملية</h2>
+                
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 12px 0; display: flex; align-items: flex-start; gap: 10px;">
+                        <div style="background: var(--color-primary); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">1</div>
+                        <div><strong>📚 للطلاب والباحثين:</strong> <strong>ضغط PDF</strong> للأبحاث والكتب الجامعية والمشاريع العلمية لتسهيل مشاركتها عبر البريد الإلكتروني مع المشرفين أو الزملاء.</div>
+                    </li>
+                    
+                    <li style="padding: 12px 0; display: flex; align-items: flex-start; gap: 10px;">
+                        <div style="background: var(--color-primary); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">2</div>
+                        <div><strong>💼 للموظفين والشركات:</strong> <strong>تقليل حجم PDF</strong> للتقارير، العقود، والعروض التقديمية قبل إرسالها للعملاء أو الزملاء، مما يسرع عملية التواصل.</div>
+                    </li>
+                    
+                    <li style="padding: 12px 0; display: flex; align-items: flex-start; gap: 10px;">
+                        <div style="background: var(--color-primary); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">3</div>
+                        <div><strong>🌐 لأصحاب المواقع الإلكترونية:</strong> <strong>ضغط ملفات PDF</strong> قبل رفعها لموقعك لتحسين سرعة تحميل الموقع وتجربة المستخدم، مما ينعكس إيجاباً على ترتيبك في محركات البحث.</div>
+                    </li>
+                    
+                    <li style="padding: 12px 0; display: flex; align-items: flex-start; gap: 10px;">
+                        <div style="background: var(--color-primary); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">4</div>
+                        <div><strong>⚖️ للمحامين والمحاسبين:</strong> <strong>تقليل حجم PDF</strong> للمستندات القانونية والمالية الكبيرة لتسهيل أرشفتها ومشاركتها مع العملاء مع الحفاظ على الخصوصية التامة.</div>
+                    </li>
+                    
+                    <li style="padding: 12px 0; display: flex; align-items: flex-start; gap: 10px;">
+                        <div style="background: var(--color-primary); width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0;">5</div>
+                        <div><strong>🏠 للاستخدام الشخصي:</strong> <strong>ضغط PDF</strong> للفواتير، الإيصالات، الكتب الإلكترونية، وأي مستندات شخصية لتوفير مساحة على جهازك وتسهيل إدارتها.</div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 5. جدول المقارنة -->
+            <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
+                <h2 style="font-size: 26px; margin-bottom: 20px;">📊 مقارنة: أداة ضغط PDF من Smart Image Converter مقابل المواقع التقليدية</h2>
+                
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; background: var(--bg-primary); border-radius: 12px; overflow: hidden;">
+                        <thead>
+                            <tr style="background: var(--color-primary); color: white;">
+                                <th style="padding: 12px; text-align: center;">الميزة</th>
+                                <th style="padding: 12px; text-align: center;">Smart Image Converter</th>
+                                <th style="padding: 12px; text-align: center;">المواقع التقليدية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">🔒 خصوصية الملفات</td><td style="padding: 10px;">✅ معالجة محلية - لا ترفع ملفاتك</td><td style="padding: 10px;">❌ يتم رفع الملفات للخادم</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">💰 التكلفة</td><td style="padding: 10px;">✅ مجاني بالكامل - بدون حدود</td><td style="padding: 10px;">⚠️ مجاني محدود أو اشتراكات مدفوعة</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">⚡ سرعة ضغط PDF</td><td style="padding: 10px;">✅ فورية - معالجة بدون انتظار</td><td style="padding: 10px;">⚠️ تعتمد على سرعة الإنترنت</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">📱 العمل دون إنترنت</td><td style="padding: 10px;">✅ يعمل بعد تحميل الصفحة</td><td style="padding: 10px;">❌ يتطلب اتصالاً دائماً</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">📄 حجم الملف المسموح</td><td style="padding: 10px;">✅ يحدده جهازك فقط</td><td style="padding: 10px;">⚠️ حدود صارمة (غالباً أقل من 50 ميجا)</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">🛡️ الإعلانات</td><td style="padding: 10px;">✅ بدون إعلانات مزعجة</td><td style="padding: 10px;">❌ إعلانات ونوافذ منبثقة</td></tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);"><td style="padding: 10px;">🎯 دقة الضغط</td><td style="padding: 10px;">✅ ثلاث مستويات (منخفض، متوسط، عالي)</td><td style="padding: 10px;">⚠️ مستوى واحد أو مستويين فقط</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 6. قسم الأسئلة الشائعة FAQ -->
+            <section class="faq-section" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px;">
+                <h2 style="font-size: 26px; margin-bottom: 20px;">❓ الأسئلة الشائعة حول ضغط PDF</h2>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل ضغط PDF يؤثر على جودة الملف الأصلي؟</h3><p>لا، <strong>أداة ضغط PDF</strong> تحافظ على جودة النصوص والرسومات. يتم ضغط الصور فقط (إذا اخترت تحسين الصور)، مما يقلل الحجم دون تأثير ملحوظ على الجودة. مع الضغط المنخفض والمتوسط، لن تلاحظ أي فرق تقريباً في المظهر العام للملف.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني ضغط PDF محمي بكلمة مرور؟</h3><p>للأسف، لا يمكن <strong>ضغط ملفات PDF</strong> المحمية بكلمة مرور باستخدام هذه الأداة. يجب إزالة الحماية أولاً باستخدام أداة فك التشفير المتوفرة في موقعنا قبل محاولة ضغط الملف.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما حجم الملف الذي يمكنني ضغطه؟</h3><p>الحد الأقصى لـ <strong>ضغط PDF</strong> عبر أداتنا هو 50 ميجابايت. هذا الحد مناسب لمعظم الملفات ويضمن أداءً جيداً على جميع الأجهزة والمتصفحات. للملفات الأكبر حجماً، يمكنك تجربة تقسيمها أولاً.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل أحتاج إلى اتصال بالإنترنت لاستخدام أداة ضغط PDF؟</h3><p>بعد تحميل الصفحة لأول مرة، يمكنك استخدام <strong>أداة ضغط PDF</strong> دون اتصال بالإنترنت لأن جميع العمليات تتم محلياً على جهازك. هذا مفيد جداً عند السفر أو في المناطق ذات الاتصال الضعيف.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل أداة ضغط PDF مجانية حقاً؟</h3><p>نعم، <strong>ضغط PDF</strong> عبر منصتنا مجاني بالكامل ولا توجد أي رسوم خفية أو اشتراكات شهرية. يمكنك استخدام الأداة لضغط عدد غير محدود من الملفات دون أي قيود أو إعلانات مزعجة.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ كيف تتم المعالجة المحلية عند ضغط PDF؟</h3><p>جميع عمليات <strong>ضغط PDF</strong> تتم داخل متصفحك باستخدام تقنيات JavaScript المتقدمة ومكتبة PDF.js من Mozilla. لا يتم إرسال ملفاتك إلى أي خادم خارجي، مما يضمن أمان وخصوصية مستنداتك بالكامل.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ ما الفرق بين مستويات ضغط PDF المختلفة؟</h3><p><strong>ضغط PDF</strong> المنخفض يحافظ على جودة عالية جداً مع تقليل بسيط للحجم (10-30%). الضغط المتوسط يوفر توازناً مثالياً بين الحجم والجودة (30-50% توفير). الضغط العالي يقلل الحجم بشكل كبير جداً (50-70%) مع تأثير طفيف على جودة الصور فقط.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل تعمل أداة ضغط PDF على الهاتف المحمول؟</h3><p>نعم، <strong>أداة ضغط PDF</strong> مصممة لتكون متجاوبة بالكامل وتعمل بشكل ممتاز على جميع الهواتف الذكية والأجهزة اللوحية. الواجهة محسنة للشاشات الصغيرة مع أزرار كبيرة وسهلة اللمس.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يمكنني ضغط عدة ملفات PDF في وقت واحد؟</h3><p>حالياً، الأداة مصممة لمعالجة ملف PDF واحد في كل مرة لضمان أفضل أداء وجودة. يمكنك معالجة ملفات متعددة بالتتابع - بعد الانتهاء من ملف، اضغط على "ملف جديد" وكرر العملية.</p></div>
+
+                <div style="margin-bottom: 25px;"><h3 style="font-size: 20px; margin-bottom: 10px;">❓ هل يحتفظ الموقع بنسخة من ملفاتي بعد الضغط؟</h3><p>لا، بما أن جميع عمليات <strong>ضغط PDF</strong> تتم محلياً على جهازك، فإن ملفاتك لا تُرفع إلى خوادمنا. بعد إغلاق الصفحة أو تحديثها، تختفي جميع البيانات من الذاكرة. لا يتم تخزين أي نسخة من ملفاتك.</p></div>
+            </section>
+
+            <!-- 7. خاتمة قوية -->
+            <section class="seo-block" style="margin-top: 30px; padding: 30px; background: var(--bg-card); border-radius: 16px; text-align: center;">
+                <h2 style="font-size: 26px; margin-bottom: 20px;">🚀 ابدأ في ضغط PDF الآن مجاناً</h2>
+                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+                    لا تدع الملفات الكبيرة تعيق إنتاجيتك أو تبطئ موقعك الإلكتروني. مع <strong>أداة ضغط PDF</strong> من Smart Image Converter، يمكنك <strong>تقليل حجم PDF</strong> بكل سهولة وأمان تام. 
+                    جميع المعالجات تتم محلياً على جهازك، مما يضمن خصوصية تامة لمستنداتك. جرب الأداة الآن مجاناً واكتشف الفرق بنفسك - سريعة، آمنة، وبدون أي تعقيدات!
+                </p>
+                <div style="background: var(--bg-primary); border-radius: 12px; padding: 15px; margin-top: 20px;">
+                    <p style="margin: 0; color: var(--color-primary); font-weight: bold;">✨ Smart Image Converter - ضغط PDF بجودة عالية، بخصوصية تامة، مجاناً ودون قيود ✨</p>
+                </div>
+            </section>
+
+            <!-- 8. طريقة الاستخدام خطوة بخطوة -->
             <div class="how-to-use" style="margin-top: 40px; padding: 25px; background: var(--bg-card); border-radius: 16px;">
-                <h2 style="font-size: 22px; margin-bottom: 20px;">📖 طريقة استخدام أداة ضغط PDF</h2>
+                <h2 style="font-size: 22px; margin-bottom: 20px;">📖 طريقة استخدام أداة ضغط PDF - خطوة بخطوة</h2>
                 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px;">1</div><strong>اختر ملف PDF</strong><br><small>اضغط على منطقة الرفع أو اسحب الملف</small></div>
-                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px;">2</div><strong>اختر مستوى الضغط</strong><br><small>حدد الخيار المناسب لك</small></div>
-                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px;">3</div><strong>ابدأ ضغط PDF</strong><br><small>اضغط زر "بدء الضغط"</small></div>
-                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px;">4</div><strong>حمل الملف المضغوط</strong><br><small>احصل على ملف PDF الجديد فوراً</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">1</div><strong>اختر ملف PDF</strong><br><small>اضغط على منطقة الرفع أو اسحب الملف</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">2</div><strong>اختر مستوى الضغط</strong><br><small>منخفض / متوسط / عالي حسب حاجتك</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">3</div><strong>فعّل الخيارات الإضافية</strong><br><small>تحسين الصور أو إزالة البيانات الوصفية</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">4</div><strong>ابدأ ضغط PDF</strong><br><small>اضغط زر "بدء ضغط PDF الآن"</small></div>
+                    <div style="flex:1; text-align:center;"><div style="background: var(--color-primary); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 10px; color: white;">5</div><strong>حمل الملف المضغوط</strong><br><small>احصل على ملف PDF الجديد فوراً</small></div>
                 </div>
             </div>
         </div>
@@ -497,5 +652,5 @@ window.initPDFCompressor = function(containerId) {
         console.log(`✅ تم ربط ${levelCards.length} من مستويات الضغط`);
     }
 
-    console.log("✅ أداة ضغط PDF جاهزة بالكامل");
+    console.log("✅ أداة ضغط PDF جاهزة بالكامل مع محتوى SEO غني");
 };
