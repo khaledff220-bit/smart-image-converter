@@ -225,6 +225,14 @@
         </div>
     </footer>
 
+        <!-- حاويات الأدوات -->
+    <section id="compress-pdf" class="page-section"><div class="tool-container"><div id="compress-pdf-container"></div></div></section>
+    <section id="merge-pdf" class="page-section"><div class="tool-container"><div id="merge-pdf-container"></div></div></section>
+    <section id="password-protect" class="page-section"><div class="tool-container"><div id="password-protect-container"></div></div></section>
+    <section id="decrypt" class="page-section"><div class="tool-container"><div id="decrypt-container"></div></div></section>
+    <section id="image-quality" class="page-section"><div class="tool-container"><div id="image-quality-container"></div></div></section>
+    <section id="image-to-pdf" class="page-section"><div class="tool-container"><div id="image-to-pdf-container"></div></div></section>
+
     <!-- تفعيل PDF.js Worker -->
     <script>
         if (typeof pdfjsLib !== 'undefined') {
@@ -233,9 +241,13 @@
         }
     </script>
 
-    <!-- ملفات المشروع -->
+        <!-- ملفات المشروع -->
     <script src="/assets/js/pdf-compressor.js"></script>
     <script src="/assets/js/image-optimizer.js"></script>
+    <script src="/assets/js/password-protect.js"></script>
+    <script src="/assets/js/merge-pdf.js"></script>
+    <script src="/assets/js/decrypt.js"></script>
+    <script src="/assets/js/image-to-pdf.js"></script>
     <script src="/assets/js/main.js"></script>
 
     <!-- كود التنقل بين الصفحات -->
