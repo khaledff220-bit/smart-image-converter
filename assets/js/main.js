@@ -1,173 +1,134 @@
 /**
- * الملف الرئيسي - تهيئة جميع أدوات الموقع
- * الإصدار النهائي - يشمل جميع الأدوات الستة
- * 
- * قائمة الأدوات:
- * 1. ضغط PDF (compress-pdf)
- * 2. تحسين جودة الصور (image-quality)
- * 3. حماية الصور وتشفيرها (password-protect)
- * 4. فك تشفير الصور (decrypt)
- * 5. دمج PDF (merge-pdf)
- * 6. تحويل الصور إلى PDF (image-to-pdf)
- * 
- * تاريخ التحديث: 2026-06-03
+ * الملف الرئيسي - تحميل الأدوات فقط عند الحاجة
  */
 
-// انتظار تحميل الصفحة بالكامل
+// دالة لتحميل ملف JavaScript ديناميكياً
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+// دالة لتحميل ملف CSS (إذا وجد)
+function loadCSS(href) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+}
+
+// انتظار تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("🚀 ==========================================");
-    console.log("🚀 بدء تهيئة أدوات Smart Image Converter");
-    console.log("🚀 ==========================================");
+    console.log("🚀 بدء تهيئة الموقع (التحميل عند الطلب)");
     
     // تفعيل PDF.js Worker
     if (typeof pdfjsLib !== 'undefined') {
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-        console.log("✅ PDF.js worker configured");
-    } else {
-        console.warn("⚠️ PDF.js غير موجود - قد تؤثر على أدوات PDF");
     }
     
-    // التحقق من وجود المكتبات الأساسية
-    if (typeof CryptoJS !== 'undefined') {
-        console.log("✅ CryptoJS (التشفير) موجود");
-    } else {
-        console.warn("⚠️ CryptoJS غير موجود - أدوات التشفير لن تعمل");
+    // تهيئة نظام التنقل
+    const sections = {
+        home: document.getElementById('home'),
+        'compress-pdf': document.getElementById('compress-pdf'),
+        'merge-pdf': document.getElementById('merge-pdf'),
+        'password-protect': document.getElementById('password-protect'),
+        'decrypt': document.getElementById('decrypt'),
+        'image-quality': document.getElementById('image-quality'),
+        'image-to-pdf': document.getElementById('image-to-pdf')
+    };
+    
+    // قائمة الأدوات وملفاتها
+    const tools = {
+        'compress-pdf': '/assets/js/pdf-compressor.js',
+        'merge-pdf': '/assets/js/merge-pdf.js',
+        'password-protect': '/assets/js/password-protect.js',
+        'decrypt': '/assets/js/decrypt.js',
+        'image-quality': '/assets/js/image-optimizer.js',
+        'image-to-pdf': '/assets/js/image-to-pdf.js'
+    };
+    
+    // تخزين الأدوات التي تم تحميلها
+    const loadedTools = {};
+    
+    // دالة إظهار القسم
+    async function showSection(sectionId) {
+        console.log("📄 عرض القسم:", sectionId);
+        
+        // إخفاء جميع الأقسام
+        Object.keys(sections).forEach(id => {
+            if (sections[id]) sections[id].classList.remove('active');
+        });
+        
+        // إظهار القسم المطلوب
+        if (sections[sectionId]) sections[sectionId].classList.add('active');
+        
+        // إذا كانت أداة ولم يتم تحميلها بعد
+        if (sectionId !== 'home' && !loadedTools[sectionId] && tools[sectionId]) {
+            console.log(`📥 تحميل أداة: ${sectionId}`);
+            try {
+                await loadScript(tools[sectionId]);
+                loadedTools[sectionId] = true;
+                console.log(`✅ تم تحميل أداة: ${sectionId}`);
+                
+                // تهيئة الأداة بعد التحميل
+                setTimeout(() => {
+                    if (sectionId === 'compress-pdf' && typeof window.initPDFCompressor === 'function') {
+                        window.initPDFCompressor("compress-pdf-container");
+                    } else if (sectionId === 'merge-pdf' && typeof window.initMergePDF === 'function') {
+                        window.initMergePDF("merge-pdf-container");
+                    } else if (sectionId === 'password-protect' && typeof window.initpasswordprotect === 'function') {
+                        window.initpasswordprotect("password-protect-container");
+                    } else if (sectionId === 'decrypt' && typeof window.initdecrypt === 'function') {
+                        window.initdecrypt("decrypt-container");
+                    } else if (sectionId === 'image-quality' && typeof window.initimagequality === 'function') {
+                        window.initimagequality("image-quality-container");
+                    } else if (sectionId === 'image-to-pdf' && typeof window.initImageToPDF === 'function') {
+                        window.initImageToPDF("image-to-pdf-container");
+                    }
+                }, 50);
+            } catch (error) {
+                console.error(`❌ فشل تحميل أداة: ${sectionId}`, error);
+            }
+        }
+        
+        // تحديث عنوان الصفحة
+        const titles = {
+            home: "الرئيسية - تحويل الصور إلى PDF وضغط PDF",
+            'compress-pdf': "ضغط PDF - قلص حجم ملفات PDF مجاناً",
+            'merge-pdf': "دمج PDF - ادمج عدة ملفات PDF",
+            'image-to-pdf': "تحويل الصور إلى PDF - تحويل JPG و PNG",
+            'image-quality': "تحسين جودة الصور - رفع دقة الصور",
+            'password-protect': "حماية الصور - تشفير الصور",
+            'decrypt': "فك تشفير الصور"
+        };
+        document.title = (titles[sectionId] || "Smart Image Converter") + " | Smart Image Converter";
     }
     
-    if (typeof jspdf !== 'undefined') {
-        console.log("✅ jsPDF موجود");
-    }
+    // ربط روابط التنقل
+    document.querySelectorAll('[data-nav]').forEach(link => {
+        link.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute('data-nav');
+            if (sectionId && sections[sectionId]) {
+                await showSection(sectionId);
+                history.pushState(null, '', '#' + sectionId);
+            }
+        });
+    });
     
-    console.log("📋 جاري تهيئة الأدوات...");
+    // التعامل مع زر الرجوع
+    window.addEventListener('popstate', () => {
+        const hash = window.location.hash.substring(1);
+        showSection(hash && sections[hash] ? hash : 'home');
+    });
     
-    // تأخير بسيط للتأكد من تحميل جميع المكتبات والملفات
-    setTimeout(() => {
-        let toolsInitialized = 0;
-        let toolsFailed = 0;
-        
-        // ============================================
-        // 1. تهيئة أداة ضغط PDF
-        // ============================================
-        if (typeof window.initPDFCompressor === 'function') {
-            try {
-                console.log("🔧 [1/6] تهيئة أداة ضغط PDF...");
-                window.initPDFCompressor("compress-pdf-container");
-                toolsInitialized++;
-                console.log("✅ [1/6] أداة ضغط PDF جاهزة");
-            } catch(e) {
-                console.error("❌ [1/6] خطأ في تهيئة ضغط PDF:", e);
-                toolsFailed++;
-            }
-        } else {
-            console.warn("⚠️ [1/6] initPDFCompressor غير موجود - تأكد من تحميل pdf-compressor.js");
-            toolsFailed++;
-        }
-        
-        // ============================================
-        // 2. تهيئة أداة تحسين جودة الصور
-        // ============================================
-        if (typeof window.initimagequality === 'function') {
-            try {
-                console.log("🔧 [2/6] تهيئة أداة تحسين جودة الصور...");
-                window.initimagequality("image-quality-container");
-                toolsInitialized++;
-                console.log("✅ [2/6] أداة تحسين جودة الصور جاهزة");
-            } catch(e) {
-                console.error("❌ [2/6] خطأ في تهيئة تحسين الجودة:", e);
-                toolsFailed++;
-            }
-        } else {
-            console.warn("⚠️ [2/6] initimagequality غير موجود - تأكد من تحميل image-optimizer.js");
-            toolsFailed++;
-        }
-        
-        // ============================================
-        // 3. تهيئة أداة حماية الصور (تشفير)
-        // ============================================
-        if (typeof window.initpasswordprotect === 'function') {
-            try {
-                console.log("🔧 [3/6] تهيئة أداة حماية الصور وتشفيرها...");
-                window.initpasswordprotect("password-protect-container");
-                toolsInitialized++;
-                console.log("✅ [3/6] أداة حماية الصور جاهزة");
-            } catch(e) {
-                console.error("❌ [3/6] خطأ في تهيئة حماية الصور:", e);
-                toolsFailed++;
-            }
-        } else {
-            console.warn("⚠️ [3/6] initpasswordprotect غير موجود - تأكد من تحميل password-protect.js");
-            toolsFailed++;
-        }
-        
-        // ============================================
-        // 4. تهيئة أداة فك تشفير الصور
-        // ============================================
-        if (typeof window.initdecrypt === 'function') {
-            try {
-                console.log("🔧 [4/6] تهيئة أداة فك تشفير الصور...");
-                window.initdecrypt("decrypt-container");
-                toolsInitialized++;
-                console.log("✅ [4/6] أداة فك تشفير الصور جاهزة");
-            } catch(e) {
-                console.error("❌ [4/6] خطأ في تهيئة فك التشفير:", e);
-                toolsFailed++;
-            }
-        } else {
-            console.warn("⚠️ [4/6] initdecrypt غير موجود - تأكد من تحميل decrypt.js");
-            toolsFailed++;
-        }
-        
-        // ============================================
-        // 5. تهيئة أداة دمج PDF
-        // ============================================
-        if (typeof window.initMergePDF === 'function') {
-            try {
-                console.log("🔧 [5/6] تهيئة أداة دمج PDF...");
-                window.initMergePDF("merge-pdf-container");
-                toolsInitialized++;
-                console.log("✅ [5/6] أداة دمج PDF جاهزة");
-            } catch(e) {
-                console.error("❌ [5/6] خطأ في تهيئة دمج PDF:", e);
-                toolsFailed++;
-            }
-        } else {
-            console.warn("⚠️ [5/6] initMergePDF غير موجود - تأكد من تحميل merge-pdf.js");
-            toolsFailed++;
-        }
-        
-        // ============================================
-        // 6. تهيئة أداة تحويل الصور إلى PDF
-        // ============================================
-        if (typeof window.initImageToPDF === 'function') {
-            try {
-                console.log("🔧 [6/6] تهيئة أداة تحويل الصور إلى PDF...");
-                window.initImageToPDF("image-to-pdf-container");
-                toolsInitialized++;
-                console.log("✅ [6/6] أداة تحويل الصور إلى PDF جاهزة");
-            } catch(e) {
-                console.error("❌ [6/6] خطأ في تهيئة تحويل الصور إلى PDF:", e);
-                toolsFailed++;
-            }
-        } else {
-            console.warn("⚠️ [6/6] initImageToPDF غير موجود - تأكد من تحميل image-to-pdf.js");
-            toolsFailed++;
-        }
-        
-        // ============================================
-        // تقرير نهائي عن حالة التهيئة
-        // ============================================
-        console.log("🚀 ==========================================");
-        console.log(`📊 تقرير التهيئة: ${toolsInitialized} أداة تم تهيئتها بنجاح، ${toolsFailed} أداة فشلت`);
-        
-        if (toolsFailed === 0) {
-            console.log("🎉 جميع الأدوات تعمل بشكل مثالي!");
-        } else {
-            console.log("⚠️ بعض الأدوات لم يتم تهيئتها - تأكد من تحميل جميع الملفات");
-        }
-        console.log("🚀 ==========================================");
-        
-    }, 250);
+    // العرض الأولي
+    const initialHash = window.location.hash.substring(1);
+    showSection(initialHash && sections[initialHash] ? initialHash : 'home');
 });
 
-console.log("✅ main.js (الإصدار النهائي) تم تحميله بنجاح");
-console.log("📅 تاريخ التحديث: 2026-06-03");
+console.log("✅ main.js (التحميل الديناميكي) تم تحميله بنجاح");
