@@ -233,6 +233,16 @@
             line-height: 1.6;
             color: var(--text-secondary);
         }
+
+	/* تعديل التمرير التلقائي للروابط */
+    html {
+        scroll-padding-top: 80px;
+        scroll-behavior: smooth;
+    }
+    .page-section, [id^="compress-pdf"], [id^="merge-pdf"], [id^="password-protect"], [id^="decrypt"], [id^="image-quality"], [id^="image-to-pdf"] {
+        scroll-margin-top: 80px;
+    }
+
     </style>
 </head>
 <body>
