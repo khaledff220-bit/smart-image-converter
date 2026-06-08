@@ -6,3 +6,4 @@ backup/
 node_modules/
 # تجاهل ملفات النظام
 .DS_Store
+*.backup
