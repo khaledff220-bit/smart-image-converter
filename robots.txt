@@ -1,35 +1,15 @@
 # ============================================
-# Robots.txt لـ Smart Image Converter - الإصدار المتوافق مع SPA
+# robots.txt - Smart Image Converter
+# تم التحديث: 2026-07-11
 # ============================================
 
 User-agent: *
 Allow: /
 
-# السماح بفهرسة جميع المحتويات
-Allow: /$
-
-# السماح بفهرسة أجزاء الصفحة (SPA)
-Allow: /#compress-pdf
-Allow: /#merge-pdf
-Allow: /#image-to-pdf
-Allow: /#image-quality
-Allow: /#password-protect
-Allow: /#decrypt
-
-# منع فهرسة الملفات غير الضرورية
-Disallow: /assets/js/
-Disallow: /assets/css/
-Disallow: /assets/images/
-Disallow: /test_*
 Disallow: /*.tmp$
 Disallow: /*.bak$
 Disallow: /*.log$
+Disallow: /*.backup
+Disallow: /test_*
 
-# خريطة الموقع
 Sitemap: https://smart-image-converter.vercel.app/sitemap.xml
-
-# وقت الزحف الموصى به (خارج ساعات الذروة)
-Crawl-delay: 1
-
-# ملاحظة: الموقع يعمل بنظام SPA، جميع الصفحات موجودة في index.html واحدة
-# ============================================

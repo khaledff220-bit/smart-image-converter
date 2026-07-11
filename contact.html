@@ -1,23 +1,379 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- ========================================== -->
+    <!-- Google Analytics -->
+    <!-- ========================================== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNHBTPESQT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-PNHBTPESQT');
+    </script>
+
+    <!-- ========================================== -->
+    <!-- Meta Tags -->
+    <!-- ========================================== -->
     <meta charset="UTF-8">
-    <title>اتصل بنا - Smart Image Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0b1e">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+    <title>اتصل بنا - Smart Image Converter | تواصل مع فريق الدعم</title>
+    <meta name="description" content="تواصل مع فريق Smart Image Converter. نرحب بأسئلتك واقتراحاتك وملاحظاتك. نحن هنا لمساعدتك.">
+    <meta name="keywords" content="اتصل بنا, Smart Image Converter, دعم فني, تواصل, اقتراحات">
+
+    <link rel="canonical" href="https://smart-image-converter.vercel.app/contact.html">
+
+    <!-- ========================================== -->
+    <!-- Open Graph / Twitter Card -->
+    <!-- ========================================== -->
+    <meta property="og:title" content="اتصل بنا - Smart Image Converter | تواصل مع فريق الدعم">
+    <meta property="og:description" content="تواصل مع فريق Smart Image Converter. نرحب بأسئلتك واقتراحاتك.">
+    <meta property="og:url" content="https://smart-image-converter.vercel.app/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:image" content="https://smart-image-converter.vercel.app/assets/images/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="Smart Image Converter">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="اتصل بنا - Smart Image Converter | تواصل مع فريق الدعم">
+    <meta name="twitter:description" content="تواصل مع فريق Smart Image Converter. نرحب بأسئلتك واقتراحاتك.">
+    <meta name="twitter:image" content="https://smart-image-converter.vercel.app/assets/images/icon-512.png">
+
+    <!-- ========================================== -->
+    <!-- Structured Data -->
+    <!-- ========================================== -->
+
+    <!-- WebPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "اتصل بنا - Smart Image Converter",
+        "description": "تواصل مع فريق Smart Image Converter",
+        "url": "https://smart-image-converter.vercel.app/contact.html",
+        "inLanguage": "ar",
+        "dateModified": "2026-07-10",
+        "datePublished": "2026-07-10",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Smart Image Converter",
+            "url": "https://smart-image-converter.vercel.app/"
+        }
+    }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://smart-image-converter.vercel.app/" },
+            { "@type": "ListItem", "position": 2, "name": "اتصل بنا", "item": "https://smart-image-converter.vercel.app/contact.html" }
+        ]
+    }
+    </script>
+
+    <!-- ContactPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "اتصل بنا - Smart Image Converter",
+        "description": "تواصل مع فريق Smart Image Converter",
+        "url": "https://smart-image-converter.vercel.app/contact.html",
+        "inLanguage": "ar"
+    }
+    </script>
+
+    <!-- ========================================== -->
+    <!-- Preconnect -->
+    <!-- ========================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- ========================================== -->
+    <!-- Verification -->
+    <!-- ========================================== -->
+    <meta name="google-site-verification" content="1YBP2sbUMH1uIADFn88vYgs-UHOOlEoYkxtp9tixugE">
+    <meta name="yandex-verification" content="aec7ad1050eecf51">
+
+    <!-- ========================================== -->
+    <!-- Icons & Manifest -->
+    <!-- ========================================== -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="icon" sizes="512x512" href="/assets/images/icon-512.png">
+
+    <!-- ========================================== -->
+    <!-- CSS -->
+    <!-- ========================================== -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================== -->
+    <!-- Styles -->
+    <!-- ========================================== -->
     <style>
-        body { background: #0a0b1e; color: white; font-family: Arial, sans-serif; }
-        .container { max-width: 800px; margin: 50px auto; padding: 30px; background: #1a1a2e; border-radius: 16px; }
-        h1 { color: #00f2ff; }
-        a { color: #00f2ff; text-decoration: none; }
+        .contact-hero {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        .contact-hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .contact-hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 30px 0;
+        }
+        .contact-card {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-fast);
+        }
+        .contact-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+        }
+        .contact-card .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        .contact-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .contact-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .contact-card a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+        .faq-contact {
+            background: var(--bg-card);
+            padding: 24px 28px;
+            border-radius: var(--radius-lg);
+            margin: 24px 0;
+            border: 1px solid var(--border-color);
+        }
+        .faq-contact h2 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--color-primary);
+        }
+        .faq-contact .faq-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .faq-contact .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-contact .faq-item h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+        .faq-contact .faq-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .internal-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        .internal-links a {
+            background: var(--bg-primary);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-fast);
+            font-size: 14px;
+        }
+        .internal-links a:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        .response-time {
+            background: rgba(16, 185, 129, 0.08);
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            margin: 20px 0;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .response-time .highlight {
+            color: #10b981;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 28px;
+            }
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📧 اتصل بنا</h1>
-        <p>لديك سؤال أو استفسار؟ يمكنك التواصل معنا عبر:</p>
-        <p>📩 البريد الإلكتروني: <strong>support@smart-image-converter.vercel.app</strong></p>
-        <br>
-        <a href="/">← العودة إلى الصفحة الرئيسية</a>
-    </div>
+    <a href="#main-content" class="skip-to-content">تخطي إلى المحتوى الرئيسي</a>
+
+    <nav aria-label="القائمة الرئيسية">
+        <div class="nav-container">
+            <a href="/" class="nav-logo" aria-label="الرئيسية">
+                <img src="/assets/images/icon-192.png" alt="Smart Image Converter" width="64" height="64">
+                <h2>Smart Image Converter</h2>
+            </a>
+            <ul class="nav-menu" role="list">
+                <li><a href="/">الرئيسية</a></li>
+                <li><a href="/password-protect.html">حماية الصور</a></li>
+                <li><a href="/decrypt.html">فك التشفير</a></li>
+                <li><a href="/image-quality.html">تحسين الجودة</a></li>
+                <li><a href="/merge-pdf.html">دمج PDF</a></li>
+                <li><a href="/compress-pdf.html">ضغط PDF</a></li>
+                <li><a href="/image-to-pdf.html">تحويل إلى PDF</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="tool-container">
+
+            <!-- ========================================== -->
+            <!-- Hero Section -->
+            <!-- ========================================== -->
+            <div class="contact-hero">
+                <span class="hero-badge">📞 اتصل بنا</span>
+                <h1>تواصل معنا</h1>
+                <p>نحن هنا للإجابة على أسئلتك، ونرحب بملاحظاتك واقتراحاتك لتطوير المنصة</p>
+            </div>
+
+            <!-- Response Time -->
+            <div class="response-time">
+                ⏱️ نرد على جميع الاستفسارات خلال <span class="highlight">24 ساعة</span>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- Contact Cards -->
+            <!-- ========================================== -->
+            <div class="contact-info-grid">
+                <div class="contact-card">
+                    <div class="icon">📧</div>
+                    <h3>البريد الإلكتروني</h3>
+                    <p>
+                        <a href="mailto:khaledff220@gmail.com">khaledff220@gmail.com</a>
+                    </p>
+                    <p style="font-size: 13px; margin-top: 8px; color: var(--text-muted);">للأسئلة والاستفسارات</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">💡</div>
+                    <h3>اقتراحاتك تهمنا</h3>
+                    <p>نرحب بجميع الاقتراحات والأفكار لتطوير المنصة</p>
+                    <p style="font-size: 13px; margin-top: 8px; color: var(--text-muted);">ساهم في تحسين Smart Image Converter</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">🐛</div>
+                    <h3>الإبلاغ عن مشكلة</h3>
+                    <p>إذا واجهت أي مشكلة أثناء استخدام الأدوات، أخبرنا فوراً</p>
+                    <p style="font-size: 13px; margin-top: 8px; color: var(--text-muted);">نساعدك في حل المشكلة بسرعة</p>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- FAQ Section -->
+            <!-- ========================================== -->
+            <div class="faq-contact">
+                <h2>❓ الأسئلة الشائعة قبل التواصل</h2>
+
+                <div class="faq-item">
+                    <h4>هل يمكنني الحصول على مساعدة فنية؟</h4>
+                    <p>نعم، فريق الدعم لدينا جاهز لمساعدتك في أي استفسار متعلق بالأدوات أو المشاكل التقنية.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>كم تستغرق عملية الرد؟</h4>
+                    <p>نحرص على الرد على جميع الاستفسارات خلال 24 ساعة من وقت الاستلام.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>هل يمكنني اقتراح أداة جديدة؟</h4>
+                    <p>بالتأكيد! نحن نرحب بجميع الاقتراحات والأفكار الجديدة لتطوير المنصة.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>ماذا أفعل إذا واجهت مشكلة في أداة معينة؟</h4>
+                    <p>يرجى إرسال تفاصيل المشكلة عبر البريد الإلكتروني مع وصف الخطوات التي قمت بها.</p>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- Internal Links -->
+            <!-- ========================================== -->
+            <section style="margin: 30px 0; text-align: center;">
+                <h3 style="margin-bottom: 16px;">🔗 صفحات مهمة</h3>
+                <div class="internal-links">
+                    <a href="/">🏠 الرئيسية</a>
+                    <a href="/about.html">👤 من نحن</a>
+                    <a href="/privacy.html">🔒 سياسة الخصوصية</a>
+                    <a href="/terms.html">📜 الشروط والأحكام</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- Footer -->
+    <!-- ========================================== -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025–2026 Smart Image Converter. جميع الحقوق محفوظة</p>
+            <nav class="footer-links" aria-label="روابط التذييل">
+                <a href="/privacy.html">سياسة الخصوصية</a>
+                <a href="/terms.html">الشروط والأحكام</a>
+                <a href="/contact.html">اتصل بنا</a>
+                <a href="/about.html">من نحن</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- JavaScript -->
+    <!-- ========================================== -->
+    <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

@@ -251,19 +251,19 @@
 
     <nav aria-label="القائمة الرئيسية">
         <div class="nav-container">
-            <a href="#home" class="nav-logo" data-nav="home">
+            <a href="/" class="nav-logo" >
                 <img src="/assets/images/icon-192.png" alt="Smart Image Converter" width="64" height="64">
                 <h2>Smart Image Converter</h2>
             </a>
             <ul class="nav-menu">
-                <li><a href="#home" data-nav="home">الرئيسية</a></li>
-                <li><a href="#password-protect" data-nav="password-protect">حماية الصور</a></li>
-                <li><a href="#decrypt" data-nav="decrypt">فك التشفير</a></li>
-                <li><a href="#image-quality" data-nav="image-quality">تحسين الجودة</a></li>
-                <li><a href="#merge-pdf" data-nav="merge-pdf">دمج PDF</a></li>
-                <li><a href="#compress-pdf" data-nav="compress-pdf">ضغط PDF</a></li>
-                <li><a href="#image-to-pdf" data-nav="image-to-pdf">تحويل إلى PDF</a></li>
-            </ul>
+    	    	<li><a href="/">الرئيسية</a></li>
+            	<li><a href="/password-protect.html">حماية الصور</a></li>
+    	    	<li><a href="/decrypt.html">فك التشفير</a></li>
+    	    	<li><a href="/image-quality.html">تحسين الجودة</a></li>
+    	    	<li><a href="/merge-pdf.html">دمج PDF</a></li>
+    	    	<li><a href="/compress-pdf.html">ضغط PDF</a></li>
+    	    	<li><a href="/image-to-pdf.html">تحويل إلى PDF</a></li>
+	    </ul>
         </div>
     </nav>
 
@@ -284,13 +284,13 @@
             </div>
 
             <div class="tools-grid">
-                <div class="tool-card"><div class="tool-icon">🔒</div><h3>حماية الصور</h3><p>تشفير صورك بكلمة مرور باستخدام تقنية AES-256</p><a href="#password-protect" class="btn" data-nav="password-protect">ابدأ الآن</a></div>
-                <div class="tool-card"><div class="tool-icon">🔑</div><h3>فك التشفير</h3><p>استعادة الصور الأصلية من الملفات المشفرة</p><a href="#decrypt" class="btn" data-nav="decrypt">ابدأ الآن</a></div>
-                <div class="tool-card"><div class="tool-icon">🖼️</div><h3>تحسين الجودة</h3><p>رفع دقة الصور الضبابية وجعلها أكثر وضوحاً</p><a href="#image-quality" class="btn" data-nav="image-quality">ابدأ الآن</a></div>
-                <div class="tool-card"><div class="tool-icon">📄</div><h3>دمج PDF</h3><p>دمج عدة ملفات PDF في مستند واحد مرتب</p><a href="#merge-pdf" class="btn" data-nav="merge-pdf">ابدأ الآن</a></div>
-                <div class="tool-card"><div class="tool-icon">⚙️</div><h3>ضغط PDF</h3><p>تقليل حجم ملفات PDF مع الحفاظ على الجودة</p><a href="#compress-pdf" class="btn" data-nav="compress-pdf">ابدأ الآن</a></div>
-                <div class="tool-card"><div class="tool-icon">🖼️➡️📄</div><h3>تحويل الصور إلى PDF</h3><p>تحويل صور JPG، PNG إلى ملف PDF بجودة عالية</p><a href="#image-to-pdf" class="btn" data-nav="image-to-pdf">ابدأ الآن</a></div>
-            </div>
+		 <div class="tool-card"><div class="tool-icon">🔒</div><h3>حماية الصور</h3><p>تشفير صورك بكلمة مرور باستخدام تقنية AES-256</p><a href="/password-protect.html" class="btn">ابدأ الآن</a></div>
+    		 <div class="tool-card"><div class="tool-icon">🔑</div><h3>فك التشفير</h3><p>استعادة الصور الأصلية من الملفات المشفرة</p><a href="/decrypt.html" class="btn">ابدأ الآن</a></div>
+    		 <div class="tool-card"><div class="tool-icon">🖼️</div><h3>تحسين الجودة</h3><p>رفع دقة الصور الضبابية وجعلها أكثر وضوحاً</p><a href="/image-quality.html" class="btn">ابدأ الآن</a></div>
+		 <div class="tool-card"><div class="tool-icon">📄</div><h3>دمج PDF</h3><p>دمج عدة ملفات PDF في مستند واحد مرتب</p><a href="/merge-pdf.html" class="btn">ابدأ الآن</a></div>
+    		 <div class="tool-card"><div class="tool-icon">⚙️</div><h3>ضغط PDF</h3><p>تقليل حجم ملفات PDF مع الحفاظ على الجودة</p><a href="/compress-pdf.html" class="btn">ابدأ الآن</a></div>
+		 <div class="tool-card"><div class="tool-icon">🖼️➡️📄</div><h3>تحويل الصور إلى PDF</h3><p>تحويل صور JPG، PNG إلى ملف PDF بجودة عالية</p><a href="/image-to-pdf.html" class="btn">ابدأ الآن</a></div>
+	    </div>
 
             <!-- ============================================ -->
             <!-- المحتوى النصي الغني للصفحة الرئيسية (حصري وفريد) -->
@@ -482,17 +482,9 @@
         </div>
     </main>
 
-    <!-- حاويات الأدوات -->
-    <section id="compress-pdf" class="page-section"><div class="tool-container"><div id="compress-pdf-container"></div></div></section>
-    <section id="merge-pdf" class="page-section"><div class="tool-container"><div id="merge-pdf-container"></div></div></section>
-    <section id="password-protect" class="page-section"><div class="tool-container"><div id="password-protect-container"></div></div></section>
-    <section id="decrypt" class="page-section"><div class="tool-container"><div id="decrypt-container"></div></div></section>
-    <section id="image-quality" class="page-section"><div class="tool-container"><div id="image-quality-container"></div></div></section>
-    <section id="image-to-pdf" class="page-section"><div class="tool-container"><div id="image-to-pdf-container"></div></div></section>
-
     <footer>
         <div class="footer-content">
-            <p>© 2025 Smart Image Converter. جميع الحقوق محفوظة</p>
+            <p>© 2026-2025 Smart Image Converter. جميع الحقوق محفوظة</p>
             <div class="footer-links">
                 <a href="privacy.html">سياسة الخصوصية</a>
                 <a href="terms.html">الشروط والأحكام</a>
@@ -512,86 +504,6 @@
     <!-- ملفات المشروع -->
     <script src="/assets/js/main.js" defer ></script>
 
-    <!-- كود التنقل بين الصفحات -->
-    <script>
-        (function() {
-            console.log("🚀 تهيئة نظام التنقل بين الصفحات");
-
-            // الحصول على جميع الأقسام
-            const sections = {
-                home: document.getElementById('home'),
-                'compress-pdf': document.getElementById('compress-pdf'),
-                'merge-pdf': document.getElementById('merge-pdf'),
-                'password-protect': document.getElementById('password-protect'),
-                'decrypt': document.getElementById('decrypt'),
-                'image-quality': document.getElementById('image-quality'),
-                'image-to-pdf': document.getElementById('image-to-pdf')
-            };
-
-            // دالة لإظهار قسم وإخفاء الباقي
-            function showSection(sectionId) {
-                console.log("📄 عرض القسم:", sectionId);
-
-                // إخفاء جميع الأقسام
-                Object.keys(sections).forEach(id => {
-                    if (sections[id]) {
-                        sections[id].classList.remove('active');
-                    }
-                });
-
-                // إظهار القسم المطلوب
-                if (sections[sectionId]) {
-                    sections[sectionId].classList.add('active');
-                }
-
-                // تحديث عنوان الصفحة
-                let pageTitle = "Smart Image Converter";
-                switch(sectionId) {
-                    case 'home': pageTitle = "الرئيسية - تحويل الصور إلى PDF وضغط PDF"; break;
-                    case 'compress-pdf': pageTitle = "ضغط PDF - قلص حجم ملفات PDF مجاناً"; break;
-                    case 'merge-pdf': pageTitle = "دمج PDF - ادمج عدة ملفات PDF في ملف واحد"; break;
-                    case 'image-to-pdf': pageTitle = "تحويل الصور إلى PDF - تحويل JPG و PNG إلى PDF"; break;
-                    case 'image-quality': pageTitle = "تحسين جودة الصور - رفع دقة الصور مجاناً"; break;
-                    case 'password-protect': pageTitle = "حماية الصور - تشفير الصور بكلمة مرور"; break;
-                    case 'decrypt': pageTitle = "فك تشفير الصور - استعادة الصور الأصلية"; break;
-                }
-                document.title = pageTitle + " | Smart Image Converter";
-            }
-
-            // ربط جميع روابط التنقل
-            const navLinks = document.querySelectorAll('[data-nav]');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const sectionId = this.getAttribute('data-nav');
-                    if (sectionId && sections[sectionId]) {
-                        showSection(sectionId);
-                        // تحديث URL بدون إعادة تحميل
-                        history.pushState(null, '', '#' + sectionId);
-                    }
-                });
-            });
-
-            // التعامل مع زر الرجوع/التقدم في المتصفح
-            window.addEventListener('popstate', function() {
-                const hash = window.location.hash.substring(1);
-                if (hash && sections[hash]) {
-                    showSection(hash);
-                } else {
-                    showSection('home');
-                }
-            });
-
-            // التحقق من وجود hash في URL عند التحميل
-            const initialHash = window.location.hash.substring(1);
-            if (initialHash && sections[initialHash]) {
-                showSection(initialHash);
-            } else {
-                showSection('home');
-            }
-
-            console.log("✅ نظام التنقل جاهز");
-        })();
-    </script>
+   
 </body>
 </html>

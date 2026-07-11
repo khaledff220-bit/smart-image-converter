@@ -2,43 +2,58 @@
   "redirects": [
     {
       "source": "/password-protect",
-      "destination": "/#password-protect",
+      "destination": "/password-protect.html",
       "permanent": true
     },
     {
       "source": "/decrypt",
-      "destination": "/#decrypt",
+      "destination": "/decrypt.html",
       "permanent": true
     },
     {
       "source": "/image-quality",
-      "destination": "/#image-quality",
+      "destination": "/image-quality.html",
       "permanent": true
     },
     {
       "source": "/merge-pdf",
-      "destination": "/#merge-pdf",
+      "destination": "/merge-pdf.html",
       "permanent": true
     },
     {
       "source": "/compress-pdf",
-      "destination": "/#compress-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/tools/image-to-pdf",
-      "destination": "/#image-to-pdf",
+      "destination": "/compress-pdf.html",
       "permanent": true
     },
     {
       "source": "/image-to-pdf",
-      "destination": "/#image-to-pdf",
+      "destination": "/image-to-pdf.html",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
       "permanent": true
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -47,11 +62,11 @@
       ]
     },
     {
-      "source": "/assets/(.*)",
+      "source": "/(.*).html",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=3600"
         }
       ]
     }
