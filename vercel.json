@@ -1,23 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/password-protect",
-      "destination": "/password-protect.html",
-      "permanent": true
-    },
-    {
-      "source": "/decrypt",
-      "destination": "/decrypt.html",
-      "permanent": true
-    },
-    {
-      "source": "/image-quality",
-      "destination": "/image-quality.html",
-      "permanent": true
-    },
-    {
-      "source": "/merge-pdf",
-      "destination": "/merge-pdf.html",
+      "source": "/",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -26,8 +11,28 @@
       "permanent": true
     },
     {
+      "source": "/merge-pdf",
+      "destination": "/merge-pdf.html",
+      "permanent": true
+    },
+    {
       "source": "/image-to-pdf",
       "destination": "/image-to-pdf.html",
+      "permanent": true
+    },
+    {
+      "source": "/image-quality",
+      "destination": "/image-quality.html",
+      "permanent": true
+    },
+    {
+      "source": "/password-protect",
+      "destination": "/password-protect.html",
+      "permanent": true
+    },
+    {
+      "source": "/decrypt",
+      "destination": "/decrypt.html",
       "permanent": true
     },
     {
