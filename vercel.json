@@ -1,11 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/compress-pdf",
       "destination": "/compress-pdf.html",
       "permanent": true
